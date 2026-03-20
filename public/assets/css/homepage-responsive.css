@@ -1,0 +1,1462 @@
+﻿/* =====================================================
+   homepage-responsive.css
+   Mobile responsive overrides for the homepage.
+   Loaded AFTER homepage1.css so overrides win by cascade.
+   ===================================================== */
+
+/* --- Desktop: section wrappers are transparent --- */
+.hp-decor,
+.hp-nav,
+.hp-hero,
+.hp-collab,
+.hp-clients,
+.hp-stats,
+.hp-products,
+.hp-services,
+.hp-testimonials,
+.hp-whychoose,
+.product-card-wrap,
+.service-card-wrap,
+.value-card-wrap {
+  display: contents;
+}
+
+/* --- Desktop: mobile-only labels hidden --- */
+.clients-section-label,
+.clients-section-title,
+.testimonials-section-label {
+  display: none;
+}
+
+/* --- Hamburger hidden on desktop --- */
+.hp-hamburger {
+  display: none;
+}
+
+/* ==========================================================
+   TABLET BREAKPOINT - 1024px
+   ========================================================== */
+@media (max-width: 1024px) {
+  .hp-nav-actions {
+    position: absolute;
+    right: 40px;
+    left: auto;
+  }
+}
+
+/* ==========================================================
+   MOBILE BREAKPOINT - 768px and below
+   ========================================================== */
+@media (max-width: 768px) {
+
+  /* --- Kill scale transform, use normal flow --- */
+  body {
+    height: auto !important;
+    min-height: 100vh;
+    display: block !important;
+  }
+
+  .homepage {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    display: flex !important;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* --- Section wrappers become real containers --- */
+  .hp-decor { display: none !important; }
+
+  .hp-nav,
+  .hp-hero,
+  .hp-collab,
+  .hp-clients,
+  .hp-stats,
+  .hp-products,
+  .hp-services,
+  .hp-testimonials,
+  .hp-whychoose {
+    display: flex !important;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* --- Background decorations hidden --- */
+  .rectangle-37,
+  .rectangle-27,
+  .rectangle-5,
+  .heading-32,
+  .background,
+  .button-shadow2,
+  .button-shadow3,
+  .button-shadow4 {
+    display: none !important;
+  }
+
+  /* ======================
+     NAVBAR
+     ====================== */
+  .hp-nav {
+    position: sticky !important;
+    top: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #ffffff;
+    z-index: 200;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 0;
+  }
+
+  .hp-nav .logo-home-link {
+    position: static !important;
+    order: 1;
+  }
+
+  .hp-nav .chat-gpt-image-26-feb-2026-11-24-32-1 {
+    position: static !important;
+    width: 130px;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  /* Hamburger button */
+  .hp-hamburger {
+    display: flex !important;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    order: 3;
+    z-index: 201;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hp-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #0f172a;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hp-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hp-hamburger.is-open span:nth-child(2) { opacity: 0; }
+  .hp-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Nav links drawer - hidden by default */
+  .hp-nav-links {
+    display: none !important;
+    width: 100%;
+    order: 4;
+    flex-direction: column;
+    padding: 16px 0 8px;
+    gap: 0;
+  }
+
+  /* Nav links drawer - open state */
+  .hp-nav-links.is-open {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .hp-nav .about-us,
+  .hp-nav .services,
+  .hp-nav .solutions,
+  .hp-nav .works {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 14px 0;
+    font-size: 16px;
+    justify-content: flex-start;
+    border-bottom: 1px solid #f1f5f9;
+    white-space: normal;
+    left: auto !important;
+    top: auto !important;
+  }
+
+  /* Nav actions drawer - hidden by default */
+  .hp-nav-actions {
+    display: none !important;
+    width: 100%;
+    order: 5;
+    position: static !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0 8px;
+    gap: 16px;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+  }
+
+  /* Nav actions drawer - open state */
+  .hp-nav-actions.is-open {
+    display: flex !important;
+    flex-direction: row;
+  }
+
+  .hp-nav-actions .background3 {
+    position: static !important;
+  }
+
+  .hp-nav-actions .start-a-project {
+    position: static !important;
+    width: auto;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* Mega menu mobile */
+  .solutions-mega-menu {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 70px !important;
+    translate: none !important;
+    transform: none !important;
+    width: 100% !important;
+    border-radius: 0 0 16px 16px !important;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 16px !important;
+  }
+
+  .solutions-mega-menu.is-open {
+    transform: none !important;
+  }
+
+  .solutions-mega-menu-inner {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* ======================
+     HERO
+     ====================== */
+  .hp-hero {
+    padding: 0;
+    overflow: hidden;
+    min-height: 320px;
+    background: #f5f6f8;
+    position: relative !important;
+  }
+
+  .biru-modern-ucapan-selamat-ulang-tahun-instagram-post-2-4 {
+    display: none !important;
+  }
+
+  /* Hero image as background on mobile */
+  .hero-homepage1-stack {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    right: 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    object-fit: cover;
+    max-width: none;
+    border-radius: 0;
+    margin: 0;
+    z-index: 0;
+    opacity: 0.2;
+  }
+
+  /* HERO TITLE - text-align LEFT */
+  .transforming-ideas-into-digital-excellence {
+    position: relative !important;
+    z-index: 1;
+    width: 100% !important;
+    height: auto !important;
+    padding: 40px 20px 0;
+    text-align: left;
+    top: auto !important;
+    left: auto !important;
+    display: block !important;
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.5px !important;
+    color: #0f172a;
+  }
+
+  .transforming-ideas-into-digital-excellence span {
+    display: block;
+  }
+
+  .transforming-ideas-into-digital-excellence-span {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    color: #0f172a;
+    display: inline !important;
+  }
+
+  .transforming-ideas-into-digital-excellence-span2 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    color: #2563eb;
+    display: inline !important;
+  }
+
+  .enhance-your-business-capabilities-to-innovate-and-compete-in-today-s-dynamic-market-by-harnessing-the-power-of-data {
+    position: relative !important;
+    z-index: 1;
+    width: 100% !important;
+    height: auto !important;
+    padding: 16px 20px 0;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    text-align: left;
+    top: auto !important;
+    left: auto !important;
+    color: #475569;
+  }
+
+  .hero-btn-group {
+    position: relative !important;
+    z-index: 1;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 20px 40px;
+  }
+
+  .button-shadow3 {
+    display: none !important;
+  }
+
+  .consult-now2,
+  .hero-start-project {
+    height: 48px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 24px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .consult-now2 {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+    background: #1e3a5f !important;
+    color: #ffffff !important;
+    border: 2px solid #1e3a5f !important;
+    box-shadow: 0 4px 14px rgba(30,58,95,0.35) !important;
+  }
+
+  .hero-start-project {
+    background: transparent !important;
+    color: #2563eb !important;
+    border: 2px solid #2563eb !important;
+  }
+
+  /* ======================
+     COLLABORATION TEXT
+     ====================== */
+  .hp-collab {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    padding: 40px 20px;
+    background: #fff;
+  }
+
+  .heading-3 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    translate: none !important;
+    text-align: center;
+  }
+
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia-span {
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+  }
+
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia-span2 {
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ======================
+     CLIENT LOGOS
+     ====================== */
+  .hp-clients {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    padding: 40px 20px;
+    background: #fff;
+    overflow: hidden;
+    gap: 16px;
+  }
+
+  .clients-section-label {
+    position: static !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #3b82f6;
+    font-weight: 600;
+    text-align: center;
+    display: block !important;
+  }
+
+  .clients-section-title {
+    position: static !important;
+    width: 100% !important;
+    font-size: 24px !important;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: center;
+    line-height: 1.3;
+    display: block !important;
+  }
+
+  .clients-logos {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    translate: none !important;
+  }
+
+  .client-logo {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 50px;
+    object-fit: contain;
+    top: auto !important;
+    left: auto !important;
+    opacity: 1 !important;
+  }
+
+  .button6 {
+    position: static !important;
+    margin: 24px auto 0;
+    display: inline-flex;
+    width: auto;
+    top: auto !important;
+    left: auto !important;
+    translate: none !important;
+  }
+
+  .view-all {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* ======================
+     STATS
+     ====================== */
+  .hp-stats {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 20px;
+    background: transparent;
+    overflow: hidden;
+  }
+
+  .hp-stats .container,
+  .hp-stats .container3,
+  .hp-stats .container4 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    flex: 1 1 80px;
+    min-width: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hp-stats .container2 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .hp-stats ._77,
+  .hp-stats .text2,
+  .hp-stats .text4 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 28px !important;
+    top: auto !important;
+    left: auto !important;
+    color: #0f172a;
+  }
+
+  .hp-stats .text,
+  .hp-stats .text3,
+  .hp-stats .text5 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 12px !important;
+    top: auto !important;
+    left: auto !important;
+    white-space: normal !important;
+    text-align: center;
+    color: #64748b;
+  }
+
+  /* ======================
+     PRODUCTS (gtc 1fr - all cards stacked)
+     ====================== */
+  .hp-products {
+    padding: 40px 20px;
+    align-items: center;
+    background: #111827;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  .products {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    text-align: center;
+    top: auto !important;
+    left: auto !important;
+    order: 1;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .container9 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    order: 2;
+    text-align: center;
+    padding: 0;
+  }
+
+  .text8 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+  }
+
+  /* Product backgrounds hidden */
+  .rectangle-8,
+  .rectangle-9,
+  .rectangle-9-card3 {
+    display: none !important;
+  }
+
+  .overlay-blur {
+    display: none !important;
+  }
+
+  /* Product card wrappers - each wrapper = one card */
+  .product-card-wrap {
+    display: flex !important;
+    flex-direction: column;
+    width: 100% !important;
+    order: 3;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    background: rgba(30, 58, 95, 0.06);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+  }
+
+  /* ALL product cards visible, stacked */
+  .product-slide-card {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    translate: none !important;
+    transform: none !important;
+  }
+
+  /* Image boxes - order 1 */
+  .background-border,
+  .background-border2,
+  .background-border3 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    top: auto !important;
+    left: auto !important;
+    margin: 16px 0 0;
+    border-style: none !important;
+    order: 1;
+  }
+
+  .background-border .image-overlay-shadow,
+  .background-border2 .image-overlay-shadow,
+  .background-border3 .image-overlay-shadow {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+  }
+
+  /* Title - order 2 */
+  .heading-4,
+  .heading-5,
+  .heading-5-card3 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: left;
+    margin-top: 12px;
+    order: 2;
+    display: inline !important;
+  }
+
+  .heading-4 .text7,
+  .heading-5 .vara-pay-core,
+  .heading-5-card3 .dummy-product-title {
+    font-size: 20px !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Tag badge - order 3, inline next to title */
+  .overlay,
+  .overlay2,
+  .overlay2-card3 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: left;
+    margin-top: 12px;
+    order: 3;
+    display: inline !important;
+    margin-left: 8px;
+  }
+
+  .overlay .enterprise-saa-s,
+  .overlay2 .financial-tech,
+  .overlay2-card3 .dummy-product-badge {
+    font-size: 11px !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  /* Description - order 4 */
+  .container5,
+  .container7,
+  .container7-card3 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    margin: 0;
+    top: auto !important;
+    left: auto !important;
+    text-align: left;
+    padding: 8px 0 0;
+    order: 4;
+  }
+
+  .container5 .text6,
+  .container7 .global-payments-infrastructure-designed-for-the-digital-economy-supporting-100-currencies-and-instant-settlement,
+  .container7-card3 .dummy-product-description {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: left;
+  }
+
+  /* Learn more - order 5 */
+  .group-10,
+  .button2,
+  .button2-card3 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: left;
+    margin: 12px 0 24px;
+    order: 5;
+  }
+
+  .group-10 .button {
+    position: static !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .button2 .learn-more,
+  .button2-card3 .learn-more {
+    position: static !important;
+  }
+
+  .button2 .container8,
+  .button2-card3 .container8 {
+    position: static !important;
+  }
+
+  /* Product nav arrows hidden on mobile */
+  .button7,
+  .button8 {
+    display: none !important;
+  }
+
+  /* ======================
+     SERVICES (gtc 1fr - stacked cards)
+     ====================== */
+  .hp-services {
+    padding: 40px 20px;
+    align-items: center;
+    background: #f5f6f8;
+    gap: 16px;
+  }
+
+  .services2 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    text-align: center;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  .container10 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: center;
+    padding: 0 !important;
+  }
+
+  .together-with-our-clients-we-build-the-future-developing-software-solutions-that-tackle-your-industry-s-biggest-challenges {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+  }
+
+  /* Service decorations hidden */
+  .rectangle-13,
+  .hp-services .rectangle-15,
+  .rectangle-16,
+  .startup-incubator-hitbox,
+  .gemini-generated-image-fy-1-iw-8-fy-1-iw-8-fy-1-i-removebg-preview-1,
+  .chat-gpt-image-26-feb-2026-20-46-28-1 {
+    display: none !important;
+  }
+
+  .download-premium-png-of-png-gear-icon-chrome-material-silver-shape-white-background-by-sakarin-sukmanatham-about-gear-gear-icon-chrome-silver-icon-and-chrome-icon-13500505-removebg-preview-1,
+  .download-premium-png-of-png-rocket-luanching-chrome-material-white-background-removebg-preview-1,
+  .download-3-removebg-preview-1 {
+    display: none !important;
+  }
+
+  /* Service card wrappers - transparent, cards flow naturally */
+  .service-card-wrap {
+    display: contents;
+  }
+
+  /* Service titles - hidden (hover cards have their own titles) */
+  .software-development,
+  .startup-incubator,
+  .managed-services {
+    display: none !important;
+  }
+
+  /* Show hover cards permanently as stacked cards */
+  .software-development-hover-card,
+  .startup-incubator-hover-card,
+  .managed-services-hover-card {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .software-development-hover-title,
+  .startup-incubator-hover-title,
+  .managed-services-hover-title {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+  }
+
+  .software-development-hover-description,
+  .startup-incubator-hover-description,
+  .managed-services-hover-description {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #475569 !important;
+  }
+
+  /* Hide View All Services on mobile */
+  .button9 {
+    display: none !important;
+  }
+
+  /* ======================
+     TESTIMONIALS (gtc 1fr - stacked)
+     ====================== */
+  .hp-testimonials {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    padding: 40px 20px;
+    background: #f5f6f8;
+    gap: 16px;
+  }
+
+  .testimonials-section-label {
+    position: static !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #3b82f6;
+    font-weight: 600;
+    text-align: center;
+    display: block !important;
+  }
+
+  .text9 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 24px !important;
+    font-weight: 700;
+    text-align: center;
+    translate: none !important;
+    top: auto !important;
+    left: auto !important;
+    color: #0f172a;
+    line-height: 1.3;
+  }
+
+  .trust-from-industry-leaders-across-the-globe {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 14px !important;
+    text-align: center;
+    translate: none !important;
+    top: auto !important;
+    left: auto !important;
+    color: #64748b;
+  }
+
+  .container11 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .testimonial-1,
+  .testimonial-2,
+  .testimonial-3 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .container12 {
+    position: static !important;
+    display: flex;
+    gap: 4px;
+  }
+
+  .container18 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .hexavara-tech-transformed-our-vision-into-a-scalable-product-within-months-their-technical-depth-and-commitment-to-quality-are-unparalleled {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #475569;
+  }
+
+  .container19 {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .container19 .background2 {
+    position: static !important;
+    flex-shrink: 0;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .container20 {
+    position: static !important;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .text10 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 15px !important;
+    font-weight: 600;
+  }
+
+  .text11 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 13px !important;
+    color: #64748b;
+  }
+
+  /* ======================
+     CTA SECTION - height auto
+     ====================== */
+  .section {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    translate: none !important;
+    padding: 48px 20px !important;
+  }
+
+  .section::before,
+  .section::after {
+    display: none;
+  }
+
+  .cta-full {
+    transform: none !important;
+    max-width: 100%;
+  }
+
+  .cta-badge-label {
+    position: static !important;
+    width: auto !important;
+    font-size: 13px !important;
+  }
+
+  .cta-main-heading {
+    font-size: 22px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cta-description {
+    font-size: 14px !important;
+    max-width: 100%;
+  }
+
+  .button3 {
+    position: static !important;
+  }
+
+  .button-shadow {
+    display: none !important;
+  }
+
+  .consult-now {
+    position: static !important;
+  }
+
+  /* ======================
+     FOOTER (gtc 1fr - stacked)
+     ====================== */
+  .footer {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    translate: none !important;
+    padding: 40px 20px 20px !important;
+  }
+
+  .container32 {
+    position: static !important;
+    width: 100% !important;
+  }
+
+  .footer-inner {
+    padding: 0 !important;
+  }
+
+  .footer-simple {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+
+  .footer-brand-panel {
+    max-width: 100%;
+  }
+
+  .footer-brand-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    width: 160px;
+    height: auto;
+  }
+
+  .footer-nav {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 20px;
+  }
+
+  /* ======================
+     PROJECTS SECTION
+     ====================== */
+  .projects-section {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    translate: none !important;
+    padding: 40px 20px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .our-projects {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 24px !important;
+    text-align: center;
+    top: auto !important;
+    left: auto !important;
+    margin-bottom: 8px;
+  }
+
+  .container40 {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    text-align: center;
+    margin: 0 0 20px !important;
+  }
+
+  .we-deliver-our-best-performance-in-every-project-to-ensure-our-customers-are-satisfied-with-the-product {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+  }
+
+  /* Filter bar - reduced border-radius */
+  .overlay-border.projects-filter-bar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    translate: none !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 8px !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .button10,
+  .button11 {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 8px 14px;
+    top: auto !important;
+    left: auto !important;
+    border-radius: 10px !important;
+  }
+
+  /* Projects grid - 1fr stacked */
+  .projects-grid {
+    position: static !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  .project-card {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  .project-card-image {
+    height: 200px;
+  }
+
+  .projects-view-more {
+    margin-top: 24px !important;
+    position: static !important;
+  }
+
+  /* ======================
+     WHY CHOOSE HEXAVARA (gtc 1fr - stacked)
+     ====================== */
+  .hp-whychoose {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 48px 20px;
+    align-items: center;
+    background: #1e3a5f;
+    gap: 0;
+  }
+
+  .rectangle-19 {
+    display: none !important;
+  }
+
+  /* "Our Value" badge label — shown first */
+  .our-value {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: center;
+    align-self: center;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    order: 1;
+  }
+
+  /* "Why Choose Hexavara" — big heading */
+  .why-choose-hexavara {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    text-align: center;
+    align-self: center;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    order: 2;
+  }
+
+  .container41 {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    top: auto !important;
+    left: auto !important;
+    margin-bottom: 32px;
+    order: 3;
+  }
+
+  .excellence-in-project-execution-strategic-oversight-trusted-technology-partner {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: center;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* Value card wrappers - each wrapper = one card */
+  .value-card-wrap {
+    display: flex !important;
+    flex-direction: column;
+    width: 100% !important;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 24px 20px;
+    gap: 0;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    order: 4;
+  }
+
+  .value-card-wrap:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Value card rectangles hidden (wrapper handles background) */
+  .rectangle-28,
+  .rectangle-30,
+  .rectangle-29,
+  .rectangle-31 {
+    display: none !important;
+  }
+
+  /* Value card icons */
+  .group-50,
+  .image-82,
+  .image-83,
+  .image-84 {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+  }
+
+  /* Value card titles */
+  .roadmap-for-timeline,
+  .maximum-service,
+  .weekly-sprint-monitoring,
+  .monitor-team-performanc {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    top: auto !important;
+    left: auto !important;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  /* Value card descriptions */
+  .our-roadmap-contains-a-detailed-list-of-tasks-and-project-timelines-that-you-can-monitor-at-any-time-each-roadmap-is-created-based-on-mutual-agreement,
+  .we-guarantee-maximum-service-with-bug-fixes-and-improvements-handled-within-48-hours-this-feature-allows-you-to-easily-track-your-requests,
+  .this-feature-helps-control-sprints-ensuring-our-programmers-work-according-to-the-time-you-ve-purchased-it-also-guarantees-that-your-project-is-success,
+  .each-of-our-talents-has-daily-and-monthly-targets-aligned-with-the-time-you-ve-purchased-they-compete-to-deliver-their-best-performance {
+    position: static !important;
+    transform: none !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    top: auto !important;
+    left: auto !important;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0;
+  }
+
+  .value-card-wrap br {
+    display: none !important;
+  }
+}
+
+/* ==========================================================
+   SMALL MOBILE - 480px and below
+   ========================================================== */
+@media (max-width: 480px) {
+  .transforming-ideas-into-digital-excellence {
+    font-size: 24px !important;
+  }
+
+  .transforming-ideas-into-digital-excellence-span,
+  .transforming-ideas-into-digital-excellence-span2 {
+    font-size: 24px !important;
+  }
+
+  .hp-stats {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  .hp-stats .container,
+  .hp-stats .container3,
+  .hp-stats .container4 {
+    width: 100%;
+  }
+
+  .clients-logos {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .overlay-border.projects-filter-bar {
+    gap: 4px;
+  }
+
+  .button10,
+  .button11 {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+  }
+
+  .cta-main-heading {
+    font-size: 20px !important;
+  }
+
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia,
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia-span,
+  .we-have-collaborated-with-50-client-partners-from-big-company-and-foundation-all-over-indonesia-span2 {
+    font-size: 18px !important;
+  }
+}

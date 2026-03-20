@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="id">
+<!--begin::Head-->
+
+<head>
+    <title>Tentang Kami | RSUD Dr. Soetomo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="https://rsudrsoetomo.jatimprov.go.id/images/logo/rsds-icon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <link href="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="https://rsudrsoetomo.jatimprov.go.id/assets-new/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet"
+        type="text/css" />
+    <link href="https://rsudrsoetomo.jatimprov.go.id/assets-new/css/stepper.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/screenReader.js"></script>
+    <script>
+        // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ6BC1GWFF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BZ6BC1GWFF');
+    </script>
+    <style>
+        #voice-widget {
+            position: fixed;
+            bottom: 12%;
+            right: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        #voice-widget select {
+            padding: 5px;
+        }
+    </style>
+        <style>
+        .timeline-background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* z-index 1, Metronic mungkin punya helper zindex-1 */
+            z-index: 0;
+            /* Optional: Meredupkan gambar agar teks lebih mudah dibaca */
+            opacity: 0.2;
+        }
+
+        /* Helper class untuk object-fit: cover */
+        .object-fit-cover-metronic {
+            object-fit: cover;
+        }
+
+        /* Pastikan gambar di dalam div mengisi penuh */
+        .timeline-background-image img {
+            display: block;
+        }
+    </style>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-body position-relative"
+    style="background-color: #ebfff4 !important;">
+    <script>
+        var defaultThemeMode = "light";
+        var themeMode;
+        if (document.documentElement) {
+            if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+            } else {
+                if (localStorage.getItem("data-bs-theme") !== null) {
+                    themeMode = localStorage.getItem("data-bs-theme");
+                } else {
+                    themeMode = defaultThemeMode;
+                }
+            }
+            if (themeMode === "system") {
+                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+            document.documentElement.setAttribute("data-bs-theme", themeMode);
+        }
+    </script>
+    <!--begin::Main-->
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Header Section-->
+        <div class="mb-0" id="home" style="background-color: #ffffff !important;">
+            <!--begin::Wrapper-->
+            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom">
+                <!--begin::Header-->
+                <!--begin::Header-->
+ <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
+     data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+     <!--begin::Container-->
+     <div class="container">
+         <!--begin::Wrapper-->
+         <div class="d-flex align-items-center justify-content-between">
+             <!--begin::Logo-->
+             <div class="d-flex align-items-center flex-equal">
+                 <!--begin::Mobile menu toggle-->
+                 <button class="btn btn-icon btn-active-color-primary me-3 d-flex d-lg-none" id="kt_landing_menu_toggle">
+                     <i class="ki-duotone ki-abstract-14 fs-2hx">
+                         <span class="path1"></span>
+                         <span class="path2"></span>
+                     </i>
+                 </button>
+                 <!--end::Mobile menu toggle-->
+                 <!--begin::Logo image-->
+                 <a href="https://rsudrsoetomo.jatimprov.go.id">
+                     <img alt="Logo" src="https://rsudrsoetomo.jatimprov.go.id/images/logo/rsds.svg"
+                         class="logo-default h-70px h-lg-70px" />
+                     <img alt="Logo" src="https://rsudrsoetomo.jatimprov.go.id/images/logo/rsds.svg"
+                         class="logo-sticky h-70px h-lg-70px" />
+                 </a>
+                 <!--end::Logo image-->
+             </div>
+             <!--end::Logo-->
+             <!--begin::Menu wrapper-->
+             <div class="d-lg-block" id="kt_header_nav_wrapper">
+                 <div class="d-lg-block p-5 p-lg-0" data-kt-drawer="true" data-kt-drawer-name="landing-menu"
+                     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
+                     data-kt-drawer-width="200px" data-kt-drawer-direction="start"
+                     data-kt-drawer-toggle="#kt_landing_menu_toggle" data-kt-swapper="true"
+                     data-kt-swapper-mode="prepend"
+                     data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav_wrapper'}">
+                     <!--begin::Menu-->
+                     <div class="menu menu-column flex-nowrap menu-rounded menu-lg-row menu-title-gray-900 menu-state-title-primary nav nav-flush fs-6 fw-semibold"
+                         id="kt_landing_menu">
+                         <div class="menu menu-rounded menu-active-bg menu-state-primary menu-column menu-lg-row menu-title-gray-700 menu-icon-gray-500 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
+                             id="kt_app_header_menu" data-kt-menu="true">
+                             
+
+
+                             <!--begin:menu beranda-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id"
+                                     class="menu-link ">
+                                     <span class="menu-title">Beranda</span>
+                                 </a>
+                             </div>
+                             <!--end:menu beranda-->
+                             <!--begin:menu profil-->
+                             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                 data-kt-menu-placement="bottom-start"
+                                 class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                                 <span class="menu-link active">
+                                     <span class="menu-title">Profil</span>
+                                     <span class="menu-arrow d-lg-none"></span>
+                                 </span>
+                                 <div
+                                     class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
+                                     <div class="menu-item">
+                                         <a class="menu-link active"
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/tentang-kami">
+                                             <span class="menu-title">Tentang Kami</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/kedudukan">
+                                             <span class="menu-title">Kedudukan</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/tupoksi">
+                                             <span class="menu-title">Tupoksi</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/visi-misi">
+                                             <span class="menu-title">Visi dan Misi</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/struktur-organisasi">
+                                             <span class="menu-title">Struktur Organisasi</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/sdm">
+                                             <span class="menu-title">Sumber Daya Manusia</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/profil/penghargaan">
+                                             <span class="menu-title">Penghargaan dan HAKI</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                             </div>
+                             <!--end:menu profil-->
+                             <!--begin:menu pelayanan-->
+                             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                 data-kt-menu-placement="bottom-start"
+                                 class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                                 <span class="menu-link ">
+                                     <span class="menu-title">Pelayanan</span>
+                                     <span class="menu-arrow d-lg-none"></span>
+                                 </span>
+                                 <div
+                                     class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/rawat-jalan">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/rajal.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Rawat Jalan</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/rawat-inap">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/ranap.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Rawat Inap</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/rawat-darurat">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/radar.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Rawat Darurat</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/griu">
+                                             
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/griu.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Graha Amerta</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/rujukan-nasional">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/rn.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Rujukan Nasional</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/daftar-dokter">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/daftarDokter.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Daftar Dokter</span>
+                                         </a>
+                                     </div>
+                                     
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/pelayanan/informasi">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/informasi.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Informasi</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link"
+                                             href="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/files/Standar_Pelayanan_Publik_RSDS.pdf"
+                                             target="_blank">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/standar_pelayanan.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Standar Pelayanan Publik</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/panduan-praktek-klinik/index">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/informasi.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Panduan Praktik Klinik</span>
+                                         </a>
+                                     </div>
+                                 </div>
+                             </div>
+                             <!--end:menu pelayanan-->
+                             <!--begin:menu diklit-->
+                             <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                 data-kt-menu-placement="bottom-start"
+                                 class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                                 <span class="menu-link ">
+                                     <span class="menu-title">Diklit</span>
+                                     <span class="menu-arrow d-lg-none"></span>
+                                 </span>
+                                 <div
+                                     class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             
+                                             href="https://rsudrsoetomo.jatimprov.go.id/sicerdas/" target="_blank">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/diklat.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Diklat</span>
+                                         </a>
+                                     </div>
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/diklit/litbang">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/litbang.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Litbang</span>
+                                         </a>
+                                     </div>
+                                     
+                                     <div class="menu-item">
+                                         <a class="menu-link "
+                                             href="https://rsudrsoetomo.jatimprov.go.id/diklit/webinar">
+                                             <span class="menu-icon">
+                                                 <div class="symbol symbol-30px symbol-circle">
+                                                     <div class="symbol-label"
+                                                         style="background-image:url(https://rsudrsoetomo.jatimprov.go.id/images/header/webinar.png)">
+                                                     </div>
+                                                 </div>
+                                             </span>
+                                             <span class="menu-title">Webinar</span>
+                                         </a>
+                                     </div>
+
+                                 </div>
+                             </div>
+                             <!--end:menu diklit-->
+                             <!--begin:menu promkes-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id/promkes/index"
+                                     class="menu-link ">
+                                     <span class="menu-title">Promosi Kesehatan</span>
+                                 </a>
+                             </div>
+                             <!--end:menu promkes-->
+                             <!--begin:menu laporan-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id/laporan"
+                                     class="menu-link ">
+                                     <span class="menu-title">Laporan</span>
+                                 </a>
+                             </div>
+                             <!--end:menu laporan-->
+                             <!--begin:menu rb-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id/reformasi-birokrasi"
+                                     class="menu-link ">
+                                     <span class="menu-title">Reformasi Birokrasi</span>
+                                 </a>
+                             </div>
+                             <!--end:menu rb-->
+                             <!--begin:menu ppid-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id/ppid"
+                                     class="menu-link ">
+                                     <span class="menu-title">PPID</span>
+                                 </a>
+                             </div>
+                             <!--end:menu ppid-->
+                             <!--begin:menu pengaduan-->
+                             <div class="menu-item me-0 me-lg-2">
+                                 <a href="https://rsudrsoetomo.jatimprov.go.id/pengaduan"
+                                     class="menu-link ">
+                                     <span class="menu-title">Pengaduan</span>
+                                 </a>
+                             </div>
+                             <!--end:menu pengaduan-->
+                         </div>
+                     </div>
+                     <!--end::Menu-->
+                 </div>
+             </div>
+             <!--end::Menu wrapper-->
+         </div>
+         <!--end::Wrapper-->
+     </div>
+     <!--end::Container-->
+ </div>
+ <!--end::Header-->
+                <!--end::Header-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Header Section-->
+        <!--begin::Container-->
+        <div class="container-xxl d-flex align-items-center justify-content-between mt-5 mb-5" id="kt_header_container">
+            <!--begin::Page title-->
+            <div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap mt-n5 mt-lg-0 me-lg-2 pb-2 pb-lg-0"
+                data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
+                <!--begin::Heading-->
+                <h1 class="text-gray-900 fw-bold my-0 fs-2">Tentang Kami</h1>
+                <!--end::Heading-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb fw-semibold fs-base my-1">
+                    <li class="breadcrumb-item text-gray-900">
+                        <a href="https://rsudrsoetomo.jatimprov.go.id" class="text-primary text-hover-warning">Beranda</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-900">Profil - Tentang Kami</li>
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title=-->
+        </div>
+        <!--end::Container-->
+        <!--begin::Content-->
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content" style="margin-bottom: -120px;">
+            <!--begin::Container-->
+            <div class="container-xxl" id="kt_content_container">
+                <div class="card">
+                    <!--begin::Body-->
+                    <div class="card-body p-lg-20 pb-20">
+                        <!--begin::Layout-->
+                        <div class="d-flex flex-column flex-xl-row">
+                            <!--begin::Content-->
+                            <div class="flex-lg-row-fluid">
+                                <!--begin::Post content-->
+                                    <ul class="nav nav-tabs nav-line-tabs mb-5 fs-6 position-relative" style="z-index: 1;">
+        <li class="nav-item">
+            <a class="nav-link active fw-bold text-active-primary text-gray-900" data-bs-toggle="tab" href="#sekilas">Sekilas
+                RSUD Dr. Soetomo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold text-active-primary text-gray-900" data-bs-toggle="tab" href="#sejarah">Sejarah</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold text-active-primary text-gray-900" data-bs-toggle="tab" href="#lambang">Lambang</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link fw-bold text-active-primary text-gray-900" data-bs-toggle="tab" href="#mars">Mars dan
+                Himne</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="sekilas" role="tabpanel">
+            <div class="card-body">
+                <!--begin::Description-->
+                <div class="mb-10">
+                    <iframe class="embed-responsive-item rounded h-400px w-100"
+                        src="https://www.youtube.com/embed/otpfYt1hTYc?si=PdJeT4NC2dX2CnS_" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                                                                            picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!--end::Description-->
+                <!--begin::Description-->
+                <div class="fs-5 text-gray-900">
+                    <!--begin::Text-->
+                    <p style="text-align: justify" class="mb-8">Rumah Sakit Umum Daerah (RSUD) Dokter
+                        (Dr.) Soetomo adalah rumah sakit milik Pemerintah Provinsi (Pemprov) Jawa Timur
+                        (Jatim)
+                        dengan predikat Kelas A Pendidikan dan Rujukan Tersier. Rumah sakit yang berdiri
+                        sejak 29 Oktober 1938 dengan nama Centrale Burgerlijke Ziekenhuis (CBZ) beralamat di
+                        Jalan Mayjend. Prof. Dr. Moestopo No. 6-8, Kecamatan Gubeng, Kelurahan Airlangga,
+                        Kota Surabaya, Provinsi Jawa Timur dengan Kode Pos 60286.</p>
+                    <!--end::Text-->
+                    <!--begin::Text-->
+                    <p style="text-align: justify" class="mb-8">RSUD Dr. Soetomo telah terakreditasi
+                        nasional KARS Paripurna sejak Tahun 2014, sedangkan Tahun 2018 telah terakreditasi
+                        Academic
+                        Medicine Center oleh JCI. Beberapa sistem pelayanan juga telah terstandar untuk IRJ
+                        dan IGD pada tahun 2009, kemudian disusul standar manajemen ISO 9001-2008 untuk
+                        manajemen IGD, IRJ, Graha Amerta, GBPT beserta semua IRNA pada tahun 2010.</p>
+                    <!--end::Text-->
+                    <!--begin::Text-->
+                    <p style="text-align: justify" class="mb-8">
+                        Kini, RSUD Dr. Soetomo terus beradaptasi dan berkomitmen serta berupaya agar dapat
+                        memberikan pelayanan terbaik bagi seluruh masyarakat.
+                        “Innovating Eficiency Regulating Dependency” menjadi tagline kami sebagai upaya
+                        efisiensi dan mengatur ketergantungan pada beberapa hal.
+                        Kami berkomitmen untuk terus meningkatkan kualitas pelayanan, sesuai dengan visi dan
+                        misi kami untuk menjadi Rumah Sakit tersier yang terpercaya,
+                        aman, bermutu tinggi dan mandiri.
+                        RSUD Dr. Soetomo menjunjung tinggi nilai Etika, Integritas, Profesional dan Inovatif
+                        dalam bekerja memberikan pelayanan.
+                        Semoga kami dapat terus meberikan pelayanan versi terbaik bagi seluruh masyarakat.
+                        <b>Terima Kasih.</b>
+                    </p>
+                    <!--end::Text-->
+                </div>
+                <!--end::Description-->
+                <div class="separator my-10"></div>
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-rounded border gy-2 gs-2 bg-light-secondary">
+                                <tbody class=" align-middle">
+                                    <tr>
+                                        <td style="width:10%;">
+                                            <div class="symbol symbol-75px text-center"><img
+                                                    src="https://rsudrsoetomo.jatimprov.go.id/images/dokumen.png"></div>
+                                        </td>
+                                        <td style="width:90%;"><span class="text-start fw-bold fs-6"><a
+                                                    href="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/files/profil/tentangKami/ebook_compro.pdf"
+                                                    target="_blank">Company Profile RSUD Dr.
+                                                    Soetomo</a></span><br>
+                                            <span class="text-start fs-8">42,7 MB</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="sejarah" role="tabpanel">
+            <div class="card-body">
+                <!--begin::Title-->
+                <span class="text-gray-900 text-hover-primary mt-10 fs-2 fw-bold position-relative" style="z-index: 1;">Lini
+                    Masa</span>
+                <!--end::Title-->
+                <div class="row g-5 position-relative" style="z-index: 1;">
+                    <div class="col-lg-4">
+                        <!--begin::Timeline-->
+                        <div class="timeline-label mt-5">
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>29 Oktober 1938</b>
+                                    <br>
+                                    <span class="fs-7">Peletakan batu pertama Rumah Sakit <i>Centrale
+                                            Burgerlijke Ziekenhuis</i> (CBZ) oleh Pemerintah Belanda di Desa
+                                        Karangmenjangan, Surabaya.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1943-1945</b>
+                                    <br>
+                                    <span class="fs-7">Pada masa penjajahan Jepang, Rumah Sakit
+                                        Karangmenjangan dijadikan Rumah Sakit Angkatan Darat.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1945-1949</b>
+                                    <br>
+                                    <span class="fs-7">Rumah sakit dikuasai Belanda kembali, kemudian
+                                        namanya berubah menjadi Marine Hospitaal (RSAL Belanda).</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1950</b>
+                                    <br>
+                                    <span class="fs-7">Rumah Sakit Oemoem Soerabaja di bawah Departemen
+                                        Kesehatan RI, telah berganti nama menjadi Rumah Sakit Umum Pusat
+                                        (RSUP) Dr. Soetomo.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                    <div class="col-lg-4">
+                        <!--begin::Timeline-->
+                        <div class="timeline-label mt-5">
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>
+                                        1951-1954</b>
+                                    <br>
+                                    <span class="fs-7">Sebagian Rumah Sakit Simpang pindah ke RSUP
+                                        Surabaya dan pelayanan bedah akut tetap di Rumah Sakit
+                                        Simpang.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1964</b>
+                                    <br>
+                                    <span class="fs-7">Berdasarkan SK Menkes RI 20 Mei 1964 No.
+                                        26769/KAB/76, RSUP Surabaya menjadi RSUP Dr. Soetomo.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1965</b>
+                                    <br>
+                                    <span class="fs-7">Berdasarkan PP No. 4 Tahun 1965, penyelenggaraan
+                                        RSUP Dr. Soetomo diserahkan kepada Pemerintah Daerah Tingkat I Jawa
+                                        Timur.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                    <div class="col-lg-4">
+                        <!--begin::Timeline-->
+                        <div class="timeline-label mt-5">
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1979</b>
+                                    <br>
+                                    <span class="fs-7">SK Menkes menetapkan RSU Dr. Soetomo sebagai rumah
+                                        sakit kelas A dan dikenal sebagai :
+                                        <ul>
+                                            <li>Rumah sakit pelayanan, pendidikan dan penelitian;</li>
+                                            <li>Rumah sakit pusat rujukan wilayah Indonesia bagian timur
+                                                (Top Referral);</li>
+                                            <li>Rumah sakit terbesar di wilayah Indonesia bagian Timur.</li>
+
+                                        </ul>
+                                    </span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>1980</b>
+                                    <br>
+                                    <span class="fs-7">Semua kegiatan pelayanan dijadikan satu di RSU Dr.
+                                        Soetomo karena RS Simpang dijual dan menjadi Surabaya Plaza.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="timeline-item">
+                                <!--begin::Label-->
+                                <div class="timeline-label fw-bold text-gray-800 fs-5"></div>
+                                <!--end::Label-->
+                                <!--begin::Badge-->
+                                <div class="timeline-badge">
+                                    <i class="bi bi-hourglass-split fs-1 text-primary"></i>
+                                </div>
+                                <!--end::Badge-->
+                                <!--begin::Text-->
+                                <div class="fw-mormal timeline-content  ps-3">
+                                    <b>2002</b>
+                                    <br>
+                                    <span class="fs-7">Perda Provinsi Jawa Timur menetapkan perubahan
+                                        nama menjadi RSUD Dr. Soetomo.</span>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                            <!--end::Item-->
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                </div>
+                <div class="timeline-background-image">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/profil/tentangKami/sejarah.png" alt="Sejarah"
+                        class="w-100 h-100 object-fit-cover-metronic">
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="lambang" role="tabpanel">
+            <div class="card-body">
+                <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/rsds2.svg" style="width:200px;"
+                    class="mx-auto d-block rounded" alt="Lambang RSUD Dr. Soetomo">
+                <div class="separator my-10"></div>
+                <span class="text-gray-900 text-hover-primary fs-2 fw-bold">Filosofi</span>
+                <div class="row g-5">
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <h4>Cross</h4>
+                            <p style="text-align: justify;">Simbol palang pada logo RSUD Dr. Soetomo ini
+                                menunjukkan komitmen, etika, netral, tulus tidak membedakan ras,
+                                agama, maupun status sosial dalam memberikan pelayanan terbaik untuk seluruh
+                                pasien.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <h4>Handshake</h4>
+                            <p style="text-align: justify;">Dua buah tangan berjabat melambangkan
+                                kepercayaan dan kerjasama yang baik dari pimpinan dengan seluruh jajaran
+                                RSUD Dr. Soetomo.<br>
+                                Bentuk dari jabat tangan dibuat bulat tidak kaku ditujukan pada sikap RSUD
+                                Dr. Soetomo yang tidak ada memiliki batasan/
+                                border dari seluruh jajaran RSUD Dr. Soetomo dalam memberikan pelayanan
+                                maksimal secara profesional dan integritas yang tinggi.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <h4>Heart</h4>
+                            <p style="text-align: justify;">Pengikat dari keseluruhan makna yang ingin
+                                disampaikan pada logo RSUD Dr. Soetomo ini adalah simbol hati.
+                                Seluruh pelayanan, inovasi, profesionalisme dan sikap RSUD Dr. Soetomo
+                                dilakukan dengan penuh cinta kasih kepada sesama.<br>
+                                Berlandaskan pelayanan sepenuh hati, RSUD Dr. Soetomo terus melakukan
+                                inovasi dengan menyematkan simbol hati tersebut pada simbol jabat tangan.
+                                Profesional dalam bekerja, berintegrasi dan penuh cinta kasih.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <h4>Warna Hijau (#0ba14b)</h4>
+                                <div class="ms-2"
+                                    style="width: 20px; height: 20px; background-color: #0ba14b; border-radius: 50%;">
+                                </div>
+                            </div>
+                            <p style="text-align: justify;">Warna hijau melambangkan pertumbuhan, harmoni,
+                                kesegaran dan kesuburan. RSUD Dr. Soetomo merepresentasikan warna hijau
+                                dengan makna
+                                "<i>healing</i>". Diyakini mampu menurunkan stres, melanbangkan penyembuhan,
+                                hingga mendorong perasaan empati.<br>
+                                Warna ini mewakili RSUD Dr. Soetomo yang bergerak pada pelayanan masyarakat
+                                di bidang kesehatan untuk memberikan pelayanan yang maksimal
+                                dan manfaat positif pada masyarakat.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <h4>Warna Kuning (#ffde00)</h4>
+                                <div class="ms-2"
+                                    style="width: 20px; height: 20px; background-color: #ffde00; border-radius: 50%;">
+                                </div>
+                            </div>
+                            <p style="text-align: justify;">Warna kuning adalah warna yang ceria,
+                                berenergi, penuh harapan dan positif. Warna ini menunjukkan sikap RSUD Dr.
+                                Soetomo yang hangat,
+                                dan "<i>care</i> dalam melayani.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <h4>Warna Jingga (#ffc20e)</h4>
+                                <div class="ms-2"
+                                    style="width: 20px; height: 20px; background-color: #ffc20e; border-radius: 50%;">
+                                </div>
+                            </div>
+                            <p style="text-align: justify;">Warna jingga sebagai simbol optimisme, ramah
+                                dan bijaksana. Warna jingga ini juga memiliki makna krwativitas. Sejalan
+                                dengan visi
+                                RSUD Dr. Soetomo yang terus berinovasi dan menjadi rumah sakit tersier
+                                terpercaya, aman, bermutu tinggi serta mandiri.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator my-10"></div>
+                <span class="text-gray-900 text-hover-primary fs-2 fw-bold">Unduh Lambang</span>
+                <div class="row g-6 g-xl-9 mb-5 d-flex justify-content-center mt-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="card h-100">
+                            <div class="card-body d-flex justify-content-center text-center flex-column p-8">
+                                <a href="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/rsds2.svg" target="_blank"
+                                    class="text-gray-900 text-hover-primary d-flex flex-column">
+                                    <div class="symbol symbol-150px mb-5">
+                                        <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/rsds2.svg"
+                                            alt="Lambang RSUD Dr. Soetomo" />
+                                    </div>
+                                    <div class="fs-7 mb-2">RSUD Dr. Soetomo
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="card h-100">
+                            <div class="card-body d-flex justify-content-center text-center flex-column p-8">
+                                <a href="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/jatimprov.svg" target="_blank"
+                                    class="text-gray-900 text-hover-primary d-flex flex-column">
+                                    <div class="symbol symbol-150px mb-5">
+                                        <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/jatimprov.svg"
+                                            alt="Lambang Pemprov Jatim" />
+                                    </div>
+                                    <div class="fs-7 mb-2">Pemerintah Provinsi Jawa Timur
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="card h-100">
+                            <div class="card-body d-flex justify-content-center text-center flex-column p-8">
+                                <a href="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/rsds.svg" target="_blank"
+                                    class="text-gray-900 text-hover-primary d-flex flex-column">
+                                    <div class="symbol symbol-150px mb-5">
+                                        <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/rsds.svg"
+                                            alt="Lambang RSUD Dr. Soetomo + Pemprov Jatim + KARS + JCI" />
+                                    </div>
+                                    <div class="fs-7 mb-2">Lambang RSUD Dr. Soetomo + Pemerintah Provinsi
+                                        Jawa Timur + KARS + JCI
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="mars" role="tabpanel">
+            <div class="card-body">
+                <!--begin::Title-->
+                <span class="text-gray-900 text-hover-primary mt-10 fs-2 fw-bold">Mars</span>
+                <!--end::Title-->
+                <!--begin::Description-->
+                <div class="mt-5 mb-10">
+                    <iframe class="embed-responsive-item rounded h-400px w-100"
+                        src="https://www.youtube.com/embed/ephnbSa-raM?si=elQV0yNjKjQzStzI" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                                                                            picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!--end::Description-->
+                <div class="separator my-10"></div>
+                <!--begin::Title-->
+                <span class="text-gray-900 text-hover-primary mt-10 fs-2 fw-bold">Himne</span>
+                <!--end::Title-->
+                <!--begin::Description-->
+                <div class="mt-5 mb-10">
+                    <iframe class="embed-responsive-item rounded h-400px w-100"
+                        src="https://www.youtube.com/embed/uNO-M8jcLv0?si=5jxMkuojHcQw1uFA" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
+                                                                                            picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!--end::Description-->
+            </div>
+        </div>
+    </div>
+                                <!--end::Post content-->
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                        <!--end::Layout-->
+                    </div>
+                    <!--end::Body-->
+                </div>
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Content-->
+        <!--begin::Footer Section-->
+        <!--begin::Footer Section-->
+<div style="padding: 180px 0 20px 0; background-color: #ffffff !important;">
+    <!--begin::Wrapper-->
+    <!--begin::Container-->
+    <div class="container">
+        <div class="card mb-5 bg-light text-center">
+            <!--begin::Body-->
+            <div class="card-body py-12">
+                <!--begin::Icon-->
+                <a href="https://jatimprov.go.id/" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/pemprovjatim.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pemerintah Provinsi Jawa Timur"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://dinkes.jatimprov.go.id/" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/dinkesjatim.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dinas Kesehatan Provinsi Jawa Timur"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://kominfo.jatimprov.go.id/" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/diskominfojatim.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Dinas Kominfo Provinsi Jawa Timur"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://ppid.jatimprov.go.id/" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/ppidjatim.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="PPID Provinsi Jawa Timur"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://spse.inaproc.id/jatimprov" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/inaprocspse.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="INAPROC SPSE Provinsi Jawa Timur"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://www.lapor.go.id/instansi/rumah-sakit-umum-daerah-dr-soetomo" target="_blank"
+                    class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/lapor.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="LAPOR! RSUD Dr. Soetomo"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://sippn.menpan.go.id/instansi/rsud-dr-soetomo-169816" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/sippn.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="SIPPN CariYanlik RSUD Dr. Soetomo"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://kemkes.go.id/id/home" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/kemenkes.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Kementerian Kesehatan"
+                        alt="" />
+                </a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://komisiinformasi.go.id/" target="_blank" class="mx-4">
+                    <img src="https://rsudrsoetomo.jatimprov.go.id/media/view/s3_bucket_website_s3/images/logo/kip.svg" class="h-90px my-2 hover-scale"
+                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Komisi Informasi Pusat Republik Indonesia" alt="" />
+                </a>
+                <!--end::Icon-->
+            </div>
+            <!--end::Body-->
+        </div>
+        <div class="text-center mt-5">
+            <h2>RSUD Dr. Soetomo, Pemerintah Provinsi Jawa Timur</h2>
+            <p><b>Alamat :</b> <span class="text-primary text-hover-warning"><b>Jl. Mayjend. Prof. Dr. Moestopo
+                        No. 6-8, Kecamatan Gubeng, Kelurahan Airlangga, Kota Surabaya 60286</b></span><br>
+                <b>Telepon :</b> <span class="text-primary text-hover-warning"><b>1500995</b></span>;
+                <b>No. WhatsApp :</b> <a href="https://wa.me/6281216700101" target="_blank"><b><span
+                            class="text-primary text-hover-warning">+62 812 1670 0101</span></b></a> (Hanya
+                Menerima Pesan Pengaduan);<br>
+                <b>Email :</b> <span
+                    class="text-primary text-hover-warning"><b><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="375c585943565c19454442534544585243585a58775d56435e5a47455841195058195e53">[email&#160;protected]</a></b></span>
+            </p>
+            <div class="card-body py-3 mb-5">
+                <!--begin::Icon-->
+                <a href="https://www.facebook.com/rsudrsoetomo" target="_blank"
+                    class="btn btn-icon btn-light-facebook "><i class="fab fa-facebook-f fs-4"></i></a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://twitter.com/rsudrsoetomo" target="_blank" class="btn btn-icon btn-light-twitter "><i
+                        class="fab fa-twitter fs-4"></i></a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://www.instagram.com/rsudrsoetomo/" target="_blank"
+                    class="btn btn-icon btn-light-instagram "><i class="fab fa-instagram fs-4"></i></a>
+                <!--end::Icon-->
+                <!--begin::Icon-->
+                <a href="https://www.youtube.com/@RSUDDrSOETOMOSurabaya" target="_blank"
+                    class="btn btn-icon btn-light-youtube "><i class="fab fa-youtube fs-4"></i></a>
+                <!--end::Icon-->
+            </div>
+        </div>
+        <!--end::Card-->
+        <!--begin::Copyright-->
+        <div class="text-center order-2 order-md-1">
+            <strong>&#169;
+                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+                    document.write(new Date().getFullYear())
+                </script>
+            </strong>&nbsp;Instalasi Teknologi Komunikasi dan
+            Informasi,
+            RSUD Dr. Soetomo <i class="bi bi-dot text-gray-900"></i>
+            <a href="https://rsudrsoetomo.jatimprov.go.id/kebijakan-privasi" class="text-primary text-hover-warning"><b>Kebijakan dan
+                    Privasi</b></a>
+            <i class="bi bi-dot text-gray-900"></i>
+            <a href="https://rsudrsoetomo.jatimprov.go.id/faq" class="text-primary text-hover-warning"><b>FAQ</b></a> <i
+                class="bi bi-dot text-gray-900"></i>
+            <a href="#" class="text-primary text-hover-warning"><b>Site Map</b></a>
+        </div>
+        <!--end::Copyright-->
+    </div>
+    <!--end::Container-->
+    <!--end::Wrapper-->
+</div>
+<!--end::Footer Section-->
+        <!--end::Footer Section-->
+        <!--begin::Modals-->
+                <!--end::Modals-->
+
+        <div id="voice-widget">
+            <label for="voice-select">Pilih Suara:</label>
+            <select id="voice-select" class="form-select">
+                <option value="id-ID">Indonesian</option>
+                <option value="en-US">English</option>
+                <option value="off">Off</option>
+            </select>
+        </div>
+        <div class="gtranslate_wrapper"></div>
+
+    </div>
+    <!--end::Root-->
+    <!--end::Main-->
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <i class="ki-duotone ki-arrow-up"><span class="path1"></span><span class="path2"></span></i>
+    </div>
+    <!--end::Scrolltop-->
+    <!--begin::Javascript-->
+    <script>
+        var hostUrl = "assets/";
+    </script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/index.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/jquery.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/stepper.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/global/plugins.bundle.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/scripts.bundle.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/custom/typedjs/typedjs.bundle.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/js/custom/landing.js"></script>
+    <script src="https://rsudrsoetomo.jatimprov.go.id/assets-new/plugins/custom/datatables/datatables.bundle.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            let urlParams = new URLSearchParams(window.location.search);
+            let tabParam = urlParams.get('tabs');
+            console.log(urlParams)
+            console.log(tabParam)
+            if (tabParam) {
+                let tabId = "#" + tabParam;
+                $(".nav-link[href='" + tabId + "']").tab("show");
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+
+    <!--QrCode-->
+    <script src="//unpkg.com/internationalisation"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <!--QrCode-->
+    <!--userway-->
+    <script script src="https://cdn.userway.org/widget.js" data - account="9qViJRaeq4"></script>
+    <!--userway-->
+    <!--Multi Language-->
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "id", // Set bahasa default ke Bahasa Indonesia
+            "detect_browser_language": false, // Nonaktifkan deteksi bahasa browser
+            "languages": ["af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN",
+                "zh-TW", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el",
+                "gu", "ht", "ha", "haw", "hi", "hmn", "hu", "is", "ig", "id", "ga", "it", "ja", "kn",
+                "kk", "km", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt",
+                "mi", "mr", "mn", "my", "ne", "no", "ny", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm",
+                "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta",
+                "te", "th", "tr", "uk", "ur", "uz", "vi", "cy", "xh", "yi", "yo", "zu"
+            ], // Semua bahasa yang didukung
+            "wrapper_selector": ".gtranslate_wrapper", // Selektor wrapper
+            "switcher_horizontal_position": "right", // Posisi horizontal switcher
+            "flag_style": "3d"
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+    <!--Multi Language-->
+    <!--end::Javascript-->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"1f9db69a91b34a5e930231131fd93039","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+<!--end::Body-->
+
+</html>
