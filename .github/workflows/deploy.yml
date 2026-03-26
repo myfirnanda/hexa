@@ -43,7 +43,7 @@ jobs:
           SOURCE: "."
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: "/var/www/project"
+          TARGET: "/var/www/hexavara.com"
           EXCLUDE: "/node_modules/, /.git/, /.github/, /.env"
 
       - name: ⚙️ Run Laravel
@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/project
+            cd /var/www/hexavara.com
 
             php artisan migrate --force
             php artisan optimize
