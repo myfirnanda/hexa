@@ -1,373 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard - Hexavara</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL,GRAD,opsz@100..700,0,0,20..48" />
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: "Inter", sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
-            min-height: 100vh;
-        }
-        .admin-topbar {
-            background: #1e293b;
-            border-bottom: 1px solid #334155;
-            padding: 16px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .admin-topbar-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .admin-topbar-left img { height: 40px; width: auto; }
-        .admin-topbar-title { font-size: 18px; font-weight: 600; }
-        .admin-topbar-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .admin-user { font-size: 14px; color: #94a3b8; }
-        .admin-logout {
-            background: transparent;
-            border: 1px solid #475569;
-            color: #94a3b8;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .admin-logout:hover { border-color: #ef4444; color: #ef4444; }
-        .admin-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 32px 24px;
-        }
-        .admin-page-title {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 32px;
-        }
-        .stat-card {
-            background: #1e293b;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #334155;
-        }
-        .stat-card-label {
-            font-size: 14px;
-            color: #64748b;
-            margin-bottom: 8px;
-        }
-        .stat-card-value {
-            font-size: 32px;
-            font-weight: 700;
-        }
-        .stat-card-value.blue   { color: #3b82f6; }
-        .stat-card-value.yellow { color: #eab308; }
-        .stat-card-value.green  { color: #22c55e; }
-        .stat-card-value.indigo { color: #818cf8; }
-        .orders-panel {
-            background: #1e293b;
-            border-radius: 12px;
-            border: 1px solid #334155;
-            overflow: hidden;
-        }
-        .orders-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid #334155;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .orders-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-        }
-        .orders-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .orders-table th {
-            text-align: left;
-            padding: 12px 20px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #334155;
-            white-space: nowrap;
-        }
-        .orders-table td {
-            padding: 16px 20px;
-            font-size: 14px;
-            border-bottom: 1px solid rgba(51,65,85,0.5);
-            vertical-align: top;
-        }
-        .orders-table tr:last-child td { border-bottom: none; }
-        .orders-table tr:hover td { background: rgba(51,65,85,0.3); }
-        .order-name { font-weight: 600; color: #f1f5f9; }
-        .order-email { color: #94a3b8; font-size: 13px; }
-        .order-desc {
-            max-width: 300px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            color: #94a3b8;
-        }
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-        .badge-pending { background: rgba(234,179,8,0.15); color: #eab308; }
-        .badge-in_progress { background: rgba(59,130,246,0.15); color: #3b82f6; }
-        .badge-completed { background: rgba(34,197,94,0.15); color: #22c55e; }
-        .badge-rejected { background: rgba(239,68,68,0.15); color: #ef4444; }
-        .status-form {
-            display: inline;
-        }
-        .status-select {
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: #cbd5e1;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-family: inherit;
-            cursor: pointer;
-            outline: none;
-        }
-        .status-select:focus { border-color: #2563eb; }
-        .pagination-wrap {
-            padding: 16px 24px;
-            display: flex;
-            justify-content: center;
-        }
-        .pagination-wrap nav { display: flex; gap: 4px; }
-        .pagination-wrap a, .pagination-wrap span {
-            padding: 8px 14px;
-            border-radius: 6px;
-            font-size: 14px;
-            text-decoration: none;
-            color: #94a3b8;
-            border: 1px solid #334155;
-        }
-        .pagination-wrap span.current {
-            background: #2563eb;
-            color: #fff;
-            border-color: #2563eb;
-        }
-        .pagination-wrap a:hover {
-            background: #334155;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #64748b;
-        }
-        .empty-state .material-symbols-outlined {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-        .success-toast {
-            position: fixed;
-            top: 80px;
-            right: 24px;
-            background: #166534;
-            color: #dcfce7;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 200;
-            animation: fadeInOut 3s ease forwards;
-        }
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateY(-10px); }
-            10% { opacity: 1; transform: translateY(0); }
-            80% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-        .order-cats { color: #94a3b8; font-size: 13px; }
-        .order-budget { color: #94a3b8; font-size: 13px; }
-        .order-date { color: #64748b; font-size: 13px; white-space: nowrap; }
-        .orders-table-wrap { overflow-x: auto; }
-        .view-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 14px;
-            background: rgba(37,99,235,0.12);
-            color: #60a5fa;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid rgba(37,99,235,0.2);
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-        .view-btn:hover { background: rgba(37,99,235,0.25); border-color: #2563eb; }
-        .view-btn .material-symbols-outlined { font-size: 15px; }
-        .has-file {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 12px;
-            color: #22c55e;
-            margin-top: 4px;
-        }
-        .has-file .material-symbols-outlined { font-size: 14px; }
+@extends('layouts.admin')
+@section('title', 'Dashboard')
+@section('topbar-title', 'Beranda')
 
-        @media (max-width: 768px) {
-            .admin-topbar { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
-            .admin-content { padding: 20px 12px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .stat-card { padding: 16px; }
-            .stat-card-value { font-size: 24px; }
-            .orders-table th, .orders-table td { padding: 10px 12px; font-size: 13px; }
-            .admin-topbar-title { font-size: 15px; }
-        }
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; }
-            .admin-topbar-right { gap: 8px; }
-            .admin-user { display: none; }
-        }
-    </style>
-</head>
-<body>
-    <div class="admin-topbar">
-        <div class="admin-topbar-left">
-            <img src="{{ asset('assets/img/ChatGPT Image 26 Feb 2026, 11.24.32.png') }}" alt="Hexavara" />
-            <span class="admin-topbar-title">Admin Dashboard</span>
+@section('content')
+{{-- Greeting --}}
+<div class="mb-8">
+    <h1 class="text-[22px] font-bold admin-text leading-tight">Selamat Datang, {{ Auth::user()->name }}</h1>
+    <p class="text-sm admin-text-muted mt-1">Ringkasan aktivitas dan data website Hexavara Technology</p>
+</div>
+
+{{-- Order Stats Row --}}
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    {{-- Total Orders --}}
+    <div class="admin-card border rounded-xl p-4 group">
+        <div class="flex items-center justify-between mb-3">
+            <span class="text-[13px] font-medium admin-text-muted">Total Orders</span>
+            <div class="size-9 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-500">
+                <span class="material-symbols-outlined text-xl">shopping_cart</span>
+            </div>
         </div>
-        <div class="admin-topbar-right">
-            <span class="admin-user">{{ Auth::user()->email }}</span>
-            <form method="POST" action="{{ route('logout') }}" style="display:inline">
-                @csrf
-                <button type="submit" class="admin-logout">Logout</button>
-            </form>
+        <div class="text-[28px] font-bold admin-text leading-none">{{ $totalOrders }}</div>
+        <div class="text-[12px] admin-text-muted mt-2">Semua order masuk</div>
+    </div>
+
+    {{-- Pending --}}
+    <div class="admin-card border rounded-xl p-4 group">
+        <div class="flex items-center justify-between mb-3">
+            <span class="text-[13px] font-medium admin-text-muted">Pending</span>
+            <div class="size-9 rounded-lg flex items-center justify-center bg-amber-500/10 text-amber-500">
+                <span class="material-symbols-outlined text-xl">schedule</span>
+            </div>
+        </div>
+        <div class="text-[28px] font-bold admin-text leading-none">{{ $pendingOrders }}</div>
+        <div class="text-[12px] admin-text-muted mt-2">Menunggu ditindaklanjuti</div>
+    </div>
+
+    {{-- In Progress --}}
+    <div class="admin-card border rounded-xl p-4 group">
+        <div class="flex items-center justify-between mb-3">
+            <span class="text-[13px] font-medium admin-text-muted">In Progress</span>
+            <div class="size-9 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500">
+                <span class="material-symbols-outlined text-xl">pending_actions</span>
+            </div>
+        </div>
+        <div class="text-[28px] font-bold admin-text leading-none">{{ $inProgressOrders }}</div>
+        <div class="text-[12px] admin-text-muted mt-2">Sedang dikerjakan</div>
+    </div>
+
+    {{-- Completed --}}
+    <div class="admin-card border rounded-xl p-4 group">
+        <div class="flex items-center justify-between mb-3">
+            <span class="text-[13px] font-medium admin-text-muted">Completed</span>
+            <div class="size-9 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-500">
+                <span class="material-symbols-outlined text-xl">task_alt</span>
+            </div>
+        </div>
+        <div class="text-[28px] font-bold admin-text leading-none">{{ $completedOrders }}</div>
+        <div class="text-[12px] admin-text-muted mt-2">Selesai dikerjakan</div>
+    </div>
+</div>
+
+{{-- Two Column: Order Activity Chart + Order Status Breakdown --}}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+    {{-- Monthly Activity (takes 2 cols) --}}
+    <div class="lg:col-span-2 admin-card border rounded-xl overflow-hidden">
+        <div class="px-5 py-4 admin-border border-b flex items-center justify-between">
+            <div>
+                <h2 class="text-[15px] font-semibold admin-text">Aktivitas Order</h2>
+                <p class="text-[12px] admin-text-muted mt-0.5">6 bulan terakhir</p>
+            </div>
+        </div>
+        <div class="p-5">
+            <div class="flex items-end gap-3 h-[180px]">
+                @php
+                    $counts = array_column($monthlyOrders, 'count');
+                    $maxCount = empty($counts) ? 1 : max($counts);
+                @endphp
+                @foreach($monthlyOrders as $mo)
+                <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
+                    <span class="text-[12px] font-semibold admin-text">{{ $mo['count'] }}</span>
+                    <div class="w-full max-w-[48px] rounded-t-md bg-blue-500/80 transition-all duration-300" style="height: {{ $maxCount > 0 ? max(($mo['count'] / $maxCount) * 140, 4) : 4 }}px;"></div>
+                    <span class="text-[11px] admin-text-muted font-medium">{{ $mo['month'] }}</span>
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
-    @if(session('success'))
-    <div class="success-toast">{{ session('success') }}</div>
-    @endif
-
-    <div class="admin-content">
-        <h1 class="admin-page-title">Client Orders</h1>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-card-label">Total Orders</div>
-                <div class="stat-card-value blue">{{ $totalOrders }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-label">Pending</div>
-                <div class="stat-card-value yellow">{{ $pendingOrders }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-label">In Progress</div>
-                <div class="stat-card-value indigo">{{ $inProgressOrders }}</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-card-label">Completed</div>
-                <div class="stat-card-value green">{{ $completedOrders }}</div>
-            </div>
+    {{-- Order Status Breakdown --}}
+    <div class="admin-card border rounded-xl overflow-hidden">
+        <div class="px-5 py-4 admin-border border-b">
+            <h2 class="text-[15px] font-semibold admin-text">Status Orders</h2>
+            <p class="text-[12px] admin-text-muted mt-0.5">Distribusi status saat ini</p>
         </div>
-
-        <div class="orders-panel">
-            <div class="orders-header">
-                <h2>All Orders</h2>
+        <div class="p-5 space-y-4">
+            @php
+                $statuses = [
+                    ['label' => 'Pending', 'count' => $pendingOrders, 'color' => 'bg-amber-500', 'text' => 'text-amber-500'],
+                    ['label' => 'In Progress', 'count' => $inProgressOrders, 'color' => 'bg-indigo-500', 'text' => 'text-indigo-500'],
+                    ['label' => 'Completed', 'count' => $completedOrders, 'color' => 'bg-emerald-500', 'text' => 'text-emerald-500'],
+                    ['label' => 'Rejected', 'count' => $rejectedOrders, 'color' => 'bg-red-500', 'text' => 'text-red-500'],
+                ];
+            @endphp
+            @foreach($statuses as $s)
+            <div>
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[13px] font-medium admin-text-secondary">{{ $s['label'] }}</span>
+                    <span class="text-[13px] font-semibold {{ $s['text'] }}">{{ $s['count'] }}</span>
+                </div>
+                <div class="h-2 rounded-full admin-border" style="background: var(--admin-surface-hover);">
+                    <div class="h-full rounded-full {{ $s['color'] }} transition-all duration-500" style="width: {{ $totalOrders > 0 ? round(($s['count'] / $totalOrders) * 100) : 0 }}%;"></div>
+                </div>
             </div>
-
-            @if($orders->count())
-            <div class="orders-table-wrap">
-                <table class="orders-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Client</th>
-                            <th>Budget</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($orders as $order)
-                        <tr>
-                            <td>{{ $order->id }}</td>
-                            <td>
-                                <div class="order-name">{{ $order->name }}</div>
-                                <div class="order-email">{{ $order->email }}</div>
-                                @if($order->phone)<div class="order-email">{{ $order->phone }}</div>@endif
-                                @if($order->company)<div class="order-email">{{ $order->company }}</div>@endif
-                                @if($order->file_path)
-                                <div class="has-file"><span class="material-symbols-outlined">attach_file</span> Brief attached</div>
-                                @endif
-                            </td>
-                            <td><div class="order-budget">{{ $order->budget ?: '-' }}</div></td>
-                            <td>
-                                <span class="badge badge-{{ $order->status }}">{{ str_replace('_', ' ', $order->status) }}</span>
-                                <form method="POST" action="{{ url('/admin/orders/'.$order->id.'/status/pending') }}" class="status-form" style="margin-top:8px;display:block">
-                                    @csrf
-                                    @method('PATCH')
-                                    <select class="status-select" onchange="this.form.action='{{ url('/admin/orders/'.$order->id.'/status') }}/'+this.value;this.form.submit()">
-                                        <option value="" disabled selected>Change...</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="in_progress">In Progress</option>
-                                        <option value="completed">Completed</option>
-                                        <option value="rejected">Rejected</option>
-                                    </select>
-                                </form>
-                            </td>
-                            <td><div class="order-date">{{ $order->created_at->format('d M Y') }}<br><span style="color:#475569">{{ $order->created_at->format('H:i') }}</span></div></td>
-                            <td>
-                                <a href="{{ route('admin.orders.show', $order) }}" class="view-btn">
-                                    <span class="material-symbols-outlined">open_in_new</span>
-                                    View
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-            <div class="pagination-wrap">
-                {{ $orders->links() }}
-            </div>
-            @else
-            <div class="empty-state">
-                <span class="material-symbols-outlined">inbox</span>
-                <p>No orders yet. Orders will appear here when clients submit the project form.</p>
-            </div>
-            @endif
+            @endforeach
         </div>
     </div>
-</body>
-</html>
+</div>
+
+{{-- Content Stats Row --}}
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <a href="{{ route('admin.services.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+        <div class="flex items-center gap-3">
+            <div class="size-10 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-500 shrink-0">
+                <span class="material-symbols-outlined text-xl">category</span>
+            </div>
+            <div class="min-w-0">
+                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalServices }}</div>
+                <div class="text-[12px] admin-text-muted mt-1">Produk / Layanan</div>
+            </div>
+        </div>
+    </a>
+    <a href="{{ route('admin.projects.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+        <div class="flex items-center gap-3">
+            <div class="size-10 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500 shrink-0">
+                <span class="material-symbols-outlined text-xl">work</span>
+            </div>
+            <div class="min-w-0">
+                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalProjects }}</div>
+                <div class="text-[12px] admin-text-muted mt-1">Project</div>
+            </div>
+        </div>
+    </a>
+    <a href="{{ route('admin.clients.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+        <div class="flex items-center gap-3">
+            <div class="size-10 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-500 shrink-0">
+                <span class="material-symbols-outlined text-xl">apartment</span>
+            </div>
+            <div class="min-w-0">
+                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalClients }}</div>
+                <div class="text-[12px] admin-text-muted mt-1">Clients</div>
+            </div>
+        </div>
+    </a>
+    <a href="{{ route('admin.testimonials.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+        <div class="flex items-center gap-3">
+            <div class="size-10 rounded-lg flex items-center justify-center bg-amber-500/10 text-amber-500 shrink-0">
+                <span class="material-symbols-outlined text-xl">rate_review</span>
+            </div>
+            <div class="min-w-0">
+                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalTestimonials }}</div>
+                <div class="text-[12px] admin-text-muted mt-1">Testimonials</div>
+            </div>
+        </div>
+    </a>
+</div>
+
+{{-- Two Column: Recent Orders + Popular Categories --}}
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    {{-- Recent Orders (takes 2 cols) --}}
+    <div class="lg:col-span-2 admin-card border rounded-xl overflow-hidden">
+        <div class="px-5 py-4 admin-border border-b flex items-center justify-between">
+            <div>
+                <h2 class="text-[15px] font-semibold admin-text">Order Terbaru</h2>
+                <p class="text-[12px] admin-text-muted mt-0.5">5 order terakhir yang masuk</p>
+            </div>
+            <a href="{{ route('admin.orders.index') }}" class="text-[13px] font-medium text-blue-500 no-underline hover:text-blue-400 transition-colors">
+                Lihat Semua &rarr;
+            </a>
+        </div>
+        @if($recentOrders->count())
+        <div class="divide-y admin-border">
+            @foreach($recentOrders as $order)
+            <div class="px-5 py-3.5 flex items-center gap-4 admin-table-hover transition-colors">
+                <div class="size-9 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold
+                    @if($order->status === 'completed') bg-emerald-500/10 text-emerald-500
+                    @elseif($order->status === 'in_progress') bg-indigo-500/10 text-indigo-500
+                    @elseif($order->status === 'rejected') bg-red-500/10 text-red-500
+                    @else bg-amber-500/10 text-amber-500
+                    @endif
+                ">{{ strtoupper(substr($order->name, 0, 2)) }}</div>
+                <div class="flex-1 min-w-0">
+                    <div class="text-sm font-semibold admin-text truncate">{{ $order->name }}</div>
+                    <div class="text-[12px] admin-text-muted truncate">{{ $order->company ?: $order->email }}</div>
+                </div>
+                <div class="text-right shrink-0 hidden sm:block">
+                    <div class="text-sm font-medium admin-text-secondary">{{ $order->budget ?: '-' }}</div>
+                    <div class="text-[11px] admin-text-muted">{{ $order->created_at->format('d M Y') }}</div>
+                </div>
+                <div class="shrink-0">
+                    @php
+                        $badgeMap = [
+                            'pending' => 'bg-amber-500/10 text-amber-500',
+                            'in_progress' => 'bg-indigo-500/10 text-indigo-500',
+                            'completed' => 'bg-emerald-500/10 text-emerald-500',
+                            'rejected' => 'bg-red-500/10 text-red-500',
+                        ];
+                    @endphp
+                    <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-semibold capitalize {{ $badgeMap[$order->status] ?? '' }}">{{ str_replace('_', ' ', $order->status) }}</span>
+                </div>
+                <a href="{{ route('admin.orders.show', $order) }}" class="flex items-center justify-center size-8 rounded-lg admin-text-muted no-underline transition-all duration-150 admin-surface-hover shrink-0">
+                    <span class="material-symbols-outlined text-lg">chevron_right</span>
+                </a>
+            </div>
+            @endforeach
+        </div>
+        @else
+        <div class="text-center py-16 px-5">
+            <span class="material-symbols-outlined text-4xl admin-text-muted mb-3 block opacity-40">inbox</span>
+            <p class="text-sm admin-text-muted">Belum ada order masuk.</p>
+        </div>
+        @endif
+    </div>
+
+    {{-- Popular Categories --}}
+    <div class="admin-card border rounded-xl overflow-hidden">
+        <div class="px-5 py-4 admin-border border-b">
+            <h2 class="text-[15px] font-semibold admin-text">Kategori Populer</h2>
+            <p class="text-[12px] admin-text-muted mt-0.5">Layanan paling diminati</p>
+        </div>
+        @if($allCategories->count())
+        <div class="p-5 space-y-3">
+            @php $catMax = $allCategories->first(); @endphp
+            @foreach($allCategories as $catName => $catCount)
+            <div>
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[13px] font-medium admin-text-secondary capitalize">{{ str_replace(['-', '_'], ' ', $catName) }}</span>
+                    <span class="text-[12px] font-semibold admin-text-muted">{{ $catCount }}x</span>
+                </div>
+                <div class="h-1.5 rounded-full" style="background: var(--admin-surface-hover);">
+                    <div class="h-full rounded-full bg-blue-500 transition-all duration-500" style="width: {{ $catMax > 0 ? round(($catCount / $catMax) * 100) : 0 }}%;"></div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        @else
+        <div class="text-center py-12 px-5">
+            <span class="material-symbols-outlined text-3xl admin-text-muted mb-2 block opacity-40">bar_chart</span>
+            <p class="text-[13px] admin-text-muted">Belum cukup data kategori.</p>
+        </div>
+        @endif
+    </div>
+</div>
+@endsection

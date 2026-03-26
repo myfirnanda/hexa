@@ -6,6 +6,109 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-surface: #1e293b;
+    --color-base: #0f172a;
+    --color-border: #334155;
 }
+
+/* Toast animation — not achievable with Tailwind alone */
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes toastOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.toast-animate {
+    animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+}
+
+/* ===== ADMIN THEME VARIABLES ===== */
+:root {
+    --admin-bg: #0f172a;
+    --admin-surface: #1e293b;
+    --admin-surface-hover: #273549;
+    --admin-border: #334155;
+    --admin-border-light: rgba(51, 65, 85, 0.5);
+    --admin-text: #f1f5f9;
+    --admin-text-secondary: #94a3b8;
+    --admin-text-muted: #64748b;
+    --admin-input-bg: #020617;
+    --admin-sidebar-bg: #1e293b;
+    --admin-topbar-bg: #1e293b;
+    --admin-card-bg: #1e293b;
+    --admin-table-hover-bg: rgba(51, 65, 85, 0.2);
+    --admin-overlay: rgba(0, 0, 0, 0.6);
+    --admin-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --admin-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --admin-btn-secondary-bg: #334155;
+    --admin-btn-secondary-hover: #3d4f66;
+}
+
+:root.light {
+    --admin-bg: #f1f5f9;
+    --admin-surface: #ffffff;
+    --admin-surface-hover: #f8fafc;
+    --admin-border: #e2e8f0;
+    --admin-border-light: rgba(226, 232, 240, 0.8);
+    --admin-text: #0f172a;
+    --admin-text-secondary: #475569;
+    --admin-text-muted: #94a3b8;
+    --admin-input-bg: #ffffff;
+    --admin-sidebar-bg: #ffffff;
+    --admin-topbar-bg: #ffffff;
+    --admin-card-bg: #ffffff;
+    --admin-table-hover-bg: rgba(241, 245, 249, 0.7);
+    --admin-overlay: rgba(0, 0, 0, 0.3);
+    --admin-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0,0,0,0.03);
+    --admin-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --admin-btn-secondary-bg: #f1f5f9;
+    --admin-btn-secondary-hover: #e2e8f0;
+}
+
+/* ===== SEMANTIC ADMIN UTILITY CLASSES ===== */
+
+/* Layout */
+.admin-body          { background: var(--admin-bg); color: var(--admin-text); }
+.admin-sidebar       { background: var(--admin-sidebar-bg); border-color: var(--admin-border); box-shadow: var(--admin-shadow); }
+.admin-topbar        { background: var(--admin-topbar-bg); border-color: var(--admin-border); box-shadow: var(--admin-shadow); }
+
+/* Cards & surfaces */
+.admin-card          { background: var(--admin-card-bg); border-color: var(--admin-border); box-shadow: var(--admin-shadow); }
+.admin-deep-bg       { background: var(--admin-input-bg); border-color: var(--admin-border); }
+
+/* Borders */
+.admin-border        { border-color: var(--admin-border); }
+.admin-border-light  { border-color: var(--admin-border-light); }
+
+/* Typography */
+.admin-text          { color: var(--admin-text); }
+.admin-text-secondary { color: var(--admin-text-secondary); }
+.admin-text-muted    { color: var(--admin-text-muted); }
+
+/* Form elements */
+.admin-input {
+    background: var(--admin-input-bg);
+    border-color: var(--admin-border);
+    color: var(--admin-text);
+}
+.admin-input::placeholder { color: var(--admin-text-muted); }
+.admin-input:focus { border-color: #3b82f6; outline: none; }
+
+/* Buttons */
+.admin-btn-secondary {
+    background: var(--admin-btn-secondary-bg);
+    color: var(--admin-text);
+    border-color: var(--admin-border);
+}
+.admin-btn-secondary:hover { background: var(--admin-btn-secondary-hover); }
+
+/* Interactive */
+.admin-surface-hover:hover  { background: var(--admin-surface-hover); }
+.admin-table-hover:hover    { background: var(--admin-table-hover-bg); }
+.admin-overlay              { background: var(--admin-overlay); }
