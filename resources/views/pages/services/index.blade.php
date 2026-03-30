@@ -1,330 +1,223 @@
-@extends('layouts.app')
-
+@extends('layouts.main')
 @section('title', 'Hexavara - Services')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}" />
+{{-- No page-specific styles needed for services page --}}
 @endpush
 
 @section('content')
-<div class="clients-page service-page">
-  <main>
-    <section class="hero-section service-hero-section">
-      <div class="hero-banner"></div>
-      <div class="hero-content service-hero-content">
-        <h1 class="hero-title service-hero-title" data-t="hero_title" data-t-html>
-          Transforming Ideas into<br />
-          <span class="service-hero-accent">Digital Excellence</span>
-        </h1>
-        <p class="hero-description service-hero-description" data-t="hero_desc">
-          Professional software solutions tailored to your business needs. We bridge the gap between
-          vision and reality with high-end engineering and strategic innovation.
-        </p>
-        <a class="service-hero-button" href="{{ route('contact') }}" data-t="hero_btn">Consult Now</a>
-      </div>
-    </section>
-
-    <section class="service-stats-strip" aria-label="Service achievements">
-      <div class="service-stats-inner">
-        <article class="service-stat-item">
-          <div class="service-stat-value" data-count-target="77" data-count-suffix="+">0+</div>
-          <div class="service-stat-text" data-t="stat_clients">Happy Clients</div>
-        </article>
-        <article class="service-stat-item">
-          <div class="service-stat-value" data-count-target="116" data-count-suffix="+">0+</div>
-          <div class="service-stat-text" data-t="stat_projects">Projects Delivered</div>
-        </article>
-        <article class="service-stat-item">
-          <div class="service-stat-value" data-count-target="86" data-count-suffix="%">0%</div>
-          <div class="service-stat-text" data-t="stat_retention">Client Retention</div>
-        </article>
-      </div>
-    </section>
-
-    <section class="service-offerings-section" aria-labelledby="service-offerings-title">
-      <div class="service-offerings-inner">
-        <div class="service-offerings-head">
-          <h2 class="service-offerings-title" id="service-offerings-title" data-t="offerings_title">Our Services</h2>
-          <div class="service-offerings-line"></div>
-        </div>
-
-        <div class="service-card-grid">
-          <article class="service-offering-card">
-            <h3 class="service-card-title" data-t="card1_title">Software Development</h3>
-            <p class="service-card-description" data-t="card1_desc">
-              Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences. Our expert team employs the latest technologies to deliver scalable, high-performance software that propels your business forward.
-            </p>
-            <div class="service-card-divider"></div>
-            <ul class="service-card-list">
-              <li>Web Development</li>
-              <li>Mobile Apps Development</li>
-              <li>Geographical Information System</li>
-              <li>Internet of Things</li>
-              <li>Enterprise Resource Planning</li>
-              <li>Backoffice Management Services (Accounting, HRD, HSE, etc)</li>
-            </ul>
-            <a class="service-card-link" href="{{ route('services.show', 'software-development') }}" data-t="card_learn">Learn More</a>
-          </article>
-
-          <article class="service-offering-card">
-            <h3 class="service-card-title" data-t="card2_title">Startup &amp; Incubator</h3>
-            <p class="service-card-description" data-t="card2_desc">
-              Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model. With bunch of investor partner behind us we will help to accelerate growth of your startup. Make a collaboration with us to turn your entrepreneurial vision into reality.
-            </p>
-            <div class="service-card-divider"></div>
-            <ul class="service-card-list">
-              <li>Coaching</li>
-              <li>Investment</li>
-              <li>Fundraising</li>
-              <li>Seed &amp; Development</li>
-              <li>Partnership</li>
-            </ul>
-            <a class="service-card-link" href="{{ route('services.show', 'startup-incubator') }}" data-t="card_learn2">Learn More</a>
-          </article>
-
-          <article class="service-offering-card">
-            <h3 class="service-card-title" data-t="card3_title">Managed Services</h3>
-            <p class="service-card-description" data-t="card3_desc">
-              Optimize your IT infrastructure with our comprehensive managed services. We provide comprehensive solutions, including proactive system monitoring, and strategic IT planning. Trust us to optimize your technology segment, ensuring most effective operations and allowing you to stay ahead in the digital landscape.
-            </p>
-            <div class="service-card-divider"></div>
-            <ul class="service-card-list">
-              <li>IT Outsourcing</li>
-              <li>Maintenance</li>
-              <li>Data Migration</li>
-              <li>Configuration</li>
-              <li>Training</li>
-              <li>Gap Analysis</li>
-              <li>IT Consultant</li>
-            </ul>
-            <a class="service-card-link" href="{{ route('services.show', 'managed-services') }}" data-t="card_learn3">Learn More</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="additional-services-section" aria-labelledby="additional-services-title">
-      <div class="additional-services-inner">
-        <div class="additional-services-head">
-          <h2 class="additional-services-title" id="additional-services-title" data-t="additional_title">Additional Services</h2>
-          <p class="additional-services-description" data-t="additional_desc">
-            Comprehensive support for every aspect of your business growth.
-          </p>
-        </div>
-
-        <div class="additional-services-grid">
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 9H8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M4 13H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M6 17H10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M14 8L19 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M14 16L19 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="12.5" cy="12" r="2.5" stroke="currentColor" stroke-width="1.8"/>
-              </svg>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
+            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
+            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center justify-center text-center">
+                <div class="max-w-[850px]">
+                    <h1 class="hero-title text-hex-dark mb-8" data-i18n="html" data-en="Elevating Business Through<br /><span class='text-hex-blue'>High-End Engineering</span>" data-id="Meningkatkan Bisnis Melalui<br /><span class='text-hex-blue'>Engineering Kelas Atas</span>">Elevating Business Through<br /><span class="text-hex-blue">High-End Engineering</span></h1>
+                    <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[650px] mx-auto" data-i18n data-en="Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation." data-id="Solusi perangkat lunak profesional yang disesuaikan dengan kebutuhan bisnis Anda. Kami menjembatani visi dan realitas melalui rekayasa teknologi dan inovasi strategis.">Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation.</p>
+                    <a href="cta.html" class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add1_title">Digital Branding</h3>
-            <p class="additional-service-card-text" data-t="add1_desc">Building strong digital identities that resonate with your target audience.</p>
-          </article>
+        </section>
 
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 15V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M20 16V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M9 18V6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M14.5 13.5L20 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16.5 8H20V11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+        <!-- Stats Strip -->
+        <section class="py-16 bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                    <div class="flex flex-col items-center py-4">
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">77+</div>
+                        <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Happy Clients" data-id="Klien Puas">Happy Clients</div>
+                    </div>
+                    <div class="flex flex-col items-center py-4">
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">116+</div>
+                        <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Projects Delivered" data-id="Proyek Selesai">Projects Delivered</div>
+                    </div>
+                    <div class="flex flex-col items-center py-4">
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">86%</div>
+                        <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Client Retention" data-id="Retensi Klien">Client Retention</div>
+                    </div>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add2_title">Advertising</h3>
-            <p class="additional-service-card-text" data-t="add2_desc">Data-driven marketing strategies to maximize your ROI and reach.</p>
-          </article>
+        </section>
 
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
-                <rect x="14" y="5" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
-                <rect x="4" y="15" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M16 17L20 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M20 17L16 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
+        <!-- Our Services Section -->
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[42px] font-bold text-hex-dark mb-6" data-i18n data-en="Our Services" data-id="Layanan Kami">Our Services</h2>
+                    <div class="w-16 h-1 bg-hex-blue mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <a href="detail_service1.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">code_blocks</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Software Development" data-id="Pengembangan Perangkat Lunak">Software Development</h3>
+                        <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences." data-id="Tingkatkan kehadiran digital Anda dengan layanan pengembangan perangkat lunak kami. Kami mendedikasikan diri untuk membangun solusi kustom yang selaras dengan kebutuhan bisnis Anda, memastikan fungsi yang mulus dan pengalaman pengguna yang optimal.">Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences.</p>
+                        <div class="w-full h-px bg-slate-100 mb-6"></div>
+                        <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</span></li>
+                        </ul>
+                        <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </span>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="detail_services2.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Startup & Incubator" data-id="Startup & Inkubator">Startup & Incubator</h3>
+                        <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model." data-id="Akselerasi kesuksesan startup Anda melalui layanan konsultasi strategis dan inkubasi kami. Mulai dari pematangan ide hingga eksekusi pasar, kami memberikan panduan ahli untuk mengoptimalkan model bisnis dan skalabilitas Anda.">Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model.</p>
+                        <div class="w-full h-px bg-slate-100 mb-6"></div>
+                        <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Coaching & Mentoring" data-id="Pelatihan & Mentoring">Coaching & Mentoring</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Investment Readiness" data-id="Kesiapan Investasi">Investment Readiness</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Fundraising Strategy" data-id="Strategi Fundraising">Fundraising Strategy</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Partnership Support" data-id="Dukungan Kemitraan">Partnership Support</span></li>
+                        </ul>
+                        <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </span>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="detail_service3.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">support_agent</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Managed Services" data-id="Layanan Terkelola">Managed Services</h3>
+                        <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Optimize your IT infrastructure with our comprehensive managed services. We provide solutions including proactive system monitoring, and strategic IT planning." data-id="Optimalkan infrastruktur IT Anda dengan layanan pengelolaan end-to-end kami. Kami menghadirkan solusi pemantauan sistem proaktif, pemeliharaan berkala, dan perencanaan IT strategis untuk memastikan kelancaran operasional bisnis Anda.">Optimize your IT infrastructure with our comprehensive managed services. We provide solutions including proactive system monitoring, and strategic IT planning.</p>
+                        <div class="w-full h-px bg-slate-100 mb-6"></div>
+                        <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="IT Outsourcing" data-id="Outsourcing TI">IT Outsourcing</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="System Maintenance" data-id="Pemeliharaan Sistem">System Maintenance</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Cloud Configuration" data-id="Konfigurasi Cloud">Cloud Configuration</span></li>
+                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Gap Analysis" data-id="Gap Analysis">Gap Analysis</span></li>
+                        </ul>
+                        <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </span>
+                    </a>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add3_title">UI/UX Design</h3>
-            <p class="additional-service-card-text" data-t="add3_desc">Creating intuitive and visually stunning interfaces for better engagement.</p>
-          </article>
+        </section>
 
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/>
-                <circle cx="16.5" cy="10" r="2" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M3.5 18C4.3 15.8 6.2 14.5 8.5 14.5C10.8 14.5 12.7 15.8 13.5 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M14 17.5C14.5 16 15.9 15 17.5 15C19.1 15 20.3 15.8 21 17.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
+        <!-- Additional Services -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[42px] font-bold text-hex-dark mb-4" data-i18n data-en="Additional Services" data-id="Layanan Tambahan">Additional Services</h2>
+                    <p class="text-hex-slate" data-i18n data-en="Complementary solutions to boost your digital ecosystem." data-id="Solusi pelengkap untuk meningkatkan ekosistem digital Anda.">Complementary solutions to boost your digital ecosystem.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">campaign</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Advertising" data-id="Periklanan">Advertising</h3>
+                        <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Data-driven marketing strategies to maximize ROI and reach your audience." data-id="Strategi pemasaran berbasis data untuk memaksimalkan ROI dan menjangkau audiens Anda.">Data-driven marketing strategies to maximize ROI and reach your audience.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">design_services</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="UI/UX Design" data-id="Desain UI/UX">UI/UX Design</h3>
+                        <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Intuitive interfaces for better user engagement and conversion rates." data-id="Antarmuka intuitif untuk meningkatkan interaksi pengguna dan tingkat konversi.">Intuitive interfaces for better user engagement and conversion rates.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">verified</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Digital Branding" data-id="Branding Digital">Digital Branding</h3>
+                        <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Strategic identity building for modern businesses in a competitive digital world." data-id="Pembangunan identitas strategis untuk bisnis modern di dunia digital yang kompetitif.">Strategic identity building for modern businesses in a competitive digital world.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-2xl">account_balance</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Accounting Consultant" data-id="Konsultan Akuntansi">Accounting Consultant</h3>
+                        <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Professional financial management for tech assets and business stability." data-id="Manajemen keuangan profesional untuk aset teknologi dan stabilitas bisnis.">Professional financial management for tech assets and business stability.</p>
+                    </div>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add4_title">Business Consultant</h3>
-            <p class="additional-service-card-text" data-t="add4_desc">Strategic advisory to optimize business processes and scalability.</p>
-          </article>
+        </section>
 
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 9H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M6 9V18.5H18V9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M9 18.5V13H15V18.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M3 9L12 4L21 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+        <!-- Values Section -->
+        <section class="py-24 text-white relative overflow-hidden" style="background-color: #0B1221;">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <span class="font-bold uppercase tracking-[0.2em] text-[10px] md:text-sm mb-4 block text-slate-500" data-i18n data-en="OUR VALUE" data-id="NILAI KAMI">OUR VALUE</span>
+                    <h2 class="text-[42px] font-bold mb-6 text-white tracking-tight" data-i18n data-en="Why Choose Hexavara" data-id="Mengapa Memilih Hexavara">Why Choose Hexavara</h2>
+                    <p class="max-w-2xl mx-auto text-sm md:text-base text-slate-400 leading-relaxed" data-i18n data-en="Excellence in Project Execution, Strategic Oversight, Trusted Technology Partner." data-id="Keunggulan Eksekusi Proyek, Pengawasan Strategis, dan Mitra Teknologi Terpercaya.">
+                        Excellence in Project Execution, Strategic Oversight, Trusted Technology Partner.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
+                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-xl">list_alt</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Roadmap for Timeline" data-id="Peta Jalan & Lini Masa">Roadmap for Timeline</h3>
+                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement." data-id="Peta jalan kami menyajikan daftar tugas dan lini masa proyek yang mendetail dan dapat Anda pantau secara real-time. Setiap rencana disusun berdasarkan kesepakatan bersama untuk transparansi penuh.">Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.</p>
+                    </div>
+                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
+                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-xl">speed</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Weekly Sprint Monitoring" data-id="Pemantauan Sprint Mingguan">Weekly Sprint Monitoring</h3>
+                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success." data-id="Kami menerapkan kontrol sprint yang ketat melalui pemantauan mingguan, memastikan progres pengerjaan selaras dengan target waktu yang ditetapkan demi menjamin efisiensi dan kesuksesan proyek Anda.">This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success.</p>
+                    </div>
+                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
+                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-xl">verified_user</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Maximum Service" data-id="Layanan Maksimal & Responsif">Maximum Service</h3>
+                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests." data-id="Kami berkomitmen memberikan layanan purnajual terbaik dengan penanganan kendala dan perbaikan dalam waktu maksimal 48 jam. Anda dapat melacak status permintaan Anda dengan mudah secara transparan.">We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.</p>
+                    </div>
+                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
+                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-xl">trending_up</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Monitor Team Performance" data-id="Pantau Performa Tim">Monitor Team Performance</h3>
+                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance." data-id="Setiap talenta kami memiliki target harian dan bulanan yang terukur, selaras dengan kebutuhan proyek Anda. Kami memastikan tim memberikan performa terbaik untuk hasil yang berkualitas tinggi.">Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance.</p>
+                    </div>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add5_title">Accounting Consultant</h3>
-            <p class="additional-service-card-text" data-t="add5_desc">Professional financial management and reporting for your tech assets.</p>
-          </article>
+        </section>
 
-          <article class="additional-service-card">
-            <div class="additional-service-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M4.5 18.5C5.4 15.8 7.4 14.2 10 14.2C12.6 14.2 14.6 15.8 15.5 18.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="18" cy="17" r="2.5" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M19.8 18.8L22 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
+        <!-- CTA Section -->
+        <section class="pt-0 pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
+                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
+                    <!-- Left: Talent Image -->
+                    <div class="relative order-2 md:order-1 flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                    </div>
+
+                    <!-- Right: Content -->
+                    <div class="order-1 md:order-2 pb-20 md:-mt-8">
+                        @include('partials.solution')
+                    </div>
+                </div>
             </div>
-            <h3 class="additional-service-card-title" data-t="add6_title">HR Consultant</h3>
-            <p class="additional-service-card-text" data-t="add6_desc">Talent acquisition and management strategies for digital-first teams.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="service-value-section" aria-labelledby="service-value-title">
-      <div class="service-value-inner">
-        <div class="service-value-head">
-          <div class="service-value-kicker" data-t="val_kicker">Our Value</div>
-          <h2 class="service-value-title" id="service-value-title" data-t="val_title">Why Choose Hexavara</h2>
-          <p class="service-value-description" data-t="val_desc">
-            Excellence in Project Execution, Strategic Oversight, Trusted Technology Partner.
-          </p>
-        </div>
-
-        <div class="service-value-grid">
-          <article class="service-value-card">
-            <div class="service-value-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M8 2V6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M16 2V6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M8 11H16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M8 15H12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="service-value-card-title" data-t="val1_title">Roadmap for Timeline</h3>
-            <p class="service-value-card-text" data-t="val1_desc">Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.</p>
-          </article>
-
-          <article class="service-value-card">
-            <div class="service-value-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M12 7V12L15.5 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M5 5L3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M19 5L21 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="service-value-card-title" data-t="val2_title">Weekly Sprint Monitoring</h3>
-            <p class="service-value-card-text" data-t="val2_desc">This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success.</p>
-          </article>
-
-          <article class="service-value-card">
-            <div class="service-value-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3L18 5.5V10.5C18 14.3 15.6 17.7 12 19C8.4 17.7 6 14.3 6 10.5V5.5L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M9.5 10.8L11.2 12.5L14.7 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="service-value-card-title" data-t="val3_title">Maximum Service</h3>
-            <p class="service-value-card-text" data-t="val3_desc">We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.</p>
-          </article>
-
-          <article class="service-value-card">
-            <div class="service-value-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8" cy="9" r="2.5" stroke="currentColor" stroke-width="1.8"/>
-                <circle cx="16" cy="8" r="2" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M4 18C4.8 15.8 6.6 14.5 8.8 14.5C11 14.5 12.8 15.8 13.6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M13.5 17C14.1 15.7 15.4 14.8 16.9 14.8C18.5 14.8 19.8 15.7 20.5 17.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3 class="service-value-card-title" data-t="val4_title">Monitor Team Performance</h3>
-            <p class="service-value-card-text" data-t="val4_desc">Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
+        </section>
+    </main>
+@endsection
 
 @push('scripts')
-<script>
-var pageTranslations = {
-    en: {
-        hero_title: 'Transforming Ideas into<br /><span class="service-hero-accent">Digital Excellence</span>',
-        hero_desc: 'Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation.',
-        hero_btn: 'Consult Now',
-        stat_clients: 'Happy Clients', stat_projects: 'Projects Delivered', stat_retention: 'Client Retention',
-        offerings_title: 'Our Services',
-        card1_title: 'Software Development',
-        card1_desc: 'Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences. Our expert team employs the latest technologies to deliver scalable, high-performance software that propels your business forward.',
-        card2_title: 'Startup & Incubator',
-        card2_desc: 'Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model. With bunch of investor partner behind us we will help to accelerate growth of your startup. Make a collaboration with us to turn your entrepreneurial vision into reality.',
-        card3_title: 'Managed Services',
-        card3_desc: 'Optimize your IT infrastructure with our comprehensive managed services. We provide comprehensive solutions, including proactive system monitoring, and strategic IT planning. Trust us to optimize your technology segment, ensuring most effective operations and allowing you to stay ahead in the digital landscape.',
-        card_learn: 'Learn More', card_learn2: 'Learn More', card_learn3: 'Learn More',
-        additional_title: 'Additional Services',
-        additional_desc: 'Comprehensive support for every aspect of your business growth.',
-        add1_title: 'Digital Branding', add1_desc: 'Building strong digital identities that resonate with your target audience.',
-        add2_title: 'Advertising', add2_desc: 'Data-driven marketing strategies to maximize your ROI and reach.',
-        add3_title: 'UI/UX Design', add3_desc: 'Creating intuitive and visually stunning interfaces for better engagement.',
-        add4_title: 'Business Consultant', add4_desc: 'Strategic advisory to optimize business processes and scalability.',
-        add5_title: 'Accounting Consultant', add5_desc: 'Professional financial management and reporting for your tech assets.',
-        add6_title: 'HR Consultant', add6_desc: 'Talent acquisition and management strategies for digital-first teams.',
-        val_kicker: 'Our Value', val_title: 'Why Choose Hexavara',
-        val_desc: 'Excellence in Project Execution, Strategic Oversight, Trusted Technology Partner.',
-        val1_title: 'Roadmap for Timeline', val1_desc: 'Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.',
-        val2_title: 'Weekly Sprint Monitoring', val2_desc: 'This feature helps control sprints, ensuring our programmers work according to the time you\'ve purchased. It also guarantees that your project is success.',
-        val3_title: 'Maximum Service', val3_desc: 'We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.',
-        val4_title: 'Monitor Team Performance', val4_desc: 'Each of our talents has daily and monthly targets aligned with the time you\'ve purchased. They compete to deliver their best performance.'
-    },
-    id: {
-        hero_title: 'Mengubah Ide Menjadi<br /><span class="service-hero-accent">Keunggulan Digital</span>',
-        hero_desc: 'Solusi perangkat lunak profesional yang disesuaikan dengan kebutuhan bisnis Anda. Kami menjembatani kesenjangan antara visi dan realitas dengan rekayasa tingkat tinggi dan inovasi strategis.',
-        hero_btn: 'Konsultasi Sekarang',
-        stat_clients: 'Klien Puas', stat_projects: 'Proyek Terselesaikan', stat_retention: 'Retensi Klien',
-        offerings_title: 'Layanan Kami',
-        card1_title: 'Pengembangan Software',
-        card1_desc: 'Tingkatkan kehadiran digital Anda dengan layanan pengembangan software kami. Kami berspesialisasi dalam menciptakan solusi yang disesuaikan dengan kebutuhan bisnis Anda, memastikan fungsionalitas yang mulus dan pengalaman yang berpusat pada pengguna.',
-        card2_title: 'Startup & Inkubator',
-        card2_desc: 'Navigasi kompleksitas kesuksesan startup dengan layanan konsultasi ahli kami. Dari ide hingga eksekusi, kami menawarkan panduan strategis untuk mengoptimalkan model bisnis Anda. Dengan mitra investor di belakang kami, kami akan membantu mempercepat pertumbuhan startup Anda.',
-        card3_title: 'Layanan Terkelola',
-        card3_desc: 'Optimalkan infrastruktur TI Anda dengan layanan terkelola komprehensif kami. Kami menyediakan solusi lengkap, termasuk pemantauan sistem proaktif dan perencanaan TI strategis.',
-        card_learn: 'Selengkapnya', card_learn2: 'Selengkapnya', card_learn3: 'Selengkapnya',
-        additional_title: 'Layanan Tambahan',
-        additional_desc: 'Dukungan komprehensif untuk setiap aspek pertumbuhan bisnis Anda.',
-        add1_title: 'Branding Digital', add1_desc: 'Membangun identitas digital yang kuat yang beresonansi dengan audiens target Anda.',
-        add2_title: 'Periklanan', add2_desc: 'Strategi pemasaran berbasis data untuk memaksimalkan ROI dan jangkauan Anda.',
-        add3_title: 'Desain UI/UX', add3_desc: 'Menciptakan antarmuka intuitif dan visual yang memukau untuk keterlibatan yang lebih baik.',
-        add4_title: 'Konsultan Bisnis', add4_desc: 'Penasehat strategis untuk mengoptimalkan proses bisnis dan skalabilitas.',
-        add5_title: 'Konsultan Akuntansi', add5_desc: 'Manajemen keuangan profesional dan pelaporan untuk aset teknologi Anda.',
-        add6_title: 'Konsultan SDM', add6_desc: 'Strategi akuisisi dan manajemen talenta untuk tim digital.',
-        val_kicker: 'Nilai Kami', val_title: 'Mengapa Memilih Hexavara',
-        val_desc: 'Keunggulan dalam Eksekusi Proyek, Pengawasan Strategis, Mitra Teknologi Terpercaya.',
-        val1_title: 'Roadmap Timeline', val1_desc: 'Roadmap kami berisi daftar tugas dan jadwal proyek yang dapat Anda pantau kapan saja. Setiap roadmap dibuat berdasarkan kesepakatan bersama.',
-        val2_title: 'Monitoring Sprint Mingguan', val2_desc: 'Fitur ini membantu mengontrol sprint, memastikan programmer kami bekerja sesuai waktu yang Anda beli. Ini juga menjamin proyek Anda sukses.',
-        val3_title: 'Layanan Maksimal', val3_desc: 'Kami menjamin layanan maksimal dengan perbaikan bug dan peningkatan ditangani dalam 48 jam. Fitur ini memungkinkan Anda melacak permintaan dengan mudah.',
-        val4_title: 'Monitor Performa Tim', val4_desc: 'Setiap talenta kami memiliki target harian dan bulanan sesuai waktu yang Anda beli. Mereka berkompetisi untuk memberikan performa terbaik.'
-    }
-};
-</script>
+{{-- No page-specific scripts needed for services page --}}
 @endpush
-@endsection

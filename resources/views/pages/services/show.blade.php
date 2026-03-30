@@ -1,241 +1,334 @@
-@extends('layouts.app')
-
-@section('title', $service->name . ' — Hexavara')
-
+@extends('layouts.main')
+@section('title', 'Hexavara - Software Development')
 @push('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/service.css') }}" />
-@endpush
-
-@section('content')
-<div class="sd-page">
-
-    {{-- Hero --}}
-    <section class="sd-hero">
-        <div class="sd-hero-inner">
-            <h1 data-t="hero_title">{{ $service->name }}</h1>
-            <p class="sd-hero-desc" data-t="hero_desc">{{ $service->description }}</p>
-            <a href="{{ route('contact') }}" class="sd-hero-btn" data-t="hero_btn">Consult Now</a>
-        </div>
-    </section>
-
-    {{-- Client Logos Strip --}}
-    <section class="sd-logos">
-        <div class="sd-logos-inner">
-            @foreach($clients ?? [] as $client)
-            <img src="{{ asset('assets/img/' . $client->logo) }}" alt="{{ $client->name }}">
-            @endforeach
-        </div>
-    </section>
-
-    {{-- Expertise Banner --}}
-    <section class="sd-expertise">
-        <div class="sd-expertise-inner">
-            <div class="sd-expertise-text">
-                <span class="sd-kicker" data-t="expertise_kicker">OUR EXPERTISE</span>
-                <h2 class="sd-expertise-title" data-t="expertise_title">Crafting Powerful Software Solutions for Modern Businesses</h2>
-            </div>
-            <div class="sd-expertise-cards">
-                <div class="sd-expertise-card">
-                    <h3 data-t="exp_card1_title">Innovation First</h3>
-                    <p data-t="exp_card1_desc">Utilizing cutting-edge technologies to solve complex business challenges.</p>
-                </div>
-                <div class="sd-expertise-card">
-                    <h3 data-t="exp_card2_title">Scalable Architecture</h3>
-                    <p data-t="exp_card2_desc">Building solutions that grow seamlessly with your user base and requirements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Sub-Services --}}
-    <section class="sd-subservices">
-        <div class="sd-subservices-inner">
-            <span class="sd-section-kicker" data-t="svc_kicker">OUR SERVICES</span>
-            <h2 class="sd-section-title" data-t="svc_title">Comprehensive Software Development Solutions</h2>
-
-            <div class="sd-subservices-grid">
-                <div class="sd-subservice-card">
-                    <div class="sd-subservice-icon icon-web"><span class="material-symbols-outlined">language</span></div>
-                    <h3 data-t="svc1_title">Web Development</h3>
-                    <p class="sd-subservice-desc" data-t="svc1_desc">Responsive, secure, and high-performance web applications tailored to your goals.</p>
-                    <div class="sd-features-label" data-t="key_features">KEY FEATURES</div>
-                    <ul class="sd-features-list">
-                        <li data-t="svc1_f1">Progressive Web Apps</li>
-                        <li data-t="svc1_f2">API Integrations</li>
-                        <li data-t="svc1_f3">SEO Optimized</li>
-                    </ul>
-                </div>
-
-                <div class="sd-subservice-card">
-                    <div class="sd-subservice-icon icon-mobile"><span class="material-symbols-outlined">smartphone</span></div>
-                    <h3 data-t="svc2_title">Mobile Apps Development</h3>
-                    <p class="sd-subservice-desc" data-t="svc2_desc">Native and cross-platform mobile solutions for iOS and Android.</p>
-                    <div class="sd-features-label" data-t="key_features">KEY FEATURES</div>
-                    <ul class="sd-features-list">
-                        <li data-t="svc2_f1">iOS &amp; Android Native</li>
-                        <li data-t="svc2_f2">Flutter / React Native</li>
-                        <li data-t="svc2_f3">Intuitive UI/UX</li>
-                    </ul>
-                </div>
-
-                <div class="sd-subservice-card">
-                    <div class="sd-subservice-icon icon-gis"><span class="material-symbols-outlined">map</span></div>
-                    <h3 data-t="svc3_title">Geographical Information System</h3>
-                    <p class="sd-subservice-desc" data-t="svc3_desc">Advanced spatial data visualization and analysis tools for informed decision making.</p>
-                    <div class="sd-features-label" data-t="key_features">KEY FEATURES</div>
-                    <ul class="sd-features-list">
-                        <li data-t="svc3_f1">Custom Mapping</li>
-                        <li data-t="svc3_f2">Spatial Data Analysis</li>
-                        <li data-t="svc3_f3">Real-time Tracking</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Core Advantages --}}
-    <section class="sd-advantages">
-        <div class="sd-advantages-inner">
-            <span class="sd-section-kicker" data-t="adv_kicker">CORE ADVANTAGES</span>
-            <h2 class="sd-section-title" data-t="adv_title">Why Choose Our Software Solutions?</h2>
-
-            <div class="sd-advantages-grid">
-                <div class="sd-advantage-card">
-                    <div class="sd-advantage-icon"><span class="material-symbols-outlined">cloud_upload</span></div>
-                    <h3 data-t="adv1_title">Scalable Infrastructure</h3>
-                    <p class="sd-advantage-desc" data-t="adv1_desc">Architecture built to handle rapid growth and high user traffic without performance loss.</p>
-                </div>
-                <div class="sd-advantage-card">
-                    <div class="sd-advantage-icon"><span class="material-symbols-outlined">shield</span></div>
-                    <h3 data-t="adv2_title">Secure &amp; Protected</h3>
-                    <p class="sd-advantage-desc" data-t="adv2_desc">Multi-layered security protocols to safeguard your business and customer data.</p>
-                </div>
-                <div class="sd-advantage-card">
-                    <div class="sd-advantage-icon"><span class="material-symbols-outlined">rocket_launch</span></div>
-                    <h3 data-t="adv3_title">Continuous Innovation</h3>
-                    <p class="sd-advantage-desc" data-t="adv3_desc">Access to the latest tech stacks and agile methodologies for modern solutions.</p>
-                </div>
-                <div class="sd-advantage-card">
-                    <div class="sd-advantage-icon"><span class="material-symbols-outlined">tune</span></div>
-                    <h3 data-t="adv4_title">Fully Customizable</h3>
-                    <p class="sd-advantage-desc" data-t="adv4_desc">Bespoke development tailored entirely to your unique business logic and workflows.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Development Process --}}
-    <section class="sd-process">
-        <div class="sd-process-inner">
-            <span class="sd-section-kicker" data-t="proc_kicker">OUR WORKFLOW</span>
-            <h2 class="sd-section-title" data-t="proc_title">Our Development Process</h2>
-            <p class="sd-section-subtitle" data-t="proc_subtitle">A structured approach to turning your vision into a high-performing digital reality.</p>
-
-            <div class="sd-timeline">
-                <div class="sd-step sd-step-right">
-                    <div class="sd-step-number">01</div>
-                    <div class="sd-step-card">
-                        <h3><span data-t="step1_title">Requirement Gathering</span> <span class="step-icon material-symbols-outlined">assignment</span></h3>
-                        <p data-t="step1_i1">Collecting Problems</p>
-                        <p data-t="step1_i2">Explore Of Current Solution</p>
-                        <p data-t="step1_i3">Auditing Existing Solution</p>
-                    </div>
-                </div>
-
-                <div class="sd-step sd-step-left">
-                    <div class="sd-step-number">02</div>
-                    <div class="sd-step-card">
-                        <h3><span class="step-icon material-symbols-outlined">manage_search</span> <span data-t="step2_title">Problem Analysis</span></h3>
-                        <p data-t="step2_i1">Define Problem Points</p>
-                        <p data-t="step2_i2">Analyze Flow Problems</p>
-                        <p data-t="step2_i3">Define Solution</p>
-                    </div>
-                </div>
-
-                <div class="sd-step sd-step-right">
-                    <div class="sd-step-number">03</div>
-                    <div class="sd-step-card">
-                        <h3><span data-t="step3_title">Planning</span> <span class="step-icon material-symbols-outlined">folder_open</span></h3>
-                        <p data-t="step3_i1">Flow System &amp; Wireframing</p>
-                        <p data-t="step3_i2">System Architecture Design</p>
-                        <p data-t="step3_i3">Technology Stack Selection</p>
-                        <p data-t="step3_i4">Rapid Prototyping</p>
-                    </div>
-                </div>
-
-                <div class="sd-step sd-step-left">
-                    <div class="sd-step-number">04</div>
-                    <div class="sd-step-card">
-                        <h3><span class="step-icon material-symbols-outlined">code</span> <span data-t="step4_title">Developing</span></h3>
-                        <p data-t="step4_i1">Agile Sprint Planning</p>
-                        <p data-t="step4_i2">High-Quality Implementation</p>
-                        <p data-t="step4_i3">Rigorous Usability Testing</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-@push('scripts')
-<script>
-var pageTranslations = {
-    en: {
-        hero_title: 'Software Development',
-        hero_desc: 'Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences. Our expert team employs the latest technologies to deliver scalable, high-performance software that propels your business forward.',
-        hero_btn: 'Consult Now',
-        expertise_kicker: 'OUR EXPERTISE', expertise_title: 'Crafting Powerful Software Solutions for Modern Businesses',
-        exp_card1_title: 'Innovation First', exp_card1_desc: 'Utilizing cutting-edge technologies to solve complex business challenges.',
-        exp_card2_title: 'Scalable Architecture', exp_card2_desc: 'Building solutions that grow seamlessly with your user base and requirements.',
-        svc_kicker: 'OUR SERVICES', svc_title: 'Comprehensive Software Development Solutions',
-        svc1_title: 'Web Development', svc1_desc: 'Responsive, secure, and high-performance web applications tailored to your goals.',
-        svc1_f1: 'Progressive Web Apps', svc1_f2: 'API Integrations', svc1_f3: 'SEO Optimized',
-        svc2_title: 'Mobile Apps Development', svc2_desc: 'Native and cross-platform mobile solutions for iOS and Android.',
-        svc2_f1: 'iOS & Android Native', svc2_f2: 'Flutter / React Native', svc2_f3: 'Intuitive UI/UX',
-        svc3_title: 'Geographical Information System', svc3_desc: 'Advanced spatial data visualization and analysis tools for informed decision making.',
-        svc3_f1: 'Custom Mapping', svc3_f2: 'Spatial Data Analysis', svc3_f3: 'Real-time Tracking',
-        key_features: 'KEY FEATURES',
-        adv_kicker: 'CORE ADVANTAGES', adv_title: 'Why Choose Our Software Solutions?',
-        adv1_title: 'Scalable Infrastructure', adv1_desc: 'Architecture built to handle rapid growth and high user traffic without performance loss.',
-        adv2_title: 'Secure & Protected', adv2_desc: 'Multi-layered security protocols to safeguard your business and customer data.',
-        adv3_title: 'Continuous Innovation', adv3_desc: 'Access to the latest tech stacks and agile methodologies for modern solutions.',
-        adv4_title: 'Fully Customizable', adv4_desc: 'Bespoke development tailored entirely to your unique business logic and workflows.',
-        proc_kicker: 'OUR WORKFLOW', proc_title: 'Our Development Process',
-        proc_subtitle: 'A structured approach to turning your vision into a high-performing digital reality.',
-        step1_title: 'Requirement Gathering', step1_i1: 'Collecting Problems', step1_i2: 'Explore Of Current Solution', step1_i3: 'Auditing Existing Solution',
-        step2_title: 'Problem Analysis', step2_i1: 'Define Problem Points', step2_i2: 'Analyze Flow Problems', step2_i3: 'Define Solution',
-        step3_title: 'Planning', step3_i1: 'Flow System & Wireframing', step3_i2: 'System Architecture Design', step3_i3: 'Technology Stack Selection', step3_i4: 'Rapid Prototyping',
-        step4_title: 'Developing', step4_i1: 'Agile Sprint Planning', step4_i2: 'High-Quality Implementation', step4_i3: 'Rigorous Usability Testing'
-    },
-    id: {
-        hero_title: 'Pengembangan Software',
-        hero_desc: 'Tingkatkan kehadiran digital Anda dengan layanan pengembangan software kami. Kami mengkhususkan diri dalam membuat solusi khusus untuk kebutuhan bisnis Anda, memastikan fungsionalitas yang mulus dan pengalaman yang berpusat pada pengguna. Tim ahli kami menggunakan teknologi terkini untuk menghasilkan software yang skalabel dan berkinerja tinggi yang mendorong bisnis Anda maju.',
-        hero_btn: 'Konsultasi Sekarang',
-        expertise_kicker: 'KEAHLIAN KAMI', expertise_title: 'Menciptakan Solusi Software yang Powerful untuk Bisnis Modern',
-        exp_card1_title: 'Inovasi Utama', exp_card1_desc: 'Memanfaatkan teknologi mutakhir untuk menyelesaikan tantangan bisnis yang kompleks.',
-        exp_card2_title: 'Arsitektur Skalabel', exp_card2_desc: 'Membangun solusi yang berkembang dengan mulus seiring basis pengguna dan kebutuhan Anda.',
-        svc_kicker: 'LAYANAN KAMI', svc_title: 'Solusi Pengembangan Software Komprehensif',
-        svc1_title: 'Pengembangan Web', svc1_desc: 'Aplikasi web yang responsif, aman, dan berkinerja tinggi yang disesuaikan dengan tujuan Anda.',
-        svc1_f1: 'Progressive Web Apps', svc1_f2: 'Integrasi API', svc1_f3: 'Optimasi SEO',
-        svc2_title: 'Pengembangan Aplikasi Mobile', svc2_desc: 'Solusi mobile native dan cross-platform untuk iOS dan Android.',
-        svc2_f1: 'Native iOS & Android', svc2_f2: 'Flutter / React Native', svc2_f3: 'UI/UX Intuitif',
-        svc3_title: 'Sistem Informasi Geografis', svc3_desc: 'Visualisasi dan analisis data spasial canggih untuk pengambilan keputusan yang tepat.',
-        svc3_f1: 'Pemetaan Kustom', svc3_f2: 'Analisis Data Spasial', svc3_f3: 'Pelacakan Real-time',
-        key_features: 'FITUR UTAMA',
-        adv_kicker: 'KEUNGGULAN UTAMA', adv_title: 'Mengapa Memilih Solusi Software Kami?',
-        adv1_title: 'Infrastruktur Skalabel', adv1_desc: 'Arsitektur yang dibangun untuk menangani pertumbuhan cepat dan lalu lintas tinggi tanpa kehilangan performa.',
-        adv2_title: 'Aman & Terlindungi', adv2_desc: 'Protokol keamanan berlapis untuk melindungi bisnis dan data pelanggan Anda.',
-        adv3_title: 'Inovasi Berkelanjutan', adv3_desc: 'Akses ke stack teknologi terbaru dan metodologi agile untuk solusi modern.',
-        adv4_title: 'Sepenuhnya Dapat Dikustomisasi', adv4_desc: 'Pengembangan khusus yang disesuaikan sepenuhnya dengan logika bisnis dan alur kerja unik Anda.',
-        proc_kicker: 'ALUR KERJA KAMI', proc_title: 'Proses Pengembangan Kami',
-        proc_subtitle: 'Pendekatan terstruktur untuk mengubah visi Anda menjadi realitas digital berkinerja tinggi.',
-        step1_title: 'Pengumpulan Kebutuhan', step1_i1: 'Mengumpulkan Permasalahan', step1_i2: 'Eksplorasi Solusi Saat Ini', step1_i3: 'Audit Solusi yang Ada',
-        step2_title: 'Analisis Masalah', step2_i1: 'Mendefinisikan Poin Masalah', step2_i2: 'Menganalisis Alur Masalah', step2_i3: 'Mendefinisikan Solusi',
-        step3_title: 'Perencanaan', step3_i1: 'Flow System & Wireframing', step3_i2: 'Desain Arsitektur Sistem', step3_i3: 'Pemilihan Teknologi', step3_i4: 'Prototipe Cepat',
-        step4_title: 'Pengembangan', step4_i1: 'Perencanaan Sprint Agile', step4_i2: 'Implementasi Berkualitas Tinggi', step4_i3: 'Pengujian Kegunaan Ketat'
+<style>
+    @keyframes detailLogoMarquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
     }
-};
-</script>
+    .detail-logo-track {
+        display: flex;
+        width: max-content;
+        animation: detailLogoMarquee 44s linear infinite;
+    }
+</style>
 @endpush
+@section('content')
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
+            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
+            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center pt-16 pb-4 text-center">
+                <div class="max-w-[950px] flex-grow flex flex-col justify-center transform lg:-translate-y-8">
+                    <h1 class="hero-title text-hex-dark mb-8" data-i18n data-en="Software Development" data-id="Pengembangan Perangkat Lunak">Software Development</h1>
+                    <p class="text-hex-slate text-lg leading-[1.65] max-w-[850px] mx-auto" data-i18n data-en="Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences. Our expert team employs the latest technologies to deliver scalable, high-performance software that propels your business forward." data-id="Tingkatkan kehadiran digital Anda dengan layanan pengembangan perangkat lunak kami. Kami spesialis dalam membangun solusi kustom untuk kebutuhan bisnis Anda, memastikan fungsi yang mulus dan pengalaman yang berpusat pada pengguna. Tim ahli kami menggunakan teknologi terbaru untuk menghadirkan perangkat lunak berperforma tinggi.">
+                        Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences. Our expert team employs the latest technologies to deliver scalable, high-performance software that propels your business forward.
+                    </p>
+                    <div class="mt-10">
+                        <a href="cta.html" class="inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                    </div>
+                </div>
+
+                <!-- Marquee Clients (Bottom Aligned) -->
+                <div class="w-full mt-auto relative overflow-hidden">
+                    <div class="detail-logo-track flex items-center pr-12">
+                        <div class="flex items-center gap-12 h-16">
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/wika.png') }}" alt="WIKA" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/berau_coal.png') }}" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/pjb.png') }}" alt="PJB" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/unilever.png') }}" alt="Unilever" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/zelltech.png') }}" alt="Zelltech" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/jmf.png') }}" alt="JMF" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/dianca_goods.png') }}" alt="Dianca Goods" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/rs_soetomo.png') }}" alt="RS Soetomo" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/lamongan.png') }}" alt="Lamongan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/pamekasan.png') }}" alt="Pamekasan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/banjarbaru.png') }}" alt="Banjarbaru" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/kota_bengkulu.png') }}" alt="Kota Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/prov_bengkulu.png') }}" alt="Provinsi Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/unair.png') }}" alt="Universitas Airlangga" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/roudlotul_falah.png') }}" alt="Roudlotul Falah" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/bkd_jatim.png') }}" alt="BKD Jatim" />
+                        </div>
+                        <div class="flex items-center gap-12 h-16">
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/wika.png') }}" alt="WIKA" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/berau_coal.png') }}" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/pjb.png') }}" alt="PJB" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/unilever.png') }}" alt="Unilever" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/zelltech.png') }}" alt="Zelltech" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/jmf.png') }}" alt="JMF" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/dianca_goods.png') }}" alt="Dianca Goods" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/rs_soetomo.png') }}" alt="RS Soetomo" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/lamongan.png') }}" alt="Lamongan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/pamekasan.png') }}" alt="Pamekasan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/banjarbaru.png') }}" alt="Banjarbaru" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/kota_bengkulu.png') }}" alt="Kota Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/prov_bengkulu.png') }}" alt="Provinsi Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/unair.png') }}" alt="Universitas Airlangga" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/roudlotul_falah.png') }}" alt="Roudlotul Falah" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/bkd_jatim.png') }}" alt="BKD Jatim" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Offerings -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-4 leading-tight" data-i18n data-en="Our Offerings" data-id="Layanan Kami">Our Offerings</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n data-en="Comprehensive software solutions tailored to your unique business challenges." data-id="Solusi perangkat lunak komprehensif yang disesuaikan dengan tantangan unik bisnis Anda.">Comprehensive software solutions tailored to your unique business challenges.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">language</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers." data-id="Dari landing page dinamis hingga portal web enterprise yang kompleks, kami membangun aplikasi web yang cepat, aman, dan skalabel yang disesuaikan dengan kebutuhan pengguna Anda.">From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">smartphone</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services." data-id="Kami merancang dan mengembangkan aplikasi mobile intuitif untuk iOS dan Android. Baik native maupun cross-platform, aplikasi kami menghadirkan performa mulus dan integrasi fitur perangkat yang mendalam.">We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">map</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making." data-id="Kami mengembangkan aplikasi GIS kuat yang mengubah data spasial menjadi wawasan berharga. Ideal untuk logistik, tata kota, dan manajemen sumber daya - memungkinkan pengambilan keputusan berbasis lokasi yang cerdas.">We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">router</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring." data-id="Hubungkan dunia fisik Anda ke perangkat lunak cerdas. Kami merancang ekosistem IoT ujung-ke-ujung - dari sensor hingga dashboard realtime - memungkinkan otomatisasi dan pemantauan pintar.">Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring.</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">hub</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Enterprise Resource Planning" data-id="Enterprise Resource Planning">Enterprise Resource Planning</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process." data-id="Satukan operasional bisnis Anda dengan sistem ERP kustom yang mengintegrasikan pengadaan, inventaris, keuangan, dan produksi ke dalam satu platform efisien - memberikan visibilitas penuh bagi manajemen.">Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process.</p>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-3xl">manage_accounts</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Backoffice Management Services" data-id="Layanan Manajemen Backoffice">Backoffice Management Services</h3>
+                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows." data-id="Digitalisasi dan otomatisasi operasional internal Anda dengan modul Akuntansi, HRD, dan K3 - menyederhanakan kepatuhan, payroll, audit, dan alur kerja pelaporan.">Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Advantages Section -->
+        <section class="py-24 bg-hex-surface-dark text-white overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-20">
+                    <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="CORE ADVANTAGES" data-id="KEUNGGULAN UTAMA">CORE ADVANTAGES</span>
+                    <h2 class="text-[42px] font-bold" data-i18n data-en="Why Choose Our Software Solutions?" data-id="Mengapa Memilih Solusi Perangkat Lunak Kami?">Why Choose Our Software Solutions?</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Advantage 1 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-blue-400">grid_view</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n data-en="Scalable Infrastructure" data-id="Infrastruktur Skalabel">Scalable Infrastructure</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Architecture built to handle rapid growth and high user traffic without performance loss." data-id="Arsitektur yang dibangun untuk menangani pertumbuhan pesat dan traffic tinggi tanpa penurunan performa.">Architecture built to handle rapid growth and high user traffic without performance loss.</p>
+                    </div>
+                    <!-- Advantage 2 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-blue-400">shield</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n data-en="Secure & Protected" data-id="Aman & Terlindungi">Secure & Protected</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Multi-layered security protocols to safeguard your business and customer data." data-id="Protokol keamanan berlapis untuk melindungi data bisnis dan pelanggan Anda.">Multi-layered security protocols to safeguard your business and customer data.</p>
+                    </div>
+                    <!-- Advantage 3 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-blue-400">tips_and_updates</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n data-en="Continuous Innovation" data-id="Inovasi Berkelanjutan">Continuous Innovation</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Access to the latest tech stacks and agile methodologies for modern solutions." data-id="Akses ke stack teknologi terbaru dan metodologi agile untuk solusi modern.">Access to the latest tech stacks and agile methodologies for modern solutions.</p>
+                    </div>
+                    <!-- Advantage 4 -->
+                    <div class="flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-blue-400">settings_input_composite</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3" data-i18n data-en="Fully Customizable" data-id="Sepenuhnya Kustom">Fully Customizable</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Bespoke development tailored to your unique business logic and workflows." data-id="Pengembangan kustom yang disesuaikan dengan logika bisnis dan alur kerja unik Anda.">Bespoke development tailored to your unique business logic and workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Workflow -->
+        <section class="py-24 bg-white relative">
+            <div class="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="OUR WORKFLOW" data-id="ALUR KERJA KAMI">OUR WORKFLOW</span>
+                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Our Development Process" data-id="Proses Pengembangan Kami">Our Development Process</h2>
+                    <p class="mt-4 text-slate-500 text-lg" data-i18n data-en="A structured approach to turning your vision into a high-performing digital reality." data-id="Pendekatan terstruktur untuk mengubah visi Anda menjadi realitas digital berperforma tinggi.">A structured approach to turning your vision into a high-performing digital reality.</p>
+                </div>
+
+                <div class="relative">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-slate-100 -translate-x-1/2 hidden md:block"></div>
+
+                    <div class="space-y-12 relative">
+                        <!-- Step 1 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                            <div class="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:order-1 order-2">
+                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h4 class="text-xl font-bold" data-i18n data-en="Requirement Gathering" data-id="Pengumpulan Kebutuhan">Requirement Gathering</h4>
+                                        <span class="material-symbols-outlined text-blue-600">assignment_ind</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-500 text-sm">
+                                        <li class="flex items-center gap-2" data-i18n data-en="Collecting Problems" data-id="Inventarisasi Masalah">Collecting Problems</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Explore Of Current Solution" data-id="Eksplorasi Solusi Saat Ini">Explore Of Current Solution</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Auditing Existing Solution" data-id="Audit Solusi Eksisting">Auditing Existing Solution</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">01</div>
+                            <div class="md:w-1/2 md:order-3 hidden md:block"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                            <div class="md:w-1/2 md:order-1 hidden md:block"></div>
+                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">02</div>
+                            <div class="md:w-1/2 flex justify-center md:justify-start md:pl-12 md:order-3 order-2">
+                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h4 class="text-xl font-bold" data-i18n data-en="Problem Analysis" data-id="Analisis Masalah">Problem Analysis</h4>
+                                        <span class="material-symbols-outlined text-blue-600">troubleshoot</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-500 text-sm">
+                                        <li class="flex items-center gap-2" data-i18n data-en="Define Problem Points" data-id="Menentukan Titik Poin Masalah">Define Problem Points</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Analyze Flow Problem" data-id="Analisis Alur Masalah">Analyze Flow Problem</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Define Solution" data-id="Menentukan Solusi Terpilih">Define Solution</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                            <div class="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:order-1 order-2">
+                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h4 class="text-xl font-bold" data-i18n data-en="Planning" data-id="Perencanaan">Planning</h4>
+                                        <span class="material-symbols-outlined text-blue-600">architecture</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-500 text-sm">
+                                        <li class="flex items-center gap-2" data-i18n data-en="Flow System & Wireframing" data-id="Alur Sistem & Wireframing">Flow System & Wireframing</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="System Architecture Design" data-id="Desain Arsitektur Sistem">System Architecture Design</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Technology Stack Selection" data-id="Pemilihan Tech Stack">Technology Stack Selection</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Rapid Prototyping" data-id="Prototyping Cepat">Rapid Prototyping</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">03</div>
+                            <div class="md:w-1/2 md:order-3 hidden md:block"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                            <div class="md:w-1/2 md:order-1 hidden md:block"></div>
+                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">04</div>
+                            <div class="md:w-1/2 flex justify-center md:justify-start md:pl-12 md:order-3 order-2">
+                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h4 class="text-xl font-bold" data-i18n data-en="Developing" data-id="Pengembangan">Developing</h4>
+                                        <span class="material-symbols-outlined text-blue-600">terminal</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-500 text-sm">
+                                        <li class="flex items-center gap-2" data-i18n data-en="Agile Sprint Planning" data-id="Perencanaan Agile Sprint">Agile Sprint Planning</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="High-Quality Implementation" data-id="Implementasi Berkualitas Tinggi">High-Quality Implementation</li>
+                                        <li class="flex items-center gap-2" data-i18n data-en="Rigorous Usability Testing" data-id="Pengujian Usabilitas Ketat">Rigorous Usability Testing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack -->
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="TECHNOLOGY STACK" data-id="STACK TEKNOLOGI">TECHNOLOGY STACK</span>
+                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Built with industry-leading technologies" data-id="Dibangun dengan teknologi terkemuka industri">Built with industry-leading technologies</h2>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">React</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Next.js</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Vue.js</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Flutter</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">React Native</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Node.js</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Python</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Laravel</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">PostgreSQL</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">MongoDB</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Docker</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Kubernetes</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">AWS / GCP</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">QGIS / Mapbox</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Arduino / Raspberry Pi</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">MQTT</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">Odoo / SAP</span>
+                    <span class="px-6 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 shadow-sm">GraphQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="pt-0 pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
+                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
+                    <!-- Left: Talent Image -->
+                    <div class="relative order-2 md:order-1 flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                    </div>
+
+                    <!-- Right: Solution partial -->
+                    @include('partials.solution')
+                </div>
+            </div>
+        </section>
+    </main>
+
 @endsection
+@push('scripts')
+{{-- No page-specific scripts --}}
+@endpush

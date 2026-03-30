@@ -1,449 +1,159 @@
-@extends('layouts.app')
-
+@extends('layouts.main')
 @section('title', 'Hexavara - Start a Project')
 
-@push('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/cta.css') }}" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-@endpush
-
 @section('content')
-<div class="cta-page">
-    <main class="cta-content" id="consult">
-
-        {{-- Intro --}}
-        <section class="intro-section">
-            <h1 data-t="intro_title">Start a project and grow your business with technology.</h1>
-            <p>
-                <span data-t="intro_line1_before">By fill in the form below or you could </span><a href="mailto:info@hexavara.com" data-t="intro_line1_link">send us an email.</a>
-            </p>
-            <p>
-                <span data-t="intro_line2_before">If you prefer to get more quick response and conversation, hit us up on </span><a href="https://wa.me/628113451550" target="_blank" rel="noopener noreferrer" data-t="intro_line2_link">whatsapp!</a>
-            </p>
+    <main class="cta-content max-w-6xl mx-auto px-6 pt-16 pb-20" id="consult">
+        <section class="intro-section text-center max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl lg:text-[54px] font-bold text-slate-900 tracking-tight leading-tight m-0" data-i18n="html" data-en="Start a project and <span class='text-hex-blue'>grow your business</span> with technology." data-id="Mulai proyek dan <span class='text-hex-blue'>kembangkan bisnis</span> Anda dengan teknologi.">Start a project and <span class="text-hex-blue">grow your business</span> with technology.</h1>
+          <p class="mt-6 text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto" data-i18n="html"
+             data-en="Fill in the form below or you could <a href='mailto:info@hexavara.com' class='text-slate-800 font-medium hover:text-blue-600 transition-colors'>send us an email.</a> If you prefer more quick responses, hit us up on <a href='https://wa.me/628113451550' target='_blank' rel='noopener noreferrer' class='text-slate-800 font-medium hover:text-blue-600 transition-colors'>whatsapp!</a>"
+             data-id="Isi formulir di bawah ini atau Anda dapat <a href='mailto:info@hexavara.com' class='text-slate-800 font-medium hover:text-blue-600 transition-colors'>mengirimkan email.</a> Jika Anda membutuhkan respons lebih cepat, hubungi kami melalui <a href='https://wa.me/628113451550' target='_blank' rel='noopener noreferrer' class='text-slate-800 font-medium hover:text-blue-600 transition-colors'>WhatsApp!</a>">
+            Fill in the form below or you could <a href="mailto:info@hexavara.com" class="text-slate-800 font-medium hover:text-blue-600 transition-colors">send us an email.</a> If you prefer more quick responses, hit us up on <a href="https://wa.me/628113451550" target="_blank" rel="noopener noreferrer" class="text-slate-800 font-medium hover:text-blue-600 transition-colors">whatsapp!</a>
+          </p>
         </section>
 
-        {{-- AI Assistant Banner --}}
-        <section class="ai-assistant-banner" aria-label="AI discussion helper">
-            <div class="ai-assistant-icon-wrap" aria-hidden="true">
-                <span class="material-symbols-outlined">auto_awesome</span>
-            </div>
-            <div class="ai-assistant-copy">
-                <h2 data-t="ai_banner_title">Confused explaining your project?</h2>
-                <p data-t="ai_banner_desc">Use AI Assistant to help summarize and structure your project needs clearly.</p>
-            </div>
-            <button type="button" class="ai-assistant-button" id="open-ai-modal" data-t="ai_banner_btn">Discuss with AI First</button>
+        <section class="ai-assistant-banner mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center justify-between shadow-sm" aria-label="AI discussion helper">
+          <div class="flex items-center gap-6">
+              <div class="ai-assistant-icon-wrap w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center shrink-0" aria-hidden="true">
+                <span class="material-symbols-outlined text-blue-600 text-4xl">auto_awesome</span>
+              </div>
+              <div class="ai-assistant-copy flex-1">
+                <h2 class="text-xl font-bold text-slate-900 m-0 mb-2" data-i18n data-en="Confused explaining your project?" data-id="Bingung menjelaskan proyek Anda?">Confused explaining your project?</h2>
+                <p class="text-sm md:text-base text-slate-600 max-w-2xl" data-i18n data-en="Use AI Assistant to help summarize and structure your project needs clearly." data-id="Gunakan AI Assistant untuk merangkum dan menyusun kebutuhan proyek Anda dengan jelas.">Use AI Assistant to help summarize and structure your project needs clearly.
+                </p>
+              </div>
+          </div>
+          <button type="button" class="ai-assistant-button bg-[#2563eb] hover:brightness-110 shadow-[0_10px_22px_rgba(37,99,235,0.22)] hover:-translate-y-1 text-white font-bold text-base px-8 py-4 rounded-xl transition-all whitespace-nowrap shrink-0 border-0 cursor-pointer" id="open-ai-discussion" data-i18n data-en="Discuss with AI First" data-id="Diskusi dengan AI Dulu">
+            Discuss with AI First
+          </button>
         </section>
 
-        {{-- Form --}}
-        <section class="form-section">
-            <h2 data-t="form_title">Let us know about you</h2>
+        <section class="form-section mt-12">
+          <h2 class="text-3xl font-bold text-slate-900 mb-6 m-0" data-i18n data-en="Let us know about you" data-id="Beritahu kami tentang Anda">Let us know about you</h2>
 
-            <div class="form-grid">
-                <label>
-                    <span data-t="label_name">Name</span>
-                    <input id="f-name" type="text" placeholder="Input your name" data-ph="ph_name">
-                    <span class="field-error" id="err-name"></span>
-                </label>
-                <label>
-                    <span data-t="label_email">Email</span>
-                    <input id="f-email" type="email" placeholder="Input your email" data-ph="ph_email">
-                    <span class="field-error" id="err-email"></span>
-                </label>
-                <label>
-                    <span data-t="label_phone">Phone Number</span>
-                    <input id="f-phone" type="text" placeholder="Input your number" data-ph="ph_phone">
-                </label>
-                <label>
-                    <span data-t="label_company">Your Company</span>
-                    <input id="f-company" type="text" placeholder="Input your company" data-ph="ph_company">
-                </label>
-            </div>
-
-            <label class="full-field">
-                <span data-t="label_project">Tell Us about your project</span>
-                <textarea id="f-project" rows="5" placeholder="Tell us more about the project you want to realize" data-ph="ph_project"></textarea>
-                <span class="field-error" id="err-project"></span>
+          <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+            <label class="block">
+              <span class="block mb-2 text-slate-900 font-semibold text-lg" data-i18n data-en="Name" data-id="Nama">Name</span>
+              <input type="text" placeholder="Masukkan nama Anda" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" data-i18n-placeholder data-en="Input your name" data-id="Masukkan nama Anda" />
             </label>
+            <label class="block">
+              <span class="block mb-2 text-slate-900 font-semibold text-lg" data-i18n data-en="Email" data-id="Email">Email</span>
+              <input type="email" placeholder="Masukkan email Anda" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" data-i18n-placeholder data-en="Input your email" data-id="Masukkan email Anda" />
+            </label>
+            <label class="block">
+              <span class="block mb-2 text-slate-900 font-semibold text-lg" data-i18n data-en="Phone Number" data-id="Nomor Telepon">Phone Number</span>
+              <input type="text" placeholder="Masukkan nomor Anda" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" data-i18n-placeholder data-en="Input your number" data-id="Masukkan nomor Anda" />
+            </label>
+            <label class="block">
+              <span class="block mb-2 text-slate-900 font-semibold text-lg" data-i18n data-en="Your Company" data-id="Perusahaan Anda">Your Company</span>
+              <input type="text" placeholder="Masukkan perusahaan Anda" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" data-i18n-placeholder data-en="Input your company" data-id="Masukkan perusahaan Anda" />
+            </label>
+          </div>
 
-            {{-- Categories --}}
-            <div class="form-block">
-                <h3 data-t="cat_title">Choose the category</h3>
-                <div class="chips" id="category-chips"></div>
+          <label class="full-field block mt-6">
+            <span class="block mb-2 text-slate-900 font-semibold text-lg" data-i18n data-en="Tell Us about your project" data-id="Ceritakan tentang proyek Anda">Tell Us about your project</span>
+            <textarea rows="5" placeholder="Ceritakan lebih lanjut tentang proyek yang ingin Anda wujudkan" class="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white text-sm text-slate-800 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 resize-y min-h-[150px]" data-i18n-placeholder data-en="Tell us more about the project you want to realize" data-id="Ceritakan lebih lanjut tentang proyek yang ingin Anda wujudkan"></textarea>
+          </label>
+
+          <div class="form-block mt-8">
+            <h3 class="text-2xl font-bold text-slate-900 mb-3 m-0" data-i18n data-en="Choose the category" data-id="Pilih kategori">Choose the category</h3>
+            <div class="chips flex flex-wrap gap-2" id="category-chips">
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="All" data-id="Semua">All</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="GIS" data-id="GIS">GIS</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="ERP" data-id="ERP">ERP</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Accounting Software" data-id="Perangkat Lunak Akuntansi">Accounting Software</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Network Security" data-id="Keamanan Jaringan">Network Security</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Endpoint Security" data-id="Keamanan Endpoint">Endpoint Security</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Cloud Security" data-id="Keamanan Cloud">Cloud Security</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Advertising" data-id="Periklanan">Advertising</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Digital Branding" data-id="Branding Digital">Digital Branding</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Aerial Photography Videography" data-id="Fotografi Udara Videografi">Aerial Photography Videography</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Videography" data-id="Videografi">Videography</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Branding" data-id="Branding">Branding</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Motion Graphic" data-id="Grafis Gerak (Motion)">Motion Graphic</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="Graphic Design" data-id="Desain Grafis">Graphic Design</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600" data-i18n data-en="3D Assets" data-id="Aset 3D">3D Assets</button>
             </div>
+          </div>
 
-            {{-- Budget --}}
-            <div class="form-block">
-                <h3 data-t="budget_title">Budget (in IDR/Indonesian Rupiah)</h3>
-                <div class="chips" id="budget-chips"></div>
+          <div class="form-block mt-8">
+            <h3 class="text-2xl font-bold text-slate-900 mb-3 m-0" data-i18n data-en="Budget (in IDR/Indonesian Rupiah)" data-id="Anggaran (dalam IDR/Rupiah Indonesia)">Budget (in IDR/Indonesian Rupiah)</h3>
+            <div class="chips flex flex-wrap gap-2" id="budget-chips">
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">&lt; 50JT</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">50JT - 100JT</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">100JT - 300JT</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">300JT - 1M</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">1M - 3M</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">3M - 10M</button>
+              <button type="button" class="chip border border-slate-300 rounded-full px-4 py-2 bg-white text-slate-600 text-sm font-medium hover:border-slate-400 cursor-pointer transition-colors [&.is-selected]:bg-blue-600 [&.is-selected]:text-white [&.is-selected]:border-blue-600 [&.chip-active]:bg-blue-600 [&.chip-active]:text-white [&.chip-active]:border-blue-600">&gt; 10M</button>
             </div>
+          </div>
 
-            {{-- Upload --}}
-            <div class="form-block">
-                <h3 data-t="upload_title_label">Upload Project Brief</h3>
-                <label class="upload-box" id="upload-box">
-                    <input type="file" id="f-file" accept=".svg,.png,.jpg,.jpeg,.doc,.docx,.pdf,.ppt,.pptx" style="display:none">
-                    <span class="material-symbols-outlined upload-icon" aria-hidden="true">cloud_upload</span>
-                    <div class="upload-title" data-t="upload_click">Click to Upload</div>
-                    <div class="upload-caption" data-t="upload_caption">SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)</div>
-                </label>
-            </div>
+          <div class="form-block mt-8">
+            <h3 class="text-2xl font-bold text-slate-900 mb-3 m-0" data-i18n data-en="Upload Project Brief" data-id="Unggah Brief Proyek">Upload Project Brief</h3>
+            <label class="upload-box flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-300 bg-slate-50 rounded-lg min-h-[144px] cursor-pointer hover:bg-slate-100 transition-colors text-center w-full">
+              <input type="file" class="hidden" />
+              <span class="material-symbols-outlined upload-icon text-slate-500 text-2xl" aria-hidden="true">cloud_upload</span>
+              <div class="upload-title text-blue-600 text-sm font-medium" data-i18n data-en="Click to Upload" data-id="Klik untuk Unggah">Click to Upload</div>
+              <div class="upload-caption text-slate-500 text-xs" data-i18n data-en="SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)" data-id="SVG, PNG, JPG, DOCS, PDF atau PPT (maks. 5 MB)">SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)</div>
+            </label>
+          </div>
 
-            <button class="submit-btn" type="button" id="submit-btn" data-t="submit_btn">Send Request!</button>
+          <button class="submit-btn mt-8 bg-hex-dark hover:shadow-2xl hover:-translate-y-1 text-white font-bold text-base px-8 py-4 rounded-xl transition-all shadow-xl block w-full md:w-auto" type="button" onclick="handleSubmit()" data-i18n data-en="Send Request!" data-id="Kirim Permintaan!">Send Request!</button>
         </section>
-
-        {{-- AI Discussion Modal --}}
-        <div class="ai-discussion-modal" id="ai-modal">
-            <div class="ai-discussion-backdrop" id="ai-backdrop"></div>
-            <div class="ai-discussion-panel" role="dialog" aria-modal="true">
-                <div class="ai-discussion-head">
-                    <div>
-                        <h3 data-t="modal_title">AI Project Discussion Assistant</h3>
-                        <p data-t="modal_desc">Structure your project needs before filling out the main form.</p>
-                    </div>
-                    <button type="button" class="ai-close-btn" id="ai-close" aria-label="Close dialog">&times;</button>
-                </div>
-
-                <div class="ai-discussion-grid">
-                    <label>
-                        <span data-t="modal_label_service">What service do you need?</span>
-                        <select id="ai-service"></select>
-                    </label>
-                    <label>
-                        <span data-t="modal_label_topic">What do you want to discuss?</span>
-                        <select id="ai-topic"></select>
-                    </label>
-                </div>
-
-                <div class="ai-help-section">
-                    <div class="ai-help-title" data-t="ai_help_title">What can this AI help with?</div>
-                    <div class="ai-help-list" id="ai-help-list"></div>
-                </div>
-
-                <label class="ai-context-field">
-                    <span data-t="modal_context_label">Describe your business context (optional)</span>
-                    <textarea id="ai-context" rows="4" placeholder="Example: Our process is still manual and we want to digitize reporting and approval workflows." data-ph="modal_context_ph"></textarea>
-                </label>
-
-                <div class="ai-action-row">
-                    <button type="button" class="ai-generate-btn" id="ai-generate" data-t="modal_generate">Generate Draft Brief</button>
-                    <button type="button" class="ai-secondary-btn" id="ai-insert" data-t="modal_insert">Insert to Form</button>
-                    <button type="button" class="ai-secondary-btn" id="ai-copy" data-t="modal_copy">Copy Text</button>
-                </div>
-
-                <label class="ai-output-field">
-                    <span data-t="modal_output_label">AI discussion draft</span>
-                    <textarea id="ai-output" rows="8" readonly placeholder="AI summary output will appear here..." data-ph="modal_output_ph"></textarea>
-                </label>
-            </div>
-        </div>
 
     </main>
-</div>
+@endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-var pageTranslations = {
-    en: {
-        intro_title: 'Start a project and grow your business with technology.',
-        intro_line1_before: 'By fill in the form below or you could ',
-        intro_line1_link: 'send us an email.',
-        intro_line2_before: 'If you prefer to get more quick response and conversation, hit us up on ',
-        intro_line2_link: 'whatsapp!',
-        ai_banner_title: 'Confused explaining your project?',
-        ai_banner_desc: 'Use AI Assistant to help summarize and structure your project needs clearly.',
-        ai_banner_btn: 'Discuss with AI First',
-        form_title: 'Let us know about you',
-        label_name: 'Name', label_email: 'Email', label_phone: 'Phone Number', label_company: 'Your Company',
-        label_project: 'Tell Us about your project',
-        ph_name: 'Input your name', ph_email: 'Input your email', ph_phone: 'Input your number',
-        ph_company: 'Input your company', ph_project: 'Tell us more about the project you want to realize',
-        cat_title: 'Choose the category',
-        budget_title: 'Budget (in IDR/Indonesian Rupiah)',
-        upload_title_label: 'Upload Project Brief', upload_click: 'Click to Upload',
-        upload_caption: 'SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)',
-        submit_btn: 'Send Request!',
-        modal_title: 'AI Project Discussion Assistant',
-        modal_desc: 'Structure your project needs before filling out the main form.',
-        modal_label_service: 'What service do you need?',
-        modal_label_topic: 'What do you want to discuss?',
-        ai_help_title: 'What can this AI help with?',
-        modal_context_label: 'Describe your business context (optional)',
-        modal_context_ph: 'Example: Our process is still manual and we want to digitize reporting and approval workflows.',
-        modal_generate: 'Generate Draft Brief', modal_insert: 'Insert to Form', modal_copy: 'Copy Text',
-        modal_output_label: 'AI discussion draft',
-        modal_output_ph: 'AI summary output will appear here...',
-        success_msg: 'Request submitted successfully!'
-    },
-    id: {
-        intro_title: 'Mulai proyek dan kembangkan bisnis Anda dengan teknologi.',
-        intro_line1_before: 'Isi form di bawah ini atau Anda bisa ',
-        intro_line1_link: 'kirim email ke kami.',
-        intro_line2_before: 'Jika Anda ingin respons lebih cepat, hubungi kami melalui ',
-        intro_line2_link: 'WhatsApp!',
-        ai_banner_title: 'Masih bingung menjelaskan proyek Anda?',
-        ai_banner_desc: 'Gunakan AI Assistant untuk membantu merangkum dan menyusun kebutuhan proyek Anda dengan lebih jelas.',
-        ai_banner_btn: 'Diskusi dengan AI Dulu',
-        form_title: 'Ceritakan kebutuhan Anda',
-        label_name: 'Nama', label_email: 'Email', label_phone: 'Nomor Telepon', label_company: 'Perusahaan',
-        label_project: 'Ceritakan proyek Anda',
-        ph_name: 'Masukkan nama Anda', ph_email: 'Masukkan email Anda', ph_phone: 'Masukkan nomor telepon Anda',
-        ph_company: 'Masukkan nama perusahaan', ph_project: 'Ceritakan kebutuhan proyek yang ingin Anda wujudkan',
-        cat_title: 'Pilih kategori',
-        budget_title: 'Budget (dalam IDR/Rupiah)',
-        upload_title_label: 'Upload Ringkasan Proyek', upload_click: 'Klik untuk Upload',
-        upload_caption: 'SVG, PNG, JPG, DOCS, PDF atau PPT (maks. 5 MB)',
-        submit_btn: 'Kirim Permintaan!',
-        modal_title: 'Asisten Diskusi Proyek AI',
-        modal_desc: 'Susun kebutuhan proyek Anda sebelum mengisi form utama.',
-        modal_label_service: 'Butuh layanan apa?',
-        modal_label_topic: 'Ingin membahas apa?',
-        ai_help_title: 'AI ini bisa membantu apa saja?',
-        modal_context_label: 'Ceritakan konteks bisnis Anda (opsional)',
-        modal_context_ph: 'Contoh: Proses kami masih manual, ingin digitalisasi agar laporan dan approval lebih cepat.',
-        modal_generate: 'Buat Draft Brief', modal_insert: 'Masukkan ke Form', modal_copy: 'Salin Teks',
-        modal_output_label: 'Draft hasil diskusi AI',
-        modal_output_ph: 'Ringkasan dari AI akan tampil di sini...',
-        success_msg: 'Permintaan berhasil dikirim!'
-    }
-};
-</script>
-<script>
-(function() {
-    var DATA = {
-        en: {
-            categories: ['All','Web Development','Mobile Apps Development','GIS','Internet of Things','ERP','Accounting Software','Network Security','Endpoint Security','Cloud Security','Advertising','Digital Branding','Aerial Photography Videography','Videography','Branding','Motion Graphic','Graphic Design','3D Assets'],
-            budgets: ['< 50JT','50JT - 100JT','100JT - 300JT','300JT - 1M','1M - 3M','3M - 10M','> 10M'],
-            services: ['Web Development','Mobile Apps Development','ERP System','Digital Branding','GIS','Internet of Things','Cybersecurity'],
-            topics: ['Business goals','Core features','Target users','Timeline and priorities','Budget and scope','Risks and constraints'],
-            helps: ['Refine requirement description','Prioritize features','Create timeline draft','Estimate initial scope','Prepare clarification questions']
-        },
-        id: {
-            categories: ['Semua','Pengembangan Web','Pengembangan Aplikasi Mobile','GIS','Internet of Things','ERP','Software Akuntansi','Keamanan Jaringan','Keamanan Endpoint','Keamanan Cloud','Periklanan','Branding Digital','Fotografi & Videografi Udara','Videografi','Branding','Motion Graphic','Desain Grafis','Aset 3D'],
-            budgets: ['< 50JT','50JT - 100JT','100JT - 300JT','300JT - 1M','1M - 3M','3M - 10M','> 10M'],
-            services: ['Pengembangan Web','Pengembangan Aplikasi Mobile','Sistem ERP','Branding Digital','GIS','Internet of Things','Keamanan Siber'],
-            topics: ['Tujuan bisnis','Fitur utama','Target pengguna','Timeline dan prioritas','Budget dan scope','Risiko dan kendala'],
-            helps: ['Merapikan deskripsi kebutuhan','Menyusun prioritas fitur','Membuat draft timeline','Estimasi scope awal','Menyusun pertanyaan klarifikasi']
-        }
-    };
+    <script>
+        // Custom function for localized alert
+        window.handleAIDiscussion = function() {
+            const lang = localStorage.getItem('hexavara-lang') || 'en';
+            const msg = lang === 'id'
+                ? 'Fitur Diskusi dengan AI saat ini sedang dalam pengembangan tahap lanjut. Silakan tinggalkan kontak Anda pada form di bawah ini agar tim spesialis kami dapat menghubungi Anda.'
+                : 'The AI Discussion feature is currently in advanced development. Please leave your contact details in the form below so our specialist team can reach out to you.';
+            alert(msg);
+        };
 
-    var selectedCategories = new Set([0]);
-    var selectedBudget = null;
-    var selectedHelps = new Set();
-
-    function getLang() { return window._currentLang || localStorage.getItem('hexavara-lang') || 'en'; }
-    function d() { return DATA[getLang()] || DATA.en; }
-
-    function renderChips(container, items, selected, isSet) {
-        var html = '';
-        for (var i = 0; i < items.length; i++) {
-            var active = isSet ? selected.has(i) : selected === i;
-            html += '<button type="button" class="chip' + (active ? ' chip-active' : '') + '" data-idx="' + i + '">' + items[i] + '</button>';
-        }
-        container.innerHTML = html;
-    }
-
-    function renderAll() {
-        renderChips(document.getElementById('category-chips'), d().categories, selectedCategories, true);
-        renderChips(document.getElementById('budget-chips'), d().budgets, selectedBudget, false);
-        var svcs = d().services;
-        var svcHtml = ''; for (var i = 0; i < svcs.length; i++) svcHtml += '<option value="' + svcs[i] + '">' + svcs[i] + '</option>';
-        document.getElementById('ai-service').innerHTML = svcHtml;
-        var tops = d().topics;
-        var topHtml = ''; for (var i = 0; i < tops.length; i++) topHtml += '<option value="' + tops[i] + '">' + tops[i] + '</option>';
-        document.getElementById('ai-topic').innerHTML = topHtml;
-        var items = d().helps;
-        var helpHtml = ''; for (var i = 0; i < items.length; i++) helpHtml += '<button type="button" class="ai-help-chip' + (selectedHelps.has(i) ? ' is-selected' : '') + '" data-idx="' + i + '">' + items[i] + '</button>';
-        document.getElementById('ai-help-list').innerHTML = helpHtml;
-        // Update placeholders
-        var tr = pageTranslations[getLang()] || pageTranslations.en;
-        document.querySelectorAll('[data-ph]').forEach(function(el) {
-            var key = el.getAttribute('data-ph');
-            if (tr[key]) el.placeholder = tr[key];
-        });
-    }
-
-    renderAll();
-
-    // Re-render on language change
-    document.addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-lang]');
-        if (btn) setTimeout(renderAll, 50);
-    });
-
-    document.getElementById('category-chips').addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-idx]');
-        if (!btn) return;
-        var idx = parseInt(btn.getAttribute('data-idx'), 10);
-        if (selectedCategories.has(idx)) selectedCategories.delete(idx); else selectedCategories.add(idx);
-        renderChips(document.getElementById('category-chips'), d().categories, selectedCategories, true);
-    });
-
-    document.getElementById('budget-chips').addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-idx]');
-        if (!btn) return;
-        var idx = parseInt(btn.getAttribute('data-idx'), 10);
-        selectedBudget = (selectedBudget === idx) ? null : idx;
-        renderChips(document.getElementById('budget-chips'), d().budgets, selectedBudget, false);
-    });
-
-    document.getElementById('ai-help-list').addEventListener('click', function(e) {
-        var btn = e.target.closest('[data-idx]');
-        if (!btn) return;
-        var idx = parseInt(btn.getAttribute('data-idx'), 10);
-        if (selectedHelps.has(idx)) selectedHelps.delete(idx); else selectedHelps.add(idx);
-        var items = d().helps;
-        var helpHtml = ''; for (var i = 0; i < items.length; i++) helpHtml += '<button type="button" class="ai-help-chip' + (selectedHelps.has(i) ? ' is-selected' : '') + '" data-idx="' + i + '">' + items[i] + '</button>';
-        document.getElementById('ai-help-list').innerHTML = helpHtml;
-    });
-
-    document.getElementById('upload-box').addEventListener('click', function() {
-        document.getElementById('f-file').click();
-    });
-
-    var modal = document.getElementById('ai-modal');
-    document.getElementById('open-ai-modal').addEventListener('click', function() { modal.classList.add('is-open'); });
-    document.getElementById('ai-close').addEventListener('click', function() { modal.classList.remove('is-open'); });
-    document.getElementById('ai-backdrop').addEventListener('click', function() { modal.classList.remove('is-open'); });
-
-    document.getElementById('ai-generate').addEventListener('click', function() {
-        var service = document.getElementById('ai-service').value;
-        var topic = document.getElementById('ai-topic').value;
-        var context = document.getElementById('ai-context').value.trim();
-        var helpItems = [];
-        var items = d().helps;
-        selectedHelps.forEach(function(i) { if (items[i]) helpItems.push(items[i]); });
-        var draft = '=== AI Draft Brief ===\n\nService: ' + service + '\nTopic: ' + topic + '\n';
-        if (context) draft += '\nBusiness Context:\n' + context + '\n';
-        if (helpItems.length) draft += '\nAI Assistance Requested:\n- ' + helpItems.join('\n- ') + '\n';
-        draft += '\n---\nPlease review and adjust this draft before submitting.\n';
-        document.getElementById('ai-output').value = draft;
-    });
-
-    document.getElementById('ai-insert').addEventListener('click', function() {
-        var output = document.getElementById('ai-output').value;
-        if (output) document.getElementById('f-project').value = output;
-        modal.classList.remove('is-open');
-    });
-
-    document.getElementById('ai-copy').addEventListener('click', function() {
-        var output = document.getElementById('ai-output').value;
-        if (output && navigator.clipboard) navigator.clipboard.writeText(output);
-    });
-
-    document.getElementById('submit-btn').addEventListener('click', function() {
-        var btn = this;
-        var lang = getLang();
-        var tr = pageTranslations[lang] || pageTranslations.en;
-
-        // Clear previous errors
-        var fields = [
-            {id: 'f-name',    errId: 'err-name',    msg: lang === 'id' ? 'Nama wajib diisi' : 'Name is required'},
-            {id: 'f-email',   errId: 'err-email',   msg: lang === 'id' ? 'Email wajib diisi' : 'Email is required'},
-            {id: 'f-project', errId: 'err-project', msg: lang === 'id' ? 'Deskripsi proyek wajib diisi' : 'Project description is required'}
-        ];
-        var hasError = false;
-        fields.forEach(function(f) {
-            var input = document.getElementById(f.id);
-            var errEl = document.getElementById(f.errId);
-            var val = input.value.trim();
-            if (!val) {
-                input.classList.add('input-error');
-                errEl.textContent = f.msg;
-                if (!hasError) { input.focus(); hasError = true; }
-            } else {
-                input.classList.remove('input-error');
-                errEl.textContent = '';
-            }
-        });
-        if (hasError) return;
-
-        // Email format check
-        var emailInput = document.getElementById('f-email');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-            emailInput.classList.add('input-error');
-            document.getElementById('err-email').textContent = lang === 'id' ? 'Format email tidak valid' : 'Invalid email format';
-            emailInput.focus();
-            return;
+        const aiBtn = document.getElementById('open-ai-discussion');
+        if (aiBtn) {
+            aiBtn.addEventListener('click', handleAIDiscussion);
         }
 
-        var selectedCats = [];
-        document.querySelectorAll('#category-chips .chip-active').forEach(function(c) {
-            selectedCats.push(c.textContent.trim());
-        });
-        var selectedBudgetEl = document.querySelector('#budget-chips .chip-active');
-        var selectedBudgetVal = selectedBudgetEl ? selectedBudgetEl.textContent.trim() : '';
+        // Custom function for localized form submission
+        window.handleSubmit = function() {
+            const lang = localStorage.getItem('hexavara-lang') || 'en';
+            const msg = lang === 'id'
+                ? 'Permintaan berhasil dikirim. Kami akan segera menghubungi Anda melalui email atau telepon.'
+                : 'Request sent successfully. We will contact you shortly via email or phone.';
+            alert(msg);
+        };
 
-        var formData = new FormData();
-        formData.append('name', document.getElementById('f-name').value.trim());
-        formData.append('email', document.getElementById('f-email').value.trim());
-        formData.append('phone', document.getElementById('f-phone').value.trim());
-        formData.append('company', document.getElementById('f-company').value.trim());
-        formData.append('project_description', document.getElementById('f-project').value.trim());
-        selectedCats.forEach(function(cat) { formData.append('categories[]', cat); });
-        formData.append('budget', selectedBudgetVal);
-        var fileInput = document.getElementById('f-file');
-        if (fileInput.files.length) formData.append('file', fileInput.files[0]);
+        const submitBtn = document.querySelector('.submit-btn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', handleSubmit);
+        }
 
-        btn.disabled = true;
-        btn.textContent = lang === 'id' ? 'Mengirim...' : 'Sending...';
-
-        fetch('{{ route("contact.submit") }}', {
-            method: 'POST',
-            headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, 'Accept': 'application/json' },
-            body: formData
-        })
-        .then(function(r) { return r.json().then(function(d) { return {ok: r.ok, data: d, status: r.status}; }); })
-        .then(function(res) {
-            btn.disabled = false;
-            btn.textContent = tr.submit_btn || 'Send Request!';
-            if (res.ok) {
-                Swal.fire({
-                    icon: 'success',
-                    title: lang === 'id' ? 'Berhasil!' : 'Success!',
-                    text: tr.success_msg || 'Request submitted successfully!',
-                    confirmButtonColor: '#0c5bed',
-                    timer: 2500,
-                    timerProgressBar: true,
-                    showConfirmButton: false
-                });
-                setTimeout(function() { window.location.reload(); }, 2600);
-                // Reset form
-                ['f-name','f-email','f-phone','f-company','f-project'].forEach(function(id) { document.getElementById(id).value = ''; });
-                ['err-name','err-email','err-project'].forEach(function(id) { document.getElementById(id).textContent = ''; });
-                document.querySelectorAll('.input-error').forEach(function(el) { el.classList.remove('input-error'); });
-                fileInput.value = '';
-            } else {
-                // Show server-side validation errors inline if available
-                if (res.data.errors) {
-                    var errMap = {name: 'err-name', email: 'err-email', project_description: 'err-project'};
-                    Object.keys(res.data.errors).forEach(function(key) {
-                        var errId = errMap[key];
-                        var inputEl = document.getElementById('f-' + (key === 'project_description' ? 'project' : key));
-                        if (errId) { document.getElementById(errId).textContent = res.data.errors[key][0]; }
-                        if (inputEl) { inputEl.classList.add('input-error'); }
-                    });
-                }
-                Swal.fire({
-                    icon: 'error',
-                    title: lang === 'id' ? 'Terjadi Kesalahan' : 'Something went wrong',
-                    text: res.data.message || (lang === 'id' ? 'Periksa kembali isian form Anda.' : 'Please check your form and try again.'),
-                    confirmButtonColor: '#dc2626'
-                });
-            }
-        })
-        .catch(function() {
-            btn.disabled = false;
-            btn.textContent = tr.submit_btn || 'Send Request!';
-            Swal.fire({
-                icon: 'error',
-                title: lang === 'id' ? 'Koneksi Gagal' : 'Connection Error',
-                text: lang === 'id' ? 'Periksa koneksi internet Anda dan coba lagi.' : 'Please check your internet connection and try again.',
-                confirmButtonColor: '#dc2626'
+        // Chips Selection Logic
+        const chipGroups = document.querySelectorAll('.form-block .chips');
+        chipGroups.forEach(function (group) {
+          const chips = group.querySelectorAll('.chip');
+          chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+              chips.forEach(function (item) {
+                item.classList.remove('chip-active');
+                item.classList.remove('is-selected');
+                item.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                item.classList.add('bg-white', 'text-slate-600', 'border-slate-300');
+              });
+              chip.classList.add('is-selected', 'bg-blue-600', 'text-white', 'border-blue-600');
+              chip.classList.remove('bg-white', 'text-slate-600');
             });
+          });
         });
-    });
-})();
-</script>
+    </script>
 @endpush
-@endsection

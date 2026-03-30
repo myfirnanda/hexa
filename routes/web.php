@@ -25,6 +25,7 @@ Route::get('/works/{project}', [WorkController::class, 'show'])->name('works.sho
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/submit', [OrderController::class, 'store'])->name('contact.submit');
+Route::get('/products', fn() => view('pages.products.show'))->name('products.show');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

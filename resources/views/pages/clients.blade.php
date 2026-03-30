@@ -1,121 +1,182 @@
-@extends('layouts.app')
-
+@extends('layouts.main')
 @section('title', 'Hexavara - Clients')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('assets/css/clients.css') }}" />
+<style>
+    .active-filter { background-color: #0F172A !important; color: white !important; }
+    .btn-active { background-color: #0F172A !important; color: white !important; border-color: #0F172A !important; }
+    .category-card { display: none; }
+    .category-grid.all-view .category-card { display: block; }
+    .category-grid.single-view .category-card { display: block; padding-top: 2rem; }
+</style>
 @endpush
 
 @section('content')
-<div class="clients-page">
-  <main>
-    <section class="hero-section">
-      <div class="hero-banner"></div>
-      <img class="hero-visual" src="{{ asset('assets/img/hero_clients.png') }}" alt="Hexavara hero illustration" />
-
-      <div class="hero-content">
-        <h1 class="hero-title" data-t="hero_title">Our Clients</h1>
-        <p class="hero-description" data-t="hero_desc">
-          We deliver on our customers' expectations by providing them with
-          powerful ERP solutions that are focused on pricing, inventory
-          optimization, and uptime management.
-        </p>
-      </div>
+    <!-- Hero Section -->
+    <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
+        <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
+        <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0">
+            <div class="lg:absolute lg:left-[58px] lg:top-1/2 lg:-translate-y-1/2 max-w-[763px] pt-12 lg:pt-0">
+                <h1 class="hero-title text-hex-dark" data-i18n="html" data-en="Our <span class='text-hex-blue'>Clients</span>" data-id="Klien <span class='text-hex-blue'>Kami</span>">Our <span class="text-hex-blue">Clients</span></h1>
+                <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[505px]" data-i18n data-en="We deliver on our customers' expectations by providing them with powerful ERP solutions that are focused on pricing, inventory optimization, and uptime management." data-id="Kami memenuhi ekspektasi klien melalui solusi ERP yang andal, berfokus pada penetapan harga, optimasi persediaan, dan kestabilan operasional.">We deliver on our customers' expectations by providing them with powerful ERP solutions that are focused on pricing, inventory optimization, and uptime management.</p>
+            </div>
+            <img src="{{ asset('assets/img/hero_clients.png') }}" alt="" class="hidden lg:block absolute right-[-85px] top-0 h-[583px] object-contain">
+        </div>
     </section>
 
-    <section class="clients-section">
-      <div class="section-head">
-        <div class="section-kicker" data-t="section_kicker">Categorized Companies/Institutions</div>
-        <h2 class="section-title" data-t="section_title">Trusted Across Sectors</h2>
-        <p class="section-description" data-t="section_desc">
-          Hexavara works with universities, public institutions, enterprises,
-          finance, manufacturing, and lifestyle brands across Indonesia.
-        </p>
-      </div>
+    <!-- Clients Section -->
+    <section class="py-24 bg-slate-50" id="clients-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+            <div class="text-blue-600 font-bold text-sm tracking-[0.2em] uppercase mb-4" data-i18n data-en="CATEGORIZED COMPANIES/INSTITUTIONS" data-id="KATEGORI PERUSAHAAN/INSTANSI">CATEGORIZED COMPANIES/INSTITUTIONS</div>
+            <h2 class="section-title text-[42px] font-bold text-slate-900 mb-6" data-i18n data-en="Trusted Across Sectors" data-id="Dipercaya di Berbagai Sektor">Trusted Across Sectors</h2>
+            <p class="section-description text-lg text-slate-600 max-w-2xl mx-auto" data-i18n data-en="Hexavara works with universities, public institutions, enterprises, finance, manufacturing, and lifestyle brands across Indonesia." data-id="Hexavara bekerja sama dengan universitas, instansi publik, perusahaan, keuangan, manufaktur, dan merek gaya hidup di seluruh Indonesia.">
+                Hexavara works with universities, public institutions, enterprises,
+                finance, manufacturing, and lifestyle brands across Indonesia.
+            </p>
+        </div>
 
-      <div class="category-chips" aria-label="Client categories">
-        <button type="button" class="category-chip active" data-filter="all">All</button>
-        @foreach($categories as $key => $label)
-        <button type="button" class="category-chip" data-filter="{{ $key }}">{{ $label }}</button>
-        @endforeach
-      </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Category Chips -->
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex flex-wrap justify-center bg-slate-100 p-1.5 rounded-3xl lg:rounded-full gap-1 shadow-inner max-w-full">
+                    <button type="button" class="category-chip active-filter px-6 py-2.5 rounded-full font-medium transition-all text-sm whitespace-nowrap" data-filter="all" data-i18n data-en="All" data-id="Semua">All</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="education" data-i18n data-en="Education & Academia" data-id="Pendidikan & Akademik">Education & Academia</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="government" data-i18n data-en="Government & Public Sector" data-id="Pemerintah & Sektor Publik">Government & Public Sector</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="soe" data-i18n data-en="SOE & Energy" data-id="BUMN & Energi">SOE & Energy</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="finance" data-i18n data-en="Banking & Finance" data-id="Perbankan & Keuangan">Banking & Finance</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="industrial" data-i18n data-en="Industrial & FMCG" data-id="Industri & FMCG">Industrial & FMCG</button>
+                    <button type="button" class="category-chip px-6 py-2.5 rounded-full text-slate-500 font-medium hover:text-[#0F172A] transition-all text-sm whitespace-nowrap" data-filter="retail" data-i18n data-en="Retail & Lifestyle" data-id="Ritel & Gaya Hidup">Retail & Lifestyle</button>
+                </div>
+            </div>
 
-      <div class="category-grid all-view" id="category-grid">
-        @php
-          $categoryNames = [
-            'education' => 'Education & Academia',
-            'government' => 'Government & Public Sector',
-            'soe' => 'State-Owned Enterprises (SOE) & Energy',
-            'finance' => 'Banking & Finance',
-            'industrial' => 'Industrial, Manufacturing & FMCG',
-            'retail' => 'Retail, Services & Lifestyle',
-          ];
-        @endphp
-        @foreach($categoryNames as $catKey => $catName)
-          @php $catClients = $clients->where('category', $catKey); @endphp
-          @if($catClients->count())
-          <section class="category-card" data-category="{{ $catKey }}">
-            <div class="category-card-header">
-              <h3>{{ $catName }}</h3>
+            <div class="category-grid all-view space-y-16" id="category-grid">
+
+                <section class="category-card scroll-mt-32" data-category="education">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Education & Academia" data-id="Pendidikan & Akademik">Education & Academia</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/univ_indonesia.png') }}" alt="University of Indonesia" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">University of Indonesia</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/unair.png') }}" alt="Airlangga University" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">Airlangga University</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/its.png') }}" alt="ITS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">Sepuluh Nopember Institute of Technology</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/ubaya.png') }}" alt="UBAYA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">University of Surabaya</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/roudlotul_falah.png') }}" alt="Roudlotul Falah" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">ROUDLOTUL FALAH</strong></div></article>
+                  </div>
+                </section>
+
+                <section class="category-card scroll-mt-32" data-category="government">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Government & Public Sector" data-id="Pemerintah & Sektor Publik">Government & Public Sector</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/kominfo.png') }}" alt="KOMINFO" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">KOMINFO</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/bkd_jatim.png') }}" alt="BKD JATIM" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BKD JATIM</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/banjarbaru.png') }}" alt="BANJARBARU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BANJARBARU</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/kota_bengkulu.png') }}" alt="BENGKULU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BENGKULU</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/lamongan.png') }}" alt="LAMONGAN" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">LAMONGAN</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/pamekasan.png') }}" alt="PAMEKASAN" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PAMEKASAN</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/rs_soetomo.png') }}" alt="DR SOETOMO HOSPITAL" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">DR SOETOMO HOSPITAL</strong></div></article>
+                  </div>
+                </section>
+
+                <section class="category-card scroll-mt-32" data-category="soe">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="State-Owned Enterprises (SOE) & Energy" data-id="BUMN & Energi">State-Owned Enterprises (SOE) & Energy</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/telkom.png') }}" alt="TELKOM INDONESIA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">TELKOM INDONESIA</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/wika.png') }}" alt="WIKA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">WIKA (Wijaya Karya)</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/PJB_logo.png') }}" alt="PJB" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PJB (PLN Nusantara Power)</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/berau_coal.png') }}" alt="BERAU COAL" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BERAU COAL</strong></div></article>
+                  </div>
+                </section>
+
+                <section class="category-card scroll-mt-32" data-category="finance">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Banking & Finance" data-id="Perbankan & Keuangan">Banking & Finance</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/sinarmas.png') }}" alt="SINARMAS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">SINARMAS</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/bank_bengkulu.svg') }}" alt="BANK BENGKULU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BANK BENGKULU</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/bmt_muda.png') }}" alt="BMT MUDA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BMT MUDA</strong></div></article>
+                  </div>
+                </section>
+
+                <section class="category-card scroll-mt-32" data-category="industrial">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Industrial, Manufacturing & FMCG" data-id="Industri, Manufaktur & FMCG">Industrial, Manufacturing & FMCG</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/unilever.png') }}" alt="UNILEVER" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">UNILEVER</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/zelltech_logo.png') }}" alt="ZELLTECH" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">ZELLTECH</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/jmf.png') }}" alt="PT JAVA MINING FERTILIZO" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PT JAVA MINING FERTILIZO</strong></div></article>
+                  </div>
+                </section>
+
+                <section class="category-card scroll-mt-32" data-category="retail">
+                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Retail, Services & Lifestyle" data-id="Ritel, Layanan & Gaya Hidup">Retail, Services & Lifestyle</h3>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/dianca_goods.png') }}" alt="DIANCA GOODS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">DIANCA GOODS</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/queen_aisyah.jpg') }}" alt="QUEEN AISYA SALON AND SPA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">QUEEN AISYA SALON & SPA</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/amoeba.png') }}" alt="AMOEBA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">AMOEBA</strong></div></article>
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/kana.png') }}" alt="KANA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">KANA</strong></div></article>
+                  </div>
+                </section>
             </div>
-            <div class="client-list">
-              @foreach($catClients as $client)
-              <article class="client-item">
-                <img src="{{ asset('assets/img/' . $client->logo) }}" alt="{{ $client->name }}" />
-                <div><strong>{{ $client->name }}</strong></div>
-              </article>
-              @endforeach
-            </div>
-          </section>
-          @endif
-        @endforeach
-      </div>
+        </div>
     </section>
-  </main>
-</div>
+
+    <!-- CTA Section -->
+    <section class="pt-0 pb-0 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
+            <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
+                <!-- Left: Talent Image -->
+                <div class="relative order-2 md:order-1 flex justify-start items-end">
+                    <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                </div>
+
+                <!-- Right: Content -->
+                @include('partials.solution')
+            </div>
+        </div>
+    </section>
+@endsection
 
 @push('scripts')
-<script>
-var pageTranslations = {
-    en: {
-        hero_title: 'Our Clients',
-        hero_desc: 'We deliver on our customers\' expectations by providing them with powerful ERP solutions that are focused on pricing, inventory optimization, and uptime management.',
-        section_kicker: 'Categorized Companies/Institutions',
-        section_title: 'Trusted Across Sectors',
-        section_desc: 'Hexavara works with universities, public institutions, enterprises, finance, manufacturing, and lifestyle brands across Indonesia.'
-    },
-    id: {
-        hero_title: 'Klien Kami',
-        hero_desc: 'Kami memenuhi harapan pelanggan dengan menyediakan solusi ERP yang berfokus pada penetapan harga, optimalisasi inventaris, dan manajemen uptime.',
-        section_kicker: 'Perusahaan/Institusi Terkategori',
-        section_title: 'Dipercaya Lintas Sektor',
-        section_desc: 'Hexavara bekerja sama dengan universitas, institusi publik, perusahaan, keuangan, manufaktur, dan brand gaya hidup di seluruh Indonesia.'
-    }
-};
-</script>
-<script>
-(function(){
-  var chips = document.querySelectorAll('.category-chip');
-  var cards = document.querySelectorAll('.category-card');
-  var grid = document.getElementById('category-grid');
+    <script>
+        // Filtering logic
+        const chips = document.querySelectorAll('.category-chip');
+        const cards = document.querySelectorAll('.category-card');
+        const grid = document.getElementById('category-grid');
 
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chips.forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      var filter = chip.getAttribute('data-filter');
-      if(filter === 'all'){
-        grid.classList.add('all-view');
-        cards.forEach(function(card){ card.style.display = ''; });
-      } else {
-        grid.classList.remove('all-view');
-        cards.forEach(function(card){
-          card.style.display = card.getAttribute('data-category') === filter ? '' : 'none';
-        });
-      }
-    });
-  });
-})();
-</script>
+        if (chips && chips.length > 0) {
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const selected = chip.getAttribute('data-filter');
+
+                    chips.forEach(item => {
+                        item.classList.remove('active-filter');
+                        item.classList.add('text-slate-500');
+                    });
+                    chip.classList.remove('text-slate-500');
+                    chip.classList.add('active-filter');
+
+                    cards.forEach(card => {
+                        const matches = selected === 'all' || card.getAttribute('data-category') === selected;
+                        card.style.display = matches ? '' : 'none';
+                    });
+
+                    if (selected === 'all') {
+                        grid?.classList.add('all-view');
+                        grid?.classList.remove('single-view');
+                    } else {
+                        grid?.classList.remove('all-view');
+                        grid?.classList.add('single-view');
+                    }
+                });
+            });
+        }
+    </script>
 @endpush
-@endsection
