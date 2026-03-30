@@ -29,7 +29,7 @@
                 <button class="px-3 py-1 text-[10px] font-black rounded-md lang-en active bg-white shadow-sm" data-lang="en">EN</button>
                 <button class="px-3 py-1 text-[10px] font-black rounded-md lang-id text-gray-500" data-lang="id">ID</button>
             </div>
-            <a href="{{ route('contact') }}" class="px-6 py-2.5 bg-hex-dark text-white rounded-xl text-sm font-bold hover:opacity-90 transition-all whitespace-nowrap shadow-lg" data-i18n data-en="Start a Project?" data-id="Mulai Proyek?">Start a Project?</a>
+            <a href="{{ route('start-project') }}" class="px-6 py-2.5 bg-hex-dark text-white rounded-xl text-sm font-bold hover:opacity-90 transition-all whitespace-nowrap shadow-lg" data-i18n data-en="Start a Project?" data-id="Mulai Proyek?">Start a Project?</a>
         </div>
     </div>
 
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="mt-auto">
-                <a href="{{ route('contact') }}" class="block w-full text-center px-8 py-4 bg-hex-dark text-white rounded-2xl font-bold text-lg" data-i18n data-en="Start a Project?" data-id="Mulai Proyek?">Start a Project?</a>
+                <a href="{{ route('start-project') }}" class="block w-full text-center px-8 py-4 bg-hex-dark text-white rounded-2xl font-bold text-lg" data-i18n data-en="Start a Project?" data-id="Mulai Proyek?">Start a Project?</a>
             </div>
         </div>
     </div>
@@ -118,7 +118,7 @@
             <div class="bg-gray-50 p-6 rounded-2xl flex flex-col justify-center">
                 <p class="text-sm font-bold text-hex-dark mb-2" data-i18n data-en="Need a custom solution?" data-id="Butuh solusi khusus?">Need a custom solution?</p>
                 <p class="text-[12px] text-hex-slate mb-6" data-i18n data-en="Our team of experts is ready to help you build the perfect platform for your business needs." data-id="Tim ahli kami siap membantu Anda membangun platform yang sempurna untuk kebutuhan bisnis Anda.">Our team of experts is ready to help you build the perfect platform for your business needs.</p>
-                <a href="{{ route('contact') }}" class="text-sm font-bold text-hex-blue flex items-center gap-2 hover:gap-3 transition-all" data-i18n="html" data-en="Talk to us <span class='material-symbols-outlined text-sm'>arrow_forward</span>" data-id="Hubungi kami <span class='material-symbols-outlined text-sm'>arrow_forward</span>">Talk to us <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                <a href="{{ route('start-project') }}" class="text-sm font-bold text-hex-blue flex items-center gap-2 hover:gap-3 transition-all" data-i18n="html" data-en="Talk to us <span class='material-symbols-outlined text-sm'>arrow_forward</span>" data-id="Hubungi kami <span class='material-symbols-outlined text-sm'>arrow_forward</span>">Talk to us <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
             </div>
         </div>
     </div>

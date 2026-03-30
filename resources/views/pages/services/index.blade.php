@@ -14,7 +14,7 @@
                 <div class="max-w-[850px]">
                     <h1 class="hero-title text-hex-dark mb-8" data-i18n="html" data-en="Elevating Business Through<br /><span class='text-hex-blue'>High-End Engineering</span>" data-id="Meningkatkan Bisnis Melalui<br /><span class='text-hex-blue'>Engineering Kelas Atas</span>">Elevating Business Through<br /><span class="text-hex-blue">High-End Engineering</span></h1>
                     <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[650px] mx-auto" data-i18n data-en="Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation." data-id="Solusi perangkat lunak profesional yang disesuaikan dengan kebutuhan bisnis Anda. Kami menjembatani visi dan realitas melalui rekayasa teknologi dan inovasi strategis.">Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation.</p>
-                    <a href="cta.html" class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                    <a href="{{ route('start-project') }}" class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                 </div>
             </div>
         </section>
@@ -49,7 +49,7 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <!-- Card 1 -->
-                    <a href="detail_service1.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                    <a href="{{ route('services.software-development') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">code_blocks</span>
                         </div>
@@ -68,7 +68,7 @@
                     </a>
 
                     <!-- Card 2 -->
-                    <a href="detail_services2.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                    <a href="{{ route('services.startup-incubator') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">rocket_launch</span>
                         </div>
@@ -87,7 +87,7 @@
                     </a>
 
                     <!-- Card 3 -->
-                    <a href="detail_service3.html" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
+                    <a href="{{ route('services.managedService') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">support_agent</span>
                         </div>

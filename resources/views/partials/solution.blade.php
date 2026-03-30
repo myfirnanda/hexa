@@ -13,7 +13,7 @@
         Discuss your IT challenges, and our team of experienced experts will provide tailored
         solutions to drive your business growth and success.
     </p>
-    <a href="{{ route('contact') }}"
+    <a href="{{ route('start-project') }}"
         class="inline-flex items-center px-8 py-3 rounded-xl bg-hex-dark text-white font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
         data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">
         Consult Now

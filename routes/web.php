@@ -6,7 +6,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StartProjectController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
@@ -19,12 +19,14 @@ use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialControll
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/{service}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/services/software-development', [ServiceController::class, 'softwareDevelopment'])->name('services.software-development');
+Route::get('/services/startup-incubator', [ServiceController::class, 'startupIncubator'])->name('services.startup-incubator');
+Route::get('/services/managed-service', [ServiceController::class, 'managedService'])->name('services.managedService');
 Route::get('/works', [WorkController::class, 'index'])->name('works.index');
 Route::get('/works/{project}', [WorkController::class, 'show'])->name('works.show');
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::post('/contact/submit', [OrderController::class, 'store'])->name('contact.submit');
+Route::get('/start-project', [StartProjectController::class, 'index'])->name('start-project');
+Route::post('/start-project/submit', [OrderController::class, 'store'])->name('start-project.submit');
 Route::get('/products', fn() => view('pages.products.show'))->name('products.show');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

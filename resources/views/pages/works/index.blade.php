@@ -51,7 +51,7 @@
                     <h1 class="hero-title text-hex-dark" data-i18n="html" data-en="Consult, Design,<br />& <span class='text-hex-blue'>Develop</span>" data-id="Konsultasi, Desain,<br />& <span class='text-hex-blue'>Kembangkan</span>">Consult, Design,<br />& <span class="text-hex-blue">Develop</span></h1>
                     <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[505px] hero-desc" data-i18n data-en="Help businesses realize their digitalization goals. Use Free 60-minute consultation to start your digital journey." data-id="Bantu bisnis wujudkan impian digitalisasi. Gunakan gratis 60 menit konsultasi untuk memulai perjalanan digital Anda.">Help businesses realize their digitalization goals. Use Free 60-minute consultation to start your digital journey.</p>
                     <div class="mt-10 flex gap-4">
-                        <a href="cta.html" class="px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        <a href="{{ route('start-project') }}" class="px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                     </div>
                 </div>
                 <div class="hidden lg:block relative h-full">

@@ -24,7 +24,7 @@
                         Founded in 2013 by ITS students, Hexavara has grown from an academic dream into a powerhouse of
                         digital innovation. Our journey began with a shared passion for technology and a vision to
                         transform the digital landscape.</p>
-                    <a href="cta.html"
+                    <a href="{{ route('start-project') }}"
                         class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                         data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                 </div>
@@ -219,7 +219,7 @@
 
                 <!-- View All Link -->
                 <div>
-                    <a href="clients.html"
+                    <a href="{{ route('clients') }}"
                         class="view-all text-slate-800 font-bold hover:text-blue-600 underline decoration-2 underline-offset-8 transition-colors">View
                         All</a>
                 </div>

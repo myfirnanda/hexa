@@ -13,7 +13,7 @@
                         Hexavara Cost Management System is a comprehensive digital solution that manages the entire cost lifecycle from budgeting and expense tracking to financial analysis and reporting. It provides full visibility into project and operational costs, enabling organizations to maintain control and improve financial efficiency.
                     </p>
                     <div class="mt-10">
-                        <a href="cta.html" class="inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Request Demo" data-id="Minta Demo">Request Demo</a>
+                        <a href="{{ route('start-project') }}" class="inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Request Demo" data-id="Minta Demo">Request Demo</a>
                     </div>
                 </div>
             </div>

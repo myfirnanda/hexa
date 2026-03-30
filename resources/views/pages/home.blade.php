@@ -1,4 +1,4 @@
-﻿@extends('layouts.main')
+@extends('layouts.main')
 
 @section('title', 'Hexavara')
 
@@ -26,7 +26,7 @@
                         data-id="Tingkatkan kapabilitas bisnis untuk berinovasi dan bersaing melalui pemanfaatan data secara tepat.">
                         Enhance your business capabilities to innovate and compete in today’s dynamic market by
                         harnessing the power of data.</p>
-                    <a href="cta.html"
+                    <a href="{{ route('start-project') }}"
                         class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                         data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                 </div>
@@ -72,7 +72,7 @@
 
                 <!-- View All Link -->
                 <div class="mb-12">
-                    <a href="clients.html"
+                    <a href="{{ route('clients') }}"
                         class="view-all text-slate-800 font-bold hover:text-blue-600 underline decoration-2 underline-offset-8 transition-colors"
                         data-i18n data-en="View All" data-id="Lihat Semua">View
                         All</a>
@@ -281,7 +281,7 @@
                         </p>
                     </div>
                     <div class="pb-2">
-                        <a href="service.html"
+                        <a href="{{ route('services.index') }}"
                             class="text-blue-600 font-bold flex items-center gap-2 hover:text-blue-700 transition-colors group">
                             <span data-i18n data-en="View All Services" data-id="Lihat Semua Layanan">View All
                                 Services</span>
@@ -294,7 +294,7 @@
                 <!-- Services Grid -->
                 <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Service 1 -->
-                    <a href="detail_service1.html"
+                    <a href="{{ route('services.software-development') }}"
                         class="group block bg-white border-2 border-slate-100 rounded-[40px] p-10 h-[500px] relative overflow-hidden transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:bg-[#0F172A]">
                         <div class="relative z-10">
                             <h3 class="text-3xl font-bold text-[#121B26] leading-tight group-hover:text-white transition-colors"
@@ -319,7 +319,7 @@
                     </a>
 
                     <!-- Service 2 -->
-                    <a href="detail_services2.html"
+                    <a href="{{ route('services.startup-incubator') }}"
                         class="group block bg-white border-2 border-slate-100 rounded-[40px] p-10 h-[500px] relative overflow-hidden transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:bg-[#0F172A]">
                         <div class="relative z-10">
                             <h3 class="text-3xl font-bold text-[#121B26] leading-tight group-hover:text-white transition-colors"
@@ -344,7 +344,7 @@
                     </a>
 
                     <!-- Service 3 -->
-                    <a href="detail_service3.html"
+                    <a href="{{ route('services.managedService') }}"
                         class="group block bg-white border-2 border-slate-100 rounded-[40px] p-10 h-[500px] relative overflow-hidden transition-all duration-500 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:bg-[#0F172A]">
                         <div class="relative z-10">
                             <h3 class="text-3xl font-bold text-[#121B26] leading-tight group-hover:text-white transition-colors"
@@ -565,7 +565,7 @@
                 </div>
 
                 <div class="mt-12 text-center">
-                    <a href="works.html"
+                    <a href="{{ route('works.index') }}"
                         class="projects-view-more inline-block px-8 py-3 rounded-full border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition-colors"
                         data-i18n data-en="View More" data-id="Lihat Lainnya">View
                         More</a>

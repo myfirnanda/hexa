@@ -12,7 +12,7 @@
                 </div>
                 <h1 class="hero-title text-hex-dark mb-6" data-i18n data-en="POS KANA" data-id="POS KANA">POS KANA</h1>
                 <p class="text-hex-slate text-lg leading-[1.65] max-w-[750px] mx-auto" data-i18n data-en="Kana Cooperative is a company engaged in trade and distribution of Indonesian products to international markets, particularly sugar and edible bird's nests. Kana also develops various innovative products such as BANU mineral water and beverages like Sano and Duel." data-id="Koperasi Kana adalah perusahaan perdagangan dan distribusi produk Indonesia ke pasar internasional, khususnya gula dan sarang burung walet. Kana juga mengembangkan berbagai produk inovatif seperti air mineral BANU dan minuman Sano serta Duel.">Kana Cooperative is a company engaged in trade and distribution of Indonesian products to international markets, particularly sugar and edible bird's nests. Kana also develops various innovative products such as BANU mineral water and beverages like Sano and Duel.</p>
-                <a href="cta.html" class="mt-10 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-white text-[1rem] hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                <a href="{{ route('start-project') }}" class="mt-10 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-white text-[1rem] hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
             </div>
         </div>
     </section>

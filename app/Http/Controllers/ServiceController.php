@@ -15,10 +15,22 @@ class ServiceController extends Controller
         return view('pages.services.index', compact('mainServices', 'additionalServices'));
     }
 
-    public function show(Service $service)
-    {
-        $clients = Client::take(11)->get();
+    // public function show(Service $service)
+    // {
+    //     $clients = Client::take(11)->get();
 
-        return view('pages.services.show', compact('service', 'clients'));
+    //     return view('pages.services.show', compact('service', 'clients'));
+    // }
+
+    public function softwareDevelopment() {
+        return view('pages.services.service-software-development');
+    }
+
+    public function startupIncubator() {
+        return view('pages.services.service-startup-incubator');
+    }
+
+    public function managedService() {
+        return view('pages.services.service-managed-service');
     }
 }
