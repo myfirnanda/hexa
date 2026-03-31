@@ -16,7 +16,7 @@
     <main>
         <!-- Hero Section -->
         <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
-            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png');"></div>
+            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
             <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center pt-16 pb-4 text-center">
                 <div class="max-w-[950px] flex-grow flex flex-col justify-center transform lg:-translate-y-8">
                     <h1 class="hero-title text-hex-dark mb-8" data-i18n data-en="Startup & Incubator" data-id="Startup & Inkubator">Startup & Inkubator</h1>
@@ -161,7 +161,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
                     <!-- Left: Talent Image -->
                     <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="img/talent.png" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
                     </div>
 
                     <!-- Right: Content -->
@@ -180,35 +180,30 @@
 
 @push('scripts')
     <script>
-        // Mega Menu Logic
-        const trigger = document.getElementById('solutions-trigger');
-        const menu = document.getElementById('solutions-mega-menu');
+        $(function () {
+            var $trigger = $('#solutions-trigger');
+            var $menu = $('#solutions-mega-menu');
+            var $langSwitcher = $('#lang-switcher');
+            var $langBtns = $langSwitcher.find('button');
 
-        trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menu.classList.toggle('is-open');
-        });
-
-        document.addEventListener('click', () => {
-            menu.classList.remove('is-open');
-        });
-
-        menu.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Lang Switcher
-        const langSwitcher = document.getElementById('lang-switcher');
-        const langBtns = langSwitcher.querySelectorAll('button');
-
-        langBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                langBtns.forEach(b => {
-                    b.classList.remove('active', 'bg-white', 'shadow-sm');
-                    b.classList.add('text-gray-500');
+            if ($trigger.length && $menu.length) {
+                $trigger.on('click', function (e) {
+                    e.stopPropagation();
+                    $menu.toggleClass('is-open');
                 });
-                btn.classList.add('active', 'bg-white', 'shadow-sm');
-                btn.classList.remove('text-gray-500');
+
+                $(document).on('click', function () {
+                    $menu.removeClass('is-open');
+                });
+
+                $menu.on('click', function (e) {
+                    e.stopPropagation();
+                });
+            }
+
+            $langBtns.on('click', function () {
+                $langBtns.removeClass('active bg-white shadow-sm').addClass('text-gray-500');
+                $(this).addClass('active bg-white shadow-sm').removeClass('text-gray-500');
             });
         });
     </script>

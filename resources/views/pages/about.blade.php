@@ -28,7 +28,7 @@
                         class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                         data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                 </div>
-                <img src="{{ asset('assets/img/hero_graha.png') }}" alt=""
+                <img src="{{ asset('assets/img/hero/hero_graha.png') }}" alt=""
                     class="hidden lg:block absolute right-[-85px] top-0 h-[583px] object-contain">
             </div>
         </section>
@@ -200,21 +200,21 @@
                 <!-- Partner Logos Grid -->
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    <img src="{{ asset('assets/img/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
-                    <img src="{{ asset('assets/img/pjb.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
 
-                    <img src="{{ asset('assets/img/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
-                    <img src="{{ asset('assets/img/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
                 </div>
 
                 <!-- View All Link -->
@@ -333,15 +333,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
                     <!-- Left: Talent Image -->
                     <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
-                            class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="block w-full h-auto object-contain max-h-[500px] align-bottom">
                     </div>
 
                     <!-- Right: Content -->
-                    @include('partials.solution')
+                    <div class="order-1 md:order-2 self-center max-w-2xl">
+                        @include('partials.solution')
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 @endsection

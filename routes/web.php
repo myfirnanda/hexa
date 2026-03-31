@@ -64,9 +64,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/clients', [AdminClientController::class, 'index'])->name('admin.clients.index');
     Route::get('/admin/clients/create', [AdminClientController::class, 'create'])->name('admin.clients.create');
     Route::post('/admin/clients', [AdminClientController::class, 'store'])->name('admin.clients.store');
-    Route::get('/admin/clients/{client}/edit', [AdminClientController::class, 'edit'])->name('admin.clients.edit');
     Route::put('/admin/clients/{client}', [AdminClientController::class, 'update'])->name('admin.clients.update');
     Route::delete('/admin/clients/{client}', [AdminClientController::class, 'destroy'])->name('admin.clients.destroy');
+
+    // CKEditor image upload
+    Route::post('/admin/upload-image', [App\Http\Controllers\Admin\UploadController::class, 'image'])->name('admin.upload.image');
 
     // Testimonials
     Route::get('/admin/testimonials', [AdminTestimonialController::class, 'index'])->name('admin.testimonials.index');

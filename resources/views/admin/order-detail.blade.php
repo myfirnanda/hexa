@@ -465,10 +465,13 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        document.getElementById('status-form').addEventListener('submit', function() {
-            var val = document.getElementById('status-select').value;
-            this.action = '{{ url("/admin/orders/".$order->id."/status") }}/' + val;
+        $(function () {
+            $('#status-form').on('submit', function () {
+                var val = $('#status-select').val();
+                $(this).attr('action', '{{ url("/admin/orders/".$order->id."/status") }}/' + val);
+            });
         });
     </script>
 

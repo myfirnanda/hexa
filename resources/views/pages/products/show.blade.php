@@ -30,20 +30,20 @@
                 <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
                     <!-- Thumbs -->
                     <div class="flex lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 hide-scrollbar w-full lg:w-64 flex-shrink-0">
-                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all active ring-2 ring-hex-blue" data-image="{{ asset('assets/img/project_cost2.png') }}">
-                            <img src="{{ asset('assets/img/project_cost2.png') }}" alt="Preview 1" class="w-full h-24 lg:h-32 object-cover">
+                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all active ring-2 ring-hex-blue" data-image="{{ asset('assets/img/projects/project_cost2.png') }}">
+                            <img src="{{ asset('assets/img/projects/project_cost2.png') }}" alt="Preview 1" class="w-full h-24 lg:h-32 object-cover">
                         </button>
-                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all opacity-60" data-image="{{ asset('assets/img/project_cost.png') }}">
-                            <img src="{{ asset('assets/img/project_cost.png') }}" alt="Preview 2" class="w-full h-24 lg:h-32 object-cover">
+                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all opacity-60" data-image="{{ asset('assets/img/projects/project_cost.png') }}">
+                            <img src="{{ asset('assets/img/projects/project_cost.png') }}" alt="Preview 2" class="w-full h-24 lg:h-32 object-cover">
                         </button>
-                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all opacity-60" data-image="{{ asset('assets/img/project_cost3.png') }}">
-                            <img src="{{ asset('assets/img/project_cost3.png') }}" alt="Preview 3" class="w-full h-24 lg:h-32 object-cover">
+                        <button class="preview-thumb relative rounded-2xl overflow-hidden border-2 border-transparent hover:border-hex-blue transition-all opacity-60" data-image="{{ asset('assets/img/projects/project_cost3.png') }}">
+                            <img src="{{ asset('assets/img/projects/project_cost3.png') }}" alt="Preview 3" class="w-full h-24 lg:h-32 object-cover">
                         </button>
                     </div>
 
                     <!-- Main Image -->
                     <div class="flex-1 bg-hex-surface rounded-[40px] p-4 shadow-2xl border border-slate-100 flex items-center justify-center">
-                        <img id="preview-main-image" src="{{ asset('assets/img/project_cost2.png') }}" alt="Cost System main preview" class="w-full h-auto max-h-[700px] object-contain rounded-3xl transition-opacity duration-300">
+                        <img id="preview-main-image" src="{{ asset('assets/img/projects/project_cost2.png') }}" alt="Cost System main preview" class="w-full h-auto max-h-[700px] object-contain rounded-3xl transition-opacity duration-300">
                     </div>
                 </div>
             </div>
@@ -200,27 +200,23 @@
 
 @push('scripts')
     <script>
-        // Gallery Logic
-        const thumbs = document.querySelectorAll('.preview-thumb');
-        const mainImage = document.getElementById('preview-main-image');
+        $(function () {
+            var $thumbs = $('.preview-thumb');
+            var $mainImage = $('#preview-main-image');
 
-        if (thumbs.length > 0 && mainImage) {
-            thumbs.forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    thumbs.forEach(t => {
-                        t.classList.remove('active', 'ring-2', 'ring-hex-blue', 'opacity-100');
-                        t.classList.add('opacity-60');
-                    });
-                    thumb.classList.add('active', 'ring-2', 'ring-hex-blue', 'opacity-100');
-                    thumb.classList.remove('opacity-60');
+            if ($thumbs.length && $mainImage.length) {
+                $thumbs.on('click', function () {
+                    var $thumb = $(this);
 
-                    mainImage.style.opacity = '0';
-                    setTimeout(() => {
-                        mainImage.src = thumb.getAttribute('data-image');
-                        mainImage.style.opacity = '1';
+                    $thumbs.removeClass('active ring-2 ring-hex-blue opacity-100').addClass('opacity-60');
+                    $thumb.addClass('active ring-2 ring-hex-blue opacity-100').removeClass('opacity-60');
+
+                    $mainImage.css('opacity', '0');
+                    setTimeout(function () {
+                        $mainImage.attr('src', $thumb.data('image')).css('opacity', '1');
                     }, 200);
                 });
-            });
-        }
+            }
+        });
     </script>
 @endpush

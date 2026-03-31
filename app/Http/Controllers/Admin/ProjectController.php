@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\ProjectImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -18,7 +18,7 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('admin.projects.form');
+        return view('admin.projects.create');
     }
 
     public function store(Request $request)
@@ -31,6 +31,7 @@ class ProjectController extends Controller
             'summary_title' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'content' => 'nullable|string',
+            'gallery_images.*' => 'nullable|image|max:2048',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
@@ -43,19 +44,32 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = Str::slug($validated['name']) . '-' . time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img'), $filename);
+            $file->move(public_path('assets/img/projects'), $filename);
             $validated['image'] = $filename;
         }
 
-        unset($validated['image_file']);
-        Project::create($validated);
+        unset($validated['gallery_images']);
+        $project = Project::create($validated);
+
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $index => $file) {
+                $filename = Str::slug($validated['name']) . '-gallery-' . time() . '-' . $index . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('assets/img/projects'), $filename);
+                ProjectImage::create([
+                    'project_id' => $project->id,
+                    'image' => $filename,
+                    'sort_order' => $index,
+                ]);
+            }
+        }
 
         return redirect()->route('admin.projects.index')->with('success', 'Project berhasil ditambahkan.');
     }
 
     public function edit(Project $project)
     {
-        return view('admin.projects.form', compact('project'));
+        $project->load('projectImages');
+        return view('admin.projects.edit', compact('project'));
     }
 
     public function update(Request $request, Project $project)
@@ -68,6 +82,9 @@ class ProjectController extends Controller
             'summary_title' => 'nullable|string|max:255',
             'image' => 'nullable|image|max:2048',
             'content' => 'nullable|string',
+            'gallery_images.*' => 'nullable|image|max:2048',
+            'delete_images' => 'nullable|array',
+            'delete_images.*' => 'nullable|integer',
         ]);
 
         if ($validated['name'] !== $project->name) {
@@ -82,17 +99,53 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = Str::slug($validated['name']) . '-' . time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img'), $filename);
+            $file->move(public_path('assets/img/projects'), $filename);
             $validated['image'] = $filename;
         }
 
+        // Delete marked gallery images
+        if (!empty($validated['delete_images'])) {
+            $toDelete = ProjectImage::where('project_id', $project->id)
+                ->whereIn('id', $validated['delete_images'])
+                ->get();
+            foreach ($toDelete as $img) {
+                $path = public_path('assets/img/projects/' . $img->image);
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+                $img->delete();
+            }
+        }
+
+        unset($validated['gallery_images'], $validated['delete_images']);
         $project->update($validated);
+
+        // Upload new gallery images
+        if ($request->hasFile('gallery_images')) {
+            $lastOrder = $project->projectImages()->max('sort_order') ?? -1;
+            foreach ($request->file('gallery_images') as $index => $file) {
+                $filename = Str::slug($project->name) . '-gallery-' . time() . '-' . $index . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('assets/img/projects'), $filename);
+                ProjectImage::create([
+                    'project_id' => $project->id,
+                    'image' => $filename,
+                    'sort_order' => $lastOrder + 1 + $index,
+                ]);
+            }
+        }
 
         return redirect()->route('admin.projects.index')->with('success', 'Project berhasil diperbarui.');
     }
 
     public function destroy(Project $project)
     {
+        // Delete gallery image files
+        foreach ($project->projectImages as $img) {
+            $path = public_path('assets/img/projects/' . $img->image);
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $project->delete();
         return redirect()->route('admin.projects.index')->with('success', 'Project berhasil dihapus.');
     }

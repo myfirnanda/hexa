@@ -17,7 +17,7 @@ class ClientController extends Controller
 
     public function create()
     {
-        return view('admin.clients.form');
+        return view('admin.clients.create');
     }
 
     public function store(Request $request)
@@ -31,18 +31,13 @@ class ClientController extends Controller
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img'), $filename);
+            $file->move(public_path('assets/img/clients'), $filename);
             $validated['logo'] = $filename;
         }
 
         Client::create($validated);
 
         return redirect()->route('admin.clients.index')->with('success', 'Client berhasil ditambahkan.');
-    }
-
-    public function edit(Client $client)
-    {
-        return view('admin.clients.form', compact('client'));
     }
 
     public function update(Request $request, Client $client)
@@ -56,7 +51,7 @@ class ClientController extends Controller
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img'), $filename);
+            $file->move(public_path('assets/img/clients'), $filename);
             $validated['logo'] = $filename;
         }
 

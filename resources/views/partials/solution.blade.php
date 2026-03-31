@@ -1,5 +1,5 @@
 ﻿<!-- Right: Content -->
-<div class="order-1 md:order-2 pb-20 md:-mt-8">
+<div>
     <h2 class="text-3xl md:text-[42px] font-bold text-[#121B26] mb-6 leading-tight"
         data-i18n="html"
         data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span> - Consult with Us Today!"

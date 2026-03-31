@@ -148,52 +148,62 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        // Theme toggle
-        function toggleTheme() {
-            var html = document.documentElement;
-            var isLight = html.classList.toggle('light');
+        window.toggleTheme = function () {
+            var $html = $(document.documentElement);
+            var isLight = $html.toggleClass('light').hasClass('light');
             localStorage.setItem('admin-theme', isLight ? 'light' : 'dark');
-            updateThemeIcon();
-        }
-        function updateThemeIcon() {
-            var icon = document.getElementById('themeIcon');
-            if (icon) icon.textContent = document.documentElement.classList.contains('light') ? 'light_mode' : 'dark_mode';
-        }
-        updateThemeIcon();
+            window.updateThemeIcon();
+        };
 
-        // Sidebar toggle
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('open');
-        }
-
-        // User dropdown
-        function toggleUserDropdown() {
-            var trigger = document.getElementById('userTrigger');
-            var dropdown = document.getElementById('userDropdown');
-            trigger.classList.toggle('open');
-            dropdown.classList.toggle('hidden');
-        }
-        document.addEventListener('click', function(e) {
-            var trigger = document.getElementById('userTrigger');
-            var dropdown = document.getElementById('userDropdown');
-            if (!trigger.contains(e.target) && !dropdown.contains(e.target)) {
-                trigger.classList.remove('open');
-                dropdown.classList.add('hidden');
+        window.updateThemeIcon = function () {
+            var $icon = $('#themeIcon');
+            if ($icon.length) {
+                $icon.text($(document.documentElement).hasClass('light') ? 'light_mode' : 'dark_mode');
             }
-        });
+        };
 
-        // Delete modal
-        function confirmDelete(url) {
-            document.getElementById('deleteForm').action = url;
-            document.getElementById('deleteModal').classList.add('show');
-        }
-        function closeDeleteModal() {
-            document.getElementById('deleteModal').classList.remove('show');
-        }
-        document.getElementById('deleteModal').addEventListener('click', function(e) {
-            if (e.target === this) closeDeleteModal();
+        window.toggleSidebar = function () {
+            $('#sidebar, #sidebarOverlay').toggleClass('open');
+        };
+
+        window.toggleUserDropdown = function () {
+            $('#userTrigger').toggleClass('open');
+            $('#userDropdown').toggleClass('hidden');
+        };
+
+        window.confirmDelete = function (url) {
+            $('#deleteForm').attr('action', url);
+            $('#deleteModal').addClass('show');
+        };
+
+        window.closeDeleteModal = function () {
+            $('#deleteModal').removeClass('show');
+        };
+
+        $(function () {
+            window.updateThemeIcon();
+
+            $(document).on('click', function (e) {
+                var $trigger = $('#userTrigger');
+                var $dropdown = $('#userDropdown');
+
+                if (!$trigger.length || !$dropdown.length) {
+                    return;
+                }
+
+                if (!$trigger.is(e.target) && $trigger.has(e.target).length === 0 && !$dropdown.is(e.target) && $dropdown.has(e.target).length === 0) {
+                    $trigger.removeClass('open');
+                    $dropdown.addClass('hidden');
+                }
+            });
+
+            $('#deleteModal').on('click', function (e) {
+                if (e.target === this) {
+                    window.closeDeleteModal();
+                }
+            });
         });
     </script>
     @yield('scripts')

@@ -36,7 +36,7 @@
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">{{ $project->id }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         @if($project->image)
-                        <img src="{{ asset('assets/img/' . $project->image) }}" class="size-10 rounded-lg object-cover admin-deep-bg border" alt="{{ $project->name }}">
+                        <img src="{{ asset('assets/img/projects/' . $project->image) }}" class="size-10 rounded-lg object-cover admin-deep-bg border" alt="{{ $project->name }}">
                         @else
                         <div class="size-10 rounded-lg flex items-center justify-center admin-text-muted admin-deep-bg border">
                             <span class="material-symbols-outlined text-[18px]">image</span>

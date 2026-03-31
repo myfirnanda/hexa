@@ -30,8 +30,8 @@
                         class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                         data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
                 </div>
-                <img src="{{ asset('assets/img/hero_homepage1.png') }}" alt=""
-                    class="hidden lg:block absolute right-[-85px] top-0 h-[583px] object-contain">
+                <img src="" alt="Hero Image"
+                    class="hidden lg:block absolute right-[-85px] top-0 h-[583px] object-contain" id="randomImage">
             </div>
         </section>
 
@@ -53,21 +53,21 @@
                 <!-- Partner Logos Grid - Responsive Layout -->
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    <img src="{{ asset('assets/img/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
-                    <img src="{{ asset('assets/img/pjb.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
 
-                    <img src="{{ asset('assets/img/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
-                    <img src="{{ asset('assets/img/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
+                    <img src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
+                    <img src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
                 </div>
 
                 <!-- View All Link -->
@@ -79,20 +79,20 @@
                 </div>
 
                 <!-- Stats Detailed -->
-                <div
+                <div id="stats-section"
                     class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center pt-16 border-t border-slate-100 divide-y md:divide-y-0 md:divide-x divide-slate-100">
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">77+</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="77" data-suffix="+">0+</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n
                             data-en="Happy Clients" data-id="Klien Puas">Happy Clients</div>
                     </div>
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">116+</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="116" data-suffix="+">0+</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n
                             data-en="Projects Delivered" data-id="Proyek Diselesaikan">Projects Delivered</div>
                     </div>
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">86%</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="86" data-suffix="%">0%</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n
                             data-en="Client Retention" data-id="Retensi Klien">Client Retention</div>
                     </div>
@@ -135,7 +135,7 @@
                             <div
                                 class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                             </div>
-                            <img src="{{ asset('assets/img/project_cost.png') }}" class="w-full h-48 object-cover border-b border-white/10"
+                            <img src="{{ asset('assets/img/projects/project_cost.png') }}" class="w-full h-48 object-cover border-b border-white/10"
                                 alt="Hexavara Cost System">
                             <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
                                 <span
@@ -235,7 +235,7 @@
                             <div
                                 class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                             </div>
-                            <img src="{{ asset('assets/img/proyek_all_wika.png') }}"
+                            <img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}"
                                 class="w-full h-48 object-cover border-b border-white/10" alt="Cloud Infrastructure">
                             <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
                                 <span
@@ -443,7 +443,7 @@
                         class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
                         data-filter="all it-consultant">
                         <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/proyek_all_kana.jpg') }}"
+                            <img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 alt="KOPERASI KANA">
                         </div>
@@ -470,7 +470,7 @@
                         class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
                         data-filter="all software-development">
                         <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/proyek_all_wika.png') }}"
+                            <img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 alt="QPS WIKA GEDUNG">
                         </div>
@@ -496,7 +496,7 @@
                         class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
                         data-filter="all software-development">
                         <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/proyek_all_unilever.png') }}"
+                            <img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 alt="SISTEM WAREHOUSE">
                         </div>
@@ -520,7 +520,7 @@
                         class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
                         data-filter="digital-branding" style="display:none;">
                         <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/proyek_digital_ubaya.png') }}"
+                            <img src="{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 alt="Promo Video UBAYA">
                         </div>
@@ -668,8 +668,6 @@
             </div>
         </section>
 
-
-
         <!-- Clients Section -->
         <section class="py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -780,80 +778,140 @@
                 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
                     <!-- Left: Talent Image -->
                     <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
-                            class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="block w-full h-auto object-contain max-h-[500px] align-bottom">
                     </div>
 
-                    @include('partials.solution')
+                    <!-- Right: Content -->
+                    <div class="order-1 md:order-2 self-center max-w-2xl">
+                        @include('partials.solution')
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 @endsection
 
 @push('scripts')
     <script>
-        // Filters Logic
-        const filterBtns = document.querySelectorAll('.btn-filter');
-        const projectCards = document.querySelectorAll('.project-card');
+        $(function () {
+            var $filterBtns = $('.btn-filter');
+            var $projectCards = $('.project-card');
+            var $nextBtn = $('#products-next');
+            var $prevBtn = $('#products-prev');
+            var $slider = $('#product-slider');
+            var currentIdx = 0;
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
+            $filterBtns.on('click', function () {
+                var filter = $(this).data('filter');
 
-                filterBtns.forEach(b => {
-                    b.classList.remove('active-filter', 'text-white');
-                    b.classList.add('text-slate-500');
+                $filterBtns.removeClass('active-filter text-white').addClass('text-slate-500');
+                $(this).addClass('active-filter text-white').removeClass('text-slate-500');
+
+                $projectCards.each(function () {
+                    var cardFilters = (String($(this).data('filter')) || '').split(' ');
+                    $(this).css('display', $.inArray(filter, cardFilters) !== -1 ? 'block' : 'none');
                 });
-                btn.classList.add('active-filter', 'text-white');
-                btn.classList.remove('text-slate-500');
+            });
 
-                projectCards.forEach(card => {
-                    const cardFilters = card.getAttribute('data-filter').split(' ');
-                    if (cardFilters.includes(filter)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
+            if ($nextBtn.length && $prevBtn.length && $slider.length) {
+                function updateSlider() {
+                    var $firstCard = $slider.children().first();
+                    if (!$firstCard.length) {
+                        return;
+                    }
+
+                    var cardWidth = $firstCard.outerWidth() + 24;
+                    $slider.css('transform', 'translateX(-' + (currentIdx * cardWidth) + 'px)');
+                }
+
+                $nextBtn.on('click', function (e) {
+                    e.preventDefault();
+                    var totalCards = $slider.children().length;
+                    var visibleCards = $(window).width() >= 768 ? 2 : 1;
+
+                    if (currentIdx < totalCards - visibleCards) {
+                        currentIdx++;
+                        updateSlider();
                     }
                 });
-            });
+
+                $prevBtn.on('click', function (e) {
+                    e.preventDefault();
+                    if (currentIdx > 0) {
+                        currentIdx--;
+                        updateSlider();
+                    }
+                });
+
+                $(window).on('resize', updateSlider);
+                setTimeout(updateSlider, 500);
+            }
+
+            // --- Stats Count-Up Animation ---
+            (function () {
+                var hasRun = false;
+                var DURATION = 3000;
+
+                function easeOutQuart(t) {
+                    return 1 - Math.pow(1 - t, 4);
+                }
+
+                function runCountUp() {
+                    if (hasRun) return;
+                    hasRun = true;
+
+                    $('.stat-number').each(function () {
+                        var $el = $(this);
+                        var target = parseInt($el.data('target'), 10);
+                        var suffix = $el.data('suffix') || '';
+                        var startTime = null;
+
+                        function step(timestamp) {
+                            if (!startTime) startTime = timestamp;
+                            var elapsed = timestamp - startTime;
+                            var progress = Math.min(elapsed / DURATION, 1);
+                            var current = Math.floor(easeOutQuart(progress) * target);
+                            $el.text(current + suffix);
+                            if (progress < 1) {
+                                requestAnimationFrame(step);
+                            } else {
+                                $el.text(target + suffix);
+                            }
+                        }
+
+                        requestAnimationFrame(step);
+                    });
+                }
+
+                var statsEl = document.getElementById('stats-section');
+                if (statsEl && 'IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                runCountUp();
+                                observer.disconnect();
+                            }
+                        });
+                    }, { threshold: 0.3 });
+                    observer.observe(statsEl);
+                } else {
+                    // Fallback: langsung jalankan tanpa animasi
+                    $('.stat-number').each(function () {
+                        var $el = $(this);
+                        $el.text($el.data('target') + ($el.data('suffix') || ''));
+                    });
+                }
+            })();
+            // --- End Stats Count-Up ---
+
+            let images = [
+                "{{ asset('assets/img/hero/hero_homepage1.png') }}",
+                "{{ asset('assets/img/hero/hero_homepage2.png') }}",
+                "{{ asset('assets/img/hero/hero_homepage3.png') }}",
+            ];
+
+            let random = Math.floor(Math.random() * images.length);
+            $("#randomImage").attr("src", images[random]);
         });
-
-        // Carousel logic (Transform transition)
-        const nextBtn = document.getElementById('products-next');
-        const prevBtn = document.getElementById('products-prev');
-        const slider = document.getElementById('product-slider');
-        let currentIdx = 0;
-
-        if (nextBtn && prevBtn && slider) {
-            const updateSlider = () => {
-                if (!slider.firstElementChild) return;
-                const cardWidth = slider.firstElementChild.offsetWidth + 24; // gap is 24px (gap-6)
-                slider.style.transform = `translateX(-${currentIdx * cardWidth}px)`;
-            };
-
-            nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const totalCards = slider.children.length;
-                const visibleCards = window.innerWidth >= 768 ? 2 : 1;
-                if (currentIdx < totalCards - visibleCards) {
-                    currentIdx++;
-                    updateSlider();
-                }
-            });
-
-            prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentIdx > 0) {
-                    currentIdx--;
-                    updateSlider();
-                }
-            });
-
-            window.addEventListener('resize', updateSlider);
-            // Initial calculation
-            setTimeout(updateSlider, 500);
-        }
     </script>
 @endpush

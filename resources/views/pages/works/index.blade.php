@@ -58,34 +58,34 @@
                     <div class="hero-perspective-wrap absolute right-[-480px] bottom-[-100px]">
                         <div class="hero-perspective-grid">
                             <div><img src="{{ asset('assets/img/POS_KANA1.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_telkom.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_wika.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_industri.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_ppdb.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_kana.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_bmt.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_calcius.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_zelltech.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_unilever.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_softdev_silly.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_softdev_banjarbaru.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_pamekasan.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_digital_ubaya.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_digital_aisia.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_digital_jmf.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_telkom.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_industri.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_ppdb.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_calcius.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_zelltech.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_silly.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_pamekasan.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_digital_aisya.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_digital_jmf.png') }}" alt=""></div>
                             <!-- Added 3 more rows (12 items) -->
                             <div><img src="{{ asset('assets/img/POS_KANA1.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_telkom.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_wika.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_industri.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_ppdb.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_kana.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_bmt.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_calcius.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_zelltech.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_all_unilever.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_softdev_silly.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/proyek_softdev_banjarbaru.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_telkom.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_industri.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_ppdb.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_calcius.jpg') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_zelltech.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_silly.png') }}" alt=""></div>
+                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}" alt=""></div>
                         </div>
                     </div>
                 </div>
@@ -131,10 +131,15 @@
         <section class="pt-0 pb-0 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
                 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
+                    <!-- Left: Talent Image -->
                     <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="block w-full h-auto object-contain max-h-[500px] align-bottom">
                     </div>
-                    @include('partials.solution')
+
+                    <!-- Right: Content -->
+                    <div class="order-1 md:order-2 self-center max-w-2xl">
+                        @include('partials.solution')
+                    </div>
                 </div>
             </div>
         </section>
@@ -150,21 +155,21 @@
         // Project Data
         const projects = [
             { id: 1, category: 'software-development', title: 'Sistem POS Kana', img: '{{ asset('assets/img/POS_KANA1.png') }}', desc_en: 'A web-based business management platform integrating procurement, sales, warehouse, and more.', desc_id: 'Platform manajemen bisnis berbasis web yang mengintegrasikan pengadaan, penjualan, gudang, dan lainnya.' },
-            { id: 2, category: 'software-development', title: 'INDIPRO TELKOM', img: '{{ asset('assets/img/proyek_all_telkom.png') }}', desc_en: 'Online booking experience for home internet installation with GIS features.', desc_id: 'Pengalaman pemesanan online pemasangan internet rumah dengan fitur GIS.' },
-            { id: 3, category: 'software-development', title: 'E-SALES ZELLTECH', img: '{{ asset('assets/img/proyek_all_zelltech.png') }}', desc_en: 'Sales tracking and project monitoring for PT Celcius Indo Perkasa.', desc_id: 'Pelacakan penjualan dan pemantauan proyek untuk PT Celcius Indo Perkasa.' },
-            { id: 4, category: 'software-development', title: 'SISTEM WAREHOUSE', img: '{{ asset('assets/img/proyek_all_unilever.png') }}', desc_en: 'Inventory tracking for MJA Company, a trusted Unilever distributor.', desc_id: 'Pelacakan inventaris untuk MJA Company, distributor Unilever terpercaya.' },
-            { id: 5, category: 'software-development', title: 'QPS WIKA GEDUNG', img: '{{ asset('assets/img/proyek_all_wika.png') }}', desc_en: 'Innovative application for property assessments and residential surveys.', desc_id: 'Aplikasi inovatif untuk penilaian properti dan survei hunian.' },
-            { id: 6, category: 'software-development', title: 'SILY SMART CITY', img: '{{ asset('assets/img/proyek_softdev_silly.png') }}', desc_en: 'Smart City portal for Lamongan District with 360 photos and reports.', desc_id: 'Portal Smart City Kabupaten Lamongan dengan foto 360 dan pelaporan.' },
-            { id: 7, category: 'software-development', title: 'SIPINTAR PUPR', img: '{{ asset('assets/img/proyek_softdev_banjarbaru.png') }}', desc_en: 'Spatial planning information system for Banjarbaru City PUPR.', desc_id: 'Sistem informasi tata ruang untuk Dinas PUPR Kota Banjarbaru.' },
-            { id: 8, category: 'software-development', title: 'TOWER MONITORING', img: '{{ asset('assets/img/proyek_all_pamekasan.png') }}', desc_en: 'Supervision system for telecommunication towers in Pamekasan.', desc_id: 'Sistem pengawasan menara telekomunikasi di Kabupaten Pamekasan.' },
-            { id: 9, category: 'digital-branding', title: 'UBAYA Promo Video', img: '{{ asset('assets/img/proyek_digital_ubaya.png') }}', desc_en: 'Promotional video for Manufacturing Engineering program at UBAYA.', desc_id: 'Video promosi program Teknik Manufaktur di UBAYA.' },
-            { id: 10, category: 'digital-branding', title: 'Queen Aisya SPA', img: '{{ asset('assets/img/proyek_digital_aisya.png') }}', desc_en: 'Rebranding digital marketing for Queen Aisya Salon and SPA.', desc_id: 'Rebranding pemasaran digital untuk Salon dan SPA Queen Aisya.' },
-            { id: 11, category: 'digital-branding', title: 'PT JMF Profile', img: '{{ asset('assets/img/proyek_digital_jmf.png') }}', desc_en: 'Aerial company profile video showcasing industrial expertise.', desc_id: 'Video company profile aerial yang menampilkan keahlian industri.' },
-            { id: 12, category: 'startup-incubator', title: 'MEDIFY HMS', img: '{{ asset('assets/img/proyek_startup_kontraktor.jpg') }}', desc_en: 'Hospital management system startup incubation and mentoring.', desc_id: 'Inkubasi dan pendampingan startup sistem manajemen rumah sakit.' },
-            { id: 13, category: 'startup-incubator', title: 'RUANGTEMU', img: '{{ asset('assets/img/proyek_all_industri.jpg') }}', desc_en: 'Community event management and digital news platform.', desc_id: 'Manajemen acara komunitas dan platform berita digital.' },
-            { id: 14, category: 'it-consultant', title: 'KOPERASI KANA', img: '{{ asset('assets/img/proyek_all_kana.jpg') }}', desc_en: 'Strategic analysis and development planning for Koperasi Kana.', desc_id: 'Analisis strategis dan perencanaan pengembangan untuk Koperasi Kana.' },
-            { id: 15, category: 'it-consultant', title: 'BMT MUDA', img: '{{ asset('assets/img/proyek_all_bmt.jpg') }}', desc_en: 'IT optimization and system planning for BMT MUDA Cooperative.', desc_id: 'Optimalisasi TI dan perencanaan sistem untuk Koperasi BMT MUDA.' },
-            { id: 16, category: 'it-consultant', title: 'Berau Coal Job Center', img: '{{ asset('assets/img/proyek_all_beraucoal.jpg') }}', desc_en: 'POC and system planning for job center management.', desc_id: 'POC dan perencanaan sistem untuk manajemen job center.' }
+            { id: 2, category: 'software-development', title: 'INDIPRO TELKOM', img: '{{ asset('assets/img/projects/proyek_all_telkom.png') }}', desc_en: 'Online booking experience for home internet installation with GIS features.', desc_id: 'Pengalaman pemesanan online pemasangan internet rumah dengan fitur GIS.' },
+            { id: 3, category: 'software-development', title: 'E-SALES ZELLTECH', img: '{{ asset('assets/img/projects/proyek_all_zelltech.png') }}', desc_en: 'Sales tracking and project monitoring for PT Celcius Indo Perkasa.', desc_id: 'Pelacakan penjualan dan pemantauan proyek untuk PT Celcius Indo Perkasa.' },
+            { id: 4, category: 'software-development', title: 'SISTEM WAREHOUSE', img: '{{ asset('assets/img/projects/proyek_all_unilever.png') }}', desc_en: 'Inventory tracking for MJA Company, a trusted Unilever distributor.', desc_id: 'Pelacakan inventaris untuk MJA Company, distributor Unilever terpercaya.' },
+            { id: 5, category: 'software-development', title: 'QPS WIKA GEDUNG', img: '{{ asset('assets/img/projects/proyek_all_wika.png') }}', desc_en: 'Innovative application for property assessments and residential surveys.', desc_id: 'Aplikasi inovatif untuk penilaian properti dan survei hunian.' },
+            { id: 6, category: 'software-development', title: 'SILY SMART CITY', img: '{{ asset('assets/img/projects/proyek_softdev_silly.png') }}', desc_en: 'Smart City portal for Lamongan District with 360 photos and reports.', desc_id: 'Portal Smart City Kabupaten Lamongan dengan foto 360 dan pelaporan.' },
+            { id: 7, category: 'software-development', title: 'SIPINTAR PUPR', img: '{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}', desc_en: 'Spatial planning information system for Banjarbaru City PUPR.', desc_id: 'Sistem informasi tata ruang untuk Dinas PUPR Kota Banjarbaru.' },
+            { id: 8, category: 'software-development', title: 'TOWER MONITORING', img: '{{ asset('assets/img/projects/proyek_all_pamekasan.png') }}', desc_en: 'Supervision system for telecommunication towers in Pamekasan.', desc_id: 'Sistem pengawasan menara telekomunikasi di Kabupaten Pamekasan.' },
+            { id: 9, category: 'digital-branding', title: 'UBAYA Promo Video', img: '{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}', desc_en: 'Promotional video for Manufacturing Engineering program at UBAYA.', desc_id: 'Video promosi program Teknik Manufaktur di UBAYA.' },
+            { id: 10, category: 'digital-branding', title: 'Queen Aisya SPA', img: '{{ asset('assets/img/projects/proyek_digital_aisya.png') }}', desc_en: 'Rebranding digital marketing for Queen Aisya Salon and SPA.', desc_id: 'Rebranding pemasaran digital untuk Salon dan SPA Queen Aisya.' },
+            { id: 11, category: 'digital-branding', title: 'PT JMF Profile', img: '{{ asset('assets/img/projects/proyek_digital_jmf.png') }}', desc_en: 'Aerial company profile video showcasing industrial expertise.', desc_id: 'Video company profile aerial yang menampilkan keahlian industri.' },
+            { id: 12, category: 'startup-incubator', title: 'MEDIFY HMS', img: '{{ asset('assets/img/projects/proyek_startup_kontraktor.jpg') }}', desc_en: 'Hospital management system startup incubation and mentoring.', desc_id: 'Inkubasi dan pendampingan startup sistem manajemen rumah sakit.' },
+            { id: 13, category: 'startup-incubator', title: 'RUANGTEMU', img: '{{ asset('assets/img/projects/proyek_all_industri.jpg') }}', desc_en: 'Community event management and digital news platform.', desc_id: 'Manajemen acara komunitas dan platform berita digital.' },
+            { id: 14, category: 'it-consultant', title: 'KOPERASI KANA', img: '{{ asset('assets/img/projects/proyek_all_kana.jpg') }}', desc_en: 'Strategic analysis and development planning for Koperasi Kana.', desc_id: 'Analisis strategis dan perencanaan pengembangan untuk Koperasi Kana.' },
+            { id: 15, category: 'it-consultant', title: 'BMT MUDA', img: '{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}', desc_en: 'IT optimization and system planning for BMT MUDA Cooperative.', desc_id: 'Optimalisasi TI dan perencanaan sistem untuk Koperasi BMT MUDA.' },
+            { id: 16, category: 'it-consultant', title: 'Berau Coal Job Center', img: '{{ asset('assets/img/projects/proyek_all_beraucoal.jpg') }}', desc_en: 'POC and system planning for job center management.', desc_id: 'POC dan perencanaan sistem untuk manajemen job center.' }
         ];
 
         function getCategoryConfig(cat) {
@@ -178,9 +183,9 @@
         }
 
         function renderCards() {
-            const grid = document.getElementById('wc-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
+            var $grid = $('#wc-grid');
+            if (!$grid.length) return;
+            $grid.empty();
 
             const currentLang = window.hexLanguage ? window.hexLanguage.get() : 'en';
             const readMoreText = currentLang === 'id' ? 'Selengkapnya' : 'Read More';
@@ -194,10 +199,8 @@
 
             paged.forEach(p => {
                 const config = getCategoryConfig(p.category);
-                const card = document.createElement('a');
-                card.href = 'detail_project.html';
-                card.className = 'group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col';
-                card.innerHTML = `
+                const cardHtml = `
+                    <a href="detail_project.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col">
                     <div class="h-56 overflow-hidden relative">
                         <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
@@ -213,54 +216,58 @@
                             ${readMoreText} <span class="material-symbols-outlined text-sm translate-y-px">arrow_forward</span>
                         </div>
                     </div>
+                    </a>
                 `;
-                grid.appendChild(card);
+                $grid.append(cardHtml);
             });
 
-            const pagination = document.getElementById('wc-pagination');
-            if (pagination) {
-                pagination.style.display = totalPages > 1 ? 'flex' : 'none';
+            const $pagination = $('#wc-pagination');
+            if ($pagination.length) {
+                $pagination.css('display', totalPages > 1 ? 'flex' : 'none');
                 if(totalPages > 1) {
                     renderPagination(totalPages);
-                    document.getElementById('wc-pg-prev').disabled = currentPage === 1;
-                    document.getElementById('wc-pg-next').disabled = currentPage === totalPages;
+                    $('#wc-pg-prev').prop('disabled', currentPage === 1);
+                    $('#wc-pg-next').prop('disabled', currentPage === totalPages);
                 }
             }
         }
 
         function renderPagination(totalPages) {
-            const pgNumbers = document.getElementById('wc-pg-numbers');
-            if (!pgNumbers) return;
-            pgNumbers.innerHTML = '';
+            const $pgNumbers = $('#wc-pg-numbers');
+            if (!$pgNumbers.length) return;
+            $pgNumbers.empty();
             for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.className = `w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center font-bold text-sm shadow-sm transition-all ${i === currentPage ? 'active bg-hex-dark text-white border-hex-dark' : 'bg-white text-slate-600 hover:bg-slate-50'}`;
-                btn.textContent = i;
-                btn.onclick = () => { currentPage = i; renderCards(); window.scrollTo({ top: document.getElementById('works-projects').offsetTop - 100, behavior: 'smooth' }); };
-                pgNumbers.appendChild(btn);
+                const $btn = $('<button type="button"></button>');
+                $btn
+                    .addClass(`w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center font-bold text-sm shadow-sm transition-all ${i === currentPage ? 'active bg-hex-dark text-white border-hex-dark' : 'bg-white text-slate-600 hover:bg-slate-50'}`)
+                    .text(i)
+                    .on('click', function () {
+                        currentPage = i;
+                        renderCards();
+
+                        const $worksProjects = $('#works-projects');
+                        if ($worksProjects.length) {
+                            $('html, body').animate({ scrollTop: $worksProjects.offset().top - 100 }, 300);
+                        }
+                    });
+                $pgNumbers.append($btn);
             }
         }
 
         // Event Listeners for Filters
-        document.querySelectorAll('.wc-chip').forEach(chip => {
-            chip.onclick = () => {
-                document.querySelectorAll('.wc-chip').forEach(c => c.classList.remove('active-filter', 'text-white'));
-                document.querySelectorAll('.wc-chip').forEach(c => c.classList.add('text-slate-500'));
-                chip.classList.add('active-filter', 'text-white');
-                chip.classList.remove('text-slate-500');
-                currentFilter = chip.getAttribute('data-filter');
+        $('.wc-chip').on('click', function () {
+                $('.wc-chip').removeClass('active-filter text-white').addClass('text-slate-500');
+                $(this).addClass('active-filter text-white').removeClass('text-slate-500');
+                currentFilter = $(this).data('filter');
                 currentPage = 1;
                 renderCards();
-            };
         });
 
-        const pgPrev = document.getElementById('wc-pg-prev');
-        const pgNext = document.getElementById('wc-pg-next');
-        if (pgPrev) pgPrev.onclick = () => { if(currentPage > 1) { currentPage--; renderCards(); } };
-        if (pgNext) pgNext.onclick = () => { if(currentPage < Math.ceil(projects.length/ITEMS_PER_PAGE)) { currentPage++; renderCards(); } };
+        $('#wc-pg-prev').on('click', function () { if(currentPage > 1) { currentPage--; renderCards(); } });
+        $('#wc-pg-next').on('click', function () { if(currentPage < Math.ceil(projects.length/ITEMS_PER_PAGE)) { currentPage++; renderCards(); } });
 
         // Listen for language changes
-        window.addEventListener('languageChanged', (e) => {
+        $(window).on('languageChanged', function () {
             renderCards();
         });
 

@@ -22,17 +22,17 @@
         <!-- Stats Strip -->
         <section class="py-16 bg-white border-b border-slate-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div id="stats-section" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">77+</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="77" data-suffix="+">0+</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Happy Clients" data-id="Klien Puas">Happy Clients</div>
                     </div>
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">116+</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="116" data-suffix="+">0+</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Projects Delivered" data-id="Proyek Selesai">Projects Delivered</div>
                     </div>
                     <div class="flex flex-col items-center py-4">
-                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2">86%</div>
+                        <div class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 stat-number" data-target="86" data-suffix="%">0%</div>
                         <div class="text-sm font-bold text-slate-500 uppercase tracking-widest" data-i18n data-en="Client Retention" data-id="Retensi Klien">Client Retention</div>
                     </div>
                 </div>
@@ -219,5 +219,59 @@
 @endsection
 
 @push('scripts')
-{{-- No page-specific scripts needed for services page --}}
+<script>
+    (function () {
+        var hasRun = false;
+        var DURATION = 3000;
+
+        function easeOutQuart(t) {
+            return 1 - Math.pow(1 - t, 4);
+        }
+
+        function runCountUp() {
+            if (hasRun) return;
+            hasRun = true;
+
+            $('.stat-number').each(function () {
+                var $el = $(this);
+                var target = parseInt($el.data('target'), 10);
+                var suffix = $el.data('suffix') || '';
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var elapsed = timestamp - startTime;
+                    var progress = Math.min(elapsed / DURATION, 1);
+                    var current = Math.floor(easeOutQuart(progress) * target);
+                    $el.text(current + suffix);
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        $el.text(target + suffix);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            });
+        }
+
+        var statsEl = document.getElementById('stats-section');
+        if (statsEl && 'IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        runCountUp();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(statsEl);
+        } else {
+            $('.stat-number').each(function () {
+                var $el = $(this);
+                $el.text($el.data('target') + ($el.data('suffix') || ''));
+            });
+        }
+    })();
+</script>
 @endpush

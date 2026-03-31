@@ -99,23 +99,19 @@
 
 @push('scripts')
 <script>
-    // Gallery Logic (page-specific)
-    const thumbs = document.querySelectorAll('.preview-thumb');
-    const mainImage = document.getElementById('preview-main-image');
+    $(function () {
+        var $thumbs = $('.preview-thumb');
+        var $mainImage = $('#preview-main-image');
 
-    thumbs.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            thumbs.forEach(t => {
-                t.classList.remove('active', 'ring-2', 'ring-hex-blue', 'opacity-100');
-                t.classList.add('opacity-60');
-            });
-            thumb.classList.add('active', 'ring-2', 'ring-hex-blue', 'opacity-100');
-            thumb.classList.remove('opacity-60');
+        $thumbs.on('click', function () {
+            var $thumb = $(this);
 
-            mainImage.style.opacity = '0';
-            setTimeout(() => {
-                mainImage.src = thumb.getAttribute('data-image');
-                mainImage.style.opacity = '1';
+            $thumbs.removeClass('active ring-2 ring-hex-blue opacity-100').addClass('opacity-60');
+            $thumb.addClass('active ring-2 ring-hex-blue opacity-100').removeClass('opacity-60');
+
+            $mainImage.css('opacity', '0');
+            setTimeout(function () {
+                $mainImage.attr('src', $thumb.data('image')).css('opacity', '1');
             }, 200);
         });
     });

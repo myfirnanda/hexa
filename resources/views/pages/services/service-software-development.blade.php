@@ -26,7 +26,7 @@
     <main>
         <!-- Hero Section -->
         <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
-            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png');"></div>
+            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
             <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center pt-16 pb-4 text-center">
                 <div class="max-w-[950px] flex-grow flex flex-col justify-center transform lg:-translate-y-8">
                     <h1 class="hero-title text-hex-dark mb-8" data-i18n data-en="Software Development" data-id="Pengembangan Perangkat Lunak">Software Development</h1>
@@ -42,46 +42,46 @@
                 <div class="w-full mt-auto relative overflow-hidden">
                     <div class="detail-logo-track flex items-center pr-12">
                         <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="img/telkom.png" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="img/wika.png" alt="WIKA" />
-                            <img class="h-10 opacity-70" src="img/berau_coal.png" alt="Berau Coal" />
-                            <img class="h-10 opacity-70" src="img/pjb.png" alt="PJB" />
-                            <img class="h-10 opacity-70" src="img/unilever.png" alt="Unilever" />
-                            <img class="h-10 opacity-70" src="img/zelltech.png" alt="Zelltech" />
-                            <img class="h-10 opacity-70" src="img/jmf.png" alt="JMF" />
-                            <img class="h-10 opacity-70" src="img/bmt_muda.png" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="img/dianca_goods.png" alt="Dianca Goods" />
-                            <img class="h-10 opacity-70" src="img/kana.png" alt="Kana" />
-                            <img class="h-10 opacity-70" src="img/rs_soetomo.png" alt="RS Soetomo" />
-                            <img class="h-10 opacity-70" src="img/lamongan.png" alt="Lamongan" />
-                            <img class="h-10 opacity-70" src="img/pamekasan.png" alt="Pamekasan" />
-                            <img class="h-10 opacity-70" src="img/banjarbaru.png" alt="Banjarbaru" />
-                            <img class="h-10 opacity-70" src="img/kota_bengkulu.png" alt="Kota Bengkulu" />
-                            <img class="h-10 opacity-70" src="img/prov_bengkulu.png" alt="Provinsi Bengkulu" />
-                            <img class="h-10 opacity-70" src="img/unair.png" alt="Universitas Airlangga" />
-                            <img class="h-10 opacity-70" src="img/roudlotul_falah.png" alt="Roudlotul Falah" />
-                            <img class="h-10 opacity-70" src="img/bkd_jatim.png" alt="BKD Jatim" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/wika.png') }}" alt="WIKA" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/zelltech.png') }}" alt="Zelltech" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/jmf.png') }}" alt="JMF" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/dianca_goods.png') }}" alt="Dianca Goods" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/rs_soetomo.png') }}" alt="RS Soetomo" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kota_bengkulu.png') }}" alt="Kota Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Provinsi Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/unair.png') }}" alt="Universitas Airlangga" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/roudlotul_falah.png') }}" alt="Roudlotul Falah" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD Jatim" />
                         </div>
                         <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="img/telkom.png" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="img/wika.png" alt="WIKA" />
-                            <img class="h-10 opacity-70" src="img/berau_coal.png" alt="Berau Coal" />
-                            <img class="h-10 opacity-70" src="img/pjb.png" alt="PJB" />
-                            <img class="h-10 opacity-70" src="img/unilever.png" alt="Unilever" />
-                            <img class="h-10 opacity-70" src="img/zelltech.png" alt="Zelltech" />
-                            <img class="h-10 opacity-70" src="img/jmf.png" alt="JMF" />
-                            <img class="h-10 opacity-70" src="img/bmt_muda.png" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="img/dianca_goods.png" alt="Dianca Goods" />
-                            <img class="h-10 opacity-70" src="img/kana.png" alt="Kana" />
-                            <img class="h-10 opacity-70" src="img/rs_soetomo.png" alt="RS Soetomo" />
-                            <img class="h-10 opacity-70" src="img/lamongan.png" alt="Lamongan" />
-                            <img class="h-10 opacity-70" src="img/pamekasan.png" alt="Pamekasan" />
-                            <img class="h-10 opacity-70" src="img/banjarbaru.png" alt="Banjarbaru" />
-                            <img class="h-10 opacity-70" src="img/kota_bengkulu.png" alt="Kota Bengkulu" />
-                            <img class="h-10 opacity-70" src="img/prov_bengkulu.png" alt="Provinsi Bengkulu" />
-                            <img class="h-10 opacity-70" src="img/unair.png" alt="Universitas Airlangga" />
-                            <img class="h-10 opacity-70" src="img/roudlotul_falah.png" alt="Roudlotul Falah" />
-                            <img class="h-10 opacity-70" src="img/bkd_jatim.png" alt="BKD Jatim" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/wika.png') }}" alt="WIKA" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/zelltech.png') }}" alt="Zelltech" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/jmf.png') }}" alt="JMF" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/dianca_goods.png') }}" alt="Dianca Goods" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/rs_soetomo.png') }}" alt="RS Soetomo" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kota_bengkulu.png') }}" alt="Kota Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Provinsi Bengkulu" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/unair.png') }}" alt="Universitas Airlangga" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/roudlotul_falah.png') }}" alt="Roudlotul Falah" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD Jatim" />
                         </div>
                     </div>
                 </div>

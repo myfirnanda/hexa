@@ -26,4 +26,9 @@ class Project extends Model
     {
         return 'slug';
     }
+
+    public function projectImages()
+    {
+        return $this->hasMany(ProjectImage::class)->orderBy('sort_order');
+    }
 }

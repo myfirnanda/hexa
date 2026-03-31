@@ -94,7 +94,7 @@
 /* Form elements */
 .admin-input {
     background: var(--admin-input-bg);
-    border-color: var(--admin-border);
+    border: 1px solid var(--admin-border);
     color: var(--admin-text);
 }
 .admin-input::placeholder { color: var(--admin-text-muted); }

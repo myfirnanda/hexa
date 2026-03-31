@@ -26,7 +26,7 @@
     <main>
         <!-- Hero Section -->
         <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
-            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png');"></div>
+            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
             <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center pt-16 pb-4 text-center">
                 <div class="max-w-[950px] flex-grow flex flex-col justify-center transform lg:-translate-y-8">
                     <h1 class="hero-title text-hex-dark mb-8" data-i18n data-en="Managed Services" data-id="Layanan Terkelola">Managed Services</h1>
@@ -42,18 +42,18 @@
                 <div class="w-full mt-auto relative overflow-hidden">
                     <div class="detail-logo-track flex items-center pr-12">
                         <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="img/telkom.png" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="img/kana.png" alt="Kana" />
-                            <img class="h-10 opacity-70" src="img/its.png" alt="ITS" />
-                            <img class="h-10 opacity-70" src="img/bmt_muda.png" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="img/berau_coal.png" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
                         </div>
                         <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="img/telkom.png" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="img/kana.png" alt="Kana" />
-                            <img class="h-10 opacity-70" src="img/its.png" alt="ITS" />
-                            <img class="h-10 opacity-70" src="img/bmt_muda.png" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="img/berau_coal.png" alt="Berau Coal" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
+                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
                     <!-- Left: Talent Image -->
                     <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="img/talent.png" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
                     </div>
 
                     <!-- Right: Content -->

@@ -16,7 +16,7 @@ class TestimonialController extends Controller
 
     public function create()
     {
-        return view('admin.testimonials.form');
+        return view('admin.testimonials.create');
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class TestimonialController extends Controller
 
     public function edit(Testimonial $testimonial)
     {
-        return view('admin.testimonials.form', compact('testimonial'));
+        return view('admin.testimonials.edit', compact('testimonial'));
     }
 
     public function update(Request $request, Testimonial $testimonial)
