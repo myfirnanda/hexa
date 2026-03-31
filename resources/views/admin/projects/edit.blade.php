@@ -45,7 +45,7 @@
                 </label>
                 @if($project->image)
                 <div class="mb-2 w-48 h-28 rounded-lg overflow-hidden border admin-border">
-                    <img src="{{ asset('assets/img/projects/' . $project->image) }}" class="w-full h-full object-cover" alt="Cover">
+                    <img src="{{ Storage::url($project->image) }}" class="w-full h-full object-cover" alt="Cover">
                 </div>
                 @endif
                 <input type="file" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="image" name="image" accept="image/*">
@@ -67,7 +67,7 @@
                         <label class="relative cursor-pointer" style="width:100px;height:100px;flex-shrink:0;">
                             <input type="checkbox" name="delete_images[]" value="{{ $img->id }}" class="sr-only peer">
                             <div style="width:100px;height:100px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;transition:border-color 0.15s;" class="peer-checked:border-red-400!">
-                                <img src="{{ asset('assets/img/projects/' . $img->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="">
+                                <img src="{{ Storage::url($img->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="">
                             </div>
                             {{-- Delete overlay --}}
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-150" style="border-radius:10px;">
@@ -78,7 +78,7 @@
                             </div>
                             {{-- Preview button (stops propagation so checkbox isn't toggled) --}}
                             <button type="button"
-                                onclick="event.stopPropagation();event.preventDefault();openGalleryPreview('{{ asset('assets/img/projects/' . $img->image) }}');"
+                                onclick="event.stopPropagation();event.preventDefault();openGalleryPreview('{{ Storage::url($img->image) }}');"
                                 style="position:absolute;bottom:6px;left:6px;z-index:10;width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,0.55);color:#e2e8f0;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
                                 <span class="material-symbols-outlined" style="font-size:15px;">visibility</span>
                             </button>

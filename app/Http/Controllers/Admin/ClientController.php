@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ClientController extends Controller
@@ -31,8 +32,8 @@ class ClientController extends Controller
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img/clients'), $filename);
-            $validated['logo'] = $filename;
+            $file->storeAs('clients', $filename, 'public');
+            $validated['logo'] = 'clients/' . $filename;
         }
 
         Client::create($validated);
@@ -51,8 +52,8 @@ class ClientController extends Controller
         if ($request->hasFile('logo')) {
             $file = $request->file('logo');
             $filename = Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img/clients'), $filename);
-            $validated['logo'] = $filename;
+            $file->storeAs('clients', $filename, 'public');
+            $validated['logo'] = 'clients/' . $filename;
         }
 
         $client->update($validated);

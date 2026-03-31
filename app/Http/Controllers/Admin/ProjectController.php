@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -44,8 +45,8 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = Str::slug($validated['name']) . '-' . time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img/projects'), $filename);
-            $validated['image'] = $filename;
+            $file->storeAs('projects', $filename, 'public');
+            $validated['image'] = 'projects/' . $filename;
         }
 
         unset($validated['gallery_images']);
@@ -54,10 +55,10 @@ class ProjectController extends Controller
         if ($request->hasFile('gallery_images')) {
             foreach ($request->file('gallery_images') as $index => $file) {
                 $filename = Str::slug($validated['name']) . '-gallery-' . time() . '-' . $index . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('assets/img/projects'), $filename);
+                $file->storeAs('projects', $filename, 'public');
                 ProjectImage::create([
                     'project_id' => $project->id,
-                    'image' => $filename,
+                    'image' => 'projects/' . $filename,
                     'sort_order' => $index,
                 ]);
             }
@@ -99,8 +100,8 @@ class ProjectController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = Str::slug($validated['name']) . '-' . time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('assets/img/projects'), $filename);
-            $validated['image'] = $filename;
+            $file->storeAs('projects', $filename, 'public');
+            $validated['image'] = 'projects/' . $filename;
         }
 
         // Delete marked gallery images
@@ -109,10 +110,7 @@ class ProjectController extends Controller
                 ->whereIn('id', $validated['delete_images'])
                 ->get();
             foreach ($toDelete as $img) {
-                $path = public_path('assets/img/projects/' . $img->image);
-                if (file_exists($path)) {
-                    unlink($path);
-                }
+                Storage::disk('public')->delete($img->image);
                 $img->delete();
             }
         }
@@ -125,10 +123,10 @@ class ProjectController extends Controller
             $lastOrder = $project->projectImages()->max('sort_order') ?? -1;
             foreach ($request->file('gallery_images') as $index => $file) {
                 $filename = Str::slug($project->name) . '-gallery-' . time() . '-' . $index . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('assets/img/projects'), $filename);
+                $file->storeAs('projects', $filename, 'public');
                 ProjectImage::create([
                     'project_id' => $project->id,
-                    'image' => $filename,
+                    'image' => 'projects/' . $filename,
                     'sort_order' => $lastOrder + 1 + $index,
                 ]);
             }
@@ -141,10 +139,7 @@ class ProjectController extends Controller
     {
         // Delete gallery image files
         foreach ($project->projectImages as $img) {
-            $path = public_path('assets/img/projects/' . $img->image);
-            if (file_exists($path)) {
-                unlink($path);
-            }
+            Storage::disk('public')->delete($img->image);
         }
         $project->delete();
         return redirect()->route('admin.projects.index')->with('success', 'Project berhasil dihapus.');

@@ -43,7 +43,7 @@
                 <input type="file" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="logo" name="logo" accept="image/*">
                 @if($client->logo)
                 <div class="text-xs admin-text-muted mt-2 flex items-center gap-2">
-                    Logo saat ini: <img src="{{ asset('assets/img/' . $client->logo) }}" class="h-7 rounded bg-white p-0.5" alt="">
+                    Logo saat ini: <img src="{{ Storage::url($client->logo) }}" class="h-7 rounded bg-white p-0.5" alt="">
                 </div>
                 @endif
                 @error('logo') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UploadController extends Controller
@@ -14,10 +15,10 @@ class UploadController extends Controller
 
         $file = $request->file('upload');
         $filename = 'ck-' . time() . '-' . Str::random(8) . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('assets/img/content'), $filename);
+        $file->storeAs('content', $filename, 'public');
 
         return response()->json([
-            'url' => asset('assets/img/content/' . $filename),
+            'url' => Storage::url('content/' . $filename),
         ]);
     }
 }

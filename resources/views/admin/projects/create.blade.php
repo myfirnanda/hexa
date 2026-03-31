@@ -30,7 +30,7 @@
                     <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="category" name="category" required>
                         <option value="">Pilih kategori...</option>
                         @foreach(['software-development' => 'Software Development', 'digital-branding' => 'Digital Branding', 'startup-incubator' => 'Startup Incubator', 'it-consultant' => 'IT Consultant'] as $val => $label)
-                        <option value="{{ $val }}" {{ old('category') === $val ? 'selected' : '' }}>{{ $label }}</option>
+                            <option value="{{ $val }}" {{ old('category') === $val ? 'selected' : '' }}>{{ $label }}</option>
                         @endforeach
                     </select>
                     @error('category') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
