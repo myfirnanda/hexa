@@ -27,11 +27,8 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:100',
-            'description' => 'required|string',
-            'hero_description' => 'nullable|string',
-            'summary_title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
-            'content' => 'nullable|string',
             'gallery_images.*' => 'nullable|image|max:2048',
         ]);
 
@@ -78,11 +75,8 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:100',
-            'description' => 'required|string',
-            'hero_description' => 'nullable|string',
-            'summary_title' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'nullable|image|max:2048',
-            'content' => 'nullable|string',
             'gallery_images.*' => 'nullable|image|max:2048',
             'delete_images' => 'nullable|array',
             'delete_images.*' => 'nullable|integer',
@@ -98,6 +92,10 @@ class ProjectController extends Controller
         }
 
         if ($request->hasFile('image')) {
+            // Delete old cover image from storage
+            if ($project->image) {
+                Storage::disk('public')->delete($project->image);
+            }
             $file = $request->file('image');
             $filename = Str::slug($validated['name']) . '-' . time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('projects', $filename, 'public');

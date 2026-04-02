@@ -13,11 +13,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('category');
-            $table->text('description');
-            $table->text('hero_description')->nullable();
-            $table->string('summary_title')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->text('content')->nullable();
             $table->json('images')->nullable();
             $table->timestamps();
         });

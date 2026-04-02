@@ -22,12 +22,12 @@
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div class="mb-5">
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Project *</label>
+                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Project <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name', $project->name) }}" required placeholder="Nama project...">
                     @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori *</label>
+                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-500">*</span></label>
                     <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="category" name="category" required>
                         <option value="">Pilih kategori...</option>
                         @foreach(['software-development' => 'Software Development', 'digital-branding' => 'Digital Branding', 'startup-incubator' => 'Startup Incubator', 'it-consultant' => 'IT Consultant'] as $val => $label)
@@ -43,11 +43,13 @@
                 <label for="image" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">
                     Gambar Cover <span class="text-xs font-normal admin-text-muted">(kosongkan jika tidak diubah)</span>
                 </label>
-                @if($project->image)
-                <div class="mb-2 w-48 h-28 rounded-lg overflow-hidden border admin-border">
-                    <img src="{{ Storage::url($project->image) }}" class="w-full h-full object-cover" alt="Cover">
+                <div id="cover-preview" class="mb-3">
+                    @if($project->image)
+                    <div style="width:192px;height:112px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;" onclick="openGalleryPreview('{{ Storage::url($project->image) }}')">
+                        <img src="{{ Storage::url($project->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="Cover">
+                    </div>
+                    @endif
                 </div>
-                @endif
                 <input type="file" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="image" name="image" accept="image/*">
                 @error('image') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
@@ -61,28 +63,18 @@
 
                 @if($project->projectImages->count())
                 <div class="mb-3">
-                    <p class="text-xs admin-text-muted mb-2">Foto saat ini — centang untuk dihapus:</p>
+                    <p class="text-xs admin-text-muted mb-2">Foto saat ini — klik <span class="text-red-400">✕</span> untuk menghapus:</p>
                     <div class="flex flex-wrap gap-3">
                         @foreach($project->projectImages as $img)
-                        <label class="relative cursor-pointer" style="width:100px;height:100px;flex-shrink:0;">
-                            <input type="checkbox" name="delete_images[]" value="{{ $img->id }}" class="sr-only peer">
-                            <div style="width:100px;height:100px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;transition:border-color 0.15s;" class="peer-checked:border-red-400!">
+                        <div class="relative" style="width:100px;height:100px;flex-shrink:0;">
+                            <input type="checkbox" name="delete_images[]" value="{{ $img->id }}" class="sr-only gallery-delete-cb">
+                            <div class="gallery-img-box" style="width:100px;height:100px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;transition:border-color 0.15s, opacity 0.15s;" onclick="openGalleryPreview('{{ Storage::url($img->image) }}')">
                                 <img src="{{ Storage::url($img->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="">
                             </div>
-                            {{-- Delete overlay --}}
-                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-150" style="border-radius:10px;">
-                                <span class="material-symbols-outlined text-white drop-shadow peer-checked:opacity-100" style="font-size:40px;opacity:0;transition:opacity 0.15s;">delete</span>
-                            </div>
-                            <div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-red-500 text-white items-center justify-center hidden peer-checked:flex pointer-events-none">
+                            <button type="button" onclick="toggleDeleteImage(this)" style="position:absolute;top:-8px;right:-8px;z-index:10;width:20px;height:20px;border-radius:50%;background:#ef4444;color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.3);" title="Hapus gambar">
                                 <span class="material-symbols-outlined" style="font-size:14px;">close</span>
-                            </div>
-                            {{-- Preview button (stops propagation so checkbox isn't toggled) --}}
-                            <button type="button"
-                                onclick="event.stopPropagation();event.preventDefault();openGalleryPreview('{{ Storage::url($img->image) }}');"
-                                style="position:absolute;bottom:6px;left:6px;z-index:10;width:24px;height:24px;border-radius:6px;background:rgba(0,0,0,0.55);color:#e2e8f0;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-                                <span class="material-symbols-outlined" style="font-size:15px;">visibility</span>
                             </button>
-                        </label>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -95,27 +87,9 @@
             </div>
 
             <div class="mb-5">
-                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi *</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="description" name="description" required placeholder="Deskripsi singkat project...">{{ old('description', $project->description) }}</textarea>
+                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi</label>
+                <textarea id="description" name="description">{{ old('description', $project->description) }}</textarea>
                 @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="hero_description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Hero Description</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="hero_description" name="hero_description" placeholder="Deskripsi untuk hero section...">{{ old('hero_description', $project->hero_description) }}</textarea>
-                @error('hero_description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="summary_title" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Summary Title</label>
-                <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="summary_title" name="summary_title" value="{{ old('summary_title', $project->summary_title) }}" placeholder="Judul ringkasan...">
-                @error('summary_title') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="content" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Konten Detail</label>
-                <textarea id="content" name="content">{{ old('content', $project->content) }}</textarea>
-                @error('content') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
 
             <div class="flex gap-2.5 pt-2">
@@ -227,7 +201,7 @@ function CkImageUploadPlugin(editor) {
 }
 
 ClassicEditor
-    .create($('#content')[0], {
+    .create($('#description')[0], {
         extraPlugins: [CkImageUploadPlugin],
         toolbar: [
             'heading', '|',
@@ -250,7 +224,7 @@ ClassicEditor
     .then(function (editor) {
         window._contentEditor = editor;
         $('form').first().on('submit', function () {
-            $('#content').val(editor.getData());
+            $('#description').val(editor.getData());
         });
     })
     .catch(function (err) { console.error(err); });
@@ -279,13 +253,36 @@ $(function () {
         }
     });
 
-    // ── Toggle delete overlay for existing gallery images ────────
-    $(document).on('change', 'input[name="delete_images[]"]', function () {
-        var $label = $(this).closest('label');
-        var $icon = $label.find('.material-symbols-outlined').filter(function () {
-            return $(this).css('font-size') === '40px';
-        });
-        $icon.css('opacity', this.checked ? '1' : '0');
+    // ── Toggle delete for existing gallery images ────────
+    window.toggleDeleteImage = function(btn) {
+        var $parent = $(btn).closest('.relative');
+        var $cb = $parent.find('.gallery-delete-cb');
+        $cb.prop('checked', !$cb.prop('checked'));
+        if ($cb.prop('checked')) {
+            $parent.find('.gallery-img-box').css({ 'border-color': '#ef4444', 'opacity': '0.5' });
+        } else {
+            $parent.find('.gallery-img-box').css({ 'border-color': '#3b82f6', 'opacity': '1' });
+        }
+    };
+
+    // ── Cover image preview (new upload) ────────
+    $('#image').on('change', function () {
+        var $preview = $('#cover-preview');
+        $preview.empty();
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var src = e.target.result;
+                var $div = $('<div>').css({
+                    width: '150px', height: '150px', borderRadius: '10px',
+                    overflow: 'hidden', border: '2px solid #3b82f6',
+                    cursor: 'pointer'
+                }).on('click', function () { openGalleryPreview(src); });
+                $div.append($('<img>').attr('src', src).css({ width: '100%', height: '100%', objectFit: 'cover' }));
+                $preview.append($div);
+            };
+            reader.readAsDataURL(this.files[0]);
+        }
     });
 
     // ── Gallery image preview modal with zoom & pan ───────────────

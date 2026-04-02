@@ -96,7 +96,7 @@
             <div class="px-5 py-5 space-y-4">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label for="createTestimonialName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama <span class="text-red-400">*</span></label>
+                        <label for="createTestimonialName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama <span class="text-red-500">*</span></label>
                         <input type="text" id="createTestimonialName" name="name" required
                             value="{{ old('_source') === 'create_testimonial' ? old('name') : '' }}"
                             placeholder="Nama..."
@@ -106,7 +106,7 @@
                         @endif
                     </div>
                     <div>
-                        <label for="createTestimonialRole" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role <span class="text-red-400">*</span></label>
+                        <label for="createTestimonialRole" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role <span class="text-red-500">*</span></label>
                         <input type="text" id="createTestimonialRole" name="role" required
                             value="{{ old('_source') === 'create_testimonial' ? old('role') : '' }}"
                             placeholder="CEO, Manager..."
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="createTestimonialQuote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni <span class="text-red-400">*</span></label>
+                    <label for="createTestimonialQuote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni <span class="text-red-500">*</span></label>
                     <textarea id="createTestimonialQuote" name="quote" rows="4" required
                         placeholder="Isi testimoni..."
                         class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-none @if(old('_source')==='create_testimonial' && $errors->has('quote')) border-red-400 @endif">{{ old('_source') === 'create_testimonial' ? old('quote') : '' }}</textarea>
@@ -126,7 +126,7 @@
                     @endif
                 </div>
                 <div>
-                    <label for="createTestimonialRating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating <span class="text-red-400">*</span></label>
+                    <label for="createTestimonialRating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating <span class="text-red-500">*</span></label>
                     <select id="createTestimonialRating" name="rating" required
                         class="px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" style="width:7rem">
                         <option value="5" {{ old('_source')==='create_testimonial' && old('rating')==5 ? 'selected' : '' }}>5 &#9733;&#9733;&#9733;&#9733;&#9733;</option>
@@ -179,26 +179,26 @@
             <div class="px-5 py-5 space-y-4">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label for="editTestimonialName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama <span class="text-red-400">*</span></label>
+                        <label for="editTestimonialName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama <span class="text-red-500">*</span></label>
                         <input type="text" id="editTestimonialName" name="name" required
                             placeholder="Nama orang..."
                             class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500">
                     </div>
                     <div>
-                        <label for="editTestimonialRole" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role <span class="text-red-400">*</span></label>
+                        <label for="editTestimonialRole" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role <span class="text-red-500">*</span></label>
                         <input type="text" id="editTestimonialRole" name="role" required
                             placeholder="CEO, Manager..."
                             class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500">
                     </div>
                 </div>
                 <div>
-                    <label for="editTestimonialQuote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni <span class="text-red-400">*</span></label>
+                    <label for="editTestimonialQuote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni <span class="text-red-500">*</span></label>
                     <textarea id="editTestimonialQuote" name="quote" rows="4" required
                         placeholder="Isi testimoni..."
                         class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-none"></textarea>
                 </div>
                 <div>
-                    <label for="editTestimonialRating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating <span class="text-red-400">*</span></label>
+                    <label for="editTestimonialRating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating <span class="text-red-500">*</span></label>
                     <select id="editTestimonialRating" name="rating" required
                         class="px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" style="width:7rem">
                         <option value="5">5 &#9733;&#9733;&#9733;&#9733;&#9733;</option>

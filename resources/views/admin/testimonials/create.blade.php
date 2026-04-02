@@ -21,25 +21,25 @@
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div class="mb-5">
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama *</label>
+                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name') }}" required placeholder="Nama orang...">
                     @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="role" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role / Jabatan *</label>
+                    <label for="role" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Role / Jabatan <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="role" name="role" value="{{ old('role') }}" required placeholder="CEO, Manager, dsb...">
                     @error('role') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
             </div>
 
             <div class="mb-5">
-                <label for="quote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni *</label>
+                <label for="quote" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Quote / Testimoni <span class="text-red-500">*</span></label>
                 <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="quote" name="quote" required placeholder="Isi testimoni...">{{ old('quote') }}</textarea>
                 @error('quote') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
 
             <div class="mb-5">
-                <label for="rating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating *</label>
+                <label for="rating" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Rating <span class="text-red-500">*</span></label>
                 <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer max-w-[120px]" id="rating" name="rating" required>
                     @for($i = 5; $i >= 1; $i--)
                     <option value="{{ $i }}" {{ old('rating', 5) == $i ? 'selected' : '' }}>{{ $i }} &#9733;</option>

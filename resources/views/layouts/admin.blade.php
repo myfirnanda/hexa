@@ -14,6 +14,11 @@
             if (t === 'light') document.documentElement.classList.add('light');
         })();
     </script>
+    <style>
+        /* Red asterisks on required field labels */
+        .admin-card label .text-red-500,
+        .admin-card label .required-star { color: #ef4444; }
+    </style>
 </head>
 <body class="font-sans admin-body min-h-screen flex">
     {{-- Sidebar --}}
@@ -205,6 +210,17 @@
                 }
             });
         });
+    </script>
+    <script>
+    // ── Dynamic form error clearing ──────────────────────────────
+    $(function () {
+        $(document).on('input change', '.admin-card input, .admin-card textarea, .admin-card select', function () {
+            var $field = $(this);
+            var $parent = $field.closest('.mb-5, .mb-4, .mb-3');
+            $parent.find('.text-xs.text-red-400').fadeOut(200, function () { $(this).remove(); });
+            $field.removeClass('border-red-400');
+        });
+    });
     </script>
     @yield('scripts')
 </body>

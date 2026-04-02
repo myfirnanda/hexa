@@ -22,12 +22,12 @@
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div class="mb-5">
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Layanan *</label>
+                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Layanan <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg border admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name', $service->name) }}" required placeholder="Nama layanan...">
                     @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="type" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Tipe *</label>
+                    <label for="type" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Tipe <span class="text-red-500">*</span></label>
                     <select class="w-full px-3.5 py-2.5 rounded-lg border admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="type" name="type" required>
                         <option value="main" {{ old('type', $service->type) === 'main' ? 'selected' : '' }}>Main</option>
                         <option value="additional" {{ old('type', $service->type) === 'additional' ? 'selected' : '' }}>Additional</option>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="mb-5">
-                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi *</label>
+                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi <span class="text-red-500">*</span></label>
                 <textarea class="w-full px-3.5 py-2.5 rounded-lg border admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="description" name="description" required placeholder="Deskripsi layanan...">{{ old('description', $service->description) }}</textarea>
                 @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>

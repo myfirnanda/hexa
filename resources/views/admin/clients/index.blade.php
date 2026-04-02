@@ -101,7 +101,7 @@
             <input type="hidden" name="_source" value="create_client">
             <div class="px-5 py-5 space-y-4">
                 <div>
-                    <label for="createClientName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client <span class="text-red-400">*</span></label>
+                    <label for="createClientName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client <span class="text-red-500">*</span></label>
                     <input type="text" id="createClientName" name="name" required
                         value="{{ old('_source') === 'create_client' ? old('name') : '' }}"
                         placeholder="Nama perusahaan client..."
@@ -111,7 +111,7 @@
                     @endif
                 </div>
                 <div>
-                    <label for="createClientCategory" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-400">*</span></label>
+                    <label for="createClientCategory" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-500">*</span></label>
                     <select id="createClientCategory" name="category" required
                         class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer @error('category') border-red-400 @enderror">
                         <option value="">Pilih kategori...</option>
@@ -175,13 +175,13 @@
             @method('PUT')
             <div class="px-5 py-5 space-y-4">
                 <div>
-                    <label for="editClientName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client <span class="text-red-400">*</span></label>
+                    <label for="editClientName" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client <span class="text-red-500">*</span></label>
                     <input type="text" id="editClientName" name="name" required
                         placeholder="Nama perusahaan client..."
                         class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500">
                 </div>
                 <div>
-                    <label for="editClientCategory" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-400">*</span></label>
+                    <label for="editClientCategory" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-500">*</span></label>
                     <select id="editClientCategory" name="category" required
                         class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer">
                         <option value="">Pilih kategori...</option>

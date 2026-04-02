@@ -22,12 +22,12 @@
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div class="mb-5">
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client *</label>
+                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Client <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name', $client->name) }}" required placeholder="Nama perusahaan client...">
                     @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori *</label>
+                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-500">*</span></label>
                     <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="category" name="category" required>
                         <option value="">Pilih kategori...</option>
                         @foreach(['education' => 'Education', 'government' => 'Government', 'soe' => 'SOE', 'finance' => 'Finance', 'industrial' => 'Industrial', 'retail' => 'Retail'] as $val => $label)

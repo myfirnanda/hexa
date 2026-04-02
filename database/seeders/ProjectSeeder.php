@@ -332,6 +332,9 @@ class ProjectSeeder extends Seeder
         ];
 
         foreach ($projects as $project) {
+            if (isset($project['content'])) {
+                $project['description'] = $project['content'];
+            }
             Project::create($project);
         }
     }

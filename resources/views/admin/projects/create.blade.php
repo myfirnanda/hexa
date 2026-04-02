@@ -21,12 +21,12 @@
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
                 <div class="mb-5">
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Project *</label>
+                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Project <span class="text-red-500">*</span></label>
                     <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name') }}" required placeholder="Nama project...">
                     @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori *</label>
+                    <label for="category" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Kategori <span class="text-red-500">*</span></label>
                     <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="category" name="category" required>
                         <option value="">Pilih kategori...</option>
                         @foreach(['software-development' => 'Software Development', 'digital-branding' => 'Digital Branding', 'startup-incubator' => 'Startup Incubator', 'it-consultant' => 'IT Consultant'] as $val => $label)
@@ -39,6 +39,7 @@
 
             <div class="mb-5">
                 <label for="image" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Gambar Cover</label>
+                <div id="cover-preview" class="mb-3"></div>
                 <input type="file" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="image" name="image" accept="image/*">
                 @error('image') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
@@ -54,27 +55,9 @@
             </div>
 
             <div class="mb-5">
-                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi *</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="description" name="description" required placeholder="Deskripsi singkat project...">{{ old('description') }}</textarea>
+                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi</label>
+                <textarea id="description" name="description">{{ old('description') }}</textarea>
                 @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="hero_description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Hero Description</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="hero_description" name="hero_description" placeholder="Deskripsi untuk hero section...">{{ old('hero_description') }}</textarea>
-                @error('hero_description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="summary_title" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Summary Title</label>
-                <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="summary_title" name="summary_title" value="{{ old('summary_title') }}" placeholder="Judul ringkasan...">
-                @error('summary_title') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-            </div>
-
-            <div class="mb-5">
-                <label for="content" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Konten Detail</label>
-                <textarea id="content" name="content">{{ old('content') }}</textarea>
-                @error('content') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
 
             <div class="flex gap-2.5 pt-2">
@@ -191,7 +174,7 @@ function CkImageUploadPlugin(editor) {
 }
 
 ClassicEditor
-    .create($('#content')[0], {
+    .create($('#description')[0], {
         extraPlugins: [CkImageUploadPlugin],
         toolbar: [
             'heading', '|',
@@ -214,32 +197,82 @@ ClassicEditor
     .then(function (editor) {
         window._contentEditor = editor;
         $('form').first().on('submit', function () {
-            $('#content').val(editor.getData());
+            $('#description').val(editor.getData());
         });
     })
     .catch(function (err) { console.error(err); });
 
 $(function () {
     // ── Gallery thumbnail preview (new uploads) ──────────────────
-    $('#gallery_images').on('change', function () {
+    var galleryFiles = [];
+
+    function rebuildGalleryInput() {
+        var dt = new DataTransfer();
+        galleryFiles.forEach(function (f) { dt.items.add(f); });
+        document.getElementById('gallery_images').files = dt.files;
+    }
+
+    function renderGalleryPreviews() {
         var $preview = $('#gallery-preview');
         $preview.empty();
-        var files = this.files;
-        for (var i = 0; i < files.length; i++) {
-            (function (file) {
+        galleryFiles.forEach(function (file, idx) {
+            (function (f, i) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     var src = e.target.result;
-                    var $div = $('<div>').css({
+                    var $wrap = $('<div>').css({ position: 'relative', width: '100px', height: '100px', flexShrink: '0' });
+                    var $img = $('<div>').css({
                         width: '100px', height: '100px', borderRadius: '10px',
                         overflow: 'hidden', border: '2px solid #3b82f6',
-                        flexShrink: '0', cursor: 'pointer'
+                        cursor: 'pointer'
                     }).on('click', function () { openGalleryPreview(src); });
-                    $div.append($('<img>').attr('src', src).css({ width: '100%', height: '100%', objectFit: 'cover' }));
-                    $preview.append($div);
+                    $img.append($('<img>').attr('src', src).css({ width: '100%', height: '100%', objectFit: 'cover' }));
+                    var $del = $('<button type="button">').html('<span class="material-symbols-outlined" style="font-size:14px;">close</span>')
+                        .css({
+                            position: 'absolute', top: '-8px', right: '-8px', zIndex: 10,
+                            width: '20px', height: '20px', borderRadius: '50%',
+                            background: '#ef4444', color: 'white', border: 'none',
+                            cursor: 'pointer', display: 'flex', alignItems: 'center',
+                            justifyContent: 'center', boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                        })
+                        .attr('title', 'Hapus gambar')
+                        .on('click', function () {
+                            galleryFiles.splice(i, 1);
+                            rebuildGalleryInput();
+                            renderGalleryPreviews();
+                        });
+                    $wrap.append($img).append($del);
+                    $preview.append($wrap);
                 };
-                reader.readAsDataURL(file);
-            })(files[i]);
+                reader.readAsDataURL(f);
+            })(file, idx);
+        });
+    }
+
+    $('#gallery_images').on('change', function () {
+        var newFiles = Array.from(this.files);
+        newFiles.forEach(function (f) { galleryFiles.push(f); });
+        rebuildGalleryInput();
+        renderGalleryPreviews();
+    });
+
+    // ── Cover image preview (new upload) ───────────────
+    $('#image').on('change', function () {
+        var $preview = $('#cover-preview');
+        $preview.empty();
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var src = e.target.result;
+                var $div = $('<div>').css({
+                    width: '150px', height: '150px', borderRadius: '10px',
+                    overflow: 'hidden', border: '2px solid #3b82f6',
+                    cursor: 'pointer'
+                }).on('click', function () { openGalleryPreview(src); });
+                $div.append($('<img>').attr('src', src).css({ width: '100%', height: '100%', objectFit: 'cover' }));
+                $preview.append($div);
+            };
+            reader.readAsDataURL(this.files[0]);
         }
     });
 

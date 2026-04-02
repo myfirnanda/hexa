@@ -11,10 +11,7 @@ class Project extends Model
         'slug',
         'category',
         'description',
-        'hero_description',
-        'summary_title',
         'image',
-        'content',
         'images',
     ];
 
