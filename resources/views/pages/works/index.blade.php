@@ -152,25 +152,24 @@
         let currentFilter = 'all';
         let currentPage = 1;
 
-        // Project Data
-        const projects = [
-            { id: 1, category: 'software-development', title: 'Sistem POS Kana', img: '{{ asset('assets/img/POS_KANA1.png') }}', desc_en: 'A web-based business management platform integrating procurement, sales, warehouse, and more.', desc_id: 'Platform manajemen bisnis berbasis web yang mengintegrasikan pengadaan, penjualan, gudang, dan lainnya.' },
-            { id: 2, category: 'software-development', title: 'INDIPRO TELKOM', img: '{{ asset('assets/img/projects/proyek_all_telkom.png') }}', desc_en: 'Online booking experience for home internet installation with GIS features.', desc_id: 'Pengalaman pemesanan online pemasangan internet rumah dengan fitur GIS.' },
-            { id: 3, category: 'software-development', title: 'E-SALES ZELLTECH', img: '{{ asset('assets/img/projects/proyek_all_zelltech.png') }}', desc_en: 'Sales tracking and project monitoring for PT Celcius Indo Perkasa.', desc_id: 'Pelacakan penjualan dan pemantauan proyek untuk PT Celcius Indo Perkasa.' },
-            { id: 4, category: 'software-development', title: 'SISTEM WAREHOUSE', img: '{{ asset('assets/img/projects/proyek_all_unilever.png') }}', desc_en: 'Inventory tracking for MJA Company, a trusted Unilever distributor.', desc_id: 'Pelacakan inventaris untuk MJA Company, distributor Unilever terpercaya.' },
-            { id: 5, category: 'software-development', title: 'QPS WIKA GEDUNG', img: '{{ asset('assets/img/projects/proyek_all_wika.png') }}', desc_en: 'Innovative application for property assessments and residential surveys.', desc_id: 'Aplikasi inovatif untuk penilaian properti dan survei hunian.' },
-            { id: 6, category: 'software-development', title: 'SILY SMART CITY', img: '{{ asset('assets/img/projects/proyek_softdev_silly.png') }}', desc_en: 'Smart City portal for Lamongan District with 360 photos and reports.', desc_id: 'Portal Smart City Kabupaten Lamongan dengan foto 360 dan pelaporan.' },
-            { id: 7, category: 'software-development', title: 'SIPINTAR PUPR', img: '{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}', desc_en: 'Spatial planning information system for Banjarbaru City PUPR.', desc_id: 'Sistem informasi tata ruang untuk Dinas PUPR Kota Banjarbaru.' },
-            { id: 8, category: 'software-development', title: 'TOWER MONITORING', img: '{{ asset('assets/img/projects/proyek_all_pamekasan.png') }}', desc_en: 'Supervision system for telecommunication towers in Pamekasan.', desc_id: 'Sistem pengawasan menara telekomunikasi di Kabupaten Pamekasan.' },
-            { id: 9, category: 'digital-branding', title: 'UBAYA Promo Video', img: '{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}', desc_en: 'Promotional video for Manufacturing Engineering program at UBAYA.', desc_id: 'Video promosi program Teknik Manufaktur di UBAYA.' },
-            { id: 10, category: 'digital-branding', title: 'Queen Aisya SPA', img: '{{ asset('assets/img/projects/proyek_digital_aisya.png') }}', desc_en: 'Rebranding digital marketing for Queen Aisya Salon and SPA.', desc_id: 'Rebranding pemasaran digital untuk Salon dan SPA Queen Aisya.' },
-            { id: 11, category: 'digital-branding', title: 'PT JMF Profile', img: '{{ asset('assets/img/projects/proyek_digital_jmf.png') }}', desc_en: 'Aerial company profile video showcasing industrial expertise.', desc_id: 'Video company profile aerial yang menampilkan keahlian industri.' },
-            { id: 12, category: 'startup-incubator', title: 'MEDIFY HMS', img: '{{ asset('assets/img/projects/proyek_startup_kontraktor.jpg') }}', desc_en: 'Hospital management system startup incubation and mentoring.', desc_id: 'Inkubasi dan pendampingan startup sistem manajemen rumah sakit.' },
-            { id: 13, category: 'startup-incubator', title: 'RUANGTEMU', img: '{{ asset('assets/img/projects/proyek_all_industri.jpg') }}', desc_en: 'Community event management and digital news platform.', desc_id: 'Manajemen acara komunitas dan platform berita digital.' },
-            { id: 14, category: 'it-consultant', title: 'KOPERASI KANA', img: '{{ asset('assets/img/projects/proyek_all_kana.jpg') }}', desc_en: 'Strategic analysis and development planning for Koperasi Kana.', desc_id: 'Analisis strategis dan perencanaan pengembangan untuk Koperasi Kana.' },
-            { id: 15, category: 'it-consultant', title: 'BMT MUDA', img: '{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}', desc_en: 'IT optimization and system planning for BMT MUDA Cooperative.', desc_id: 'Optimalisasi TI dan perencanaan sistem untuk Koperasi BMT MUDA.' },
-            { id: 16, category: 'it-consultant', title: 'Berau Coal Job Center', img: '{{ asset('assets/img/projects/proyek_all_beraucoal.jpg') }}', desc_en: 'POC and system planning for job center management.', desc_id: 'POC dan perencanaan sistem untuk manajemen job center.' }
-        ];
+        // Project Data (dynamic from DB)
+        const projects = {!! json_encode($projects->map(function($p) {
+            if (!$p->image) {
+                $img = asset('assets/img/placeholder.png');
+            } elseif (str_starts_with($p->image, 'projects/')) {
+                $img = Storage::url($p->image);
+            } else {
+                $img = asset('assets/img/projects/' . $p->image);
+            }
+            return [
+                'id'       => $p->id,
+                'category' => $p->category,
+                'title'    => $p->name,
+                'img'      => $img,
+                'summary'  => $p->summary_title ?? '',
+                'url'      => route('works.show', $p),
+            ];
+        })->values()) !!};
 
         function getCategoryConfig(cat) {
             switch(cat) {
@@ -200,7 +199,7 @@
             paged.forEach(p => {
                 const config = getCategoryConfig(p.category);
                 const cardHtml = `
-                    <a href="detail_project.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col">
+                    <a href="${p.url}" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col">
                     <div class="h-56 overflow-hidden relative">
                         <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
@@ -211,7 +210,7 @@
                             </span>
                         </div>
                         <h3 class="text-xl font-bold text-hex-dark mb-4 line-clamp-2">${p.title}</h3>
-                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-6">${currentLang === 'en' ? p.desc_en : p.desc_id}</p>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-6">${p.summary}</p>
                         <div class="mt-auto flex items-center gap-2 text-hex-blue font-bold text-sm">
                             ${readMoreText} <span class="material-symbols-outlined text-sm translate-y-px">arrow_forward</span>
                         </div>

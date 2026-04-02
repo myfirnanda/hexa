@@ -21,8 +21,9 @@ class DatabaseSeeder extends Seeder
             // ClientSeeder::class,
             // TeamMemberSeeder::class,
             // TestimonialSeeder::class,
-            // ProjectSeeder::class,
+            ProjectSeeder::class,
             // OrderSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }

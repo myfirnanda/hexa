@@ -49,6 +49,10 @@
                 <span class="material-symbols-outlined text-xl">category</span>
                 Produk / Layanan
             </a>
+            <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.products.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+                <span class="material-symbols-outlined text-xl">inventory_2</span>
+                Produk
+            </a>
             <a href="{{ route('admin.projects.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.projects.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">work</span>
                 Project

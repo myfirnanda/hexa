@@ -333,9 +333,12 @@ class ProjectSeeder extends Seeder
 
         foreach ($projects as $project) {
             if (isset($project['content'])) {
-                $project['description'] = $project['content'];
+                unset($project['content']);
             }
-            Project::create($project);
+            Project::updateOrCreate(
+                ['slug' => $project['slug']],
+                $project
+            );
         }
     }
 }

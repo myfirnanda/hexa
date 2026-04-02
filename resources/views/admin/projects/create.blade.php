@@ -55,6 +55,18 @@
             </div>
 
             <div class="mb-5">
+                <label for="summary_title" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Summary Title <span class="text-xs font-normal admin-text-muted">(ditampilkan di kartu daftar work)</span></label>
+                <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="summary_title" name="summary_title" value="{{ old('summary_title') }}" placeholder="Learning About ...">
+                @error('summary_title') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+            </div>
+
+            <div class="mb-5">
+                <label for="hero_description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Hero Description <span class="text-xs font-normal admin-text-muted">(ditampilkan di bagian hero halaman detail)</span></label>
+                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="hero_description" name="hero_description" rows="3" placeholder="Deskripsi singkat untuk hero section...">{{ old('hero_description') }}</textarea>
+                @error('hero_description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+            </div>
+
+            <div class="mb-5">
                 <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi</label>
                 <textarea id="description" name="description">{{ old('description') }}</textarea>
                 @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
