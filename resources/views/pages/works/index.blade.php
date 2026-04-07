@@ -154,18 +154,11 @@
 
         // Project Data (dynamic from DB)
         const projects = {!! json_encode($projects->map(function($p) {
-            if (!$p->image) {
-                $img = asset('assets/img/placeholder.png');
-            } elseif (str_starts_with($p->image, 'projects/')) {
-                $img = Storage::url($p->image);
-            } else {
-                $img = asset('assets/img/projects/' . $p->image);
-            }
             return [
                 'id'       => $p->id,
                 'category' => $p->category,
                 'title'    => $p->name,
-                'img'      => $img,
+                'img'      => image_url($p->image),
                 'summary'  => $p->summary_title ?? '',
                 'url'      => route('works.show', $p),
             ];

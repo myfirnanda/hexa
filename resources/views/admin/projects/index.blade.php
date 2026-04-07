@@ -35,13 +35,7 @@
                 <tr class="admin-table-hover">
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">{{ $project->id }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
-                        @if($project->image)
-                        <img src="{{ Storage::url($project->image) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $project->name }}" onclick="openGalleryPreview('{{ Storage::url($project->image) }}')">
-                        @else
-                        <div class="size-10 rounded-lg flex items-center justify-center admin-text-muted admin-deep-bg border">
-                            <span class="material-symbols-outlined text-[18px]">image</span>
-                        </div>
-                        @endif
+                        <img src="{{ image_url($project->image) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $project->name }}" onclick="openGalleryPreview('{{ image_url($project->image) }}')">
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle font-semibold">{{ $project->name }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle"><span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold capitalize bg-blue-500/12 text-blue-400">{{ ucwords(str_replace('-', ' ', $project->category)) }}</span></td>

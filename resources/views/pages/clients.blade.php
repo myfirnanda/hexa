@@ -62,7 +62,7 @@
                     @foreach($catClients as $client)
                     <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4">
                         @if($client->logo)
-                        <img src="{{ Storage::url($client->logo) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain transition-all duration-300" />
+                        <img src="{{ image_url($client->logo) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain transition-all duration-300" />
                         @else
                         <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center">
                             <span class="material-symbols-outlined text-slate-400 text-2xl">business</span>

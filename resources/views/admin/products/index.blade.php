@@ -36,13 +36,7 @@
                 <tr class="admin-table-hover">
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text">{{ $product->id }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
-                        @if($product->image_cover)
-                        <img src="{{ Storage::url($product->image_cover) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $product->name }}" onclick="openGalleryPreview('{{ Storage::url($product->image_cover) }}')">
-                        @else
-                        <div class="size-10 rounded-lg flex items-center justify-center admin-text-muted admin-deep-bg border">
-                            <span class="material-symbols-outlined text-[18px]">image</span>
-                        </div>
-                        @endif
+                        <img src="{{ image_url($product->image_cover) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $product->name }}" onclick="openGalleryPreview('{{ image_url($product->image_cover) }}')">
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle font-semibold admin-text">{{ $product->name }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary text-[13px] max-w-[320px]">{{ Str::limit($product->tagline, 60) }}</td>

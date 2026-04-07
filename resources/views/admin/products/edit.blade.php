@@ -84,8 +84,8 @@
                 @if($product->image_cover)
                 <div id="current-cover" class="mb-3">
                     <div style="width:150px; height:150px; border-radius:10px; overflow:hidden; border:2px solid #3b82f6; cursor:pointer;"
-                         onclick="openGalleryPreview('{{ Storage::url($product->image_cover) }}')">
-                        <img src="{{ Storage::url($product->image_cover) }}" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
+                         onclick="openGalleryPreview('{{ image_url($product->image_cover) }}')">
+                        <img src="{{ image_url($product->image_cover) }}" alt="Cover" style="width:100%; height:100%; object-fit:cover;">
                     </div>
                     <p class="text-xs admin-text-muted mt-1">Upload gambar baru untuk mengganti cover saat ini.</p>
                 </div>
@@ -104,8 +104,8 @@
                     <div class="relative existing-gallery-item" data-id="{{ $img->id }}">
                         <div style="width:100px; height:100px; border-radius:10px; overflow:hidden; border:2px solid #3b82f6; cursor:pointer; transition: opacity 0.2s;"
                              class="gallery-thumb"
-                             onclick="openGalleryPreview('{{ Storage::url($img->image_path) }}')">
-                            <img src="{{ Storage::url($img->image_path) }}" alt="Gallery" style="width:100%; height:100%; object-fit:cover;">
+                             onclick="openGalleryPreview('{{ image_url($img->image_path) }}')">
+                            <img src="{{ image_url($img->image_path) }}" alt="Gallery" style="width:100%; height:100%; object-fit:cover;">
                         </div>
                         <button type="button" class="gallery-delete-toggle"
                             style="position:absolute; top:-8px; right:-8px; z-index:10; width:20px; height:20px; border-radius:50%; background:#ef4444; color:white; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,0.3); font-size:0;"

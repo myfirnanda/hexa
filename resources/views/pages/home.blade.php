@@ -55,7 +55,7 @@
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
                     @foreach($clients as $homeClient)
                         @if($homeClient->logo)
-                            <img src="{{ Storage::url($homeClient->logo) }}" alt="{{ $homeClient->name }}" class="h-10 md:h-12 w-auto object-contain">
+                            <img src="{{ image_url($homeClient->logo) }}" alt="{{ $homeClient->name }}" class="h-10 md:h-12 w-auto object-contain">
                         @endif
                     @endforeach
                 </div>

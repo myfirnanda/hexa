@@ -10,14 +10,8 @@
     ];
     $cat = $categoryMap[$project->category] ?? ['en' => 'Project', 'id' => 'Proyek', 'class' => 'bg-slate-100 text-slate-600'];
 
-    // Resolve cover image URL
-    if ($project->image) {
-        $coverUrl = str_starts_with($project->image, 'projects/')
-            ? Storage::url($project->image)
-            : asset('assets/img/projects/' . $project->image);
-    } else {
-        $coverUrl = asset('assets/img/placeholder.png');
-    }
+    // Resolve cover image URL using image_url helper (storage -> public fallback)
+    $coverUrl = image_url($project->image);
 
     // Collect all gallery images (cover + projectImages relation)
     $galleryImages = collect();
@@ -25,7 +19,7 @@
         $galleryImages->push($coverUrl);
     }
     foreach ($project->projectImages as $img) {
-        $galleryImages->push(Storage::url($img->image));
+        $galleryImages->push(image_url($img->image));
     }
     if ($galleryImages->isEmpty()) {
         $galleryImages->push(asset('assets/img/placeholder.png'));

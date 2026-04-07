@@ -38,7 +38,7 @@
                 <div class="w-full mt-auto relative overflow-hidden">
                     <div class="detail-logo-track items-center justify-center">
                         @foreach($clients->filter(fn($c) => $c->logo) as $client)
-                        <img class="h-10 opacity-70" src="{{ Storage::url($client->logo) }}" alt="{{ $client->name }}" />
+                        <img class="h-10 opacity-70" src="{{ image_url($client->logo) }}" alt="{{ $client->name }}" />
                         @endforeach
                     </div>
                 </div>

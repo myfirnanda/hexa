@@ -45,8 +45,8 @@
                 </label>
                 <div id="cover-preview" class="mb-3">
                     @if($project->image)
-                    <div style="width:192px;height:112px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;" onclick="openGalleryPreview('{{ Storage::url($project->image) }}')">
-                        <img src="{{ Storage::url($project->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="Cover">
+                    <div style="width:192px;height:112px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;" onclick="openGalleryPreview('{{ image_url($project->image) }}')">
+                        <img src="{{ image_url($project->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="Cover">
                     </div>
                     @endif
                 </div>
@@ -68,8 +68,8 @@
                         @foreach($project->projectImages as $img)
                         <div class="relative" style="width:100px;height:100px;flex-shrink:0;">
                             <input type="checkbox" name="delete_images[]" value="{{ $img->id }}" class="sr-only gallery-delete-cb">
-                            <div class="gallery-img-box" style="width:100px;height:100px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;transition:border-color 0.15s, opacity 0.15s;" onclick="openGalleryPreview('{{ Storage::url($img->image) }}')">
-                                <img src="{{ Storage::url($img->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="">
+                            <div class="gallery-img-box" style="width:100px;height:100px;border-radius:10px;overflow:hidden;border:2px solid #3b82f6;cursor:pointer;transition:border-color 0.15s, opacity 0.15s;" onclick="openGalleryPreview('{{ image_url($img->image) }}')">
+                                <img src="{{ image_url($img->image) }}" style="width:100%;height:100%;object-fit:cover;" alt="">
                             </div>
                             <button type="button" onclick="toggleDeleteImage(this)" style="position:absolute;top:-8px;right:-8px;z-index:10;width:20px;height:20px;border-radius:50%;background:#ef4444;color:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 4px rgba(0,0,0,0.3);" title="Hapus gambar">
                                 <span class="material-symbols-outlined" style="font-size:14px;">close</span>

@@ -36,7 +36,7 @@
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">{{ $client->id }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         @if($client->logo)
-                        <img src="{{ Storage::url($client->logo) }}" class="size-10 rounded-lg object-contain bg-white p-1 border admin-border" alt="{{ $client->name }}">
+                        <img src="{{ image_url($client->logo) }}" class="size-10 rounded-lg object-contain bg-white p-1 border admin-border" alt="{{ $client->name }}">
                         @else
                         <div class="size-10 rounded-lg flex items-center justify-center admin-text-muted admin-deep-bg border">
                             <span class="material-symbols-outlined text-lg">apartment</span>
@@ -51,7 +51,7 @@
                         <div class="flex items-center gap-1.5">
                             <button type="button" title="Edit"
                                 class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] admin-btn-secondary border-none cursor-pointer transition-all duration-150"
-                                onclick="openEditClient({{ $client->id }}, '{{ e($client->name) }}', '{{ e($client->category) }}', '{{ $client->logo ? Storage::url($client->logo) : '' }}')">
+                                onclick="openEditClient({{ $client->id }}, '{{ e($client->name) }}', '{{ e($client->category) }}', '{{ $client->logo ? image_url($client->logo) : '' }}')">
                                 <span class="material-symbols-outlined text-[16px]">edit</span>
                             </button>
                             <button type="button" title="Hapus"
