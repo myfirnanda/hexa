@@ -15,6 +15,7 @@ class WorkController extends Controller
 
     public function show(Project $project)
     {
+        $project->load('projectImages');
         return view('pages.works.show', compact('project'));
     }
 }

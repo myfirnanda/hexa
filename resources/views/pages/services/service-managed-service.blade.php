@@ -9,14 +9,10 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        @keyframes detailLogoMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
         .detail-logo-track {
             display: flex;
-            width: max-content;
-            animation: detailLogoMarquee 20s linear infinite;
+            flex-wrap: wrap;
+            gap: 2rem;
         }
             .solutions-mega-menu { opacity: 0; transform: translateX(-50%) translateY(8px); pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
         .solutions-mega-menu.is-open { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
@@ -40,21 +36,10 @@
 
                 <!-- Marquee Clients (Bottom Aligned) -->
                 <div class="w-full mt-auto relative overflow-hidden">
-                    <div class="detail-logo-track flex items-center pr-12">
-                        <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
-                        </div>
-                        <div class="flex items-center gap-12 h-16">
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/kana.png') }}" alt="Kana" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT Muda" />
-                            <img class="h-10 opacity-70" src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="Berau Coal" />
-                        </div>
+                    <div class="detail-logo-track items-center justify-center">
+                        @foreach($clients->filter(fn($c) => $c->logo) as $client)
+                        <img class="h-10 opacity-70" src="{{ Storage::url($client->logo) }}" alt="{{ $client->name }}" />
+                        @endforeach
                     </div>
                 </div>
             </div>

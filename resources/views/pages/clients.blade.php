@@ -51,79 +51,32 @@
 
             <div class="category-grid all-view space-y-16" id="category-grid">
 
-                <section class="category-card scroll-mt-32" data-category="education">
+                @foreach($categories as $catKey => $catLabel)
+                    @php $catClients = $clients->where('category', $catKey); @endphp
+                @if($catClients->isNotEmpty())
+                <section class="category-card scroll-mt-32" data-category="{{ $catKey }}">
                   <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Education & Academia" data-id="Pendidikan & Akademik">Education & Academia</h3>
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4">{{ $catLabel }}</h3>
                   </div>
                   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/univ_indonesia.png') }}" alt="University of Indonesia" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">University of Indonesia</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/unair.png') }}" alt="Airlangga University" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">Airlangga University</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">Sepuluh Nopember Institute of Technology</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/ubaya.png') }}" alt="UBAYA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">University of Surabaya</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/roudlotul_falah.png') }}" alt="Roudlotul Falah" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">ROUDLOTUL FALAH</strong></div></article>
+                    @foreach($catClients as $client)
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4">
+                        @if($client->logo)
+                        <img src="{{ Storage::url($client->logo) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain transition-all duration-300" />
+                        @else
+                        <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-slate-400 text-2xl">business</span>
+                        </div>
+                        @endif
+                        <div class="w-full border-t border-slate-100 pt-3 mt-auto">
+                            <strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">{{ $client->name }}</strong>
+                        </div>
+                    </article>
+                    @endforeach
                   </div>
                 </section>
-
-                <section class="category-card scroll-mt-32" data-category="government">
-                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Government & Public Sector" data-id="Pemerintah & Sektor Publik">Government & Public Sector</h3>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/kominfo.png') }}" alt="KOMINFO" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">KOMINFO</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD JATIM" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BKD JATIM</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="BANJARBARU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BANJARBARU</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/kota_bengkulu.png') }}" alt="BENGKULU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BENGKULU</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/lamongan.png') }}" alt="LAMONGAN" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">LAMONGAN</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="PAMEKASAN" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PAMEKASAN</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/rs_soetomo.png') }}" alt="DR SOETOMO HOSPITAL" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">DR SOETOMO HOSPITAL</strong></div></article>
-                  </div>
-                </section>
-
-                <section class="category-card scroll-mt-32" data-category="soe">
-                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="State-Owned Enterprises (SOE) & Energy" data-id="BUMN & Energi">State-Owned Enterprises (SOE) & Energy</h3>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/telkom.png') }}" alt="TELKOM INDONESIA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">TELKOM INDONESIA</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/wika.png') }}" alt="WIKA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">WIKA (Wijaya Karya)</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PJB (PLN Nusantara Power)</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/berau_coal.png') }}" alt="BERAU COAL" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BERAU COAL</strong></div></article>
-                  </div>
-                </section>
-
-                <section class="category-card scroll-mt-32" data-category="finance">
-                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Banking & Finance" data-id="Perbankan & Keuangan">Banking & Finance</h3>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/sinarmas.png') }}" alt="SINARMAS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">SINARMAS</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/bank_bengkulu.png') }}" alt="BANK BENGKULU" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BANK BENGKULU</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/bmt_muda.png') }}" alt="BMT MUDA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">BMT MUDA</strong></div></article>
-                  </div>
-                </section>
-
-                <section class="category-card scroll-mt-32" data-category="industrial">
-                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Industrial, Manufacturing & FMCG" data-id="Industri, Manufaktur & FMCG">Industrial, Manufacturing & FMCG</h3>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/unilever.png') }}" alt="UNILEVER" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">UNILEVER</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/zelltech.png') }}" alt="ZELLTECH" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">ZELLTECH</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/jmf.png') }}" alt="PT JAVA MINING FERTILIZO" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">PT JAVA MINING FERTILIZO</strong></div></article>
-                  </div>
-                </section>
-
-                <section class="category-card scroll-mt-32" data-category="retail">
-                  <div class="category-card-header mb-8 pb-4 border-b-2 border-slate-100">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4" data-i18n data-en="Retail, Services & Lifestyle" data-id="Ritel, Layanan & Gaya Hidup">Retail, Services & Lifestyle</h3>
-                  </div>
-                  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/dianca_goods.png') }}" alt="DIANCA GOODS" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">DIANCA GOODS</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/queen_aisyah.jpg') }}" alt="QUEEN AISYA SALON AND SPA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">QUEEN AISYA SALON & SPA</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/amoeba.png') }}" alt="AMOEBA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">AMOEBA</strong></div></article>
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4"><img src="{{ asset('assets/img/clients/kana.png') }}" alt="KANA" class="h-16 w-auto object-contain transition-all duration-300" /><div class="w-full border-t border-slate-100 pt-3 mt-auto"><strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">KANA</strong></div></article>
-                  </div>
-                </section>
+                @endif
+                @endforeach
             </div>
         </div>
     </section>

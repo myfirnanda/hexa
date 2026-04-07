@@ -31,6 +31,7 @@ class ServiceController extends Controller
     }
 
     public function managedService() {
-        return view('pages.services.service-managed-service');
+        $clients = Client::all();
+        return view('pages.services.service-managed-service', compact('clients'));
     }
 }

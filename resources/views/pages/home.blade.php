@@ -53,21 +53,11 @@
                 <!-- Partner Logos Grid - Responsive Layout -->
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    <img src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
-
-                    <img src="{{ asset('assets/img/clients/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
+                    @foreach($clients as $homeClient)
+                        @if($homeClient->logo)
+                            <img src="{{ Storage::url($homeClient->logo) }}" alt="{{ $homeClient->name }}" class="h-10 md:h-12 w-auto object-contain">
+                        @endif
+                    @endforeach
                 </div>
 
                 <!-- View All Link -->
@@ -411,157 +401,49 @@
                     </div>
                 </div>
 
+                @php
+                    $homeCatMap = [
+                        'software-development' => ['badge' => 'bg-blue-50 text-blue-600',   'en' => 'Software Development', 'id' => 'Pengembangan Perangkat Lunak'],
+                        'digital-branding'     => ['badge' => 'bg-orange-50 text-orange-600','en' => 'Digital Branding',     'id' => 'Branding Digital'],
+                        'startup-incubator'    => ['badge' => 'bg-purple-50 text-purple-600','en' => 'Startup Incubator',    'id' => 'Inkubator Startup'],
+                        'it-consultant'        => ['badge' => 'bg-green-50 text-green-600',  'en' => 'IT Consultant',        'id' => 'Konsultan TI'],
+                    ];
+                @endphp
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Cards -->
-                    <a href="detail_project.html"
+                    @foreach($projects->take(6) as $homeProject)
+                    @php
+                        $homeCat = $homeCatMap[$homeProject->category] ?? ['badge' => 'bg-slate-50 text-slate-600', 'en' => 'Project', 'id' => 'Proyek'];
+                        if ($homeProject->image) {
+                            $homeImgUrl = str_starts_with($homeProject->image, 'projects/')
+                                ? Storage::url($homeProject->image)
+                                : asset('assets/img/projects/' . $homeProject->image);
+                        } else {
+                            $homeImgUrl = null;
+                        }
+                        $homeDesc = $homeProject->hero_description ?: Str::limit(strip_tags($homeProject->description ?? ''), 160);
+                    @endphp
+                    <a href="{{ route('works.show', $homeProject) }}"
                         class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="all software-development">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/POS_KANA1.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                alt="Sistem POS Kana">
+                        data-filter="all {{ $homeProject->category }}">
+                        <div class="h-56 overflow-hidden relative {{ !$homeImgUrl ? 'flex items-center justify-center bg-blue-100' : '' }}">
+                            @if($homeImgUrl)
+                                <img src="{{ $homeImgUrl }}"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    alt="{{ $homeProject->name }}">
+                            @else
+                                <span class="material-symbols-outlined text-6xl text-blue-400">rocket_launch</span>
+                            @endif
                         </div>
                         <div class="p-8">
                             <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="Software Development"
-                                    data-id="Pengembangan Perangkat Lunak">Software Development</span>
+                                <span class="inline-block px-4 py-1.5 rounded-full {{ $homeCat['badge'] }} text-[10px] font-bold tracking-widest uppercase mb-3"
+                                    data-i18n data-en="{{ $homeCat['en'] }}" data-id="{{ $homeCat['id'] }}">{{ $homeCat['en'] }}</span>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4" data-i18n data-en="Sistem POS Kana"
-                                data-id="Sistem POS Kana">Sistem POS Kana</h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="A web-based business management platform that integrates procurement, sales, warehouse inventory, distribution partners, petty cash, sales team KPIs, and business reports into a single unified system."
-                                data-id="Platform manajemen bisnis berbasis web yang mengintegrasikan pengadaan, penjualan, inventaris gudang, mitra distribusi, kas kecil, KPI tim penjualan, dan laporan bisnis dalam satu sistem terpadu.">
-                                A web-based business management
-                                platform that integrates procurement, sales, warehouse inventory, distribution partners,
-                                petty cash, sales team KPIs, and business reports into a single unified system.</p>
+                            <h3 class="text-xl font-bold text-slate-900 mb-4">{{ $homeProject->name }}</h3>
+                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3">{{ $homeDesc }}</p>
                         </div>
                     </a>
-
-                    <a href="detail_project.html"
-                        class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="all it-consultant">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                alt="KOPERASI KANA">
-                        </div>
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-green-50 text-green-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="IT Consultant" data-id="Konsultan TI">IT Consultant</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4" data-i18n
-                                data-en="KOPERASI KANA Development Analysis"
-                                data-id="Analisa Pengembangan KOPERASI KANA">Analisa Pengembangan KOPERASI KANA</h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="The analysis and development of application systems involving planning, design, and development to meet the user needs of KOPERASI KANA."
-                                data-id="Analisis dan pengembangan sistem aplikasi yang meliputi perencanaan, desain, dan pengembangan untuk memenuhi kebutuhan pengguna KOPERASI KANA.">
-                                The analysis and development of
-                                application systems involving planning, design, and development to meet the user needs
-                                of
-                                KOPERASI KANA.</p>
-                        </div>
-                    </a>
-
-                    <a href="detail_project.html"
-                        class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="all software-development">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                alt="QPS WIKA GEDUNG">
-                        </div>
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="Software Development"
-                                    data-id="Pengembangan Perangkat Lunak">Software Development</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4" data-i18n data-en="QPS WIKA GEDUNG"
-                                data-id="QPS WIKA GEDUNG">QPS WIKA GEDUNG</h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="Revolutionizing property assessments, PT. WIKA Gedung employs an innovative application for surveying residential units."
-                                data-id="Merevolusi penilaian properti, PT. WIKA Gedung menggunakan aplikasi inovatif untuk survei unit residensial.">
-                                Revolutionizing property
-                                assessments, PT. WIKA Gedung employs an innovative application for surveying residential
-                                units.</p>
-                        </div>
-                    </a>
-
-                    <a href="detail_project.html"
-                        class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="all software-development">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                alt="SISTEM WAREHOUSE">
-                        </div>
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="Software Development" data-id="Pengembangan Software">Software
-                                    Development</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4">SISTEM WAREHOUSE – MJS UNILEVER</h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="Efficient system facilitating inventory tracking for MJA Company, a trusted Unilever distributor."
-                                data-id="Sistem efisien yang memfasilitasi pelacakan inventaris untuk MJA Company, distributor Unilever terpercaya.">
-                                Efficient system facilitating
-                                inventory tracking for MJA Company, a trusted Unilever distributor.</p>
-                        </div>
-                    </a>
-
-                    <a href="detail_project.html"
-                        class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="digital-branding" style="display:none;">
-                        <div class="h-56 overflow-hidden relative">
-                            <img src="{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                alt="Promo Video UBAYA">
-                        </div>
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-orange-50 text-orange-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="Digital Branding" data-id="Branding Digital">Digital
-                                    Branding</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4">Promotion Video Teknik Manufaktur UBAYA
-                            </h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="The promotional video showcases the Manufacturing Engineering program at the University of Surabaya."
-                                data-id="Video promosi yang menampilkan program Teknik Manufaktur di Universitas Surabaya.">
-                                The promotional video showcases
-                                the Manufacturing Engineering program at the University of Surabaya.</p>
-                        </div>
-                    </a>
-
-                    <a href="detail_project.html"
-                        class="project-card group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
-                        data-filter="startup-incubator" style="display:none;">
-                        <div class="h-56 overflow-hidden relative flex items-center justify-center bg-blue-100">
-                            <span class="material-symbols-outlined text-6xl text-blue-400">rocket_launch</span>
-                        </div>
-                        <div class="p-8">
-                            <div class="mb-4">
-                                <span
-                                    class="inline-block px-4 py-1.5 rounded-full bg-purple-50 text-purple-600 text-[10px] font-bold tracking-widest uppercase mb-3"
-                                    data-i18n data-en="Startup Incubator" data-id="Inkubator Startup">Startup
-                                    Incubator</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-4">Sistem Rumah Sakit - MEDIFY</h3>
-                            <p class="project-card-desc text-slate-600 text-sm line-clamp-3" data-i18n
-                                data-en="Digital startup incubation aimed at guiding and training small startups to develop hospital management systems."
-                                data-id="Inkubasi startup digital yang bertujuan membimbing dan melatih startup kecil untuk mengembangkan sistem manajemen rumah sakit.">
-                                Digital startup incubation
-                                aimed at guiding and training small startups to develop hospital management systems.</p>
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
 
                 <div class="mt-12 text-center">

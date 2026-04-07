@@ -200,21 +200,11 @@
                 <!-- Partner Logos Grid -->
                 <div
                     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    <img src="{{ asset('assets/img/clients/unilever.png') }}" alt="Unilever" class="h-8 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/wika.png') }}" alt="Wika" class="h-8 md:h-10 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/PJB.png') }}" alt="PJB" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/telkom.png') }}" alt="Telkom" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/kominfo.png') }}" alt="Kominfo" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/unair.png') }}" alt="Unair" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/its.png') }}" alt="ITS" class="h-12 md:h-16 w-auto object-contain">
-
-                    <img src="{{ asset('assets/img/clients/ubaya.png') }}" alt="Ubaya" class="h-12 md:h-14 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/univ_indonesia.png') }}" alt="UI" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/bkd_jatim.png') }}" alt="BKD" class="h-10 md:h-12 w-auto object-contain">
-                    <img src="{{ asset('assets/img/projects/prov_bengkulu.png') }}" alt="Bengkulu" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/banjarbaru.png') }}" alt="Banjarbaru" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/lamongan.png') }}" alt="Lamongan" class="h-12 md:h-16 w-auto object-contain">
-                    <img src="{{ asset('assets/img/clients/pamekasan.png') }}" alt="Pamekasan" class="h-12 md:h-16 w-auto object-contain">
+                    @foreach($clients as $client)
+                        @if($client->logo)
+                            <img src="{{ Storage::url($client->logo) }}" alt="{{ $client->name }}" class="h-10 md:h-12 w-auto object-contain">
+                        @endif
+                    @endforeach
                 </div>
 
                 <!-- View All Link -->
