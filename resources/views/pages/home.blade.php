@@ -52,11 +52,9 @@
 
                 <!-- Partner Logos Grid - Responsive Layout -->
                 <div
-                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    @foreach($clients as $homeClient)
-                        @if($homeClient->logo)
-                            <img src="{{ image_url($homeClient->logo) }}" alt="{{ $homeClient->name }}" class="h-10 md:h-12 w-auto object-contain">
-                        @endif
+                    class="grid grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
+                    @foreach($clients->filter(fn($c) => $c->logo)->take(14) as $homeClient)
+                        <img src="{{ image_url($homeClient->logo) }}" alt="{{ $homeClient->name }}" class="h-10 md:h-12 w-auto object-contain">
                     @endforeach
                 </div>
 
@@ -413,13 +411,7 @@
                     @foreach($projects->take(6) as $homeProject)
                     @php
                         $homeCat = $homeCatMap[$homeProject->category] ?? ['badge' => 'bg-slate-50 text-slate-600', 'en' => 'Project', 'id' => 'Proyek'];
-                        if ($homeProject->image) {
-                            $homeImgUrl = str_starts_with($homeProject->image, 'projects/')
-                                ? Storage::url($homeProject->image)
-                                : asset('assets/img/projects/' . $homeProject->image);
-                        } else {
-                            $homeImgUrl = null;
-                        }
+                        $homeImgUrl = $homeProject->image ? image_url($homeProject->image) : null;
                         $homeDesc = $homeProject->hero_description ?: Str::limit(strip_tags($homeProject->description ?? ''), 160);
                     @endphp
                     <a href="{{ route('works.show', $homeProject) }}"
