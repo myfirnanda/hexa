@@ -5,29 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Hexavara - Digital Excellence Since 2013')</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'hex-dark': '#0f172a',
-                        'hex-blue': '#2563eb',
-                        'hex-blue-light': '#0c5bed',
-                        'hex-orange': '#ec5b13',
-                        'hex-surface': '#f5f6f8',
-                        'hex-slate': '#475569',
-                        'hex-slate-light': '#64748b',
-                        'hex-muted': '#514f5e',
-                        'hex-surface-dark': '#0b1221'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL,GRAD,opsz@100..700,0,0,20..48" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700;800&display=swap" rel="stylesheet">
     <style>

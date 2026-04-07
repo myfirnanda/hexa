@@ -13,6 +13,17 @@
     --color-surface: #1e293b;
     --color-base: #0f172a;
     --color-border: #334155;
+
+    /* Public layout custom colors */
+    --color-hex-dark: #0f172a;
+    --color-hex-blue: #2563eb;
+    --color-hex-blue-light: #0c5bed;
+    --color-hex-orange: #ec5b13;
+    --color-hex-surface: #f5f6f8;
+    --color-hex-slate: #475569;
+    --color-hex-slate-light: #64748b;
+    --color-hex-muted: #514f5e;
+    --color-hex-surface-dark: #0b1221;
 }
 
 /* Toast animation — not achievable with Tailwind alone */
