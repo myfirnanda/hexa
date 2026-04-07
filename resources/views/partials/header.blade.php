@@ -33,8 +33,11 @@
         </div>
     </div>
 
+    <!-- Mobile Backdrop -->
+    <div id="mobile-backdrop" class="fixed inset-0 z-[199] bg-black/40 lg:hidden"></div>
+
     <!-- Mobile Menu Sidebar -->
-    <div id="mobile-menu" class="fixed inset-0 z-[200] bg-white transform translate-x-full transition-transform duration-300 overflow-y-auto lg:hidden">
+    <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-full z-[200] bg-white translate-x-full transition-[translate] duration-300 overflow-y-auto lg:hidden">
         <div class="p-6">
             <div class="flex items-center justify-between mb-12">
                 <img src="{{ asset('assets/img/brand-logo-main.png') }}" alt="Hexavara" class="h-8 w-auto">

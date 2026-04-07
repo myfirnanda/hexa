@@ -38,27 +38,35 @@
     }
 
     // 2. Mobile Menu Toggle (Sidebar)
-    const mobileMenuOpen = document.getElementById('mobile-menu-open');
+    const mobileMenuOpen  = document.getElementById('mobile-menu-open');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenu      = document.getElementById('mobile-menu');
+    const mobileBackdrop  = document.getElementById('mobile-backdrop');
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('is-open');
+        if (mobileBackdrop) mobileBackdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('is-open');
+        if (mobileBackdrop) mobileBackdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
 
     if (mobileMenuOpen && mobileMenu && mobileMenuClose) {
-        mobileMenuOpen.addEventListener('click', () => {
-            mobileMenu.classList.add('is-open');
-            document.body.style.overflow = 'hidden';
-        });
+        mobileMenuOpen.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
 
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('is-open');
-            document.body.style.overflow = '';
-        });
+        // Close on backdrop click
+        if (mobileBackdrop) {
+            mobileBackdrop.addEventListener('click', closeMobileMenu);
+        }
 
         // Close on link click
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('is-open');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
     }
 

@@ -38,6 +38,18 @@
         object-fit: cover;
         border-radius: 8px;
     }
+
+    /* Lazy image fade-in for works grid */
+    #wc-grid img {
+        opacity: 0;
+        transition: opacity 0.35s ease, transform 0.5s ease;
+    }
+    #wc-grid img.img-loaded {
+        opacity: 1;
+    }
+    #wc-grid .card-img-wrap {
+        background: #f1f5f9;
+    }
 </style>
 @endpush
 
@@ -57,35 +69,10 @@
                 <div class="hidden lg:block relative h-full">
                     <div class="hero-perspective-wrap absolute right-[-480px] bottom-[-100px]">
                         <div class="hero-perspective-grid">
-                            <div><img src="{{ asset('assets/img/POS_KANA1.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_telkom.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_industri.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_ppdb.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_calcius.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_zelltech.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_silly.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_pamekasan.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_digital_ubaya.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_digital_aisya.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_digital_jmf.png') }}" alt=""></div>
-                            <!-- Added 3 more rows (12 items) -->
-                            <div><img src="{{ asset('assets/img/POS_KANA1.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_telkom.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_industri.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_ppdb.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_kana.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_bmt.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_calcius.jpg') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_zelltech.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_all_unilever.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_silly.png') }}" alt=""></div>
-                            <div><img src="{{ asset('assets/img/projects/proyek_softdev_banjarbaru.png') }}" alt=""></div>
+                            @php $heroImgs = $projects->whereNotNull('image')->values(); @endphp
+                            @foreach($heroImgs->take(28) as $heroImg)
+                            <div><img src="{{ image_url($heroImg->image) }}" alt="" loading="{{ $loop->index < 8 ? 'eager' : 'lazy' }}" decoding="async"></div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -193,8 +180,14 @@
                 const config = getCategoryConfig(p.category);
                 const cardHtml = `
                     <a href="${p.url}" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 flex flex-col">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="h-56 overflow-hidden relative card-img-wrap">
+                        <img src="${p.img}"
+                             alt="${p.title}"
+                             loading="lazy"
+                             decoding="async"
+                             class="w-full h-full object-cover group-hover:scale-110"
+                             onload="this.classList.add('img-loaded')"
+                             onerror="this.src='{{ asset('assets/img/placeholder.png') }}';this.classList.add('img-loaded')">
                     </div>
                     <div class="p-8 flex-1 flex flex-col">
                         <div class="mb-4">

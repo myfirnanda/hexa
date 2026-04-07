@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" id="adminHtml">
 <head>
     <meta charset="UTF-8" />
@@ -31,11 +31,11 @@
         {{-- Nav --}}
         <nav class="flex-1 p-3 overflow-y-auto">
             <div class="text-[11px] font-semibold uppercase tracking-wider admin-text-muted px-3 pt-4 pb-2">Menu</div>
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.dashboard') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.dashboard') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">dashboard</span>
                 Beranda
             </a>
-            <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.orders.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.orders.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.orders.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">shopping_cart</span>
                 Orders
                 @php $pendingCount = \App\Models\Order::where('status','pending')->count(); @endphp
@@ -45,23 +45,23 @@
             </a>
 
             <div class="text-[11px] font-semibold uppercase tracking-wider admin-text-muted px-3 pt-4 pb-2">Manajemen Konten</div>
-            <a href="{{ route('admin.services.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.services.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.services.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.services.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">category</span>
                 Produk / Layanan
             </a>
-            <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.products.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.products.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.products.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">inventory_2</span>
                 Produk
             </a>
-            <a href="{{ route('admin.projects.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.projects.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.projects.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.projects.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">work</span>
                 Project
             </a>
-            <a href="{{ route('admin.clients.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.clients.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.clients.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.clients.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">apartment</span>
                 Clients
             </a>
-            <a href="{{ route('admin.testimonials.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('admin.testimonials.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+            <a href="{{ route('manager.testimonials.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.testimonials.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">rate_review</span>
                 Testimonials
             </a>
@@ -69,10 +69,6 @@
         {{-- Footer / User dropdown --}}
         <div class="p-3 admin-border border-t relative">
             <div id="userDropdown" class="hidden absolute bottom-[calc(100%+4px)] left-3 right-3 admin-card rounded-xl p-1.5 z-[60]" style="box-shadow: var(--admin-shadow-lg);">
-                <a href="{{ route('home') }}" class="flex items-center gap-2 w-full px-3 py-2 rounded-md admin-text-secondary text-[13px] font-medium no-underline transition-all duration-150 admin-surface-hover" target="_blank">
-                    <span class="material-symbols-outlined text-lg">open_in_new</span>
-                    Lihat Website
-                </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="flex items-center gap-2 w-full px-3 py-2 rounded-md admin-text-secondary text-[13px] font-medium bg-transparent border-none font-[inherit] cursor-pointer transition-all duration-150 hover:bg-red-500/12 hover:text-red-400">
@@ -112,10 +108,6 @@
                 <button id="themeToggle" onclick="toggleTheme()" class="flex items-center justify-center size-9 rounded-lg bg-transparent border admin-border cursor-pointer transition-all duration-150 admin-surface-hover" title="Toggle theme">
                     <span class="material-symbols-outlined text-xl admin-text-secondary" id="themeIcon">dark_mode</span>
                 </button>
-                <a href="{{ route('home') }}" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg no-underline admin-text-secondary text-[13px] transition-all duration-150 admin-surface-hover" target="_blank">
-                    <span class="material-symbols-outlined text-[16px]">open_in_new</span>
-                    <span class="max-sm:hidden">Lihat Website</span>
-                </a>
             </div>
         </header>
 

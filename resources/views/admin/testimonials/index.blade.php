@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Testimonials')
 @section('topbar-title', 'Testimonials')
 
@@ -50,7 +50,7 @@
                             </button>
                             <button type="button" title="Hapus"
                                 class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20"
-                                onclick="confirmDelete('{{ route('admin.testimonials.destroy', $testimonial) }}')">
+                                onclick="confirmDelete('{{ route('manager.testimonials.destroy', $testimonial) }}')">
                                 <span class="material-symbols-outlined text-[16px]">delete</span>
                             </button>
                         </div>
@@ -90,7 +90,7 @@
                 <span class="material-symbols-outlined text-[20px]">close</span>
             </button>
         </div>
-        <form method="POST" action="{{ route('admin.testimonials.store') }}">
+        <form method="POST" action="{{ route('manager.testimonials.store') }}">
             @csrf
             <input type="hidden" name="_source" value="create_testimonial">
             <div class="px-5 py-5 space-y-4">
@@ -279,7 +279,7 @@
     window.closeCreateTestimonial = create.close;
 
     window.openEditTestimonial = function (id, name, role, quote, rating) {
-        $('#editTestimonialForm').attr('action', '/admin/testimonials/' + id);
+        $('#editTestimonialForm').attr('action', '/manager/testimonials/' + id);
         $('#editTestimonialName').val(name);
         $('#editTestimonialRole').val(role);
         $('#editTestimonialQuote').val(quote);

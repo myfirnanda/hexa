@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Tambah Layanan')
 @section('topbar-title', 'Tambah Layanan')
 
 @section('content')
 <div class="mb-5">
-    <a href="{{ route('admin.services.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150">
+    <a href="{{ route('manager.services.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150">
         <span class="material-symbols-outlined">arrow_back</span>
         Kembali
     </a>
@@ -16,7 +16,7 @@
 
 <div class="admin-card border rounded-xl overflow-hidden">
     <div class="p-5">
-        <form method="POST" action="{{ route('admin.services.store') }}">
+        <form method="POST" action="{{ route('manager.services.store') }}">
             @csrf
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
@@ -53,7 +53,7 @@
                     <span class="material-symbols-outlined">save</span>
                     Simpan
                 </button>
-                <a href="{{ route('admin.services.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150">Batal</a>
+                <a href="{{ route('manager.services.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150">Batal</a>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Produk')
 @section('topbar-title', 'Produk')
 
@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold admin-text">Produk</h1>
         <p class="text-sm admin-text-muted mt-1">Kelola produk yang ditampilkan di website</p>
     </div>
-    <a href="{{ route('admin.products.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm bg-blue-500 text-white no-underline border-none cursor-pointer transition-all duration-150 hover:bg-blue-600">
+    <a href="{{ route('manager.products.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm bg-blue-500 text-white no-underline border-none cursor-pointer transition-all duration-150 hover:bg-blue-600">
         <span class="material-symbols-outlined">add</span>
         Tambah Produk
     </a>
@@ -45,10 +45,10 @@
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <div class="flex items-center gap-1.5">
-                            <a href="{{ route('admin.products.edit', $product) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150" title="Edit">
+                            <a href="{{ route('manager.products.edit', $product) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border cursor-pointer transition-all duration-150" title="Edit">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
-                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('admin.products.destroy', $product) }}')" title="Hapus">
+                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('manager.products.destroy', $product) }}')" title="Hapus">
                                 <span class="material-symbols-outlined">delete</span>
                             </button>
                         </div>

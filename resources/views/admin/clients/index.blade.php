@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Clients')
 @section('topbar-title', 'Clients')
 
@@ -56,7 +56,7 @@
                             </button>
                             <button type="button" title="Hapus"
                                 class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20"
-                                onclick="confirmDelete('{{ route('admin.clients.destroy', $client) }}')">
+                                onclick="confirmDelete('{{ route('manager.clients.destroy', $client) }}')">
                                 <span class="material-symbols-outlined text-[16px]">delete</span>
                             </button>
                         </div>
@@ -96,7 +96,7 @@
                 <span class="material-symbols-outlined text-[20px]">close</span>
             </button>
         </div>
-        <form method="POST" action="{{ route('admin.clients.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('manager.clients.store') }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="_source" value="create_client">
             <div class="px-5 py-5 space-y-4">
@@ -275,7 +275,7 @@
     window.closeCreateClient = create.close;
 
     window.openEditClient = function (id, name, category, logoUrl) {
-        $('#editClientForm').attr('action', '/admin/clients/' + id);
+        $('#editClientForm').attr('action', '/manager/clients/' + id);
         $('#editClientName').val(name);
         $('#editClientCategory').val(category);
         $('#editClientLogo').val('');

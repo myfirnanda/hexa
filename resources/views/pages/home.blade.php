@@ -555,93 +555,27 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
+                    @php $avatarColors = ['bg-blue-500', 'bg-purple-500', 'bg-emerald-500', 'bg-orange-500', 'bg-pink-500', 'bg-teal-500']; @endphp
+                    @foreach($testimonials->take(3) as $i => $testimonial)
                     <div
                         class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
                         <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
+                            @for($s = 0; $s < $testimonial->rating; $s++)
+                            <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
+                            @endfor
                         </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"Hexavara Tech transformed our vision into a
-                            scalable product within months. Their technical depth and commitment to quality are
-                            unparalleled."</p>
+                        <p class="text-slate-700 font-medium italic mb-8">"{{ $testimonial->quote }}"</p>
                         <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 bg-blue-500 rounded-full flex justify-center items-center text-white">
+                            <div class="w-12 h-12 {{ $avatarColors[$i % count($avatarColors)] }} rounded-full flex justify-center items-center text-white">
                                 <span class="material-symbols-outlined">person</span>
                             </div>
                             <div>
-                                <p class="font-bold text-slate-900">Mark Stevenson</p>
-                                <p class="text-sm text-slate-500">CEO at TechFlow</p>
+                                <p class="font-bold text-slate-900">{{ $testimonial->name }}</p>
+                                <p class="text-sm text-slate-500">{{ $testimonial->role }}</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial 2 -->
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
-                        <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"Working with the Hexavara team was like
-                            adding a
-                            group of experts to our own office. Professional, communicative, and exceptionally skilled."
-                        </p>
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 bg-purple-500 rounded-full flex justify-center items-center text-white">
-                                <span class="material-symbols-outlined">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-900">Lisa Ray</p>
-                                <p class="text-sm text-slate-500">VP of Engineering, Nexus</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
-                        <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"They don't just build what you ask for; they
-                            suggest what you actually need. Their strategic thinking has been vital for our growth."</p>
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 bg-emerald-500 rounded-full flex justify-center items-center text-white">
-                                <span class="material-symbols-outlined">person</span>
-                            </div>
-                            <div>
-                                <p class="font-bold text-slate-900">James Carter</p>
-                                <p class="text-sm text-slate-500">Founder, Quantum Labs</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

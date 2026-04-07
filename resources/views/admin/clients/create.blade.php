@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Tambah Client')
 @section('topbar-title', 'Tambah Client')
 
 @section('content')
 <div class="mb-5">
-    <a href="{{ route('admin.clients.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
+    <a href="{{ route('manager.clients.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
         <span class="material-symbols-outlined">arrow_back</span>
         Kembali
     </a>
@@ -16,7 +16,7 @@
 
 <div class="admin-card border rounded-xl overflow-hidden">
     <div class="p-5">
-        <form method="POST" action="{{ route('admin.clients.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('manager.clients.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
@@ -48,7 +48,7 @@
                     <span class="material-symbols-outlined">save</span>
                     Simpan
                 </button>
-                <a href="{{ route('admin.clients.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
+                <a href="{{ route('manager.clients.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -330,7 +330,7 @@
 
     <div class="admin-content">
 
-        <a href="{{ route('admin.dashboard') }}" class="back-btn">
+        <a href="{{ route('manager.dashboard') }}" class="back-btn">
             <span class="material-symbols-outlined">arrow_back</span>
             Back to Dashboard
         </a>
@@ -450,7 +450,7 @@
                 <span class="material-symbols-outlined">tune</span>
                 Update Status
             </div>
-            <form method="POST" action="{{ url('/admin/orders/'.$order->id.'/status/pending') }}" class="status-update-form" id="status-form">
+            <form method="POST" action="{{ url('/manager/orders/'.$order->id.'/status/pending') }}" class="status-update-form" id="status-form">
                 @csrf
                 @method('PATCH')
                 <select name="status" class="status-select" id="status-select">
@@ -470,7 +470,7 @@
         $(function () {
             $('#status-form').on('submit', function () {
                 var val = $('#status-select').val();
-                $(this).attr('action', '{{ url("/admin/orders/".$order->id."/status") }}/' + val);
+                $(this).attr('action', '{{ url("/manager/orders/".$order->id."/status") }}/' + val);
             });
         });
     </script>

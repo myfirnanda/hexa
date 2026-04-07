@@ -23,7 +23,11 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .active-filter { background-color: #0F172A !important; color: white !important; }
         .is-open { display: block !important; }
-        #mobile-menu.is-open { transform: translateX(0); }
+        /* Mobile menu: Tailwind v4 uses CSS 'translate' property, not 'transform' */
+        #mobile-menu { pointer-events: none; }
+        #mobile-menu.is-open { translate: 0 0; pointer-events: auto; }
+        #mobile-backdrop { display: none; }
+        #mobile-backdrop.is-open { display: block; }
     </style>
     @stack('styles')
 </head>

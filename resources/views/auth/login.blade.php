@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Hexavara Admin</title>
+    <title>Login - Hexavara Manager</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -13,7 +13,7 @@
             <img src="{{ asset('assets/img/ChatGPT Image 26 Feb 2026, 11.24.32.png') }}" alt="Hexavara" class="h-14 w-auto mx-auto" />
         </div>
         <h1 class="text-2xl font-bold text-center mb-2">Welcome Back</h1>
-        <p class="text-sm text-slate-400 text-center mb-8">Sign in to access admin dashboard</p>
+        <p class="text-sm text-slate-400 text-center mb-8">Sign in to access manager dashboard</p>
 
         @if($errors->any())
         <div class="bg-red-950 text-red-300 px-4 py-2.5 rounded-lg text-sm mb-5">{{ $errors->first() }}</div>

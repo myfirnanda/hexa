@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Edit Testimonial')
 @section('topbar-title', 'Edit Testimonial')
 
 @section('content')
 <div class="mb-5">
-    <a href="{{ route('admin.testimonials.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
+    <a href="{{ route('manager.testimonials.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
         <span class="material-symbols-outlined">arrow_back</span>
         Kembali
     </a>
@@ -16,7 +16,7 @@
 
 <div class="admin-card border rounded-xl overflow-hidden">
     <div class="p-5">
-        <form method="POST" action="{{ route('admin.testimonials.update', $testimonial) }}">
+        <form method="POST" action="{{ route('manager.testimonials.update', $testimonial) }}">
             @csrf
             @method('PUT')
 
@@ -54,7 +54,7 @@
                     <span class="material-symbols-outlined">save</span>
                     Update
                 </button>
-                <a href="{{ route('admin.testimonials.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
+                <a href="{{ route('manager.testimonials.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
             </div>
         </form>
     </div>

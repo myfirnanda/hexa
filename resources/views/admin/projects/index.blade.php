@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Projects')
 @section('topbar-title', 'Projects')
 
@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold">Projects</h1>
         <p class="text-sm admin-text-muted mt-1">Kelola portfolio project yang ditampilkan di website</p>
     </div>
-    <a href="{{ route('admin.projects.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm bg-blue-500 text-white no-underline border-none cursor-pointer transition-all duration-150 hover:bg-blue-600">
+    <a href="{{ route('manager.projects.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-semibold text-sm bg-blue-500 text-white no-underline border-none cursor-pointer transition-all duration-150 hover:bg-blue-600">
         <span class="material-symbols-outlined">add</span>
         Tambah Project
     </a>
@@ -41,10 +41,10 @@
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle"><span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold capitalize bg-blue-500/12 text-blue-400">{{ ucwords(str_replace('-', ' ', $project->category)) }}</span></td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <div class="flex items-center gap-1.5">
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150" title="Edit">
+                            <a href="{{ route('manager.projects.edit', $project) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150" title="Edit">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
-                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('admin.projects.destroy', $project) }}')" title="Hapus">
+                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('manager.projects.destroy', $project) }}')" title="Hapus">
                                 <span class="material-symbols-outlined">delete</span>
                             </button>
                         </div>

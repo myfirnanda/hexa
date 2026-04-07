@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             // ServiceSeeder::class,
             ClientSeeder::class,
             // TeamMemberSeeder::class,
-            // TestimonialSeeder::class,
+            TestimonialSeeder::class,
             ProjectSeeder::class,
             // OrderSeeder::class,
             ProductSeeder::class,

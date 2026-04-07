@@ -31,60 +31,60 @@ Route::get('/start-project', [StartProjectController::class, 'index'])->name('st
 Route::post('/start-project/submit', [OrderController::class, 'store'])->name('start-project.submit');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest');
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Dashboard
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/manager', [AdminController::class, 'dashboard'])->name('manager.dashboard');
 
     // Orders
-    Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('admin.orders.index');
-    Route::get('/admin/orders/{order}', [AdminOrderController::class, 'show'])->name('admin.orders.show');
-    Route::patch('/admin/orders/{order}/status/{status}', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.status');
-    Route::delete('/admin/orders/{order}', [AdminOrderController::class, 'destroy'])->name('admin.orders.destroy');
+    Route::get('/manager/orders', [AdminOrderController::class, 'index'])->name('manager.orders.index');
+    Route::get('/manager/orders/{order}', [AdminOrderController::class, 'show'])->name('manager.orders.show');
+    Route::patch('/manager/orders/{order}/status/{status}', [AdminOrderController::class, 'updateStatus'])->name('manager.orders.status');
+    Route::delete('/manager/orders/{order}', [AdminOrderController::class, 'destroy'])->name('manager.orders.destroy');
 
     // Services (Produk/Layanan)
-    Route::get('/admin/services', [AdminServiceController::class, 'index'])->name('admin.services.index');
-    Route::get('/admin/services/create', [AdminServiceController::class, 'create'])->name('admin.services.create');
-    Route::post('/admin/services', [AdminServiceController::class, 'store'])->name('admin.services.store');
-    Route::get('/admin/services/{service}/edit', [AdminServiceController::class, 'edit'])->name('admin.services.edit');
-    Route::put('/admin/services/{service}', [AdminServiceController::class, 'update'])->name('admin.services.update');
-    Route::delete('/admin/services/{service}', [AdminServiceController::class, 'destroy'])->name('admin.services.destroy');
+    Route::get('/manager/services', [AdminServiceController::class, 'index'])->name('manager.services.index');
+    Route::get('/manager/services/create', [AdminServiceController::class, 'create'])->name('manager.services.create');
+    Route::post('/manager/services', [AdminServiceController::class, 'store'])->name('manager.services.store');
+    Route::get('/manager/services/{service}/edit', [AdminServiceController::class, 'edit'])->name('manager.services.edit');
+    Route::put('/manager/services/{service}', [AdminServiceController::class, 'update'])->name('manager.services.update');
+    Route::delete('/manager/services/{service}', [AdminServiceController::class, 'destroy'])->name('manager.services.destroy');
 
     // Projects
-    Route::get('/admin/projects', [AdminProjectController::class, 'index'])->name('admin.projects.index');
-    Route::get('/admin/projects/create', [AdminProjectController::class, 'create'])->name('admin.projects.create');
-    Route::post('/admin/projects', [AdminProjectController::class, 'store'])->name('admin.projects.store');
-    Route::get('/admin/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('admin.projects.edit');
-    Route::put('/admin/projects/{project}', [AdminProjectController::class, 'update'])->name('admin.projects.update');
-    Route::delete('/admin/projects/{project}', [AdminProjectController::class, 'destroy'])->name('admin.projects.destroy');
+    Route::get('/manager/projects', [AdminProjectController::class, 'index'])->name('manager.projects.index');
+    Route::get('/manager/projects/create', [AdminProjectController::class, 'create'])->name('manager.projects.create');
+    Route::post('/manager/projects', [AdminProjectController::class, 'store'])->name('manager.projects.store');
+    Route::get('/manager/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('manager.projects.edit');
+    Route::put('/manager/projects/{project}', [AdminProjectController::class, 'update'])->name('manager.projects.update');
+    Route::delete('/manager/projects/{project}', [AdminProjectController::class, 'destroy'])->name('manager.projects.destroy');
 
     // Clients
-    Route::get('/admin/clients', [AdminClientController::class, 'index'])->name('admin.clients.index');
-    Route::get('/admin/clients/create', [AdminClientController::class, 'create'])->name('admin.clients.create');
-    Route::post('/admin/clients', [AdminClientController::class, 'store'])->name('admin.clients.store');
-    Route::put('/admin/clients/{client}', [AdminClientController::class, 'update'])->name('admin.clients.update');
-    Route::delete('/admin/clients/{client}', [AdminClientController::class, 'destroy'])->name('admin.clients.destroy');
+    Route::get('/manager/clients', [AdminClientController::class, 'index'])->name('manager.clients.index');
+    Route::get('/manager/clients/create', [AdminClientController::class, 'create'])->name('manager.clients.create');
+    Route::post('/manager/clients', [AdminClientController::class, 'store'])->name('manager.clients.store');
+    Route::put('/manager/clients/{client}', [AdminClientController::class, 'update'])->name('manager.clients.update');
+    Route::delete('/manager/clients/{client}', [AdminClientController::class, 'destroy'])->name('manager.clients.destroy');
 
     // CKEditor image upload
-    Route::post('/admin/upload-image', [App\Http\Controllers\Admin\UploadController::class, 'image'])->name('admin.upload.image');
+    Route::post('/manager/upload-image', [App\Http\Controllers\Admin\UploadController::class, 'image'])->name('manager.upload.image');
 
     // Testimonials
-    Route::get('/admin/testimonials', [AdminTestimonialController::class, 'index'])->name('admin.testimonials.index');
-    Route::get('/admin/testimonials/create', [AdminTestimonialController::class, 'create'])->name('admin.testimonials.create');
-    Route::post('/admin/testimonials', [AdminTestimonialController::class, 'store'])->name('admin.testimonials.store');
-    Route::get('/admin/testimonials/{testimonial}/edit', [AdminTestimonialController::class, 'edit'])->name('admin.testimonials.edit');
-    Route::put('/admin/testimonials/{testimonial}', [AdminTestimonialController::class, 'update'])->name('admin.testimonials.update');
-    Route::delete('/admin/testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('admin.testimonials.destroy');
+    Route::get('/manager/testimonials', [AdminTestimonialController::class, 'index'])->name('manager.testimonials.index');
+    Route::get('/manager/testimonials/create', [AdminTestimonialController::class, 'create'])->name('manager.testimonials.create');
+    Route::post('/manager/testimonials', [AdminTestimonialController::class, 'store'])->name('manager.testimonials.store');
+    Route::get('/manager/testimonials/{testimonial}/edit', [AdminTestimonialController::class, 'edit'])->name('manager.testimonials.edit');
+    Route::put('/manager/testimonials/{testimonial}', [AdminTestimonialController::class, 'update'])->name('manager.testimonials.update');
+    Route::delete('/manager/testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('manager.testimonials.destroy');
 
     // Products (Produk)
-    Route::get('/admin/products', [AdminProductController::class, 'index'])->name('admin.products.index');
-    Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
-    Route::post('/admin/products', [AdminProductController::class, 'store'])->name('admin.products.store');
-    Route::get('/admin/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
-    Route::put('/admin/products/{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
-    Route::delete('/admin/products/{product}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
+    Route::get('/manager/products', [AdminProductController::class, 'index'])->name('manager.products.index');
+    Route::get('/manager/products/create', [AdminProductController::class, 'create'])->name('manager.products.create');
+    Route::post('/manager/products', [AdminProductController::class, 'store'])->name('manager.products.store');
+    Route::get('/manager/products/{product}/edit', [AdminProductController::class, 'edit'])->name('manager.products.edit');
+    Route::put('/manager/products/{product}', [AdminProductController::class, 'update'])->name('manager.products.update');
+    Route::delete('/manager/products/{product}', [AdminProductController::class, 'destroy'])->name('manager.products.destroy');
 });

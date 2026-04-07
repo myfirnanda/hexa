@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Orders')
 @section('topbar-title', 'Orders')
 
@@ -92,10 +92,10 @@
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary">{{ $order->budget ?: '-' }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <span class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold {{ $badgeClasses }}">{{ str_replace('_', ' ', $order->status) }}</span>
-                        <form method="POST" action="{{ route('admin.orders.status', [$order, 'pending']) }}" class="mt-1.5">
+                        <form method="POST" action="{{ route('manager.orders.status', [$order, 'pending']) }}" class="mt-1.5">
                             @csrf
                             @method('PATCH')
-                            <select class="admin-input px-2 py-1 rounded-lg text-xs outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer max-w-[130px]" onchange="this.form.action='{{ url('/admin/orders/'.$order->id.'/status') }}/'+this.value;this.form.submit()">
+                            <select class="admin-input px-2 py-1 rounded-lg text-xs outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer max-w-[130px]" onchange="this.form.action='{{ url('/manager/orders/'.$order->id.'/status') }}/'+this.value;this.form.submit()">
                                 <option value="" disabled selected>Ubah...</option>
                                 <option value="pending">Pending</option>
                                 <option value="in_progress">In Progress</option>
@@ -110,10 +110,10 @@
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <div class="flex items-center gap-2">
-                            <a href="{{ route('admin.orders.show', $order) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150" title="Detail">
+                            <a href="{{ route('manager.orders.show', $order) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150" title="Detail">
                                 <span class="material-symbols-outlined">visibility</span>
                             </a>
-                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('admin.orders.destroy', $order) }}')" title="Hapus">
+                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('manager.orders.destroy', $order) }}')" title="Hapus">
                                 <span class="material-symbols-outlined">delete</span>
                             </button>
                         </div>

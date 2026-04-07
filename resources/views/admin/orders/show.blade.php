@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Order #' . $order->id)
 @section('topbar-title', 'Detail Order')
 
@@ -15,7 +15,7 @@
 </style>
 
 <div class="mb-5">
-    <a href="{{ route('admin.orders.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
+    <a href="{{ route('manager.orders.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
         <span class="material-symbols-outlined">arrow_back</span>
         Kembali
     </a>
@@ -66,7 +66,7 @@
 </div>
 
 {{-- Project Details + File Brief + Save (wrapped in one form) --}}
-<form method="POST" action="{{ route('admin.orders.status', [$order, 'pending']) }}" id="status-form">
+<form method="POST" action="{{ route('manager.orders.status', [$order, 'pending']) }}" id="status-form">
 @csrf
 @method('PATCH')
 
@@ -197,7 +197,7 @@
 $(function () {
     $('#status-form').on('submit', function () {
         var val = $('#status-select').val();
-        $(this).attr('action', '{{ url("/admin/orders/".$order->id."/status") }}/' + val);
+        $(this).attr('action', '{{ url("/manager/orders/".$order->id."/status") }}/' + val);
     });
 
     // File Preview Modal

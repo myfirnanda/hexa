@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Edit Produk')
 @section('topbar-title', 'Edit Produk')
 
 @section('content')
 <div class="mb-5">
-    <a href="{{ route('admin.products.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
+    <a href="{{ route('manager.products.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">
         <span class="material-symbols-outlined">arrow_back</span>
         Kembali
     </a>
@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<form method="POST" action="{{ route('admin.products.update', $product) }}" enctype="multipart/form-data" id="productForm">
+<form method="POST" action="{{ route('manager.products.update', $product) }}" enctype="multipart/form-data" id="productForm">
     @csrf
     @method('PUT')
 
@@ -188,7 +188,7 @@
             <span class="material-symbols-outlined">save</span>
             Update
         </button>
-        <a href="{{ route('admin.products.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
+        <a href="{{ route('manager.products.index') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150">Batal</a>
     </div>
 </form>
 

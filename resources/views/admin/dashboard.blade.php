@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 @section('title', 'Dashboard')
 @section('topbar-title', 'Beranda')
 
@@ -119,7 +119,7 @@
 
 {{-- Content Stats Row --}}
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <a href="{{ route('admin.services.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+    <a href="{{ route('manager.services.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center gap-3">
             <div class="size-10 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-500 shrink-0">
                 <span class="material-symbols-outlined text-xl">category</span>
@@ -130,7 +130,7 @@
             </div>
         </div>
     </a>
-    <a href="{{ route('admin.projects.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+    <a href="{{ route('manager.projects.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center gap-3">
             <div class="size-10 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500 shrink-0">
                 <span class="material-symbols-outlined text-xl">work</span>
@@ -141,7 +141,7 @@
             </div>
         </div>
     </a>
-    <a href="{{ route('admin.clients.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+    <a href="{{ route('manager.clients.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center gap-3">
             <div class="size-10 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-500 shrink-0">
                 <span class="material-symbols-outlined text-xl">apartment</span>
@@ -152,7 +152,7 @@
             </div>
         </div>
     </a>
-    <a href="{{ route('admin.testimonials.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
+    <a href="{{ route('manager.testimonials.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center gap-3">
             <div class="size-10 rounded-lg flex items-center justify-center bg-amber-500/10 text-amber-500 shrink-0">
                 <span class="material-symbols-outlined text-xl">rate_review</span>
@@ -174,7 +174,7 @@
                 <h2 class="text-[15px] font-semibold admin-text">Order Terbaru</h2>
                 <p class="text-[12px] admin-text-muted mt-0.5">5 order terakhir yang masuk</p>
             </div>
-            <a href="{{ route('admin.orders.index') }}" class="text-[13px] font-medium text-blue-500 no-underline hover:text-blue-400 transition-colors">
+            <a href="{{ route('manager.orders.index') }}" class="text-[13px] font-medium text-blue-500 no-underline hover:text-blue-400 transition-colors">
                 Lihat Semua &rarr;
             </a>
         </div>
@@ -208,7 +208,7 @@
                     @endphp
                     <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-semibold capitalize {{ $badgeMap[$order->status] ?? '' }}">{{ str_replace('_', ' ', $order->status) }}</span>
                 </div>
-                <a href="{{ route('admin.orders.show', $order) }}" class="flex items-center justify-center size-8 rounded-lg admin-text-muted no-underline transition-all duration-150 admin-surface-hover shrink-0">
+                <a href="{{ route('manager.orders.show', $order) }}" class="flex items-center justify-center size-8 rounded-lg admin-text-muted no-underline transition-all duration-150 admin-surface-hover shrink-0">
                     <span class="material-symbols-outlined text-lg">chevron_right</span>
                 </a>
             </div>
