@@ -8,6 +8,7 @@ use App\Http\Controllers\WorkController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\StartProjectController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -28,7 +29,7 @@ Route::get('/works/{project}', [WorkController::class, 'show'])->name('works.sho
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 Route::get('/start-project', [StartProjectController::class, 'index'])->name('start-project');
 Route::post('/start-project/submit', [OrderController::class, 'store'])->name('start-project.submit');
-Route::get('/products', fn() => view('pages.products.show'))->name('products.show');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

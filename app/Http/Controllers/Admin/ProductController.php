@@ -30,7 +30,6 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name'              => 'required|string|max:255',
-            'tagline'           => 'nullable|string|max:255',
             'description'       => 'nullable|string',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
@@ -81,7 +80,6 @@ class ProductController extends Controller
             $product = Product::create([
                 'name'        => $validated['name'],
                 'slug'        => $slug,
-                'tagline'     => $validated['tagline'] ?? null,
                 'description' => $validated['description'] ?? null,
                 'image_cover' => $coverPath,
             ]);
@@ -153,7 +151,6 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name'              => 'required|string|max:255',
-            'tagline'           => 'nullable|string|max:255',
             'description'       => 'nullable|string',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
@@ -190,7 +187,6 @@ class ProductController extends Controller
             // Slug
             $updateData = [
                 'name'        => $validated['name'],
-                'tagline'     => $validated['tagline'] ?? null,
                 'description' => $validated['description'] ?? null,
             ];
 

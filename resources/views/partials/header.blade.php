@@ -57,10 +57,12 @@
                             <span class="material-symbols-outlined text-hex-blue">rocket_launch</span>
                             <span data-i18n data-en="Startup Services" data-id="Layanan Startup">Startup Services</span>
                         </a>
-                        <a href="{{ route('products.show') }}" class="flex items-center gap-3 text-lg font-medium text-hex-dark">
-                            <span class="material-symbols-outlined text-hex-blue">account_balance_wallet</span>
-                            <span data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</span>
-                        </a>
+                        @if($firstProduct)
+                            <a href="{{ route('products.show', $firstProduct) }}" class="flex items-center gap-3 text-lg font-medium text-hex-dark">
+                                <span class="material-symbols-outlined text-hex-blue">account_balance_wallet</span>
+                                <span data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -97,10 +99,12 @@
             <div>
                 <h3 class="text-xs font-bold text-hex-slate uppercase tracking-widest mb-6 pb-2 border-b" data-i18n data-en="Ready to Use" data-id="Siap Digunakan">Ready to Use</h3>
                 <div class="grid grid-cols-2 gap-4">
-                    <a href="{{ route('products.show') }}" class="p-3 bg-blue-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-blue-100 transition-colors">
-                        <span class="material-symbols-outlined text-blue-600">account_balance_wallet</span>
-                        <div><p class="text-[10px] font-bold" data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</p><p class="text-[8px] text-blue-600 uppercase font-bold" data-i18n data-en="Platform" data-id="Platform">Platform</p></div>
-                    </a>
+                    @if($firstProduct)
+                        <a href="{{ route('products.show', $firstProduct) }}" class="p-3 bg-blue-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-blue-100 transition-colors">
+                            <span class="material-symbols-outlined text-blue-600">account_balance_wallet</span>
+                            <div><p class="text-[10px] font-bold" data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</p><p class="text-[8px] text-blue-600 uppercase font-bold" data-i18n data-en="Platform" data-id="Platform">Platform</p></div>
+                        </a>
+                    @endif
                     <a href="#" class="p-3 bg-indigo-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-indigo-100 transition-colors">
                         <span class="material-symbols-outlined text-indigo-600">payments</span>
                         <div><p class="text-[10px] font-bold" data-i18n data-en="VaraPay" data-id="VaraPay">VaraPay</p><p class="text-[8px] text-indigo-600 uppercase font-bold" data-i18n data-en="Fintech" data-id="Fintech">Fintech</p></div>

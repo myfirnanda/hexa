@@ -51,21 +51,14 @@
             <h2 class="text-[15px] font-semibold admin-text">Informasi Dasar</h2>
         </div>
         <div class="p-5 space-y-5">
-            <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
-                <div>
-                    <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Produk <span class="text-red-500">*</span></label>
-                    <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name') }}" required placeholder="Nama produk...">
-                    @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-                </div>
-                <div>
-                    <label for="tagline" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Tagline</label>
-                    <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="tagline" name="tagline" value="{{ old('tagline') }}" placeholder="Tagline singkat...">
-                    @error('tagline') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
-                </div>
+            <div>
+                <label for="name" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Nama Produk <span class="text-red-500">*</span></label>
+                <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="name" name="name" value="{{ old('name') }}" required placeholder="Nama produk...">
+                @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
             <div>
                 <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y min-h-[100px]" id="description" name="description" placeholder="Deskripsi produk...">{{ old('description') }}</textarea>
+                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y" style="min-height: 120px" id="description" name="description" placeholder="Deskripsi singkat produk...">{{ old('description') }}</textarea>
                 @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
         </div>

@@ -26,7 +26,7 @@
                     <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">#</th>
                     <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Cover</th>
                     <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Nama</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Tagline</th>
+                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Deskripsi</th>
                     <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Features</th>
                     <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Aksi</th>
                 </tr>
@@ -39,7 +39,7 @@
                         <img src="{{ image_url($product->image_cover) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $product->name }}" onclick="openGalleryPreview('{{ image_url($product->image_cover) }}')">
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle font-semibold admin-text">{{ $product->name }}</td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary text-[13px] max-w-[320px]">{{ Str::limit($product->tagline, 60) }}</td>
+                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary text-[13px] max-w-[320px]">{{ Str::limit($product->description, 60) }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-500/12 text-blue-400">{{ $product->features_count ?? $product->features()->count() }}</span>
                     </td>
