@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Models\Service;
 
 class ServiceController extends Controller
 {
     public function index()
     {
-        $mainServices = Service::where('type', 'main')->get();
-        $additionalServices = Service::where('type', 'additional')->get();
-
-        return view('pages.services.index', compact('mainServices', 'additionalServices'));
+        return view('pages.services.index');
     }
 
     // public function show(Service $service)

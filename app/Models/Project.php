@@ -14,11 +14,6 @@ class Project extends Model
         'hero_description',
         'summary_title',
         'image',
-        'images',
-    ];
-
-    protected $casts = [
-        'images' => 'array',
     ];
 
     public function getRouteKeyName(): string

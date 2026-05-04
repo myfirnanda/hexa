@@ -203,11 +203,9 @@ $(function () {
     // File Preview Modal
     var $modal   = $('#file-preview-modal');
     var $iframe  = $('#file-preview-iframe');
-    var $dlBtn   = $('#modal-download-btn');
 
     function openPreview(url, filename) {
         $iframe.attr('src', url);
-        $dlBtn.attr('href', url).attr('download', filename);
         $modal.css('display', 'flex');
         $('body').css('overflow', 'hidden');
     }

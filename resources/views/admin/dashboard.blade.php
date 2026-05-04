@@ -118,18 +118,7 @@
 </div>
 
 {{-- Content Stats Row --}}
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <a href="{{ route('manager.services.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
-        <div class="flex items-center gap-3">
-            <div class="size-10 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-500 shrink-0">
-                <span class="material-symbols-outlined text-xl">category</span>
-            </div>
-            <div class="min-w-0">
-                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalServices }}</div>
-                <div class="text-[12px] admin-text-muted mt-1">Produk / Layanan</div>
-            </div>
-        </div>
-    </a>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
     <a href="{{ route('manager.projects.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
         <div class="flex items-center gap-3">
             <div class="size-10 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500 shrink-0">

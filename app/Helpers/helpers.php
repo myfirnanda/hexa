@@ -16,8 +16,10 @@ if (!function_exists('image_url')) {
      */
     function image_url(?string $path, ?string $placeholder = null): string
     {
+        $fallback = $placeholder ? asset($placeholder) : asset('assets/img/broken.png');
+
         if (empty($path)) {
-            return $placeholder ? asset($placeholder) : asset('assets/img/placeholder.png');
+            return $fallback;
         }
 
         // Check if file exists in storage first
@@ -26,13 +28,11 @@ if (!function_exists('image_url')) {
         }
 
         // Fallback to public folder
-        $publicPath = public_path($path);
-        if (file_exists($publicPath)) {
+        if (file_exists(public_path($path))) {
             return asset($path);
         }
 
-        // Return placeholder if neither exists
-        return $placeholder ? asset($placeholder) : asset('assets/img/placeholder.png');
+        return $fallback;
     }
 }
 

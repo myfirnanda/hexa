@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Service;
 use App\Models\Project;
 use App\Models\Client;
 use App\Models\Testimonial;
@@ -18,7 +17,6 @@ class AdminController extends Controller
         $inProgressOrders = Order::where('status', 'in_progress')->count();
         $completedOrders = Order::where('status', 'completed')->count();
         $rejectedOrders = Order::where('status', 'rejected')->count();
-        $totalServices = Service::count();
         $totalProjects = Project::count();
         $totalClients = Client::count();
         $totalTestimonials = Testimonial::count();
@@ -41,7 +39,7 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact(
             'totalOrders', 'pendingOrders', 'inProgressOrders', 'completedOrders',
-            'rejectedOrders', 'totalServices', 'totalProjects', 'totalClients',
+            'rejectedOrders', 'totalProjects', 'totalClients',
             'totalTestimonials', 'recentOrders', 'monthlyOrders', 'allCategories'
         ));
     }

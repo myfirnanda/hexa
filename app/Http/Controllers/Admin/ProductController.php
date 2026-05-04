@@ -17,7 +17,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('sort_order')->latest()->paginate(15);
+        $products = Product::withCount('features')->orderBy('sort_order')->latest()->paginate(15);
         return view('admin.products.index', compact('products'));
     }
 
@@ -134,7 +134,7 @@ class ProductController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan.');
+            return redirect()->route('manager.products.index')->with('success', 'Produk berhasil ditambahkan.');
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -280,7 +280,7 @@ class ProductController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui.');
+            return redirect()->route('manager.products.index')->with('success', 'Produk berhasil diperbarui.');
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->withInput()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -298,6 +298,6 @@ class ProductController extends Controller
             Storage::disk('public')->delete($img->image_path);
         }
         $product->delete();
-        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus.');
+        return redirect()->route('manager.products.index')->with('success', 'Produk berhasil dihapus.');
     }
 }

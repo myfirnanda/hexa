@@ -114,139 +114,42 @@
 
                 <!-- Carousel container -->
                 <div class="relative w-full overflow-hidden">
+                    @php
+                        $productColors = [
+                            ['gradient' => 'from-blue-600/20',   'hover' => 'group-hover:text-blue-400',   'color' => '#0C5BED', 'bg' => 'rgba(12, 91, 237, 0.2)'],
+                            ['gradient' => 'from-purple-600/20', 'hover' => 'group-hover:text-purple-400', 'color' => '#9333ea', 'bg' => 'rgba(147, 51, 234, 0.2)'],
+                            ['gradient' => 'from-teal-600/20',   'hover' => 'group-hover:text-teal-400',   'color' => '#0d9488', 'bg' => 'rgba(13, 148, 136, 0.2)'],
+                            ['gradient' => 'from-indigo-600/20', 'hover' => 'group-hover:text-indigo-400', 'color' => '#4f46e5', 'bg' => 'rgba(79, 70, 229, 0.2)'],
+                        ];
+                    @endphp
                     <div class="flex gap-6 transition-transform duration-500 ease-in-out" id="product-slider">
-                        <!-- Card 1 -->
-                        <a href="detail_product.html"
-                            class="min-w-[85vw] md:min-w-[450px] min-h-[480px] rounded-3xl border border-white/10 overflow-hidden relative group flex flex-col block cursor-pointer"
-                            style="background: rgba(18, 27, 38, 0.5); backdrop-filter: blur(12px);"
-                            data-product-card="0">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            </div>
-                            <img src="{{ asset('assets/img/projects/project_cost.png') }}" class="w-full h-48 object-cover border-b border-white/10"
-                                alt="Hexavara Cost System">
+                        @foreach($products as $product)
+                        @php $c = $productColors[$loop->index % count($productColors)]; @endphp
+                        <a href="{{ route('products.show', $product) }}"
+                            class="min-w-[85vw] md:min-w-[450px] min-h-[480px] rounded-3xl border border-white/10 overflow-hidden relative group flex flex-col cursor-pointer"
+                            style="background: rgba(18, 27, 38, 0.5); backdrop-filter: blur(12px);">
+                            <div class="absolute inset-0 bg-gradient-to-br {{ $c['gradient'] }} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                            @if($product->image_cover)
+                                <img src="{{ asset('storage/' . $product->image_cover) }}" class="w-full h-48 object-cover border-b border-white/10" alt="{{ $product->name }}">
+                            @else
+                                <div class="w-full h-48 border-b border-white/10 flex items-center justify-center bg-white/5">
+                                    <span class="material-symbols-outlined text-5xl text-white/20">inventory_2</span>
+                                </div>
+                            @endif
                             <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
-                                <span
-                                    class="enterprise-saa-s inline-block w-fit px-4 py-1.5 rounded-full text-[#0C5BED] text-[10px] font-bold uppercase tracking-widest mb-4"
-                                    style="background: rgba(12, 91, 237, 0.2);" data-i18n
-                                    data-en="Enterprise Software" data-id="Perangkat Lunak Enterprise">Enterprise
-                                    Software</span>
-                                <h3 class="text7 text-2xl font-bold text-white mb-4" data-i18n="html"
-                                    data-en="Hexavara Cost<br />Management System"
-                                    data-id="Hexavara Cost<br />Management System">Hexavara Cost<br />Management System
-                                </h3>
-                                <p class="text6 text-slate-400 mb-8 flex-grow" data-i18n
-                                    data-en="The unified operating system for modern enterprises, bridging the gap between operations and finance."
-                                    data-id="Sistem operasi terpadu untuk perusahaan modern, menjembatani kesenjangan antara operasional dan keuangan.">
-                                    The unified operating system for modern
-                                    enterprises, bridging the gap between operations and finance.</p>
-                                <span
-                                    class="w-fit inline-flex items-center text-white font-bold group-hover:text-blue-400 transition-colors gap-2 mt-auto group/btn">
-                                    <span class="learn-more" data-i18n data-en="Learn more"
-                                        data-id="Selengkapnya">Learn more</span>
-                                    <span
-                                        class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
+                                @if($product->tagline)
+                                <span class="inline-block w-fit px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4"
+                                    style="color: {{ $c['color'] }}; background: {{ $c['bg'] }};">{{ $product->tagline }}</span>
+                                @endif
+                                <h3 class="text-2xl font-bold text-white mb-4">{{ $product->name }}</h3>
+                                <p class="text-slate-400 mb-8 flex-grow">{{ Str::limit(strip_tags($product->description ?? ''), 140) }}</p>
+                                <span class="w-fit inline-flex items-center text-white font-bold {{ $c['hover'] }} transition-colors gap-2 mt-auto group/btn">
+                                    <span data-i18n data-en="Learn more" data-id="Selengkapnya">Learn more</span>
+                                    <span class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
                                 </span>
                             </div>
                         </a>
-
-                        <!-- Card 2 -->
-                        <a href="#"
-                            class="min-w-[85vw] md:min-w-[450px] min-h-[480px] rounded-3xl border border-white/10 overflow-hidden relative group flex flex-col block cursor-pointer"
-                            style="background: rgba(18, 27, 38, 0.5); backdrop-filter: blur(12px);"
-                            data-product-card="1">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            </div>
-                            <img src="{{ asset('assets/img/overlay-blur.png') }}" class="w-full h-48 object-cover border-b border-white/10"
-                                alt="VaraPay Core">
-                            <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
-                                <span
-                                    class="financial-tech inline-block w-fit px-4 py-1.5 rounded-full text-[#9333ea] text-[10px] font-bold uppercase tracking-widest mb-4"
-                                    style="background: rgba(147, 51, 234, 0.2);" data-i18n data-en="FINANCIAL TECH"
-                                    data-id="TEKNOLOGI FINANSIAL">FINANCIAL TECH</span>
-                                <h3 class="vara-pay-core text-2xl font-bold text-white mb-4">VaraPay Core</h3>
-                                <p class="global-payments-infrastructure-designed-for-the-digital-economy-supporting-100-currencies-and-instant-settlement text-slate-400 mb-8 flex-grow"
-                                    data-i18n
-                                    data-en="Smart cost management system for efficient budgeting and better financial control."
-                                    data-id="Sistem manajemen biaya cerdas untuk penganggaran efisien dan kontrol keuangan yang lebih baik.">
-                                    Smart cost management system for efficient budgeting and better financial control.
-                                </p>
-                                <span
-                                    class="w-fit inline-flex items-center text-white font-bold group-hover:text-purple-400 transition-colors gap-2 mt-auto group/btn">
-                                    <span class="learn-more" data-i18n data-en="Learn more"
-                                        data-id="Selengkapnya">Learn more</span>
-                                    <span
-                                        class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
-                                </span>
-                            </div>
-                        </a>
-
-                        <!-- Card 3 -->
-                        <a href="#"
-                            class="min-w-[85vw] md:min-w-[450px] min-h-[480px] rounded-3xl border border-white/10 overflow-hidden relative group flex flex-col block cursor-pointer"
-                            style="background: rgba(18, 27, 38, 0.5); backdrop-filter: blur(12px);"
-                            data-product-card="2">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            </div>
-                            <img src="{{ asset('assets/img/image-overlay-shadow.png') }}"
-                                class="w-full h-48 object-cover border-b border-white/10" alt="NexaGrid Suite">
-                            <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
-                                <span
-                                    class="dummy-product-badge inline-block w-fit px-4 py-1.5 rounded-full text-[#0d9488] text-[10px] font-bold uppercase tracking-widest mb-4"
-                                    style="background: rgba(13, 148, 136, 0.2);" data-i18n data-en="AI PLATFORM"
-                                    data-id="PLATFORM AI">AI PLATFORM</span>
-                                <h3 class="dummy-product-title text-2xl font-bold text-white mb-4">NexaGrid Suite</h3>
-                                <p class="dummy-product-description text-slate-400 mb-8 flex-grow" data-i18n
-                                    data-en="Enterprise suite for analytics, automation, and cross-team collaboration with scalable cloud architecture."
-                                    data-id="Suite enterprise untuk analitik, otomasi, dan kolaborasi lintas tim dengan arsitektur cloud yang skalabel.">
-                                    Enterprise suite for
-                                    analytics, automation, and cross-team collaboration with scalable cloud
-                                    architecture.
-                                </p>
-                                <span
-                                    class="w-fit inline-flex items-center text-white font-bold group-hover:text-teal-400 transition-colors gap-2 mt-auto group/btn">
-                                    <span class="learn-more" data-i18n data-en="Learn more"
-                                        data-id="Selengkapnya">Learn more</span>
-                                    <span
-                                        class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
-                                </span>
-                            </div>
-                        </a>
-
-                        <!-- Card 4 -->
-                        <a href="#"
-                            class="min-w-[85vw] md:min-w-[450px] min-h-[480px] rounded-3xl border border-white/10 overflow-hidden relative group flex flex-col block cursor-pointer"
-                            style="background: rgba(18, 27, 38, 0.5); backdrop-filter: blur(12px);"
-                            data-product-card="3">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                            </div>
-                            <img src="{{ asset('assets/img/projects/proyek_all_wika.png') }}"
-                                class="w-full h-48 object-cover border-b border-white/10" alt="Cloud Infrastructure">
-                            <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
-                                <span
-                                    class="cloud-solutions-badge inline-block w-fit px-4 py-1.5 rounded-full text-[#4f46e5] text-[10px] font-bold uppercase tracking-widest mb-4"
-                                    style="background: rgba(79, 70, 229, 0.2);" data-i18n data-en="CLOUD SOLUTIONS"
-                                    data-id="SOLUSI CLOUD">CLOUD SOLUTIONS</span>
-                                <h3 class="cloud-solutions-title text-2xl font-bold text-white mb-4">VaraCloud Engine
-                                </h3>
-                                <p class="cloud-solutions-description text-slate-400 mb-8 flex-grow" data-i18n
-                                    data-en="High-performance cloud infrastructure for web applications, databases, and secure enterprise backups."
-                                    data-id="Infrastruktur cloud berperforma tinggi untuk aplikasi web, database, dan pencadangan enterprise yang aman.">
-                                    High-performance cloud infrastructure for web applications, databases, and secure
-                                    enterprise backups.
-                                </p>
-                                <span
-                                    class="w-fit inline-flex items-center text-white font-bold group-hover:text-indigo-400 transition-colors gap-2 mt-auto group/btn">
-                                    <span class="learn-more" data-i18n data-en="Learn more"
-                                        data-id="Selengkapnya">Learn more</span>
-                                    <span
-                                        class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
-                                </span>
-                            </div>
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -543,6 +446,7 @@
         </section>
 
         <!-- Clients Section -->
+        @if($testimonials->isNotEmpty())
         <section class="py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
@@ -556,9 +460,8 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     @php $avatarColors = ['bg-blue-500', 'bg-purple-500', 'bg-emerald-500', 'bg-orange-500', 'bg-pink-500', 'bg-teal-500']; @endphp
-                    @foreach($testimonials->take(3) as $i => $testimonial)
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
+                    @foreach($testimonials->take(3) as $testimonial)
+                    <div class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
                         <div class="flex gap-1 text-yellow-400 mb-6">
                             @for($s = 0; $s < $testimonial->rating; $s++)
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -566,7 +469,7 @@
                         </div>
                         <p class="text-slate-700 font-medium italic mb-8">"{{ $testimonial->quote }}"</p>
                         <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 {{ $avatarColors[$i % count($avatarColors)] }} rounded-full flex justify-center items-center text-white">
+                            <div class="w-12 h-12 {{ $avatarColors[$loop->index % count($avatarColors)] }} rounded-full flex justify-center items-center text-white">
                                 <span class="material-symbols-outlined">person</span>
                             </div>
                             <div>
@@ -579,6 +482,7 @@
                 </div>
             </div>
         </section>
+        @endif
 
         <!-- CTA Section -->
         <section class="pt-0 pb-0 bg-white overflow-hidden">

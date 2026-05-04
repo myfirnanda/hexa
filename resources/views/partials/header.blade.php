@@ -20,6 +20,7 @@
             <a href="{{ route('works.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Works" data-id="Portofolio">Works</a>
             <a href="{{ route('about') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
             <a href="{{ route('services.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Services" data-id="Layanan">Services</a>
+            <a href="{{ route('products.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Products" data-id="Produk">Products</a>
             <button id="solutions-trigger" class="text-[17px] font-medium text-black hover:text-hex-blue flex items-center gap-1 transition-colors">
                 <span data-i18n data-en="Solutions" data-id="Solusi">Solutions</span>
             </button>
@@ -49,6 +50,7 @@
                 <a href="{{ route('works.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Works" data-id="Portofolio">Works</a>
                 <a href="{{ route('about') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
                 <a href="{{ route('services.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Services" data-id="Layanan">Services</a>
+                <a href="{{ route('products.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Products" data-id="Produk">Products</a>
                 <div class="border-t border-gray-100 pt-6">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Our Solutions</p>
                     <div class="grid grid-cols-1 gap-4">

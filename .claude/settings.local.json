@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Skill(gsd:debug)",
+      "Skill(gsd:debug:*)"
     ]
   }
 }

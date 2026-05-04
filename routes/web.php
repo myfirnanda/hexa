@@ -12,7 +12,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
-use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\ClientController as AdminClientController;
 use App\Http\Controllers\Admin\TestimonialController as AdminTestimonialController;
@@ -29,6 +28,7 @@ Route::get('/works/{project}', [WorkController::class, 'show'])->name('works.sho
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
 Route::get('/start-project', [StartProjectController::class, 'index'])->name('start-project');
 Route::post('/start-project/submit', [OrderController::class, 'store'])->name('start-project.submit');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->middleware('guest')->name('login');
@@ -45,14 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/manager/orders/{order}', [AdminOrderController::class, 'show'])->name('manager.orders.show');
     Route::patch('/manager/orders/{order}/status/{status}', [AdminOrderController::class, 'updateStatus'])->name('manager.orders.status');
     Route::delete('/manager/orders/{order}', [AdminOrderController::class, 'destroy'])->name('manager.orders.destroy');
-
-    // Services (Produk/Layanan)
-    Route::get('/manager/services', [AdminServiceController::class, 'index'])->name('manager.services.index');
-    Route::get('/manager/services/create', [AdminServiceController::class, 'create'])->name('manager.services.create');
-    Route::post('/manager/services', [AdminServiceController::class, 'store'])->name('manager.services.store');
-    Route::get('/manager/services/{service}/edit', [AdminServiceController::class, 'edit'])->name('manager.services.edit');
-    Route::put('/manager/services/{service}', [AdminServiceController::class, 'update'])->name('manager.services.update');
-    Route::delete('/manager/services/{service}', [AdminServiceController::class, 'destroy'])->name('manager.services.destroy');
 
     // Projects
     Route::get('/manager/projects', [AdminProjectController::class, 'index'])->name('manager.projects.index');

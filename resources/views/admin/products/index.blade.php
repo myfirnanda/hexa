@@ -39,7 +39,7 @@
                         <img src="{{ image_url($product->image_cover) }}" class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer" alt="{{ $product->name }}" onclick="openGalleryPreview('{{ image_url($product->image_cover) }}')">
                     </td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle font-semibold admin-text">{{ $product->name }}</td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary text-[13px] max-w-[320px]">{{ Str::limit($product->description, 60) }}</td>
+                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary text-[13px] max-w-[320px]">{{ Str::limit($product->description ?? '', 60) }}</td>
                     <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
                         <span class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-500/12 text-blue-400">{{ $product->features_count ?? $product->features()->count() }}</span>
                     </td>

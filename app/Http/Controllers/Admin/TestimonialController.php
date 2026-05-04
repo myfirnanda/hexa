@@ -30,7 +30,7 @@ class TestimonialController extends Controller
 
         Testimonial::create($validated);
 
-        return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial berhasil ditambahkan.');
+        return redirect()->route('manager.testimonials.index')->with('success', 'Testimonial berhasil ditambahkan.');
     }
 
     public function edit(Testimonial $testimonial)
@@ -49,12 +49,12 @@ class TestimonialController extends Controller
 
         $testimonial->update($validated);
 
-        return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial berhasil diperbarui.');
+        return redirect()->route('manager.testimonials.index')->with('success', 'Testimonial berhasil diperbarui.');
     }
 
     public function destroy(Testimonial $testimonial)
     {
         $testimonial->delete();
-        return redirect()->route('admin.testimonials.index')->with('success', 'Testimonial berhasil dihapus.');
+        return redirect()->route('manager.testimonials.index')->with('success', 'Testimonial berhasil dihapus.');
     }
 }

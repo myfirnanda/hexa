@@ -38,7 +38,7 @@ class ClientController extends Controller
 
         Client::create($validated);
 
-        return redirect()->route('admin.clients.index')->with('success', 'Client berhasil ditambahkan.');
+        return redirect()->route('manager.clients.index')->with('success', 'Client berhasil ditambahkan.');
     }
 
     public function update(Request $request, Client $client)
@@ -50,6 +50,9 @@ class ClientController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
+            if ($client->logo) {
+                Storage::disk('public')->delete($client->logo);
+            }
             $file = $request->file('logo');
             $filename = Str::slug($validated['name']) . '.' . $file->getClientOriginalExtension();
             $file->storeAs('clients', $filename, 'public');
@@ -58,12 +61,15 @@ class ClientController extends Controller
 
         $client->update($validated);
 
-        return redirect()->route('admin.clients.index')->with('success', 'Client berhasil diperbarui.');
+        return redirect()->route('manager.clients.index')->with('success', 'Client berhasil diperbarui.');
     }
 
     public function destroy(Client $client)
     {
+        if ($client->logo) {
+            Storage::disk('public')->delete($client->logo);
+        }
         $client->delete();
-        return redirect()->route('admin.clients.index')->with('success', 'Client berhasil dihapus.');
+        return redirect()->route('manager.clients.index')->with('success', 'Client berhasil dihapus.');
     }
 }

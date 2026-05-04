@@ -63,7 +63,7 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('admin.projects.index')->with('success', 'Project berhasil ditambahkan.');
+        return redirect()->route('manager.projects.index')->with('success', 'Project berhasil ditambahkan.');
     }
 
     public function edit(Project $project)
@@ -134,16 +134,20 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('admin.projects.index')->with('success', 'Project berhasil diperbarui.');
+        return redirect()->route('manager.projects.index')->with('success', 'Project berhasil diperbarui.');
     }
 
     public function destroy(Project $project)
     {
+        // Delete cover image file
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
         // Delete gallery image files
         foreach ($project->projectImages as $img) {
             Storage::disk('public')->delete($img->image);
         }
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('success', 'Project berhasil dihapus.');
+        return redirect()->route('manager.projects.index')->with('success', 'Project berhasil dihapus.');
     }
 }

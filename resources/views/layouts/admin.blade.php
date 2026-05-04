@@ -19,6 +19,18 @@
         .admin-card label .text-red-500,
         .admin-card label .required-star { color: #ef4444; }
     </style>
+    <script>
+        (function () {
+            var FALLBACK = '{{ asset('assets/img/broken.png') }}';
+            window.addEventListener('error', function (e) {
+                var t = e.target;
+                if (t && t.tagName === 'IMG' && t.src !== FALLBACK) {
+                    t.onerror = null;
+                    t.src = FALLBACK;
+                }
+            }, true);
+        })();
+    </script>
 </head>
 <body class="font-sans admin-body min-h-screen flex">
     {{-- Sidebar --}}
@@ -45,10 +57,6 @@
             </a>
 
             <div class="text-[11px] font-semibold uppercase tracking-wider admin-text-muted px-3 pt-4 pb-2">Manajemen Konten</div>
-            <a href="{{ route('manager.services.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.services.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
-                <span class="material-symbols-outlined text-xl">category</span>
-                Produk / Layanan
-            </a>
             <a href="{{ route('manager.products.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.products.*') ? 'bg-blue-500/12 text-blue-400 admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl">inventory_2</span>
                 Produk
@@ -216,6 +224,11 @@
             $parent.find('.text-xs.text-red-400').fadeOut(200, function () { $(this).remove(); });
             $field.removeClass('border-red-400');
         });
+
+        // Auto-remove toast notifications after animation completes (3s)
+        setTimeout(function () {
+            $('.toast-animate').remove();
+        }, 3100);
     });
     </script>
     @yield('scripts')

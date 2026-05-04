@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Hexavara - Digital Excellence Since 2013')</title>
     @vite(['resources/css/app.css'])
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL,GRAD,opsz@100..700,0,0,20..48" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700;800&display=swap" rel="stylesheet">
     <style>
         .hero-title { font-size: 60px; line-height: 1.1; letter-spacing: -1.8px; font-weight: 700; }
@@ -30,6 +30,18 @@
         #mobile-backdrop.is-open { display: block; }
     </style>
     @stack('styles')
+    <script>
+        (function () {
+            var FALLBACK = '{{ asset('assets/img/broken.png') }}';
+            window.addEventListener('error', function (e) {
+                var t = e.target;
+                if (t && t.tagName === 'IMG' && t.src !== FALLBACK) {
+                    t.onerror = null;
+                    t.src = FALLBACK;
+                }
+            }, true);
+        })();
+    </script>
 </head>
 
 <body class="bg-white text-hex-dark antialiased overflow-x-hidden relative">

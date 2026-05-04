@@ -38,6 +38,6 @@ class OrderController extends Controller
             unlink(storage_path('app/public/' . $order->file_path));
         }
         $order->delete();
-        return redirect()->route('admin.orders.index')->with('success', 'Order berhasil dihapus.');
+        return redirect()->route('manager.orders.index')->with('success', 'Order berhasil dihapus.');
     }
 }
