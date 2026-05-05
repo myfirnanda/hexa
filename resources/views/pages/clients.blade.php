@@ -8,6 +8,9 @@
     .category-card { display: none; }
     .category-grid.all-view .category-card { display: block; }
     .category-grid.single-view .category-card { display: block; padding-top: 2rem; }
+    .client-has-works { overflow: hidden; }
+    .client-works-hover { transform: translateY(100%); transition: transform 0.25s ease; }
+    .client-has-works:hover .client-works-hover { transform: translateY(0); }
 </style>
 @endpush
 
@@ -60,7 +63,11 @@
                   </div>
                   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     @foreach($catClients as $client)
-                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4">
+                    @php $clientWorksCount = $client->projects->count(); @endphp
+                    <article class="client-item group bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-4 relative {{ $clientWorksCount > 0 ? 'client-has-works cursor-pointer' : '' }}"
+                        @if($clientWorksCount > 0)
+                            onclick="window.location='{{ route('clients.works', $client) }}'"
+                        @endif>
                         @if($client->logo)
                         <img src="{{ image_url($client->logo) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain transition-all duration-300" />
                         @else
@@ -71,6 +78,12 @@
                         <div class="w-full border-t border-slate-100 pt-3 mt-auto">
                             <strong class="text-xs text-slate-600 group-hover:text-blue-600 transition-colors line-clamp-2">{{ $client->name }}</strong>
                         </div>
+                        @if($clientWorksCount > 0)
+                            <div class="client-works-hover absolute bottom-0 left-0 right-0 bg-blue-600 py-2 flex items-center justify-center gap-1.5">
+                                <span class="text-white text-[11px] font-semibold">{{ $clientWorksCount }} {{ $clientWorksCount > 1 ? 'Projects' : 'Project' }}</span>
+                                <span class="material-symbols-outlined text-white text-sm leading-none">arrow_forward</span>
+                            </div>
+                        @endif
                     </article>
                     @endforeach
                   </div>

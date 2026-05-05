@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Project;
 use App\Models\ProjectImage;
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('admin.projects.create');
+        $clients = Client::orderBy('name')->get();
+        return view('admin.projects.create', compact('clients'));
     }
 
     public function store(Request $request)
@@ -27,6 +29,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:100',
+            'client_id' => 'nullable|exists:clients,id',
             'summary_title' => 'nullable|string|max:255',
             'hero_description' => 'nullable|string',
             'description' => 'nullable|string',
@@ -69,7 +72,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $project->load('projectImages');
-        return view('admin.projects.edit', compact('project'));
+        $clients = Client::orderBy('name')->get();
+        return view('admin.projects.edit', compact('project', 'clients'));
     }
 
     public function update(Request $request, Project $project)
@@ -77,6 +81,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:100',
+            'client_id' => 'nullable|exists:clients,id',
             'summary_title' => 'nullable|string|max:255',
             'hero_description' => 'nullable|string',
             'description' => 'nullable|string',

@@ -17,13 +17,13 @@
         </div>
 
         <nav class="hidden lg:flex items-center gap-8 absolute left-[380px] top-1/2 -translate-y-1/2">
-            <a href="{{ route('works.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Works" data-id="Portofolio">Works</a>
-            <a href="{{ route('about') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
-            <a href="{{ route('services.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Services" data-id="Layanan">Services</a>
             <a href="{{ route('products.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Products" data-id="Produk">Products</a>
+            <a href="{{ route('works.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Works" data-id="Portofolio">Works</a>
+            <a href="{{ route('services.index') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="Services" data-id="Layanan">Services</a>
             <button id="solutions-trigger" class="text-[17px] font-medium text-black hover:text-hex-blue flex items-center gap-1 transition-colors">
                 <span data-i18n data-en="Solutions" data-id="Solusi">Solutions</span>
             </button>
+            <a href="{{ route('about') }}" class="text-[17px] font-medium text-black hover:text-hex-blue transition-colors" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
         </nav>
         <div class="hidden lg:flex items-center gap-4 absolute left-[970px] top-1/2 -translate-y-1/2 w-[247px] h-[40px]">
             <div class="language-switch flex bg-gray-200 p-1 rounded-lg h-8 items-center" id="lang-switcher">

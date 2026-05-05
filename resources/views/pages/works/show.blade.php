@@ -103,9 +103,34 @@
                 </div>
                 @endif
                 @if($project->description)
-                <div class="prose prose-lg max-w-none text-hex-slate leading-relaxed">
+                <div class="prose prose-lg max-w-none text-hex-slate leading-relaxed mb-6">
                     {!! $project->description !!}
                 </div>
+                @endif
+
+                @if($project->client)
+                    <div class="pt-6 border-t border-slate-200">
+                        <a href="{{ route('clients.works', $project->client) }}"
+                            class="group flex items-center justify-between gap-6 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-2xl px-7 py-5 transition-all duration-300">
+                            <div class="flex items-center gap-5 min-w-0">
+                                <span class="text-[10px] font-bold tracking-widest uppercase text-slate-400 shrink-0"
+                                    data-i18n data-en="CLIENT" data-id="KLIEN">CLIENT</span>
+                                <span class="w-px h-7 bg-slate-200 shrink-0"></span>
+                                @if($project->client->logo)
+                                    <img src="{{ image_url($project->client->logo) }}"
+                                        alt="{{ $project->client->name }}"
+                                        class="h-7 w-20 object-contain shrink-0">
+                                @else
+                                    <span class="material-symbols-outlined text-slate-400 text-xl shrink-0">business</span>
+                                @endif
+                                <p class="font-bold text-hex-dark group-hover:text-blue-600 transition-colors text-sm truncate">{{ $project->client->name }}</p>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold shrink-0">
+                                <span data-i18n data-en="See all projects" data-id="Lihat semua proyek">See all projects</span>
+                                <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
+                            </div>
+                        </a>
+                    </div>
                 @endif
             </div>
         </section>

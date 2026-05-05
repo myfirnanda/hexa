@@ -11,4 +11,9 @@ class Client extends Model
         'logo',
         'category',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class)->orderBy('id');
+    }
 }

@@ -36,6 +36,16 @@
                     </select>
                     @error('category') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
                 </div>
+                <div class="mb-5">
+                    <label for="client_id" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Client</label>
+                    <select class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer" id="client_id" name="client_id">
+                        <option value="">— Tidak ada —</option>
+                        @foreach($clients as $cl)
+                            <option value="{{ $cl->id }}" {{ old('client_id', $project->client_id) == $cl->id ? 'selected' : '' }}>{{ $cl->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('client_id') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                </div>
             </div>
 
             {{-- Cover Image --}}

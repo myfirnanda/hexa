@@ -127,19 +127,24 @@
                 </p>
             </div>
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <a href="https://www.youtube.com/watch?v=UC3PbMpkEtM" target="_blank" rel="noopener noreferrer"
-                    class="group block relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20">
-                    <img src="https://img.youtube.com/vi/UC3PbMpkEtM/maxresdefault.jpg"
+                <div id="about-video-player" style="aspect-ratio: 16 / 9;"
+                    class="group relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 bg-black">
+                    <img id="about-video-thumbnail" src="https://img.youtube.com/vi/UC3PbMpkEtM/maxresdefault.jpg"
                         onerror="this.src='https://img.youtube.com/vi/UC3PbMpkEtM/hqdefault.jpg'" alt="Company Video"
-                        class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <button id="about-video-play-btn" type="button" aria-label="Play company video"
                         class="video-thumbnail-play absolute inset-0 flex items-center justify-center group-hover:bg-black/20 transition-all duration-300">
-                        <div
+                        <span
                             class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
                             <span class="material-symbols-outlined text-4xl ml-1">play_arrow</span>
-                        </div>
-                    </div>
-                </a>
+                        </span>
+                    </button>
+                    <iframe id="about-video-iframe" class="hidden w-full h-full"
+                        title="Hexavara company profile video" loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
             </div>
         </section>
 
@@ -333,3 +338,27 @@
         </section>
     </main>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var playButton = document.getElementById('about-video-play-btn');
+            var thumbnail = document.getElementById('about-video-thumbnail');
+            var iframe = document.getElementById('about-video-iframe');
+
+            if (!playButton || !thumbnail || !iframe) {
+                return;
+            }
+
+            playButton.addEventListener('click', function () {
+                if (!iframe.src) {
+                    iframe.src = 'https://www.youtube.com/embed/UC3PbMpkEtM?autoplay=1&rel=0';
+                }
+
+                iframe.classList.remove('hidden');
+                playButton.classList.add('hidden');
+                thumbnail.classList.add('hidden');
+            });
+        });
+    </script>
+@endpush

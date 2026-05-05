@@ -10,6 +10,7 @@ class Project extends Model
         'name',
         'slug',
         'category',
+        'client_id',
         'description',
         'hero_description',
         'summary_title',
@@ -19,6 +20,11 @@ class Project extends Model
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 
     public function projectImages()

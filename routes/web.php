@@ -26,6 +26,8 @@ Route::get('/services/managed-service', [ServiceController::class, 'managedServi
 Route::get('/works', [WorkController::class, 'index'])->name('works.index');
 Route::get('/works/{project}', [WorkController::class, 'show'])->name('works.show');
 Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+Route::get('/clients/{client}/works', [ClientController::class, 'works'])->name('clients.works');
+Route::get('/clients/{client}/works/{project}', [ClientController::class, 'showWork'])->name('clients.works.show');
 Route::get('/start-project', [StartProjectController::class, 'index'])->name('start-project');
 Route::post('/start-project/submit', [OrderController::class, 'store'])->name('start-project.submit');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
