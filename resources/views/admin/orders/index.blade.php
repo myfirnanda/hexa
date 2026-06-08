@@ -1,102 +1,110 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', 'Orders')
 @section('topbar-title', 'Orders')
 
 @section('content')
-<div class="flex items-center justify-between flex-wrap gap-4 mb-7 max-md:flex-col max-md:items-start">
-    <div>
-        <h1 class="text-2xl font-bold">Orders</h1>
-        <p class="text-sm admin-text-muted mt-1">Kelola semua order dari klien</p>
-    </div>
-</div>
 
-<div class="grid grid-cols-4 gap-4 mb-6 max-lg:grid-cols-2 max-sm:grid-cols-1">
-    <div class="admin-card border rounded-xl p-4 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-500/12 text-blue-400">
-            <span class="material-symbols-outlined">shopping_cart</span>
+{{-- Stat cards --}}
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    @php
+    $orderStats = [
+        ['label' => 'Total',       'value' => $totalOrders,       'icon' => 'shopping_cart',   'color' => '#3b82f6', 'dim' => 'rgba(59,130,246,0.10)',  'filter' => ''],
+        ['label' => 'Pending',     'value' => $pendingOrders,     'icon' => 'schedule',        'color' => '#f59e0b', 'dim' => 'rgba(245,158,11,0.10)',   'filter' => 'pending'],
+        ['label' => 'In Progress', 'value' => $inProgressOrders,  'icon' => 'autorenew',       'color' => '#818cf8', 'dim' => 'rgba(129,140,248,0.10)',  'filter' => 'in_progress'],
+        ['label' => 'Completed',   'value' => $completedOrders,   'icon' => 'task_alt',        'color' => '#10b981', 'dim' => 'rgba(16,185,129,0.10)',   'filter' => 'completed'],
+    ];
+    @endphp
+    @foreach($orderStats as $stat)
+    @php $isActive = $statusFilter === $stat['filter'] && $stat['filter'] !== ''; @endphp
+    <a href="{{ route('manager.orders.index', array_filter(['status' => $stat['filter'], 'search' => $search])) }}"
+       class="admin-card border rounded-xl p-5 relative overflow-hidden no-underline group transition-all duration-150 hover:scale-[1.01] {{ $isActive ? 'ring-2' : '' }}"
+       style="{{ $isActive ? "ring-color: {$stat['color']};" : '' }}">
+        <div class="absolute top-0 left-0 right-0 h-0.75 rounded-t-xl" style="background: {{ $stat['color'] }};"></div>
+        <div class="flex items-start justify-between mb-4">
+            <span class="text-[11px] font-bold admin-text-muted uppercase tracking-wider">{{ $stat['label'] }}</span>
+            <div class="size-8 rounded-lg flex items-center justify-center shrink-0" style="background: {{ $stat['dim'] }};">
+                <span class="material-symbols-outlined text-[18px]" style="color: {{ $stat['color'] }};">{{ $stat['icon'] }}</span>
+            </div>
         </div>
-        <div>
-            <div class="text-xs admin-text-muted">Total</div>
-            <div class="text-xl font-bold">{{ $totalOrders }}</div>
-        </div>
-    </div>
-    <div class="admin-card border rounded-xl p-4 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-yellow-500/12 text-yellow-400">
-            <span class="material-symbols-outlined">pending</span>
-        </div>
-        <div>
-            <div class="text-xs admin-text-muted">Pending</div>
-            <div class="text-xl font-bold">{{ $pendingOrders }}</div>
-        </div>
-    </div>
-    <div class="admin-card border rounded-xl p-4 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-500/12 text-indigo-400">
-            <span class="material-symbols-outlined">autorenew</span>
-        </div>
-        <div>
-            <div class="text-xs admin-text-muted">In Progress</div>
-            <div class="text-xl font-bold">{{ $inProgressOrders }}</div>
-        </div>
-    </div>
-    <div class="admin-card border rounded-xl p-4 flex items-center gap-4">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-green-500/12 text-green-400">
-            <span class="material-symbols-outlined">check_circle</span>
-        </div>
-        <div>
-            <div class="text-xs admin-text-muted">Completed</div>
-            <div class="text-xl font-bold">{{ $completedOrders }}</div>
-        </div>
-    </div>
+        <div class="text-[28px] font-bold admin-text leading-none admin-stat-number" style="{{ $isActive ? "color: {$stat['color']};" : '' }}">{{ $stat['value'] }}</div>
+    </a>
+    @endforeach
 </div>
 
 <div class="admin-card border rounded-xl overflow-hidden">
-    <div class="px-5 py-4 border-b admin-border flex items-center justify-between gap-3">
-        <h2 class="text-[15px] font-semibold">Semua Orders</h2>
+
+    {{-- Search + filter toolbar --}}
+    <div class="px-6 py-4 border-b admin-border flex items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-3 flex-wrap">
+            <div>
+                <span class="text-[14px] font-bold admin-text">Semua Orders</span>
+                @if($statusFilter)
+                <span class="ml-2 text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" style="background: rgba(37,99,235,0.1); color: #60a5fa;">{{ str_replace('_', ' ', $statusFilter) }}</span>
+                @endif
+            </div>
+            @if($statusFilter)
+            <a href="{{ route('manager.orders.index', $search ? ['search' => $search] : []) }}" class="text-[12px] admin-text-muted no-underline hover:admin-text transition-colors">× Clear filter</a>
+            @endif
+        </div>
+        <form method="GET" action="{{ route('manager.orders.index') }}" class="flex items-center gap-2">
+            @if($statusFilter)
+            <input type="hidden" name="status" value="{{ $statusFilter }}">
+            @endif
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] admin-text-muted pointer-events-none select-none">search</span>
+                <input type="text" name="search" value="{{ $search }}" placeholder="Cari nama, email, perusahaan..."
+                    class="admin-input admin-search-input rounded-lg pl-9 pr-3 py-2 text-sm outline-none w-55 focus:w-70"
+                    autocomplete="off">
+            </div>
+            @if($search)
+            <a href="{{ route('manager.orders.index', $statusFilter ? ['status' => $statusFilter] : []) }}" class="text-[12px] font-medium admin-text-muted no-underline px-2 py-2 rounded-lg admin-surface-hover">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+            </a>
+            @endif
+        </form>
     </div>
+
     @if($orders->count())
     <div class="overflow-x-auto">
-        <table class="w-full border-collapse">
+        <table class="w-full">
             <thead>
-                <tr>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">#</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Client</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Budget</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Status</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Tanggal</th>
-                    <th class="text-left px-4 py-2.5 text-xs font-semibold admin-text-muted uppercase tracking-wide border-b admin-border whitespace-nowrap">Aksi</th>
+                <tr style="background: var(--admin-surface-hover);">
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-10">#</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Client</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Budget</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Status</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Tanggal</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-24">Aksi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="admin-table-body">
                 @foreach($orders as $order)
                 @php
-                    $badgeClasses = match($order->status) {
-                        'pending' => 'bg-yellow-500/12 text-yellow-400',
-                        'in_progress' => 'bg-blue-500/12 text-blue-400',
-                        'completed' => 'bg-green-500/12 text-green-400',
-                        'rejected' => 'bg-red-500/12 text-red-400',
-                        default => 'bg-slate-500/12 text-slate-400',
-                    };
+                    $sMap = ['pending' => ['#f59e0b','rgba(245,158,11,0.10)'], 'in_progress' => ['#818cf8','rgba(129,140,248,0.10)'], 'completed' => ['#10b981','rgba(16,185,129,0.10)'], 'rejected' => ['#f87171','rgba(239,68,68,0.10)']];
+                    [$sc, $sdim] = $sMap[$order->status] ?? ['#64748b','rgba(100,116,139,0.10)'];
                 @endphp
                 <tr class="admin-table-hover">
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">{{ $order->id }}</td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
-                        <div class="font-semibold">{{ $order->name }}</div>
-                        <div class="text-xs admin-text-muted">{{ $order->email }}</div>
-                        @if($order->phone)<div class="text-xs admin-text-muted">{{ $order->phone }}</div>@endif
+                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">{{ $order->id }}</td>
+                    <td class="px-4 py-3.5 align-middle">
+                        <div class="text-[13px] font-semibold admin-text">{{ $order->name }}</div>
+                        <div class="text-[11px] admin-text-muted mt-0.5">{{ $order->email }}</div>
+                        @if($order->phone)<div class="text-[11px] admin-text-muted">{{ $order->phone }}</div>@endif
                         @if($order->file_path)
-                        <div class="flex items-center gap-1 text-[11px] text-green-400 mt-0.5">
-                            <span class="material-symbols-outlined text-[14px]">attach_file</span> File
+                        <div class="flex items-center gap-1 text-[11px] mt-0.5" style="color: #34d399;">
+                            <span class="material-symbols-outlined text-[13px]">attach_file</span> File
                         </div>
                         @endif
                     </td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-secondary">{{ $order->budget ?: '-' }}</td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
-                        <span class="inline-block px-2.5 py-1 rounded-full text-xs font-semibold {{ $badgeClasses }}">{{ str_replace('_', ' ', $order->status) }}</span>
-                        <form method="POST" action="{{ route('manager.orders.status', [$order, 'pending']) }}" class="mt-1.5">
-                            @csrf
-                            @method('PATCH')
-                            <select class="admin-input px-2 py-1 rounded-lg text-xs outline-none transition-colors duration-200 focus:border-blue-500 cursor-pointer max-w-[130px]" onchange="this.form.action='{{ url('/manager/orders/'.$order->id.'/status') }}/'+this.value;this.form.submit()">
-                                <option value="" disabled selected>Ubah...</option>
+                    <td class="px-4 py-3.5 text-[13px] align-middle admin-text-secondary font-medium admin-stat-number">{{ $order->budget ?: '—' }}</td>
+                    <td class="px-4 py-3.5 align-middle">
+                        <div class="mb-1.5">
+                            <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-bold capitalize" style="background: {{ $sdim }}; color: {{ $sc }};">{{ str_replace('_', ' ', $order->status) }}</span>
+                        </div>
+                        <form method="POST" action="{{ route('manager.orders.status', [$order, 'pending']) }}">
+                            @csrf @method('PATCH')
+                            <select class="admin-input px-2 py-1 rounded-lg text-[12px] outline-none cursor-pointer" style="max-width: 130px;"
+                                onchange="this.form.action='{{ url('/manager/orders/'.$order->id.'/status') }}/'+this.value; this.form.submit()">
+                                <option value="" disabled selected>Ubah status...</option>
                                 <option value="pending">Pending</option>
                                 <option value="in_progress">In Progress</option>
                                 <option value="completed">Completed</option>
@@ -104,17 +112,27 @@
                             </select>
                         </form>
                     </td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle admin-text-muted text-[13px] whitespace-nowrap">
+                    <td class="px-4 py-3.5 align-middle admin-text-muted text-[12px] whitespace-nowrap admin-stat-number">
                         {{ $order->created_at->format('d M Y') }}<br>
-                        <span class="admin-text-muted">{{ $order->created_at->format('H:i') }}</span>
+                        <span class="text-[11px]">{{ $order->created_at->format('H:i') }}</span>
                     </td>
-                    <td class="px-4 py-3 text-sm border-b admin-border-light align-middle">
-                        <div class="flex items-center gap-2">
-                            <a href="{{ route('manager.orders.show', $order) }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] admin-btn-secondary no-underline border-none cursor-pointer transition-all duration-150" title="Detail">
-                                <span class="material-symbols-outlined">visibility</span>
+                    <td class="px-4 py-3.5 align-middle">
+                        <div class="flex items-center gap-1.5">
+                            <a href="{{ route('manager.orders.show', $order) }}"
+                               class="inline-flex items-center justify-center size-8 rounded-lg no-underline transition-all duration-150 border"
+                               style="background: rgba(37,99,235,0.08); color: #60a5fa; border-color: rgba(37,99,235,0.15);"
+                               onmouseover="this.style.background='rgba(37,99,235,0.18)'"
+                               onmouseout="this.style.background='rgba(37,99,235,0.08)'"
+                               title="Lihat detail">
+                                <span class="material-symbols-outlined text-[16px]">visibility</span>
                             </a>
-                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold text-[13px] bg-red-500/12 text-red-400 border border-red-500/20 cursor-pointer transition-all duration-150 hover:bg-red-500/20" onclick="confirmDelete('{{ route('manager.orders.destroy', $order) }}')" title="Hapus">
-                                <span class="material-symbols-outlined">delete</span>
+                            <button onclick="confirmDelete('{{ route('manager.orders.destroy', $order) }}')"
+                                class="inline-flex items-center justify-center size-8 rounded-lg cursor-pointer transition-all duration-150 border"
+                                style="background: rgba(239,68,68,0.08); color: #f87171; border-color: rgba(239,68,68,0.15);"
+                                onmouseover="this.style.background='rgba(239,68,68,0.18)'"
+                                onmouseout="this.style.background='rgba(239,68,68,0.08)'"
+                                title="Hapus order">
+                                <span class="material-symbols-outlined text-[16px]">delete</span>
                             </button>
                         </div>
                     </td>
@@ -123,13 +141,19 @@
             </tbody>
         </table>
     </div>
-    <div class="px-5 py-4">
-        {{ $orders->links() }}
+    <div class="px-6 py-4 border-t admin-border">{{ $orders->links() }}</div>
+
+    @elseif($search || $statusFilter)
+    <div class="flex flex-col items-center justify-center py-16 px-5">
+        <span class="material-symbols-outlined text-5xl admin-text-muted mb-3 opacity-30">search_off</span>
+        <p class="text-sm admin-text-secondary font-medium">Tidak ada order yang cocok dengan filter ini.</p>
+        <a href="{{ route('manager.orders.index') }}" class="mt-3 text-[13px] no-underline" style="color: var(--admin-primary);">Hapus semua filter</a>
     </div>
+
     @else
-    <div class="text-center py-12 px-5 admin-text-muted">
-        <span class="material-symbols-outlined block text-5xl mb-3 opacity-50">inbox</span>
-        <p>Belum ada order. Order akan muncul ketika klien submit form kontak.</p>
+    <div class="flex flex-col items-center justify-center py-16 px-5">
+        <span class="material-symbols-outlined text-5xl admin-text-muted mb-3 opacity-30">inbox</span>
+        <p class="text-sm admin-text-secondary">Belum ada order masuk.</p>
     </div>
     @endif
 </div>

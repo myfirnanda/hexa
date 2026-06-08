@@ -12,10 +12,16 @@ use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::latest()->paginate(15);
-        return view('admin.projects.index', compact('projects'));
+        $search = $request->input('search', '');
+        $projects = Project::query()
+            ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
+                ->orWhere('category', 'like', "%{$search}%"))
+            ->latest()
+            ->paginate(15)
+            ->withQueryString();
+        return view('admin.projects.index', compact('projects', 'search'));
     }
 
     public function create()

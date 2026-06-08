@@ -15,10 +15,17 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::withCount('features')->orderBy('sort_order')->latest()->paginate(15);
-        return view('admin.products.index', compact('products'));
+        $search = $request->input('search', '');
+        $products = Product::withCount('features')
+            ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%"))
+            ->orderBy('sort_order')
+            ->latest()
+            ->paginate(15)
+            ->withQueryString();
+        return view('admin.products.index', compact('products', 'search'));
     }
 
     public function create()

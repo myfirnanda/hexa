@@ -10,10 +10,16 @@ use Illuminate\Support\Str;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::latest()->paginate(15);
-        return view('admin.clients.index', compact('clients'));
+        $search = $request->input('search', '');
+        $clients = Client::query()
+            ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
+                ->orWhere('category', 'like', "%{$search}%"))
+            ->latest()
+            ->paginate(15)
+            ->withQueryString();
+        return view('admin.clients.index', compact('clients', 'search'));
     }
 
     public function create()

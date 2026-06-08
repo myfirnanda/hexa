@@ -1,115 +1,120 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', 'Dashboard')
 @section('topbar-title', 'Beranda')
 
 @section('content')
-{{-- Greeting --}}
+
+{{-- Page header --}}
 <div class="mb-8">
-    <h1 class="text-[22px] font-bold admin-text leading-tight">Selamat Datang, {{ Auth::user()->name }}</h1>
-    <p class="text-sm admin-text-muted mt-1">Ringkasan aktivitas dan data website Hexavara Technology</p>
+    <h1 class="text-xl font-bold admin-text leading-tight">Selamat datang kembali, <span style="color: var(--admin-brand);">{{ Auth::user()->name }}</span></h1>
+    <p class="text-sm admin-text-muted mt-1">Ringkasan aktivitas Hexavara Technology — {{ now()->translatedFormat('l, d F Y') }}</p>
 </div>
 
-{{-- Order Stats Row --}}
+{{-- Order Stat Cards --}}
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    {{-- Total Orders --}}
-    <div class="admin-card border rounded-xl p-4 group">
-        <div class="flex items-center justify-between mb-3">
-            <span class="text-[13px] font-medium admin-text-muted">Total Orders</span>
-            <div class="size-9 rounded-lg flex items-center justify-center bg-blue-500/10 text-blue-500">
-                <span class="material-symbols-outlined text-xl">shopping_cart</span>
-            </div>
-        </div>
-        <div class="text-[28px] font-bold admin-text leading-none">{{ $totalOrders }}</div>
-        <div class="text-[12px] admin-text-muted mt-2">Semua order masuk</div>
-    </div>
 
-    {{-- Pending --}}
-    <div class="admin-card border rounded-xl p-4 group">
-        <div class="flex items-center justify-between mb-3">
-            <span class="text-[13px] font-medium admin-text-muted">Pending</span>
-            <div class="size-9 rounded-lg flex items-center justify-center bg-amber-500/10 text-amber-500">
-                <span class="material-symbols-outlined text-xl">schedule</span>
-            </div>
-        </div>
-        <div class="text-[28px] font-bold admin-text leading-none">{{ $pendingOrders }}</div>
-        <div class="text-[12px] admin-text-muted mt-2">Menunggu ditindaklanjuti</div>
-    </div>
+    @php
+    $statCards = [
+        ['label' => 'Total Orders',  'value' => $totalOrders,      'sub' => 'Semua order masuk',       'icon' => 'shopping_cart',   'color' => '#3b82f6', 'dim' => 'rgba(59,130,246,0.10)'],
+        ['label' => 'Pending',       'value' => $pendingOrders,     'sub' => 'Menunggu tindak lanjut',  'icon' => 'schedule',        'color' => '#f59e0b', 'dim' => 'rgba(245,158,11,0.10)'],
+        ['label' => 'In Progress',   'value' => $inProgressOrders,  'sub' => 'Sedang dikerjakan',       'icon' => 'pending_actions', 'color' => '#818cf8', 'dim' => 'rgba(129,140,248,0.10)'],
+        ['label' => 'Completed',     'value' => $completedOrders,   'sub' => 'Selesai dikerjakan',      'icon' => 'task_alt',        'color' => '#10b981', 'dim' => 'rgba(16,185,129,0.10)'],
+    ];
+    @endphp
 
-    {{-- In Progress --}}
-    <div class="admin-card border rounded-xl p-4 group">
-        <div class="flex items-center justify-between mb-3">
-            <span class="text-[13px] font-medium admin-text-muted">In Progress</span>
-            <div class="size-9 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500">
-                <span class="material-symbols-outlined text-xl">pending_actions</span>
-            </div>
-        </div>
-        <div class="text-[28px] font-bold admin-text leading-none">{{ $inProgressOrders }}</div>
-        <div class="text-[12px] admin-text-muted mt-2">Sedang dikerjakan</div>
-    </div>
+    @foreach($statCards as $card)
+    <div class="admin-card border rounded-xl p-5 relative overflow-hidden group">
+        {{-- Colored accent top border --}}
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-xl" style="background: {{ $card['color'] }};"></div>
 
-    {{-- Completed --}}
-    <div class="admin-card border rounded-xl p-4 group">
-        <div class="flex items-center justify-between mb-3">
-            <span class="text-[13px] font-medium admin-text-muted">Completed</span>
-            <div class="size-9 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-500">
-                <span class="material-symbols-outlined text-xl">task_alt</span>
+        <div class="flex items-start justify-between mb-4">
+            <span class="text-[12px] font-semibold admin-text-muted uppercase tracking-wider">{{ $card['label'] }}</span>
+            <div class="size-8 rounded-lg flex items-center justify-center shrink-0" style="background: {{ $card['dim'] }};">
+                <span class="material-symbols-outlined text-[18px]" style="color: {{ $card['color'] }};">{{ $card['icon'] }}</span>
             </div>
         </div>
-        <div class="text-[28px] font-bold admin-text leading-none">{{ $completedOrders }}</div>
-        <div class="text-[12px] admin-text-muted mt-2">Selesai dikerjakan</div>
+
+        <div class="text-[32px] font-bold admin-text leading-none admin-stat-number">{{ $card['value'] }}</div>
+        <div class="text-[12px] admin-text-muted mt-2">{{ $card['sub'] }}</div>
     </div>
+    @endforeach
 </div>
 
-{{-- Two Column: Order Activity Chart + Order Status Breakdown --}}
+{{-- Main chart row --}}
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-    {{-- Monthly Activity (takes 2 cols) --}}
+
+    {{-- Monthly Activity bar chart --}}
     <div class="lg:col-span-2 admin-card border rounded-xl overflow-hidden">
-        <div class="px-5 py-4 admin-border border-b flex items-center justify-between">
+        <div class="px-6 py-4 admin-border border-b flex items-center justify-between">
             <div>
-                <h2 class="text-[15px] font-semibold admin-text">Aktivitas Order</h2>
+                <h2 class="text-[14px] font-bold admin-text">Aktivitas Order</h2>
                 <p class="text-[12px] admin-text-muted mt-0.5">6 bulan terakhir</p>
             </div>
+            <span class="text-[11px] font-semibold px-2.5 py-1 rounded-full admin-text-muted" style="background: var(--admin-surface-hover);">Orders / Bulan</span>
         </div>
-        <div class="p-5">
-            <div class="flex items-end gap-3 h-[180px]">
-                @php
-                    $counts = array_column($monthlyOrders, 'count');
-                    $maxCount = empty($counts) ? 1 : max($counts);
-                @endphp
-                @foreach($monthlyOrders as $mo)
-                <div class="flex-1 flex flex-col items-center gap-2 h-full justify-end">
-                    <span class="text-[12px] font-semibold admin-text">{{ $mo['count'] }}</span>
-                    <div class="w-full max-w-[48px] rounded-t-md bg-blue-500/80 transition-all duration-300" style="height: {{ $maxCount > 0 ? max(($mo['count'] / $maxCount) * 140, 4) : 4 }}px;"></div>
-                    <span class="text-[11px] admin-text-muted font-medium">{{ $mo['month'] }}</span>
+
+        <div class="p-6">
+            @php
+                $counts = array_column($monthlyOrders, 'count');
+                $maxCount = empty($counts) ? 1 : max($counts);
+                $chartH = 160;
+            @endphp
+
+            {{-- Chart area with grid lines --}}
+            <div class="relative" style="height: {{ $chartH + 40 }}px;">
+                {{-- Grid lines (4 horizontal) --}}
+                @for($g = 1; $g <= 4; $g++)
+                <div class="absolute left-0 right-0 border-t admin-border-light"
+                     style="bottom: {{ 40 + ($g / 4) * $chartH }}px; border-style: dashed;"></div>
+                @endfor
+
+                {{-- Bars --}}
+                <div class="absolute left-0 right-0 bottom-0 flex items-end gap-3 px-1" style="height: {{ $chartH + 40 }}px;">
+                    @foreach($monthlyOrders as $mo)
+                    @php
+                        $barH = $maxCount > 0 ? max(round(($mo['count'] / $maxCount) * $chartH), 4) : 4;
+                        $isMax = $mo['count'] == $maxCount && $mo['count'] > 0;
+                    @endphp
+                    <div class="flex-1 flex flex-col items-center gap-2 justify-end" style="height: {{ $chartH + 40 }}px;">
+                        <span class="text-[12px] font-bold admin-stat-number {{ $isMax ? '' : 'admin-text-secondary' }}" style="{{ $isMax ? 'color: var(--admin-brand);' : '' }}">{{ $mo['count'] > 0 ? $mo['count'] : '' }}</span>
+                        <div class="w-full max-w-[44px] rounded-t-md transition-all duration-500 group-hover:opacity-80"
+                             style="height: {{ $barH }}px; background: {{ $isMax ? 'var(--admin-brand)' : 'var(--admin-primary)' }}; opacity: 0.75;"></div>
+                        <span class="text-[11px] admin-text-muted font-medium whitespace-nowrap">{{ $mo['month'] }}</span>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
 
-    {{-- Order Status Breakdown --}}
+    {{-- Order status breakdown --}}
     <div class="admin-card border rounded-xl overflow-hidden">
-        <div class="px-5 py-4 admin-border border-b">
-            <h2 class="text-[15px] font-semibold admin-text">Status Orders</h2>
-            <p class="text-[12px] admin-text-muted mt-0.5">Distribusi status saat ini</p>
+        <div class="px-6 py-4 admin-border border-b">
+            <h2 class="text-[14px] font-bold admin-text">Distribusi Status</h2>
+            <p class="text-[12px] admin-text-muted mt-0.5">Komposisi order saat ini</p>
         </div>
-        <div class="p-5 space-y-4">
+        <div class="p-6 space-y-5">
             @php
-                $statuses = [
-                    ['label' => 'Pending', 'count' => $pendingOrders, 'color' => 'bg-amber-500', 'text' => 'text-amber-500'],
-                    ['label' => 'In Progress', 'count' => $inProgressOrders, 'color' => 'bg-indigo-500', 'text' => 'text-indigo-500'],
-                    ['label' => 'Completed', 'count' => $completedOrders, 'color' => 'bg-emerald-500', 'text' => 'text-emerald-500'],
-                    ['label' => 'Rejected', 'count' => $rejectedOrders, 'color' => 'bg-red-500', 'text' => 'text-red-500'],
+                $distStatuses = [
+                    ['label' => 'Pending',     'count' => $pendingOrders,    'color' => '#f59e0b'],
+                    ['label' => 'In Progress', 'count' => $inProgressOrders, 'color' => '#818cf8'],
+                    ['label' => 'Completed',   'count' => $completedOrders,  'color' => '#10b981'],
+                    ['label' => 'Rejected',    'count' => $rejectedOrders,   'color' => '#f87171'],
                 ];
+                $distTotal = max($totalOrders, 1);
             @endphp
-            @foreach($statuses as $s)
+            @foreach($distStatuses as $s)
             <div>
-                <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-[13px] font-medium admin-text-secondary">{{ $s['label'] }}</span>
-                    <span class="text-[13px] font-semibold {{ $s['text'] }}">{{ $s['count'] }}</span>
+                <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                        <div class="size-2 rounded-full shrink-0" style="background: {{ $s['color'] }};"></div>
+                        <span class="text-[13px] font-medium admin-text-secondary">{{ $s['label'] }}</span>
+                    </div>
+                    <span class="text-[13px] font-bold admin-stat-number" style="color: {{ $s['color'] }};">{{ $s['count'] }}</span>
                 </div>
-                <div class="h-2 rounded-full admin-border" style="background: var(--admin-surface-hover);">
-                    <div class="h-full rounded-full {{ $s['color'] }} transition-all duration-500" style="width: {{ $totalOrders > 0 ? round(($s['count'] / $totalOrders) * 100) : 0 }}%;"></div>
+                <div class="h-1.5 rounded-full overflow-hidden" style="background: var(--admin-surface-hover);">
+                    <div class="h-full rounded-full transition-all duration-700"
+                         style="width: {{ round(($s['count'] / $distTotal) * 100) }}%; background: {{ $s['color'] }};"></div>
                 </div>
             </div>
             @endforeach
@@ -117,127 +122,113 @@
     </div>
 </div>
 
-{{-- Content Stats Row --}}
-<div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-    <a href="{{ route('manager.projects.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
-        <div class="flex items-center gap-3">
-            <div class="size-10 rounded-lg flex items-center justify-center bg-indigo-500/10 text-indigo-500 shrink-0">
-                <span class="material-symbols-outlined text-xl">work</span>
-            </div>
-            <div class="min-w-0">
-                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalProjects }}</div>
-                <div class="text-[12px] admin-text-muted mt-1">Project</div>
-            </div>
+{{-- Content Counters --}}
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+    @php
+    $contentCards = [
+        ['route' => 'manager.projects.index',      'label' => 'Project',       'count' => $totalProjects,      'icon' => 'work',        'color' => '#818cf8', 'dim' => 'rgba(129,140,248,0.10)'],
+        ['route' => 'manager.clients.index',       'label' => 'Clients',       'count' => $totalClients,       'icon' => 'apartment',   'color' => '#10b981', 'dim' => 'rgba(16,185,129,0.10)'],
+        ['route' => 'manager.testimonials.index',  'label' => 'Testimonials',  'count' => $totalTestimonials,  'icon' => 'rate_review', 'color' => '#f59e0b', 'dim' => 'rgba(245,158,11,0.10)'],
+    ];
+    @endphp
+    @foreach($contentCards as $cc)
+    <a href="{{ route($cc['route']) }}" class="admin-card border rounded-xl p-5 no-underline group transition-all duration-150 hover:scale-[1.01] flex items-center gap-4" style="hover:box-shadow: var(--admin-shadow-lg);">
+        <div class="size-12 rounded-xl flex items-center justify-center shrink-0" style="background: {{ $cc['dim'] }};">
+            <span class="material-symbols-outlined text-2xl" style="color: {{ $cc['color'] }};">{{ $cc['icon'] }}</span>
         </div>
-    </a>
-    <a href="{{ route('manager.clients.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
-        <div class="flex items-center gap-3">
-            <div class="size-10 rounded-lg flex items-center justify-center bg-emerald-500/10 text-emerald-500 shrink-0">
-                <span class="material-symbols-outlined text-xl">apartment</span>
-            </div>
-            <div class="min-w-0">
-                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalClients }}</div>
-                <div class="text-[12px] admin-text-muted mt-1">Clients</div>
-            </div>
+        <div>
+            <div class="text-[28px] font-bold admin-text leading-none admin-stat-number">{{ $cc['count'] }}</div>
+            <div class="text-[12px] admin-text-muted mt-1 font-medium">{{ $cc['label'] }}</div>
         </div>
+        <span class="material-symbols-outlined ml-auto text-xl admin-text-muted group-hover:translate-x-0.5 transition-transform">chevron_right</span>
     </a>
-    <a href="{{ route('manager.testimonials.index') }}" class="admin-card border rounded-xl p-4 no-underline transition-all duration-150 hover:scale-[1.02] hover:shadow-lg">
-        <div class="flex items-center gap-3">
-            <div class="size-10 rounded-lg flex items-center justify-center bg-amber-500/10 text-amber-500 shrink-0">
-                <span class="material-symbols-outlined text-xl">rate_review</span>
-            </div>
-            <div class="min-w-0">
-                <div class="text-[20px] font-bold admin-text leading-none">{{ $totalTestimonials }}</div>
-                <div class="text-[12px] admin-text-muted mt-1">Testimonials</div>
-            </div>
-        </div>
-    </a>
+    @endforeach
 </div>
 
-{{-- Two Column: Recent Orders + Popular Categories --}}
+{{-- Bottom row: Recent orders + Popular categories --}}
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-    {{-- Recent Orders (takes 2 cols) --}}
+
+    {{-- Recent orders --}}
     <div class="lg:col-span-2 admin-card border rounded-xl overflow-hidden">
-        <div class="px-5 py-4 admin-border border-b flex items-center justify-between">
+        <div class="px-6 py-4 admin-border border-b flex items-center justify-between">
             <div>
-                <h2 class="text-[15px] font-semibold admin-text">Order Terbaru</h2>
-                <p class="text-[12px] admin-text-muted mt-0.5">5 order terakhir yang masuk</p>
+                <h2 class="text-[14px] font-bold admin-text">Order Terbaru</h2>
+                <p class="text-[12px] admin-text-muted mt-0.5">5 order terakhir</p>
             </div>
-            <a href="{{ route('manager.orders.index') }}" class="text-[13px] font-medium text-blue-500 no-underline hover:text-blue-400 transition-colors">
-                Lihat Semua &rarr;
+            <a href="{{ route('manager.orders.index') }}" class="text-[12px] font-semibold no-underline transition-colors" style="color: var(--admin-primary);" onmouseover="this.style.color='#60a5fa'" onmouseout="this.style.color='var(--admin-primary)'">
+                Lihat Semua →
             </a>
         </div>
+
         @if($recentOrders->count())
-        <div class="divide-y admin-border">
+        <div class="admin-row-divide">
             @foreach($recentOrders as $order)
-            <div class="px-5 py-3.5 flex items-center gap-4 admin-table-hover transition-colors">
-                <div class="size-9 rounded-lg flex items-center justify-center shrink-0 text-sm font-bold
-                    @if($order->status === 'completed') bg-emerald-500/10 text-emerald-500
-                    @elseif($order->status === 'in_progress') bg-indigo-500/10 text-indigo-500
-                    @elseif($order->status === 'rejected') bg-red-500/10 text-red-500
-                    @else bg-amber-500/10 text-amber-500
-                    @endif
-                ">{{ strtoupper(substr($order->name, 0, 2)) }}</div>
+            @php
+                $statusMap = ['completed' => ['#10b981','rgba(16,185,129,0.1)'], 'in_progress' => ['#818cf8','rgba(129,140,248,0.1)'], 'rejected' => ['#f87171','rgba(239,68,68,0.1)'], 'pending' => ['#f59e0b','rgba(245,158,11,0.1)']];
+                [$sc, $sdim] = $statusMap[$order->status] ?? ['#64748b','rgba(100,116,139,0.1)'];
+            @endphp
+            <div class="px-6 py-3.5 flex items-center gap-4 admin-table-hover">
+                <div class="size-9 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold" style="background: {{ $sdim }}; color: {{ $sc }};">
+                    {{ strtoupper(substr($order->name, 0, 2)) }}
+                </div>
                 <div class="flex-1 min-w-0">
-                    <div class="text-sm font-semibold admin-text truncate">{{ $order->name }}</div>
-                    <div class="text-[12px] admin-text-muted truncate">{{ $order->company ?: $order->email }}</div>
+                    <div class="text-[13px] font-semibold admin-text truncate">{{ $order->name }}</div>
+                    <div class="text-[11px] admin-text-muted truncate">{{ $order->company ?: $order->email }}</div>
                 </div>
                 <div class="text-right shrink-0 hidden sm:block">
-                    <div class="text-sm font-medium admin-text-secondary">{{ $order->budget ?: '-' }}</div>
+                    <div class="text-[13px] font-medium admin-text-secondary">{{ $order->budget ?: '—' }}</div>
                     <div class="text-[11px] admin-text-muted">{{ $order->created_at->format('d M Y') }}</div>
                 </div>
-                <div class="shrink-0">
-                    @php
-                        $badgeMap = [
-                            'pending' => 'bg-amber-500/10 text-amber-500',
-                            'in_progress' => 'bg-indigo-500/10 text-indigo-500',
-                            'completed' => 'bg-emerald-500/10 text-emerald-500',
-                            'rejected' => 'bg-red-500/10 text-red-500',
-                        ];
-                    @endphp
-                    <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-semibold capitalize {{ $badgeMap[$order->status] ?? '' }}">{{ str_replace('_', ' ', $order->status) }}</span>
-                </div>
-                <a href="{{ route('manager.orders.show', $order) }}" class="flex items-center justify-center size-8 rounded-lg admin-text-muted no-underline transition-all duration-150 admin-surface-hover shrink-0">
+                <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-bold capitalize shrink-0" style="background: {{ $sdim }}; color: {{ $sc }};">
+                    {{ str_replace('_', ' ', $order->status) }}
+                </span>
+                <a href="{{ route('manager.orders.show', $order) }}" class="flex items-center justify-center size-8 rounded-lg no-underline transition-all duration-150 admin-surface-hover shrink-0 admin-text-muted">
                     <span class="material-symbols-outlined text-lg">chevron_right</span>
                 </a>
             </div>
             @endforeach
         </div>
         @else
-        <div class="text-center py-16 px-5">
-            <span class="material-symbols-outlined text-4xl admin-text-muted mb-3 block opacity-40">inbox</span>
+        <div class="flex flex-col items-center justify-center py-16 px-5">
+            <span class="material-symbols-outlined text-5xl admin-text-muted mb-3 opacity-30">inbox</span>
             <p class="text-sm admin-text-muted">Belum ada order masuk.</p>
         </div>
         @endif
     </div>
 
-    {{-- Popular Categories --}}
+    {{-- Popular categories --}}
     <div class="admin-card border rounded-xl overflow-hidden">
-        <div class="px-5 py-4 admin-border border-b">
-            <h2 class="text-[15px] font-semibold admin-text">Kategori Populer</h2>
-            <p class="text-[12px] admin-text-muted mt-0.5">Layanan paling diminati</p>
+        <div class="px-6 py-4 admin-border border-b">
+            <h2 class="text-[14px] font-bold admin-text">Layanan Populer</h2>
+            <p class="text-[12px] admin-text-muted mt-0.5">Berdasarkan jumlah order</p>
         </div>
         @if($allCategories->count())
-        <div class="p-5 space-y-3">
-            @php $catMax = $allCategories->first(); @endphp
+        <div class="p-6 space-y-4">
+            @php $catMax = $allCategories->first(); $catIdx = 0; @endphp
             @foreach($allCategories as $catName => $catCount)
+            @php
+                $barColors = ['var(--admin-primary)', '#10b981', '#f59e0b', '#818cf8', '#f87171'];
+                $barColor = $barColors[$catIdx % count($barColors)];
+                $catIdx++;
+            @endphp
             <div>
                 <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-[13px] font-medium admin-text-secondary capitalize">{{ str_replace(['-', '_'], ' ', $catName) }}</span>
-                    <span class="text-[12px] font-semibold admin-text-muted">{{ $catCount }}x</span>
+                    <span class="text-[12px] font-semibold admin-text-secondary capitalize">{{ str_replace(['-', '_'], ' ', $catName) }}</span>
+                    <span class="text-[11px] font-bold admin-stat-number admin-text-muted">{{ $catCount }}×</span>
                 </div>
-                <div class="h-1.5 rounded-full" style="background: var(--admin-surface-hover);">
-                    <div class="h-full rounded-full bg-blue-500 transition-all duration-500" style="width: {{ $catMax > 0 ? round(($catCount / $catMax) * 100) : 0 }}%;"></div>
+                <div class="h-1.5 rounded-full overflow-hidden" style="background: var(--admin-surface-hover);">
+                    <div class="h-full rounded-full transition-all duration-700" style="width: {{ $catMax > 0 ? round(($catCount / $catMax) * 100) : 0 }}%; background: {{ $barColor }};"></div>
                 </div>
             </div>
             @endforeach
         </div>
         @else
-        <div class="text-center py-12 px-5">
-            <span class="material-symbols-outlined text-3xl admin-text-muted mb-2 block opacity-40">bar_chart</span>
-            <p class="text-[13px] admin-text-muted">Belum cukup data kategori.</p>
+        <div class="flex flex-col items-center justify-center py-12 px-5">
+            <span class="material-symbols-outlined text-4xl admin-text-muted mb-2 opacity-30">bar_chart</span>
+            <p class="text-[13px] admin-text-muted">Belum cukup data.</p>
         </div>
         @endif
     </div>
+
 </div>
 @endsection
