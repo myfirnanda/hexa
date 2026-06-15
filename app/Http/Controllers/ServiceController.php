@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\PageBanner;
 
 class ServiceController extends Controller
 {
     public function index()
     {
-        return view('pages.services.index');
+        $heroBanner = PageBanner::active()->forPage('services')->orderBy('sort_order')->first();
+        return view('pages.services.index', compact('heroBanner'));
     }
 
     // public function show(Service $service)
@@ -27,7 +29,7 @@ class ServiceController extends Controller
     }
 
     public function managedService() {
-        $clients = Client::all();
+        $clients = Client::orderBy('sort_order')->orderBy('id')->get();
         return view('pages.services.service-managed-service', compact('clients'));
     }
 }

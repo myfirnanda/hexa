@@ -313,17 +313,47 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="pt-0 pb-0 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                    <!-- Left: Talent Image -->
-                    <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
-                    </div>
+        <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                    <!-- Right: Solution partial -->
-                    @include('partials.solution')
+                <!-- Mobile Card Layout -->
+                <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                    <div class="flex items-end">
+                        <div class="flex-shrink-0 w-[48%]">
+                            <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                                class="w-full object-contain">
+                        </div>
+                        <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                            <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                                data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                                data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                                Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>.
+                                Consult with Us Today!
+                            </h2>
+                            <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                                data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                                data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                                Discuss your IT challenges, and our team of experienced experts will provide tailored
+                                solutions to drive your business growth and success.
+                            </p>
+                            <a href="{{ route('start-project') }}"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                                data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Desktop Layout -->
+                <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                    <div class="relative flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                            class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                    </div>
+                    <div class="self-center max-w-2xl">
+                        @include('partials.solution')
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>

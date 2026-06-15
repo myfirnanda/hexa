@@ -5,12 +5,18 @@
     <!-- Hero Section -->
     <main>
         <!-- Hero Section -->
-        <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
-            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80"
-                style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');">
+        <section class="relative w-full h-[583px] overflow-hidden bg-gray-900 lg:bg-transparent">
+            {{-- Mobile background --}}
+            <div id="mobileHeroBg" class="absolute inset-0 z-0 bg-cover bg-center lg:hidden"
+                style="background-image: url('{{ $heroBanner ? asset('storage/' . $heroBanner->image_path) : asset('assets/img/hero/hero_graha.png') }}');"></div>
+            {{-- Desktop background --}}
+            <div class="absolute inset-0 z-0 bg-cover bg-top hidden lg:block opacity-80"
+                style="background-image: url('{{ $heroBanner ? asset('storage/' . $heroBanner->image_path) : asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');">
             </div>
-            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0">
-                <div class="lg:absolute lg:left-[58px] lg:top-1/2 lg:-translate-y-1/2 max-w-[763px] pt-12 lg:pt-0">
+            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex items-center justify-center lg:block">
+                <div class="lg:absolute lg:left-[58px] lg:top-1/2 lg:-translate-y-1/2 max-w-[763px] lg:pt-0 w-full text-center
+                            bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/60
+                            lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:p-0 lg:w-auto lg:text-left lg:border-0">
                     <span
                         class="inline-flex items-center font-bold bg-blue-100 text-blue-600 rounded-full px-4 py-1 mb-6 text-sm uppercase tracking-widest">Est.
                         2013</span>
@@ -18,15 +24,17 @@
                         data-en="Hi, we are<br /><span class='text-hex-blue'>Hexavara Tech.</span>"
                         data-id="Hai, kami adalah<br /><span class='text-hex-blue'>Hexavara Tech.</span>">Hi, we
                         are<br /><span class="text-hex-blue">Hexavara Tech.</span></h1>
-                    <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[505px]" data-i18n
+                    <p class="mt-6 text-hex-slate text-lg leading-[1.65] lg:max-w-[505px]" data-i18n
                         data-en="Founded in 2013 by ITS students, Hexavara has grown from an academic dream into a powerhouse of digital innovation. Our journey began with a shared passion for technology and a vision to transform the digital landscape."
                         data-id="Didirikan pada 2013 oleh mahasiswa ITS, Hexavara telah berkembang dari mimpi akademis menjadi pusat inovasi digital. Perjalanan kami dimulai dari semangat bersama untuk teknologi dan visi mengubah lanskap digital.">
                         Founded in 2013 by ITS students, Hexavara has grown from an academic dream into a powerhouse of
                         digital innovation. Our journey began with a shared passion for technology and a vision to
                         transform the digital landscape.</p>
-                    <a href="{{ route('start-project') }}"
-                        class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
-                        data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                    <div class="flex justify-center lg:justify-start">
+                        <a href="{{ route('start-project') }}"
+                            class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
+                            data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                    </div>
                 </div>
                 <img src="{{ asset('assets/img/hero/hero_graha.png') }}" alt=""
                     class="hidden lg:block absolute right-[-85px] top-0 h-[583px] object-contain">
@@ -220,120 +228,179 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="py-24 bg-slate-50">
+        @if($testimonials->isNotEmpty())
+        @php
+            $aboutAvatarColors = ['bg-blue-500', 'bg-purple-500', 'bg-emerald-500', 'bg-orange-500', 'bg-pink-500', 'bg-teal-500'];
+            $aboutDesktopPages = $testimonials->chunk(3);
+            $aboutTotalPages = $aboutDesktopPages->count();
+            $aboutGlobalIdx = 0;
+        @endphp
+        <section class="py-16 md:py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-4" data-i18n
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-[42px] font-bold text-slate-900 mb-4" data-i18n
                         data-en="Hear From Our Clients" data-id="Kata Klien Kami">Hear From Our Clients</h2>
-                    <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n
+                    <p class="text-slate-500 max-w-2xl mx-auto" data-i18n
                         data-en="Trust from industry leaders across the globe."
-                        data-id="Dipercaya oleh pemimpin industri di seluruh dunia.">Trust from industry leaders across
-                        the globe.</p>
+                        data-id="Dipercaya oleh pemimpin industri di seluruh dunia.">Trust from industry leaders across the globe.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
-                        <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"Hexavara Tech transformed our vision into a
-                            scalable product within months. Their technical depth and commitment to quality are
-                            unparalleled."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-500 rounded-full flex justify-center items-center text-white">
-                                <span class="material-symbols-outlined">person</span></div>
-                            <div>
-                                <p class="font-bold text-slate-900">Mark Stevenson</p>
-                                <p class="text-sm text-slate-500">CEO at TechFlow</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
-                        <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"Working with the Hexavara team was like
-                            adding a group of experts to our own office. Professional, communicative, and exceptionally
-                            skilled."</p>
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 bg-purple-500 rounded-full flex justify-center items-center text-white">
-                                <span class="material-symbols-outlined">person</span></div>
-                            <div>
-                                <p class="font-bold text-slate-900">Lisa Ray</p>
-                                <p class="text-sm text-slate-500">VP of Engineering, Nexus</p>
-                            </div>
+                {{-- Desktop carousel (3 per page) --}}
+                <div class="hidden md:block">
+                    <div class="overflow-hidden">
+                        <div class="flex transition-transform duration-500 ease-in-out" id="about-desktop-track">
+                            @foreach($aboutDesktopPages as $page)
+                                <div class="w-full flex-shrink-0 grid grid-cols-3 gap-8">
+                                    @foreach($page as $testimonial)
+                                        @php $color = $aboutAvatarColors[$aboutGlobalIdx % count($aboutAvatarColors)]; $aboutGlobalIdx++; @endphp
+                                        <div class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
+                                            <div class="flex gap-1 text-yellow-400 mb-6">
+                                                @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
+                                                    <span class="material-symbols-outlined star-icon text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                                @endfor
+                                            </div>
+                                            <p class="text-slate-700 font-medium italic mb-8 text-base">"{{ $testimonial->quote }}"</p>
+                                            <div class="flex items-center gap-4">
+                                                <div class="w-12 h-12 {{ $color }} rounded-full flex justify-center items-center text-white flex-shrink-0">
+                                                    <span class="material-symbols-outlined text-xl">person</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-bold text-slate-900 text-base">{{ $testimonial->name }}</p>
+                                                    <p class="text-sm text-slate-500">{{ $testimonial->role }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
                         </div>
                     </div>
+                    @if($aboutTotalPages > 1)
+                        <div class="flex justify-center gap-2 mt-8" id="about-desktop-dots">
+                            @for($i = 0; $i < $aboutTotalPages; $i++)
+                                <button class="about-dt-dot h-2 rounded-full transition-all duration-300 {{ $i === 0 ? 'bg-hex-dark w-6' : 'bg-slate-300 w-2' }}"
+                                    data-index="{{ $i }}"></button>
+                            @endfor
+                        </div>
+                    @endif
+                </div>
 
-                    <!-- Testimonial 3 -->
-                    <div
-                        class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
-                        <div class="flex gap-1 text-yellow-400 mb-6">
-                            <span class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span><span
-                                class="material-symbols-outlined star-icon"
-                                style="font-variation-settings: 'FILL' 1;">star</span>
+                {{-- Mobile carousel --}}
+                <div class="md:hidden">
+                    <div class="relative overflow-hidden">
+                        <div class="flex transition-transform duration-500" id="about-mobile-track">
+                            @php $aboutAvatarColors2 = ['bg-blue-500', 'bg-purple-500', 'bg-emerald-500', 'bg-orange-500', 'bg-pink-500', 'bg-teal-500']; @endphp
+                            @foreach($testimonials as $testimonial)
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-white p-6 rounded-2xl relative shadow-md shadow-slate-200/50 border border-slate-100">
+                                        <div class="flex gap-0.5 text-yellow-400 mb-4">
+                                            @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
+                                                <span class="material-symbols-outlined star-icon text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                            @endfor
+                                        </div>
+                                        <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">"{{ $testimonial->quote }}"</p>
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 {{ $aboutAvatarColors2[$loop->index % count($aboutAvatarColors2)] }} rounded-full flex justify-center items-center text-white flex-shrink-0">
+                                                <span class="material-symbols-outlined text-base">person</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-slate-900 text-sm">{{ $testimonial->name }}</p>
+                                                <p class="text-xs text-slate-500">{{ $testimonial->role }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                        <p class="text-slate-700 font-medium italic mb-8">"They don't just build what you ask for; they
-                            suggest what you actually need. Their strategic thinking has been vital for our growth."</p>
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 bg-emerald-500 rounded-full flex justify-center items-center text-white">
-                                <span class="material-symbols-outlined">person</span></div>
-                            <div>
-                                <p class="font-bold text-slate-900">James Carter</p>
-                                <p class="text-sm text-slate-500">Founder, Quantum Labs</p>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="flex justify-center gap-2 mt-5" id="about-mobile-dots">
+                        @foreach($testimonials as $i => $t)
+                            <button class="about-m-dot h-2 rounded-full transition-all duration-300 {{ $i === 0 ? 'bg-hex-dark w-6' : 'bg-slate-300 w-2' }}"
+                                data-index="{{ $i }}"></button>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
+            <script>
+            (function() {
+                // Desktop pagination
+                var dTrack = document.getElementById('about-desktop-track');
+                var dDots  = document.querySelectorAll('.about-dt-dot');
+                if (dTrack && dDots.length > 1) {
+                    var dCur = 0;
+                    function dGoTo(i) {
+                        dCur = i;
+                        dTrack.style.transform = 'translateX(-' + (100 * i) + '%)';
+                        dDots.forEach(function(d, j) {
+                            d.classList.toggle('bg-hex-dark', j === i); d.style.width = j === i ? '1.5rem' : '0.5rem';
+                            d.classList.toggle('bg-slate-300', j !== i);
+                        });
+                    }
+                    dDots.forEach(function(d) { d.addEventListener('click', function() { dGoTo(+this.dataset.index); }); });
+                    setInterval(function() { dGoTo((dCur + 1) % dDots.length); }, 4000);
+                }
+                // Mobile slider
+                var mTrack = document.getElementById('about-mobile-track');
+                var mDots  = document.querySelectorAll('.about-m-dot');
+                if (mTrack && mDots.length > 1) {
+                    var mCur = 0;
+                    function mGoTo(i) {
+                        mCur = i;
+                        mTrack.style.transform = 'translateX(-' + (100 * i) + '%)';
+                        mDots.forEach(function(d, j) {
+                            d.classList.toggle('bg-hex-dark', j === i); d.style.width = j === i ? '1.5rem' : '0.5rem';
+                            d.classList.toggle('bg-slate-300', j !== i);
+                        });
+                    }
+                    mDots.forEach(function(d) { d.addEventListener('click', function() { mGoTo(+this.dataset.index); }); });
+                    setInterval(function() { mGoTo((mCur + 1) % mDots.length); }, 4000);
+                }
+            })();
+            </script>
         </section>
+        @endif
 
         <!-- CTA Section -->
-        <section class="pt-0 pb-0 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                    <!-- Left: Talent Image -->
-                    <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="block w-full h-auto object-contain max-h-[500px] align-bottom">
-                    </div>
+        <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                    <!-- Right: Content -->
-                    <div class="order-1 md:order-2 self-center max-w-2xl">
+                <!-- Mobile Card Layout -->
+                <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                    <div class="flex items-end">
+                        <div class="flex-shrink-0 w-[48%]">
+                            <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                                class="w-full object-contain">
+                        </div>
+                        <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                            <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                                data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                                data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                                Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>. Consult with Us Today!
+                            </h2>
+                            <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                                data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                                data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                                Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success.
+                            </p>
+                            <a href="{{ route('start-project') }}"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                                data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Layout (unchanged) -->
+                <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                    <div class="relative flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                            class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                    </div>
+                    <div class="self-center max-w-2xl">
                         @include('partials.solution')
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

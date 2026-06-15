@@ -42,27 +42,44 @@
         <table class="w-full">
             <thead>
                 <tr style="background: var(--admin-surface-hover);">
-                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-10">#</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-10">No</th>
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-14">Cover</th>
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Nama</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Kategori</th>
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap max-w-xs">Deskripsi</th>
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Features</th>
+                    <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap">Link Website</th>
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-24">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="admin-table-body">
-                @foreach($products as $product)
-                <tr class="admin-table-hover">
-                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">{{ $product->id }}</td>
+            <tbody class="admin-table-body" id="products-table-body">
+                @foreach($products as $index => $product)
+                <tr class="admin-table-hover draggable-row" data-product-id="{{ $product->id }}" data-sort-order="{{ $product->sort_order }}">
+                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">
+                        <div class="flex items-center gap-1.5">
+                            <span class="drag-handle material-symbols-outlined text-[15px] cursor-grab" style="display:inline-block;color:#64748b;">drag_indicator</span>
+                            <span class="row-num font-semibold">{{ $loop->iteration }}</span>
+                        </div>
+                    </td>
                     <td class="px-4 py-3.5 align-middle">
                         <img src="{{ image_url($product->image_cover) }}"
                             class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer hover:opacity-80 transition-opacity"
                             alt="{{ $product->name }}"
+                            draggable="false"
                             onclick="openGalleryPreview('{{ image_url($product->image_cover) }}')"
                             aria-label="Preview cover {{ $product->name }}">
                     </td>
                     <td class="px-4 py-3.5 align-middle">
                         <div class="text-[13px] font-semibold admin-text">{{ $product->name }}</div>
+                    </td>
+                    <td class="px-4 py-3.5 align-middle">
+                        @if($product->category)
+                            <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-bold text-white" style="background-color: {{ $product->category->color }};">
+                                {{ $product->category->name }}
+                            </span>
+                        @else
+                            <span class="text-[12px] admin-text-muted italic">-</span>
+                        @endif
                     </td>
                     <td class="px-4 py-3.5 align-middle admin-text-secondary text-[13px] max-w-xs">
                         {{ Str::limit($product->description ?? '', 60) }}
@@ -71,6 +88,18 @@
                         <span class="inline-block px-2.5 py-1 rounded-md text-[11px] font-bold admin-stat-number" style="background: rgba(37,99,235,0.10); color: #60a5fa;">
                             {{ $product->features_count ?? 0 }} fitur
                         </span>
+                    </td>
+                    <td class="px-4 py-3.5 align-middle">
+                        @if($product->website_url)
+                            <a href="{{ $product->website_url }}" target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center gap-1 text-[12px] font-medium no-underline hover:opacity-80 transition-opacity max-w-[160px] truncate"
+                               style="color: #60a5fa;" title="{{ $product->website_url }}">
+                                <span class="material-symbols-outlined text-[14px] flex-shrink-0">open_in_new</span>
+                                <span class="truncate">{{ parse_url($product->website_url, PHP_URL_HOST) ?: $product->website_url }}</span>
+                            </a>
+                        @else
+                            <span class="text-[12px] admin-text-muted italic">-</span>
+                        @endif
                     </td>
                     <td class="px-4 py-3.5 align-middle">
                         <div class="flex items-center gap-1.5">
@@ -116,4 +145,62 @@
     </div>
     @endif
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(function () {
+    var $tbody = $('#products-table-body');
+    if (!$tbody.length) return;
+
+    $tbody.sortable({
+        axis: 'y',
+        cancel: 'button, a, input, select, textarea',
+        cursor: 'grabbing',
+        opacity: 0.75,
+        placeholder: 'sort-placeholder',
+        helper: function (e, ui) {
+            // Fix cell widths so the floating row looks correct
+            ui.children().each(function () {
+                $(this).width($(this).width());
+            });
+            return ui;
+        },
+        start: function (e, ui) {
+            ui.placeholder.height(ui.item.outerHeight());
+        },
+        update: function () {
+            updateRowNumbers();
+            saveSort();
+        }
+    }).disableSelection();
+
+    function updateRowNumbers() {
+        $tbody.find('.draggable-row').each(function (i) {
+            $(this).find('.row-num').text(i + 1);
+        });
+    }
+
+    function saveSort() {
+        var order = [];
+        $tbody.find('.draggable-row').each(function () {
+            var id = parseInt($(this).data('product-id'));
+            if (!isNaN(id)) order.push(id);
+        });
+        $.ajax({
+            url: '{{ route("manager.products.sort") }}',
+            type: 'POST',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            contentType: 'application/json',
+            data: JSON.stringify({ order: order }),
+            error: function (err) { console.error('Sort error:', err); }
+        });
+    }
+});
+</script>
+<style>
+#products-table-body .draggable-row { cursor: grab; }
+#products-table-body .sort-placeholder { visibility: visible !important; background: rgba(59,130,246,0.07) !important; outline: 2px dashed rgba(59,130,246,0.35); }
+#products-table-body .ui-sortable-helper { box-shadow: 0 8px 28px rgba(0,0,0,0.45) !important; }
+</style>
 @endsection

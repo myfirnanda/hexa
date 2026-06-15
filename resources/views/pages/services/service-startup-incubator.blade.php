@@ -38,46 +38,46 @@
                     <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n data-en="A comprehensive incubator program designed to transform your vision into a sustainable business." data-id="Program inkubator komprehensif yang dirancang untuk mengubah visi Anda menjadi bisnis yang berkelanjutan.">Program inkubator komprehensif yang dirancang untuk mengubah visi Anda menjadi bisnis yang berkelanjutan.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                     <!-- Card 1 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">groups</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Coaching" data-id="Coaching">Coaching</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="One-on-one sessions with industry veterans to refine your business model and strategy." data-id="Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.">Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Coaching" data-id="Coaching">Coaching</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="One-on-one sessions with industry veterans to refine your business model and strategy." data-id="Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.">Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.</p>
                     </div>
                     <!-- Card 2 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">payments</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Investment" data-id="Investasi">Investasi</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Preparation for funding rounds through financial auditing and pitch desk optimization." data-id="Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.">Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Investment" data-id="Investasi">Investasi</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Preparation for funding rounds through financial auditing and pitch desk optimization." data-id="Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.">Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.</p>
                     </div>
                     <!-- Card 3 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Fundraising" data-id="Penggalangan Dana">Penggalangan Dana</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Connecting startups with venture capitals and angel investors for necessary capital injection." data-id="Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.">Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Fundraising" data-id="Penggalangan Dana">Penggalangan Dana</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Connecting startups with venture capitals and angel investors for necessary capital injection." data-id="Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.">Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.</p>
                     </div>
                     <!-- Card 4 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">rocket_launch</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Early Stage Development" data-id="Pengembangan Awal">Pengembangan Awal</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Technical development support to build your MVP (Minimum Viable Product) quickly and correctly." data-id="Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.">Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Early Stage Development" data-id="Pengembangan Awal">Pengembangan Awal</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Technical development support to build your MVP (Minimum Viable Product) quickly and correctly." data-id="Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.">Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.</p>
                     </div>
                     <!-- Card 5 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">handshake</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Partnerships" data-id="Kemitraan">Kemitraan</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Forging strategic alliances with corporate partners to open new market opportunities." data-id="Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.">Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Partnerships" data-id="Kemitraan">Kemitraan</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Forging strategic alliances with corporate partners to open new market opportunities." data-id="Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.">Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.</p>
                     </div>
                 </div>
             </div>
@@ -86,12 +86,12 @@
         <!-- Core Advantages Section -->
         <section class="py-24 bg-hex-surface-dark text-white overflow-hidden relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-20">
+                <div class="text-center mb-10 md:mb-20">
                     <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="CORE ADVANTAGES" data-id="KEUNGGULAN UTAMA">KEUNGGULAN UTAMA</span>
-                    <h2 class="text-[42px] font-bold" data-i18n data-en="Why Choose Our Startup & Incubator Program?" data-id="Mengapa Memilih Program Inkubator Kami?">Mengapa Memilih Program Inkubator Kami?</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold" data-i18n data-en="Why Choose Our Startup & Incubator Program?" data-id="Mengapa Memilih Program Inkubator Kami?">Mengapa Memilih Program Inkubator Kami?</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
@@ -133,7 +133,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-12">
                     <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="TECH STACK" data-id="TECH STACK">TECH STACK</span>
-                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Empowering startups with practical and scalable tools" data-id="Memberdayakan startup dengan perangkat praktis dan terukur">Memberdayakan startup dengan perangkat praktis dan terukur</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold text-hex-dark" data-i18n data-en="Empowering startups with practical and scalable tools" data-id="Memberdayakan startup dengan perangkat praktis dan terukur">Memberdayakan startup dengan perangkat praktis dan terukur</h2>
                 </div>
 
                 <div class="flex flex-wrap gap-3">
@@ -156,23 +156,51 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="pt-0 pb-0 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                    <!-- Left: Talent Image -->
-                    <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
-                    </div>
+        <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                    <!-- Right: Content -->
-                    <div class="order-1 md:order-2 pb-20 md:-mt-8">
-                        <h2 class="text-3xl md:text-[42px] font-bold text-[#121B26] mb-6 leading-tight" data-i18n="html" data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span> — Consult with Us Today!" data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
-                            Dapatkan Solusi IT yang Tepat dari <span class="text-blue-600">Vendor IT Terbaik</span> — Konsultasi Sekarang!
-                        </h2>
-                        <p class="text-slate-500 text-base md:text-lg mb-10 max-w-2xl leading-relaxed" data-i18n data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success." data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.</p>
-                        <a href="#" class="inline-flex items-center px-8 py-3 rounded-xl bg-hex-dark text-white font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Konsultasi Sekarang</a>
+                <!-- Mobile Card Layout -->
+                <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                    <div class="flex items-end">
+                        <div class="flex-shrink-0 w-[48%]">
+                            <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                                class="w-full object-contain">
+                        </div>
+                        <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                            <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                                data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                                data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                                Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>.
+                                Consult with Us Today!
+                            </h2>
+                            <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                                data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                                data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                                Discuss your IT challenges, and our team of experienced experts will provide tailored
+                                solutions to drive your business growth and success.
+                            </p>
+                            <a href="{{ route('start-project') }}"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                                data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Desktop Layout -->
+                <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                    <div class="relative flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                            class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                    </div>
+                    <div class="self-center max-w-2xl -mt-8">
+                        <h2 class="text-[42px] font-bold text-[#121B26] mb-6 leading-tight" data-i18n="html" data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span> — Consult with Us Today!" data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                            Dapatkan Solusi IT yang Tepat dari <span class="text-blue-600">Vendor IT Terbaik</span> — Konsultasi Sekarang!
+                        </h2>
+                        <p class="text-slate-500 text-lg mb-10 max-w-2xl leading-relaxed" data-i18n data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success." data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.</p>
+                        <a href="{{ route('start-project') }}" class="inline-flex items-center px-8 py-3 rounded-xl bg-hex-dark text-white font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Konsultasi Sekarang</a>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>

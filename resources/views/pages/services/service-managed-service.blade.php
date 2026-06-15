@@ -53,62 +53,62 @@
                     <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n data-en="Comprehensive IT management solutions tailored to your unique operational needs." data-id="Solusi manajemen IT komprehensif yang disesuaikan dengan kebutuhan operasional unik Anda.">Comprehensive IT management solutions tailored to your unique operational needs.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                     <!-- Card 1 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">engineering</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="IT Outsourcing" data-id="Outsourcing IT">IT Outsourcing</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management." data-id="Delegasikan operasional IT Anda kepada tim ahli kami untuk mengurangi beban kerja internal sekaligus memastikan manajemen teknologi yang profesional dan efisien.">Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="IT Outsourcing" data-id="Outsourcing IT">IT Outsourcing</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management." data-id="Delegasikan operasional IT Anda kepada tim ahli kami untuk mengurangi beban kerja internal sekaligus memastikan manajemen teknologi yang profesional dan efisien.">Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management.</p>
                     </div>
                     <!-- Card 2 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">build</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Maintenance" data-id="Pemeliharaan">Maintenance</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions." data-id="Pastikan sistem Anda berjalan mulus dengan pemeliharaan rutin, pembaruan, perbaikan bug, dan optimasi performa untuk mencegah downtime.">Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Maintenance" data-id="Pemeliharaan">Maintenance</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions." data-id="Pastikan sistem Anda berjalan mulus dengan pemeliharaan rutin, pembaruan, perbaikan bug, dan optimasi performa untuk mencegah downtime.">Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions.</p>
                     </div>
                     <!-- Card 3 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">database</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Data Migration" data-id="Migrasi Data">Data Migration</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security." data-id="Migrasikan data Anda antar sistem, platform, atau lingkungan cloud dengan risiko minimal, memastikan integritas dan keamanan data.">Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Data Migration" data-id="Migrasi Data">Data Migration</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security." data-id="Migrasikan data Anda antar sistem, platform, atau lingkungan cloud dengan risiko minimal, memastikan integritas dan keamanan data.">Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security.</p>
                     </div>
                     <!-- Card 4 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">settings</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Configuration" data-id="Konfigurasi">Configuration</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices." data-id="Kami menangani penyiapan sistem, konfigurasi server, dan optimasi lingkungan untuk memastikan infrastruktur Anda selaras dengan praktik terbaik.">We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Configuration" data-id="Konfigurasi">Configuration</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices." data-id="Kami menangani penyiapan sistem, konfigurasi server, dan optimasi lingkungan untuk memastikan infrastruktur Anda selaras dengan praktik terbaik.">We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices.</p>
                     </div>
                     <!-- Card 5 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">school</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Training" data-id="Pelatihan">Training</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization." data-id="Berdayakan tim Anda dengan pelatihan praktis untuk menggunakan sistem, alat, dan teknologi yang diimplementasikan secara efektif.">Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Training" data-id="Pelatihan">Training</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization." data-id="Berdayakan tim Anda dengan pelatihan praktis untuk menggunakan sistem, alat, dan teknologi yang diimplementasikan secara efektif.">Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization.</p>
                     </div>
                     <!-- Card 6 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">analytics</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Gap Analysis" data-id="Analisis Kesenjangan">Gap Analysis</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks." data-id="Identifikasi inefisiensi dan area perbaikan dalam sistem IT, alur kerja, dan infrastruktur Anda untuk optimasi performa.">Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Gap Analysis" data-id="Analisis Kesenjangan">Gap Analysis</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks." data-id="Identifikasi inefisiensi dan area perbaikan dalam sistem IT, alur kerja, dan infrastruktur Anda untuk optimasi performa.">Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks.</p>
                     </div>
                     <!-- Card 7 -->
-                     <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">psychology</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="IT Consultant" data-id="Konsultan IT">IT Consultant</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection." data-id="Dapatkan panduan IT strategis mulai dari perencanaan transformasi digital hingga penskalaan infrastruktur dan pemilihan teknologi.">Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="IT Consultant" data-id="Konsultan IT">IT Consultant</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection." data-id="Dapatkan panduan IT strategis mulai dari perencanaan transformasi digital hingga penskalaan infrastruktur dan pemilihan teknologi.">Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection.</p>
                     </div>
                 </div>
             </div>
@@ -117,12 +117,12 @@
         <!-- Core Advantages Section -->
         <section class="py-24 bg-hex-surface-dark text-white overflow-hidden relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-20">
+                <div class="text-center mb-10 md:mb-20">
                     <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="CORE ADVANTAGES" data-id="KEUNGGULAN UTAMA">CORE ADVANTAGES</span>
-                    <h2 class="text-[42px] font-bold" data-i18n data-en="Why Choose Our Managed Services?" data-id="Mengapa Memilih Layanan Terkelola Kami?">Why Choose Our Managed Services?</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold" data-i18n data-en="Why Choose Our Managed Services?" data-id="Mengapa Memilih Layanan Terkelola Kami?">Why Choose Our Managed Services?</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
@@ -164,7 +164,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-12">
                     <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="TECHNOLOGY STACK" data-id="STACK TEKNOLOGI">TECHNOLOGY STACK</span>
-                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Built with reliable and widely-used technologies" data-id="Dibangun dengan teknologi andal yang banyak digunakan">Built with reliable and widely-used technologies</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold text-hex-dark" data-i18n data-en="Built with reliable and widely-used technologies" data-id="Dibangun dengan teknologi andal yang banyak digunakan">Built with reliable and widely-used technologies</h2>
                 </div>
 
                 <div class="flex flex-wrap gap-3">
@@ -188,27 +188,55 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="pt-0 pb-0 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                    <!-- Left: Talent Image -->
-                    <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
-                    </div>
+        <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                    <!-- Right: Content -->
-                    <div class="order-1 md:order-2 pb-20 md:-mt-8">
-                        <h2 class="text-3xl md:text-[42px] font-bold text-[#121B26] mb-6 leading-tight" data-i18n="html" data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span> - Consult with Us Today!" data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                <!-- Mobile Card Layout -->
+                <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                    <div class="flex items-end">
+                        <div class="flex-shrink-0 w-[48%]">
+                            <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                                class="w-full object-contain">
+                        </div>
+                        <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                            <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                                data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                                data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                                Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>.
+                                Consult with Us Today!
+                            </h2>
+                            <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                                data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                                data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                                Discuss your IT challenges, and our team of experienced experts will provide tailored
+                                solutions to drive your business growth and success.
+                            </p>
+                            <a href="{{ route('start-project') }}"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                                data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Layout -->
+                <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                    <div class="relative flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                            class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                    </div>
+                    <div class="self-center max-w-2xl -mt-8">
+                        <h2 class="text-[42px] font-bold text-[#121B26] mb-6 leading-tight" data-i18n="html" data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span> — Consult with Us Today!" data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
                             Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span> — Consult with Us Today!
                         </h2>
-                        <p class="text-slate-500 text-base md:text-lg mb-10 max-w-2xl leading-relaxed" data-i18n data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success." data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                        <p class="text-slate-500 text-lg mb-10 max-w-2xl leading-relaxed" data-i18n data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success." data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
                             Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success.
                         </p>
-                        <a href="#" class="inline-flex items-center px-8 py-3 rounded-xl bg-hex-dark text-white font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">
+                        <a href="{{ route('start-project') }}" class="inline-flex items-center px-8 py-3 rounded-xl bg-hex-dark text-white font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">
                             Consult Now
                         </a>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

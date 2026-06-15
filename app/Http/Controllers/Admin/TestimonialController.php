@@ -15,10 +15,20 @@ class TestimonialController extends Controller
             ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
                 ->orWhere('role', 'like', "%{$search}%")
                 ->orWhere('quote', 'like', "%{$search}%"))
-            ->latest()
+            ->orderBy('sort_order')
+            ->orderBy('id')
             ->paginate(15)
             ->withQueryString();
         return view('admin.testimonials.index', compact('testimonials', 'search'));
+    }
+
+    public function updateSort(Request $request)
+    {
+        $order = $request->input('order', []);
+        foreach ($order as $index => $id) {
+            Testimonial::where('id', (int) $id)->update(['sort_order' => $index]);
+        }
+        return response()->json(['ok' => true]);
     }
 
     public function create()

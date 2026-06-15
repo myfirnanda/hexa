@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Preview - Hexavara</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .preview-wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .phone-frame {
+            width: 390px;
+            height: 844px;
+            border: 12px solid #000;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: white;
+            position: relative;
+        }
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+        .phone-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .info {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+        .info a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 Mobile Preview - Hexavara Homepage</h1>
+            <p>Live preview with 390px width (iPhone SE size)</p>
+        </div>
+        
+        <div class="preview-wrapper">
+            <div>
+                <h3 style="color: white; text-align: center; margin-bottom: 10px; font-size: 14px;">Filter & Projects</h3>
+                <div class="phone-frame">
+                    <iframe src="http://localhost:8000#projects"></iframe>
+                </div>
+                <div class="info">Scroll down to see project filters &<br/>cards layout in 1 column</div>
+            </div>
+            
+            <div>
+                <h3 style="color: white; text-align: center; margin-bottom: 10px; font-size: 14px;">Testimonials</h3>
+                <div class="phone-frame">
+                    <iframe src="http://localhost:8000#testimonials"></iframe>
+                </div>
+                <div class="info">Carousel with pagination dots<br/>swipes automatically</div>
+            </div>
+            
+            <div>
+                <h3 style="color: white; text-align: center; margin-bottom: 10px; font-size: 14px;">Values Section</h3>
+                <div class="phone-frame">
+                    <iframe src="http://localhost:8000#values"></iframe>
+                </div>
+                <div class="info">2x2 grid layout<br/>compact padding on mobile</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate mobile viewport using CSS
+        document.querySelectorAll('.phone-frame').forEach(frame => {
+            const iframe = frame.querySelector('iframe');
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const viewport = iframeDoc.querySelector('meta[name="viewport"]');
+                    if (!viewport) {
+                        const meta = iframeDoc.createElement('meta');
+                        meta.name = 'viewport';
+                        meta.content = 'width=device-width, initial-scale=1.0';
+                        iframeDoc.head.appendChild(meta);
+                    }
+                } catch(e) {
+                    console.log('Cannot access iframe (CORS policy)');
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -18,10 +18,20 @@ class ProjectController extends Controller
         $projects = Project::query()
             ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
                 ->orWhere('category', 'like', "%{$search}%"))
-            ->latest()
+            ->orderBy('sort_order')
+            ->orderBy('id')
             ->paginate(15)
             ->withQueryString();
         return view('admin.projects.index', compact('projects', 'search'));
+    }
+
+    public function updateSort(Request $request)
+    {
+        $order = $request->input('order', []);
+        foreach ($order as $index => $id) {
+            Project::where('id', (int) $id)->update(['sort_order' => $index]);
+        }
+        return response()->json(['ok' => true]);
     }
 
     public function create()

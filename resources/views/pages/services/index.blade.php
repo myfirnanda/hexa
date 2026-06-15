@@ -8,10 +8,17 @@
 @section('content')
     <main>
         <!-- Hero Section -->
-        <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
-            <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
+        <section class="relative w-full h-[583px] overflow-hidden bg-gray-900 lg:bg-transparent">
+            {{-- Mobile background --}}
+            <div class="absolute inset-0 z-0 bg-cover bg-center lg:hidden"
+                style="background-image: url(/assets/img/hero/hero_homepage1.png);"></div>
+            {{-- Desktop background --}}
+            <div class="absolute inset-0 z-0 bg-cover bg-top hidden lg:block opacity-80"
+                style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
             <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center justify-center text-center">
-                <div class="max-w-[850px]">
+                <div class="max-w-[850px] w-full
+                            bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/60
+                            lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:p-0 lg:border-0">
                     <h1 class="hero-title text-hex-dark mb-8" data-i18n="html" data-en="Elevating Business Through<br /><span class='text-hex-blue'>High-End Engineering</span>" data-id="Meningkatkan Bisnis Melalui<br /><span class='text-hex-blue'>Engineering Kelas Atas</span>">Elevating Business Through<br /><span class="text-hex-blue">High-End Engineering</span></h1>
                     <p class="mt-6 text-hex-slate text-lg leading-[1.65] max-w-[650px] mx-auto" data-i18n data-en="Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation." data-id="Solusi perangkat lunak profesional yang disesuaikan dengan kebutuhan bisnis Anda. Kami menjembatani visi dan realitas melalui rekayasa teknologi dan inovasi strategis.">Professional software solutions tailored to your business needs. We bridge the gap between vision and reality with high-end engineering and strategic innovation.</p>
                     <a href="{{ route('start-project') }}" class="mt-8 inline-block px-8 py-3 bg-hex-dark text-white rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
@@ -166,53 +173,79 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
-                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-xl">list_alt</span>
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-8 max-w-5xl mx-auto">
+                    <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-lg md:text-xl">list_alt</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Roadmap for Timeline" data-id="Peta Jalan & Lini Masa">Roadmap for Timeline</h3>
-                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement." data-id="Peta jalan kami menyajikan daftar tugas dan lini masa proyek yang mendetail dan dapat Anda pantau secara real-time. Setiap rencana disusun berdasarkan kesepakatan bersama untuk transparansi penuh.">Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.</p>
+                        <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-snug" data-i18n data-en="Roadmap for Timeline" data-id="Peta Jalan & Lini Masa">Roadmap for Timeline</h3>
+                        <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement." data-id="Peta jalan kami menyajikan daftar tugas dan lini masa proyek yang mendetail dan dapat Anda pantau secara real-time. Setiap rencana disusun berdasarkan kesepakatan bersama untuk transparansi penuh.">Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.</p>
                     </div>
-                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
-                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-xl">speed</span>
+                    <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-lg md:text-xl">speed</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Weekly Sprint Monitoring" data-id="Pemantauan Sprint Mingguan">Weekly Sprint Monitoring</h3>
-                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success." data-id="Kami menerapkan kontrol sprint yang ketat melalui pemantauan mingguan, memastikan progres pengerjaan selaras dengan target waktu yang ditetapkan demi menjamin efisiensi dan kesuksesan proyek Anda.">This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success.</p>
+                        <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Weekly Sprint Monitoring" data-id="Pemantauan Sprint Mingguan">Weekly Sprint Monitoring</h3>
+                        <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success." data-id="Kami menerapkan kontrol sprint yang ketat melalui pemantauan mingguan, memastikan progres pengerjaan selaras dengan target waktu yang ditetapkan demi menjamin efisiensi dan kesuksesan proyek Anda.">This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success.</p>
                     </div>
-                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
-                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-xl">verified_user</span>
+                    <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-lg md:text-xl">verified_user</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Maximum Service" data-id="Layanan Maksimal & Responsif">Maximum Service</h3>
-                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests." data-id="Kami berkomitmen memberikan layanan purnajual terbaik dengan penanganan kendala dan perbaikan dalam waktu maksimal 48 jam. Anda dapat melacak status permintaan Anda dengan mudah secara transparan.">We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.</p>
+                        <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Maximum Service" data-id="Layanan Maksimal & Responsif">Maximum Service</h3>
+                        <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests." data-id="Kami berkomitmen memberikan layanan purnajual terbaik dengan penanganan kendala dan perbaikan dalam waktu maksimal 48 jam. Anda dapat melacak status permintaan Anda dengan mudah secara transparan.">We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.</p>
                     </div>
-                    <div class="p-6 rounded-[32px] border border-white/[0.03] transition-all duration-300" style="background-color: #0a1221;">
-                        <div class="w-10 h-10 bg-[#1d2636] rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-xl">trending_up</span>
+                    <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
+                        <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
+                            <span class="material-symbols-outlined text-lg md:text-xl">trending_up</span>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4" data-i18n data-en="Monitor Team Performance" data-id="Pantau Performa Tim">Monitor Team Performance</h3>
-                        <p class="leading-relaxed text-slate-400 text-base" data-i18n data-en="Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance." data-id="Setiap talenta kami memiliki target harian dan bulanan yang terukur, selaras dengan kebutuhan proyek Anda. Kami memastikan tim memberikan performa terbaik untuk hasil yang berkualitas tinggi.">Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance.</p>
+                        <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Monitor Team Performance" data-id="Pantau Performa Tim">Monitor Team Performance</h3>
+                        <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance." data-id="Setiap talenta kami memiliki target harian dan bulanan yang terukur, selaras dengan kebutuhan proyek Anda. Kami memastikan tim memberikan performa terbaik untuk hasil yang berkualitas tinggi.">Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="pt-0 pb-0 bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-                <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                    <!-- Left: Talent Image -->
-                    <div class="relative order-2 md:order-1 flex justify-start items-end">
-                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
-                    </div>
+        <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                    <!-- Right: Content -->
-                    <div class="order-1 md:order-2 pb-20 md:-mt-8">
+                <!-- Mobile Card Layout -->
+                <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                    <div class="flex items-end">
+                        <div class="flex-shrink-0 w-[48%]">
+                            <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                                class="w-full object-contain">
+                        </div>
+                        <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                            <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                                data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                                data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                                Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>. Consult with Us Today!
+                            </h2>
+                            <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                                data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                                data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                                Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success.
+                            </p>
+                            <a href="{{ route('start-project') }}"
+                                class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                                data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Layout (unchanged) -->
+                <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                    <div class="relative flex justify-start items-end">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                            class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                    </div>
+                    <div class="self-center max-w-2xl pb-20 -mt-8">
                         @include('partials.solution')
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

@@ -1,0 +1,15 @@
+.hero-title {
+    font-size: 3.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+@media (max-width: 1023px) {
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+}
+
+.text-hex-blue { color: #2563eb; }

@@ -104,24 +104,22 @@
             <div>
                 <h3 class="text-xs font-bold text-hex-slate uppercase tracking-widest mb-6 pb-2 border-b" data-i18n data-en="Ready to Use" data-id="Siap Digunakan">Ready to Use</h3>
                 <div class="grid grid-cols-2 gap-4">
-                    @if($firstProduct)
-                        <a href="{{ route('products.show', $firstProduct) }}" class="p-3 bg-blue-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-blue-100 transition-colors">
-                            <span class="material-symbols-outlined text-blue-600">account_balance_wallet</span>
-                            <div><p class="text-[10px] font-bold" data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</p><p class="text-[8px] text-blue-600 uppercase font-bold" data-i18n data-en="Platform" data-id="Platform">Platform</p></div>
-                        </a>
-                    @endif
-                    <a href="#" class="p-3 bg-indigo-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-indigo-100 transition-colors">
+                    <button type="button" onclick="showMaintenanceModal('Cost System')" class="p-3 bg-blue-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-blue-100 transition-colors text-left w-full">
+                        <span class="material-symbols-outlined text-blue-600">account_balance_wallet</span>
+                        <div><p class="text-[10px] font-bold" data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</p><p class="text-[8px] text-blue-600 uppercase font-bold" data-i18n data-en="Platform" data-id="Platform">Platform</p></div>
+                    </button>
+                    <button type="button" onclick="showMaintenanceModal('VaraPay')" class="p-3 bg-indigo-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-indigo-100 transition-colors text-left w-full">
                         <span class="material-symbols-outlined text-indigo-600">payments</span>
                         <div><p class="text-[10px] font-bold" data-i18n data-en="VaraPay" data-id="VaraPay">VaraPay</p><p class="text-[8px] text-indigo-600 uppercase font-bold" data-i18n data-en="Fintech" data-id="Fintech">Fintech</p></div>
-                    </a>
-                    <a href="#" class="p-3 bg-teal-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-teal-100 transition-colors">
+                    </button>
+                    <button type="button" onclick="showMaintenanceModal('NexaGrid')" class="p-3 bg-teal-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-teal-100 transition-colors text-left w-full">
                         <span class="material-symbols-outlined text-teal-600">grid_view</span>
                         <div><p class="text-[10px] font-bold" data-i18n data-en="NexaGrid" data-id="NexaGrid">NexaGrid</p><p class="text-[8px] text-teal-600 uppercase font-bold" data-i18n data-en="AI Suite" data-id="Suite AI">AI Suite</p></div>
-                    </a>
-                    <a href="#" class="p-3 bg-sky-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-sky-100 transition-colors">
+                    </button>
+                    <button type="button" onclick="showMaintenanceModal('VaraCloud')" class="p-3 bg-sky-50 rounded-xl flex items-center gap-3 group cursor-pointer hover:bg-sky-100 transition-colors text-left w-full">
                         <span class="material-symbols-outlined text-sky-600">cloud</span>
                         <div><p class="text-[10px] font-bold" data-i18n data-en="VaraCloud" data-id="VaraCloud">VaraCloud</p><p class="text-[8px] text-sky-600 uppercase font-bold" data-i18n data-en="Infra" data-id="Infra">Infra</p></div>
-                    </a>
+                    </button>
                 </div>
             </div>
             <div class="bg-gray-50 p-6 rounded-2xl flex flex-col justify-center">
@@ -131,4 +129,35 @@
             </div>
         </div>
     </div>
+
+<!-- Maintenance Modal -->
+<div id="maintenance-modal" class="fixed inset-0 z-[9999] flex items-center justify-center p-4" style="display:none!important;">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeMaintenanceModal()"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center z-10">
+        <div class="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <span class="material-symbols-outlined text-amber-500" style="font-size:32px;">construction</span>
+        </div>
+        <h3 class="text-lg font-bold text-hex-dark mb-2" id="maintenance-product-name">Cost System</h3>
+        <p class="text-sm text-hex-slate mb-1" data-i18n data-en="Maaf, fitur ini sedang maintenance." data-id="Maaf, fitur ini sedang maintenance.">Maaf, fitur ini sedang maintenance.</p>
+        <p class="text-xs text-slate-400 mb-6" data-i18n data-en="Kami sedang mempersiapkan yang terbaik untuk Anda. Silakan coba lagi nanti." data-id="Kami sedang mempersiapkan yang terbaik untuk Anda. Silakan coba lagi nanti.">Kami sedang mempersiapkan yang terbaik untuk Anda. Silakan coba lagi nanti.</p>
+        <button onclick="closeMaintenanceModal()" class="w-full px-6 py-2.5 rounded-xl font-bold text-sm" style="background:#0f172a;color:white;">OK, Mengerti</button>
+    </div>
+</div>
+
+<script>
+function showMaintenanceModal(productName) {
+    var modal = document.getElementById('maintenance-modal');
+    document.getElementById('maintenance-product-name').textContent = productName;
+    modal.style.display = 'flex';
+    // Close mega menu
+    var megaMenu = document.getElementById('solutions-mega-menu');
+    if (megaMenu) megaMenu.classList.remove('is-open');
+}
+function closeMaintenanceModal() {
+    document.getElementById('maintenance-modal').style.display = 'none';
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMaintenanceModal();
+});
+</script>
 </header>

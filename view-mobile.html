@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Preview - Hexavara</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        .header .note {
+            font-size: 14px;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+        .phone-mockup {
+            position: relative;
+            width: 390px;
+        }
+        .phone-bezel {
+            background: #000;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+        .phone-screen {
+            width: 100%;
+            height: 844px;
+            border-radius: 40px;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .phone-content {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-top: 30px;
+        }
+        .phone-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .phone-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .phone-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 2px;
+        }
+        .section-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-description {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Content Styles */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 16px;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn.active {
+            background: #1e293b;
+            color: white;
+            border-color: #1e293b;
+        }
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            margin: 0 12px 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-img {
+            height: 130px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        .project-info {
+            padding: 12px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #0284c7;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 8px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            width: fit-content;
+        }
+        .project-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .project-desc {
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 0 12px 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 8px;
+            color: #fbbf24;
+            font-size: 16px;
+        }
+        .quote {
+            font-size: 11px;
+            font-style: italic;
+            color: #475569;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .author-info {
+            flex: 1;
+        }
+        .author-name {
+            font-size: 12px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        .author-role {
+            font-size: 10px;
+            color: #64748b;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 0;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            background: #0284c7;
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 12px;
+            margin-bottom: 20px;
+        }
+        .value-card {
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 12px;
+            color: white;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+        }
+        .value-icon {
+            width: 32px;
+            height: 32px;
+            background: #1e293b;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .value-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 6px;
+        }
+        .value-desc {
+            font-size: 10px;
+            color: #94a3b8;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📱 Mobile Preview - Hexavara Homepage</h1>
+            <p>Responsive Design - 390px Width (Mobile View)</p>
+            <p class="note">✅ Semua perubahan sudah diterapkan</p>
+        </div>
+
+        <div class="preview-grid">
+            <!-- SECTION 1: Filter & Projects -->
+            <div>
+                <div class="section-title">1️⃣ Filter Buttons & Project Cards</div>
+                <div class="phone-mockup">
+                    <div class="phone-bezel">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-content">
+                                <!-- Filter Buttons -->
+                                <div style="padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
+                                    <div style="text-align: center; font-size: 14px; font-weight: bold; margin-bottom: 12px; color: #1e293b;">Our Projects</div>
+                                    <div class="filter-buttons">
+                                        <button class="filter-btn active">All</button>
+                                        <button class="filter-btn">Software Dev</button>
+                                        <button class="filter-btn">Branding</button>
+                                        <button class="filter-btn">Startup</button>
+                                        <button class="filter-btn">IT Consultant</button>
+                                    </div>
+                                </div>
+
+                                <!-- Project Cards (2 Columns) -->
+                                <div class="project-card">
+                                    <div class="project-img">🚀</div>
+                                    <div class="project-info">
+                                        <span class="project-badge">SOFTWARE DEV</span>
+                                        <div class="project-title">Telkom Surabaya</div>
+                                        <div class="project-desc">PT Telkom Indonesia enterprise solution...</div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-img">📊</div>
+                                    <div class="project-info">
+                                        <span class="project-badge">SOFTWARE DEV</span>
+                                        <div class="project-title">AEGIS - Sistem Akademik</div>
+                                        <div class="project-desc">Universitas system management platform...</div>
+                                    </div>
+                                </div>
+
+                                <div class="project-card">
+                                    <div class="project-img">💼</div>
+                                    <div class="project-info">
+                                        <span class="project-badge">DIGITAL BRANDING</span>
+                                        <div class="project-title">Brand Identity</div>
+                                        <div class="project-desc">Complete branding solution for modern businesses...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-description">✅ 2 kolom grid<br/>✅ Padding kompak<br/>✅ Font size responsive</div>
+            </div>
+
+            <!-- SECTION 2: Testimonials Carousel -->
+            <div>
+                <div class="section-title">2️⃣ Hear From Our Clients (Carousel)</div>
+                <div class="phone-mockup">
+                    <div class="phone-bezel">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-content">
+                                <div style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 8px;">
+                                    <div style="text-align: center; font-size: 14px; font-weight: bold; color: #1e293b;">Hear From Clients</div>
+                                </div>
+
+                                <!-- Testimonial Card 1 -->
+                                <div class="testimonial-card">
+                                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                                    <div class="quote">"Working with Hexavara team was amazing. They delivered exactly what we needed."</div>
+                                    <div class="author">
+                                        <div class="avatar">👤</div>
+                                        <div class="author-info">
+                                            <div class="author-name">Mark Stevenson</div>
+                                            <div class="author-role">CEO, TechFlow</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial Card 2 -->
+                                <div class="testimonial-card">
+                                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                                    <div class="quote">"Professional team with great communication. Highly recommended!"</div>
+                                    <div class="author">
+                                        <div class="avatar">👤</div>
+                                        <div class="author-info">
+                                            <div class="author-name">Lisa Ray</div>
+                                            <div class="author-role">VP, Engineering</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pagination Dots -->
+                                <div class="carousel-dots">
+                                    <div class="dot active"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-description">✅ Auto-slide setiap 5 detik<br/>✅ Clickable dots<br/>✅ Rating 5 bintang semua<br/>✅ Responsive card size</div>
+            </div>
+
+            <!-- SECTION 3: Why Choose Hexavara -->
+            <div>
+                <div class="section-title">3️⃣ Why Choose Hexavara (2x2 Grid)</div>
+                <div class="phone-mockup">
+                    <div class="phone-bezel">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-content">
+                                <div style="padding: 12px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 8px;">
+                                    <div style="text-align: center; font-size: 14px; font-weight: bold; color: white; background: #0f172a; padding: 12px;">Why Choose Us</div>
+                                </div>
+
+                                <div class="values-grid">
+                                    <!-- Value 1 -->
+                                    <div class="value-card">
+                                        <div class="value-icon">📋</div>
+                                        <div class="value-title">Roadmap for Timeline</div>
+                                        <div class="value-desc">Detailed task lists and timelines monitored together. Based on mutual agreement.</div>
+                                    </div>
+
+                                    <!-- Value 2 -->
+                                    <div class="value-card">
+                                        <div class="value-icon">⚡</div>
+                                        <div class="value-title">Weekly Sprint Monitoring</div>
+                                        <div class="value-desc">Control sprints ensuring programmers work according to time purchased.</div>
+                                    </div>
+
+                                    <!-- Value 3 -->
+                                    <div class="value-card">
+                                        <div class="value-icon">✅</div>
+                                        <div class="value-title">Maximum Service</div>
+                                        <div class="value-desc">Bug fixes within 48 hours guaranteed. Track requests easily.</div>
+                                    </div>
+
+                                    <!-- Value 4 -->
+                                    <div class="value-card">
+                                        <div class="value-icon">📈</div>
+                                        <div class="value-title">Monitor Team Performance</div>
+                                        <div class="value-desc">Daily and monthly targets aligned. Compete to deliver best performance.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-description">✅ 2 kolom (2x2 grid)<br/>✅ Compact padding<br/>✅ Responsive icons & text</div>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: white; margin-top: 60px; padding: 30px; background: rgba(0,0,0,0.2); border-radius: 12px;">
+            <h3 style="margin-bottom: 10px;">✨ Summary Perubahan Mobile</h3>
+            <p style="font-size: 14px; line-height: 1.8;">
+                ✅ Filter buttons: Kompak dengan px-4 py-1.5 di mobile<br/>
+                ✅ Project cards: 2 kolom grid dengan gap-3, h-32 di mobile<br/>
+                ✅ Testimonials: Carousel auto-slide dengan clickable dots<br/>
+                ✅ Why Choose: 2x2 grid (grid-cols-2) dengan gap-3<br/>
+                ✅ Semua section: Responsive padding & font size
+            </p>
+        </div>
+    </div>
+</body>
+</html>
