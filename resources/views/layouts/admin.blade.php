@@ -60,6 +60,12 @@
 
             <div class="text-[10px] font-bold uppercase tracking-[0.1em] admin-text-muted px-3 pt-5 pb-2">Manajemen Konten</div>
 
+            <a href="{{ route('manager.banners.index') }}"
+               class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.banners.*') ? 'admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
+                <span class="material-symbols-outlined text-xl shrink-0">image</span>
+                Banner Halaman
+            </a>
+
             <a href="{{ route('manager.products.index') }}"
                class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium mb-0.5 transition-all duration-150 no-underline {{ request()->routeIs('manager.products.*') ? 'admin-nav-active' : 'admin-text-secondary admin-surface-hover' }}">
                 <span class="material-symbols-outlined text-xl shrink-0">inventory_2</span>
@@ -239,6 +245,7 @@
     @stack('admin-modals')
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js"></script>
     <script>
     window.toggleTheme = function () {
         var isLight = document.documentElement.classList.toggle('light');
@@ -291,6 +298,14 @@
             var $p = $(this).closest('.mb-5, .mb-4, .mb-3');
             $p.find('.text-xs.text-red-400').fadeOut(200, function () { $(this).remove(); });
             $(this).css('border-color', '');
+        });
+
+        // Live search: auto-submit after 400ms idle typing
+        var _searchTimer;
+        $(document).on('input', 'form [name="search"]', function () {
+            var $form = $(this).closest('form');
+            clearTimeout(_searchTimer);
+            _searchTimer = setTimeout(function () { $form.submit(); }, 400);
         });
     });
 

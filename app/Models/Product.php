@@ -7,17 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
+        'product_category_id',
         'image_cover',
         'slug',
         'name',
         'tagline',
         'description',
+        'website_url',
         'sort_order',
     ];
 
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
     public function images()

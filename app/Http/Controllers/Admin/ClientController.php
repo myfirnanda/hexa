@@ -16,10 +16,20 @@ class ClientController extends Controller
         $clients = Client::query()
             ->when($search, fn($q) => $q->where('name', 'like', "%{$search}%")
                 ->orWhere('category', 'like', "%{$search}%"))
-            ->latest()
+            ->orderBy('sort_order')
+            ->orderBy('id')
             ->paginate(15)
             ->withQueryString();
         return view('admin.clients.index', compact('clients', 'search'));
+    }
+
+    public function updateSort(Request $request)
+    {
+        $order = $request->input('order', []);
+        foreach ($order as $index => $id) {
+            Client::where('id', (int) $id)->update(['sort_order' => $index]);
+        }
+        return response()->json(['ok' => true]);
     }
 
     public function create()

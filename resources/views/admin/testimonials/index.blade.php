@@ -51,10 +51,15 @@
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-24">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="admin-table-body">
+            <tbody class="admin-table-body" id="testimonials-table-body">
                 @foreach($testimonials as $testimonial)
-                <tr class="admin-table-hover">
-                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">{{ $testimonial->id }}</td>
+                <tr class="admin-table-hover draggable-row" data-testimonial-id="{{ $testimonial->id }}">
+                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">
+                        <div class="flex items-center gap-1.5">
+                            <span class="drag-handle material-symbols-outlined text-[15px]" style="color:#64748b;">drag_indicator</span>
+                            <span class="row-num font-semibold">{{ $loop->iteration }}</span>
+                        </div>
+                    </td>
                     <td class="px-4 py-3.5 align-middle">
                         <div class="text-[13px] font-semibold admin-text">{{ $testimonial->name }}</div>
                     </td>
@@ -298,6 +303,38 @@
 
     $(function () {
         @if($errors->any() && old('_source') === 'create_testimonial') create.open(); @endif
+
+        // Drag-and-drop sort
+        var $tbody = $('#testimonials-table-body');
+        if ($tbody.length) {
+            $tbody.sortable({
+                axis: 'y',
+                cancel: 'button, a, input, select, textarea',
+                cursor: 'grabbing',
+                opacity: 0.75,
+                placeholder: 'sort-placeholder',
+                helper: function (e, ui) {
+                    ui.children().each(function () { $(this).width($(this).width()); });
+                    return ui;
+                },
+                start: function (e, ui) { ui.placeholder.height(ui.item.outerHeight()); },
+                update: function () {
+                    $tbody.find('.draggable-row').each(function (i) { $(this).find('.row-num').text(i + 1); });
+                    var order = [];
+                    $tbody.find('.draggable-row').each(function () {
+                        var id = parseInt($(this).data('testimonial-id'));
+                        if (!isNaN(id)) order.push(id);
+                    });
+                    $.ajax({
+                        url: '{{ route("manager.testimonials.sort") }}',
+                        type: 'POST',
+                        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                        data: { order: order },
+                        error: function (xhr) { console.error('Sort error:', xhr.status, xhr.responseText); }
+                    });
+                }
+            }).disableSelection();
+        }
         $(document).on('keydown', function (e) {
             if (e.key !== 'Escape') return;
             if (edit.$modal.is(':visible'))   window.closeEditTestimonial();
@@ -306,4 +343,9 @@
     });
 }(jQuery));
 </script>
+<style>
+#testimonials-table-body .draggable-row { cursor: grab; }
+#testimonials-table-body .sort-placeholder { visibility: visible !important; background: rgba(59,130,246,0.07) !important; outline: 2px dashed rgba(59,130,246,0.35); }
+#testimonials-table-body .ui-sortable-helper { box-shadow: 0 8px 28px rgba(0,0,0,0.45) !important; }
+</style>
 @endsection

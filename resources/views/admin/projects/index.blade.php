@@ -51,10 +51,15 @@
                     <th class="text-left px-4 py-3 text-[11px] font-bold admin-text-muted uppercase tracking-wider border-b admin-border whitespace-nowrap w-24">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="admin-table-body">
+            <tbody class="admin-table-body" id="projects-table-body">
                 @foreach($projects as $project)
-                <tr class="admin-table-hover">
-                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">{{ $project->id }}</td>
+                <tr class="admin-table-hover draggable-row" data-project-id="{{ $project->id }}">
+                    <td class="px-4 py-3.5 text-[13px] admin-text-muted align-middle admin-stat-number">
+                        <div class="flex items-center gap-1.5">
+                            <span class="drag-handle material-symbols-outlined text-[15px]" style="color:#64748b;">drag_indicator</span>
+                            <span class="row-num font-semibold">{{ $loop->iteration }}</span>
+                        </div>
+                    </td>
                     <td class="px-4 py-3.5 align-middle">
                         <img src="{{ image_url($project->image) }}"
                             class="size-10 rounded-lg object-cover admin-deep-bg border cursor-pointer hover:opacity-80 transition-opacity"
@@ -98,6 +103,7 @@
     <div class="px-6 py-4 border-t admin-border">{{ $projects->links() }}</div>
 
     @elseif($search)
+
     <div class="flex flex-col items-center justify-center py-16 px-5">
         <span class="material-symbols-outlined text-5xl admin-text-muted mb-3 opacity-30">search_off</span>
         <p class="text-sm admin-text-secondary font-medium">Tidak ada hasil untuk <strong class="admin-text">"{{ $search }}"</strong></p>
@@ -114,4 +120,48 @@
     </div>
     @endif
 </div>
+@endsection
+
+@section('scripts')
+<script>
+$(function () {
+    var $tbody = $('#projects-table-body');
+    if (!$tbody.length) return;
+
+    $tbody.sortable({
+        axis: 'y',
+        cancel: 'button, a, input, select, textarea',
+        cursor: 'grabbing',
+        opacity: 0.75,
+        placeholder: 'sort-placeholder',
+        helper: function (e, ui) {
+            ui.children().each(function () { $(this).width($(this).width()); });
+            return ui;
+        },
+        start: function (e, ui) { ui.placeholder.height(ui.item.outerHeight()); },
+        update: function () {
+            $tbody.find('.draggable-row').each(function (i) {
+                $(this).find('.row-num').text(i + 1);
+            });
+            var order = [];
+            $tbody.find('.draggable-row').each(function () {
+                var id = parseInt($(this).data('project-id'));
+                if (!isNaN(id)) order.push(id);
+            });
+            $.ajax({
+                url: '{{ route("manager.projects.sort") }}',
+                type: 'POST',
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+                data: { order: order },
+                error: function (xhr) { console.error('Sort error:', xhr.status, xhr.responseText); }
+            });
+        }
+    }).disableSelection();
+});
+</script>
+<style>
+#projects-table-body .draggable-row { cursor: grab; }
+#projects-table-body .sort-placeholder { visibility: visible !important; background: rgba(59,130,246,0.07) !important; outline: 2px dashed rgba(59,130,246,0.35); }
+#projects-table-body .ui-sortable-helper { box-shadow: 0 8px 28px rgba(0,0,0,0.45) !important; }
+</style>
 @endsection

@@ -96,54 +96,54 @@
                     <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n data-en="Comprehensive software solutions tailored to your unique business challenges." data-id="Solusi perangkat lunak komprehensif yang disesuaikan dengan tantangan unik bisnis Anda.">Comprehensive software solutions tailored to your unique business challenges.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
                     <!-- Card 1 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">language</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers." data-id="Dari landing page dinamis hingga portal web enterprise yang kompleks, kami membangun aplikasi web yang cepat, aman, dan skalabel yang disesuaikan dengan kebutuhan pengguna Anda.">From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers." data-id="Dari landing page dinamis hingga portal web enterprise yang kompleks, kami membangun aplikasi web yang cepat, aman, dan skalabel yang disesuaikan dengan kebutuhan pengguna Anda.">From dynamic landing pages to complex enterprise web portals, we build fast, secure, and scalable web applications tailored to your brand and user needs. Our solutions are optimized for performance across all devices and browsers.</p>
                     </div>
                     <!-- Card 2 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">smartphone</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services." data-id="Kami merancang dan mengembangkan aplikasi mobile intuitif untuk iOS dan Android. Baik native maupun cross-platform, aplikasi kami menghadirkan performa mulus dan integrasi fitur perangkat yang mendalam.">We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services." data-id="Kami merancang dan mengembangkan aplikasi mobile intuitif untuk iOS dan Android. Baik native maupun cross-platform, aplikasi kami menghadirkan performa mulus dan integrasi fitur perangkat yang mendalam.">We design and develop intuitive mobile applications for iOS and Android platforms. Whether native or cross-platform, our apps deliver smooth performance, rich UX, and deep integration with device features and third-party services.</p>
                     </div>
                     <!-- Card 3 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">map</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making." data-id="Kami mengembangkan aplikasi GIS kuat yang mengubah data spasial menjadi wawasan berharga. Ideal untuk logistik, tata kota, dan manajemen sumber daya - memungkinkan pengambilan keputusan berbasis lokasi yang cerdas.">We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making." data-id="Kami mengembangkan aplikasi GIS kuat yang mengubah data spasial menjadi wawasan berharga. Ideal untuk logistik, tata kota, dan manajemen sumber daya - memungkinkan pengambilan keputusan berbasis lokasi yang cerdas.">We develop powerful GIS applications that transform raw spatial data into actionable insights. Ideal for logistics, urban planning, agriculture, and resource management - enabling smarter, location-aware decision making.</p>
                     </div>
                     <!-- Card 4 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">router</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring." data-id="Hubungkan dunia fisik Anda ke perangkat lunak cerdas. Kami merancang ekosistem IoT ujung-ke-ujung - dari sensor hingga dashboard realtime - memungkinkan otomatisasi dan pemantauan pintar.">Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring." data-id="Hubungkan dunia fisik Anda ke perangkat lunak cerdas. Kami merancang ekosistem IoT ujung-ke-ujung - dari sensor hingga dashboard realtime - memungkinkan otomatisasi dan pemantauan pintar.">Connect your physical world to intelligent software. We architect end-to-end IoT ecosystems - from embedded firmware and sensor networks to real-time dashboards and cloud infrastructure - enabling smart automation and monitoring.</p>
                     </div>
                     <!-- Card 5 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">hub</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Enterprise Resource Planning" data-id="Enterprise Resource Planning">Enterprise Resource Planning</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process." data-id="Satukan operasional bisnis Anda dengan sistem ERP kustom yang mengintegrasikan pengadaan, inventaris, keuangan, dan produksi ke dalam satu platform efisien - memberikan visibilitas penuh bagi manajemen.">Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Enterprise Resource Planning" data-id="Enterprise Resource Planning">Enterprise Resource Planning</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process." data-id="Satukan operasional bisnis Anda dengan sistem ERP kustom yang mengintegrasikan pengadaan, inventaris, keuangan, dan produksi ke dalam satu platform efisien - memberikan visibilitas penuh bagi manajemen.">Unify your business operations with a custom ERP system that integrates procurement, inventory, finance, HR, and production into a single, streamlined platform - giving leadership full visibility and control over every process.</p>
                     </div>
                     <!-- Card 6 -->
-                    <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
-                        <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
+                    <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-3xl">manage_accounts</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Backoffice Management Services" data-id="Layanan Manajemen Backoffice">Backoffice Management Services</h3>
-                        <p class="text-hex-slate text-base leading-relaxed" data-i18n data-en="Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows." data-id="Digitalisasi dan otomatisasi operasional internal Anda dengan modul Akuntansi, HRD, dan K3 - menyederhanakan kepatuhan, payroll, audit, dan alur kerja pelaporan.">Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows.</p>
+                        <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Backoffice Management Services" data-id="Layanan Manajemen Backoffice">Backoffice Management Services</h3>
+                        <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows." data-id="Digitalisasi dan otomatisasi operasional internal Anda dengan modul Akuntansi, HRD, dan K3 - menyederhanakan kepatuhan, payroll, audit, dan alur kerja pelaporan.">Digitize and automate your internal operations with dedicated modules for Accounting, Human Resource Development (HRD), and Health, Safety & Environment (HSE) - streamlining compliance, payroll, audits, and reporting workflows.</p>
                     </div>
                 </div>
             </div>
@@ -152,12 +152,12 @@
         <!-- Core Advantages Section -->
         <section class="py-24 bg-hex-surface-dark text-white overflow-hidden relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="text-center mb-20">
+                <div class="text-center mb-10 md:mb-20">
                     <span class="text-blue-400 font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="CORE ADVANTAGES" data-id="KEUNGGULAN UTAMA">CORE ADVANTAGES</span>
-                    <h2 class="text-[42px] font-bold" data-i18n data-en="Why Choose Our Software Solutions?" data-id="Mengapa Memilih Solusi Perangkat Lunak Kami?">Why Choose Our Software Solutions?</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold" data-i18n data-en="Why Choose Our Software Solutions?" data-id="Mengapa Memilih Solusi Perangkat Lunak Kami?">Why Choose Our Software Solutions?</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
@@ -197,9 +197,9 @@
         <!-- Our Workflow -->
         <section class="py-24 bg-white relative">
             <div class="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-20">
+                <div class="text-center mb-10 md:mb-20">
                     <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="OUR WORKFLOW" data-id="ALUR KERJA KAMI">OUR WORKFLOW</span>
-                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Our Development Process" data-id="Proses Pengembangan Kami">Our Development Process</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold text-hex-dark" data-i18n data-en="Our Development Process" data-id="Proses Pengembangan Kami">Our Development Process</h2>
                     <p class="mt-4 text-slate-500 text-lg" data-i18n data-en="A structured approach to turning your vision into a high-performing digital reality." data-id="Pendekatan terstruktur untuk mengubah visi Anda menjadi realitas digital berperforma tinggi.">A structured approach to turning your vision into a high-performing digital reality.</p>
                 </div>
 
@@ -207,13 +207,13 @@
                     <!-- Vertical Line -->
                     <div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-slate-100 -translate-x-1/2 hidden md:block"></div>
 
-                    <div class="space-y-12 relative">
+                    <div class="space-y-6 md:space-y-12 relative">
                         <!-- Step 1 -->
-                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
-                            <div class="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:order-1 order-2">
-                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <h4 class="text-xl font-bold" data-i18n data-en="Requirement Gathering" data-id="Pengumpulan Kebutuhan">Requirement Gathering</h4>
+                        <div class="flex flex-row items-center gap-3 md:gap-0">
+                            <div class="flex-1 md:flex-none md:w-1/2 flex justify-start md:justify-end md:pr-12 md:order-1 order-2">
+                                <div class="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-2 md:mb-4">
+                                        <h4 class="text-base md:text-xl font-bold" data-i18n data-en="Requirement Gathering" data-id="Pengumpulan Kebutuhan">Requirement Gathering</h4>
                                         <span class="material-symbols-outlined text-blue-600">assignment_ind</span>
                                     </div>
                                     <ul class="space-y-2 text-slate-500 text-sm">
@@ -223,18 +223,18 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">01</div>
+                            <div class="flex-shrink-0 md:w-16 md:h-16 w-10 h-10 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm md:text-lg z-10 md:order-2 order-1 shadow-md">01</div>
                             <div class="md:w-1/2 md:order-3 hidden md:block"></div>
                         </div>
 
                         <!-- Step 2 -->
-                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                        <div class="flex flex-row items-center gap-3 md:gap-0">
                             <div class="md:w-1/2 md:order-1 hidden md:block"></div>
-                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">02</div>
-                            <div class="md:w-1/2 flex justify-center md:justify-start md:pl-12 md:order-3 order-2">
-                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <h4 class="text-xl font-bold" data-i18n data-en="Problem Analysis" data-id="Analisis Masalah">Problem Analysis</h4>
+                            <div class="flex-shrink-0 md:w-16 md:h-16 w-10 h-10 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm md:text-lg z-10 md:order-2 order-1 shadow-md">02</div>
+                            <div class="flex-1 md:flex-none md:w-1/2 flex justify-start md:justify-start md:pl-12 md:order-3 order-2">
+                                <div class="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-2 md:mb-4">
+                                        <h4 class="text-base md:text-xl font-bold" data-i18n data-en="Problem Analysis" data-id="Analisis Masalah">Problem Analysis</h4>
                                         <span class="material-symbols-outlined text-blue-600">troubleshoot</span>
                                     </div>
                                     <ul class="space-y-2 text-slate-500 text-sm">
@@ -247,11 +247,11 @@
                         </div>
 
                         <!-- Step 3 -->
-                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
-                            <div class="md:w-1/2 flex justify-center md:justify-end md:pr-12 md:order-1 order-2">
-                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <h4 class="text-xl font-bold" data-i18n data-en="Planning" data-id="Perencanaan">Planning</h4>
+                        <div class="flex flex-row items-center gap-3 md:gap-0">
+                            <div class="flex-1 md:flex-none md:w-1/2 flex justify-start md:justify-end md:pr-12 md:order-1 order-2">
+                                <div class="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-2 md:mb-4">
+                                        <h4 class="text-base md:text-xl font-bold" data-i18n data-en="Planning" data-id="Perencanaan">Planning</h4>
                                         <span class="material-symbols-outlined text-blue-600">architecture</span>
                                     </div>
                                     <ul class="space-y-2 text-slate-500 text-sm">
@@ -262,18 +262,18 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">03</div>
+                            <div class="flex-shrink-0 md:w-16 md:h-16 w-10 h-10 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm md:text-lg z-10 md:order-2 order-1 shadow-md">03</div>
                             <div class="md:w-1/2 md:order-3 hidden md:block"></div>
                         </div>
 
                         <!-- Step 4 -->
-                        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+                        <div class="flex flex-row items-center gap-3 md:gap-0">
                             <div class="md:w-1/2 md:order-1 hidden md:block"></div>
-                            <div class="md:w-16 md:h-16 w-12 h-12 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg z-10 md:order-2 order-1 shadow-md">04</div>
-                            <div class="md:w-1/2 flex justify-center md:justify-start md:pl-12 md:order-3 order-2">
-                                <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
-                                    <div class="flex items-center gap-3 mb-4">
-                                        <h4 class="text-xl font-bold" data-i18n data-en="Developing" data-id="Pengembangan">Developing</h4>
+                            <div class="flex-shrink-0 md:w-16 md:h-16 w-10 h-10 rounded-full border-4 border-white bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm md:text-lg z-10 md:order-2 order-1 shadow-md">04</div>
+                            <div class="flex-1 md:flex-none md:w-1/2 flex justify-start md:justify-start md:pl-12 md:order-3 order-2">
+                                <div class="bg-white p-4 md:p-8 rounded-2xl md:rounded-3xl shadow-xl border border-slate-50 max-w-[340px] w-full relative">
+                                    <div class="flex items-center gap-3 mb-2 md:mb-4">
+                                        <h4 class="text-base md:text-xl font-bold" data-i18n data-en="Developing" data-id="Pengembangan">Developing</h4>
                                         <span class="material-symbols-outlined text-blue-600">terminal</span>
                                     </div>
                                     <ul class="space-y-2 text-slate-500 text-sm">
@@ -294,7 +294,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="mb-12">
                     <span class="text-hex-blue font-bold uppercase tracking-[0.2em] text-sm mb-4 block" data-i18n data-en="TECHNOLOGY STACK" data-id="STACK TEKNOLOGI">TECHNOLOGY STACK</span>
-                    <h2 class="text-[42px] font-bold text-hex-dark" data-i18n data-en="Built with industry-leading technologies" data-id="Dibangun dengan teknologi terkemuka industri">Built with industry-leading technologies</h2>
+                    <h2 class="text-xl md:text-[42px] font-bold text-hex-dark" data-i18n data-en="Built with industry-leading technologies" data-id="Dibangun dengan teknologi terkemuka industri">Built with industry-leading technologies</h2>
                 </div>
 
                 <div class="flex flex-wrap gap-3">

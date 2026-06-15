@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\ProductImage;
 use App\Models\ProductFeature;
 use App\Models\ProductFeatureItem;
@@ -30,41 +31,33 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.products.create');
+        $categories = ProductCategory::orderBy('sort_order')->get();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'category_name'     => 'required|string|max:255',
             'name'              => 'required|string|max:255',
             'description'       => 'nullable|string',
+            'website_url'       => 'nullable|url|max:500',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
-            'features'          => ['required', 'array', function ($attribute, $value, $fail) {
-                $count = is_array($value) ? count($value) : 0;
-                if ($count !== 3 && $count !== 6) {
-                    $fail('Jumlah features harus 3 atau 6.');
-                }
-            }],
+            'features'          => 'nullable|array',
             'features.*.icon'   => 'nullable|string|max:100',
-            'features.*.title'  => 'required|string|max:255',
-            'features.*.items'  => 'required|array|min:3|max:3',
-            'features.*.items.*'=> 'required|string|max:500',
-            'benefits'          => 'required|array|min:4|max:4',
+            'features.*.title'  => 'nullable|string|max:255',
+            'features.*.items'  => 'nullable|array',
+            'features.*.items.*'=> 'nullable|string|max:500',
+            'benefits'          => 'nullable|array',
             'benefits.*.icon'   => 'nullable|string|max:100',
-            'benefits.*.title'  => 'required|string|max:255',
-        ], [
-            'features.required'           => 'Jumlah features harus 3 atau 6.',
-            'features.*.title.required'   => 'Judul feature wajib diisi.',
-            'features.*.items.required'   => 'Setiap feature harus memiliki tepat 3 items.',
-            'features.*.items.min'        => 'Setiap feature harus memiliki tepat :min items.',
-            'features.*.items.max'        => 'Setiap feature harus memiliki tepat :max items.',
-            'features.*.items.*.required' => 'Teks item tidak boleh kosong.',
-            'benefits.required'           => 'Harus ada tepat 4 benefits.',
-            'benefits.min'                => 'Harus ada tepat :min benefits.',
-            'benefits.max'                => 'Harus ada tepat :max benefits.',
-            'benefits.*.title.required'   => 'Judul benefit wajib diisi.',
+            'benefits.*.title'  => 'nullable|string|max:255',
         ]);
+
+        $category = ProductCategory::firstOrCreate(
+            ['name' => trim($request->input('category_name'))],
+            ['color' => '#0C5BED']
+        );
 
         $slug = Str::slug($validated['name']);
         $original = $slug;
@@ -85,9 +78,11 @@ class ProductController extends Controller
             }
 
             $product = Product::create([
+                'product_category_id' => $category->id,
                 'name'        => $validated['name'],
                 'slug'        => $slug,
                 'description' => $validated['description'] ?? null,
+                'website_url' => $validated['website_url'] ?? null,
                 'image_cover' => $coverPath,
             ]);
 
@@ -151,50 +146,44 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $product->load(['images', 'features.items', 'benefits']);
-        return view('admin.products.edit', compact('product'));
+        $categories = ProductCategory::orderBy('sort_order')->get();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
+            'category_name'     => 'required|string|max:255',
             'name'              => 'required|string|max:255',
             'description'       => 'nullable|string',
+            'website_url'       => 'nullable|url|max:500',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
             'delete_images'     => 'nullable|array',
             'delete_images.*'   => 'nullable|integer',
-            'features'          => ['required', 'array', function ($attribute, $value, $fail) {
-                $count = is_array($value) ? count($value) : 0;
-                if ($count !== 3 && $count !== 6) {
-                    $fail('Jumlah features harus 3 atau 6.');
-                }
-            }],
+            'features'          => 'nullable|array',
             'features.*.icon'   => 'nullable|string|max:100',
-            'features.*.title'  => 'required|string|max:255',
-            'features.*.items'  => 'required|array|min:3|max:3',
-            'features.*.items.*'=> 'required|string|max:500',
-            'benefits'          => 'required|array|min:4|max:4',
+            'features.*.title'  => 'nullable|string|max:255',
+            'features.*.items'  => 'nullable|array',
+            'features.*.items.*'=> 'nullable|string|max:500',
+            'benefits'          => 'nullable|array',
             'benefits.*.icon'   => 'nullable|string|max:100',
-            'benefits.*.title'  => 'required|string|max:255',
-        ], [
-            'features.required'           => 'Jumlah features harus 3 atau 6.',
-            'features.*.title.required'   => 'Judul feature wajib diisi.',
-            'features.*.items.required'   => 'Setiap feature harus memiliki tepat 3 items.',
-            'features.*.items.min'        => 'Setiap feature harus memiliki tepat :min items.',
-            'features.*.items.max'        => 'Setiap feature harus memiliki tepat :max items.',
-            'features.*.items.*.required' => 'Teks item tidak boleh kosong.',
-            'benefits.required'           => 'Harus ada tepat 4 benefits.',
-            'benefits.min'                => 'Harus ada tepat :min benefits.',
-            'benefits.max'                => 'Harus ada tepat :max benefits.',
-            'benefits.*.title.required'   => 'Judul benefit wajib diisi.',
+            'benefits.*.title'  => 'nullable|string|max:255',
         ]);
+
+        $category = ProductCategory::firstOrCreate(
+            ['name' => trim($request->input('category_name'))],
+            ['color' => '#0C5BED']
+        );
 
         DB::beginTransaction();
         try {
             // Slug
             $updateData = [
+                'product_category_id' => $category->id,
                 'name'        => $validated['name'],
                 'description' => $validated['description'] ?? null,
+                'website_url' => $validated['website_url'] ?? null,
             ];
 
             if ($validated['name'] !== $product->name) {
@@ -306,5 +295,19 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect()->route('manager.products.index')->with('success', 'Produk berhasil dihapus.');
+    }
+
+    public function updateSort(Request $request)
+    {
+        $validated = $request->validate([
+            'order' => 'required|array',
+            'order.*' => 'required|integer|exists:products,id',
+        ]);
+
+        foreach ($validated['order'] as $index => $id) {
+            Product::where('id', $id)->update(['sort_order' => $index]);
+        }
+
+        return response()->json(['success' => true]);
     }
 }

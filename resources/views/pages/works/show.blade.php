@@ -29,9 +29,9 @@
 @section('content')
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
+    <section class="relative w-full md:h-[583px] overflow-hidden bg-hex-surface lg:bg-transparent">
         <div class="absolute inset-0 z-0 bg-cover bg-top lg:block hidden opacity-80" style="background-image: url('{{ asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');"></div>
-        <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex flex-col items-center justify-center text-center pt-8 lg:pt-0">
+        <div class="max-w-[1280px] mx-auto md:h-full relative z-10 px-4 lg:px-0 flex flex-col items-center justify-center text-center py-16 md:py-0 lg:pt-0">
             <div class="max-w-[850px] relative z-20 px-4 transform lg:-translate-y-8">
                 <div class="flex justify-center">
                     <span class="inline-flex items-center font-bold {{ $cat['class'] }} rounded-full px-4 py-1 mb-6 text-sm uppercase tracking-widest" data-i18n data-en="{{ $cat['en'] }}" data-id="{{ $cat['id'] }}">{{ $cat['en'] }}</span>
@@ -47,11 +47,11 @@
 
     <!-- Preview Gallery -->
     @if($galleryImages->count() > 0)
-        <section class="py-24 bg-white">
+        <section class="py-10 md:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-4 leading-tight" data-i18n data-en="Preview Project" data-id="Pratinjau Proyek">Preview Project</h2>
-                    <p class="text-slate-500 max-w-2xl mx-auto text-lg" data-i18n data-en="Get an overview of the various project documentation." data-id="Dapatkan gambaran umum tentang berbagai dokumentasi proyek.">Get an overview of the various project documentation.</p>
+                <div class="text-center mb-8 md:mb-16">
+                    <h2 class="text-2xl md:text-[42px] font-bold text-hex-dark mb-3 leading-tight" data-i18n data-en="Preview Project" data-id="Pratinjau Proyek">Preview Project</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto text-sm md:text-lg" data-i18n data-en="Get an overview of the various project documentation." data-id="Dapatkan gambaran umum tentang berbagai dokumentasi proyek.">Get an overview of the various project documentation.</p>
                 </div>
 
                 <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
@@ -85,7 +85,7 @@
                         <img id="preview-main-image"
                             src="{{ $galleryImages->first() }}"
                             alt="{{ $project->name }} preview"
-                            class="w-full h-auto max-h-[640px] object-contain rounded-2xl transition-opacity duration-300 ease-in-out">
+                            class="w-full h-auto max-h-[280px] md:max-h-[640px] object-contain rounded-2xl transition-opacity duration-300 ease-in-out">
                     </div>
                 </div>
             </div>
@@ -94,10 +94,10 @@
 
     <!-- Summary Section -->
     @if($project->description || $project->summary_title)
-        <section class="py-24 bg-hex-surface">
+        <section class="py-10 md:py-24 bg-hex-surface">
             <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 @if($project->summary_title)
-                <div class="flex flex-col gap-2 mb-8">
+                <div class="flex flex-col gap-2 mb-5 md:mb-8">
                     <span class="text-blue-600 font-bold text-sm tracking-widest uppercase" data-i18n data-en="SUMMARY" data-id="RINGKASAN">SUMMARY</span>
                     <h2 class="text-3xl lg:text-4xl font-bold text-hex-dark">{{ $project->summary_title }}</h2>
                 </div>
@@ -137,19 +137,47 @@
     @endif
 
     <!-- CTA Section -->
-    <section class="pt-0 pb-0 bg-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-10 sm:px-20 lg:px-32">
-            <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-16 items-end md:-ml-12">
-                <!-- Left: Talent Image -->
-                <div class="relative order-2 md:order-1 flex justify-start items-end">
-                    <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent" class="w-full h-auto object-contain max-h-[500px] transform translate-y-2">
-                </div>
+    <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
 
-                <!-- Right: Solution partial -->
-                <div class="order-1 md:order-2">
+            <!-- Mobile Card Layout -->
+            <div class="block md:hidden bg-slate-100 rounded-3xl overflow-hidden">
+                <div class="flex items-end">
+                    <div class="flex-shrink-0 w-[48%]">
+                        <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant"
+                            class="w-full object-contain">
+                    </div>
+                    <div class="flex-1 px-5 py-6 flex flex-col justify-center">
+                        <h2 class="text-base font-bold text-[#121B26] mb-3 leading-snug" data-i18n="html"
+                            data-en="Get the Right IT Solutions from the <span class='text-blue-600'>Best IT Vendor</span>. Consult with Us Today!"
+                            data-id="Dapatkan Solusi IT yang Tepat dari <span class='text-blue-600'>Vendor IT Terbaik</span> — Konsultasi Sekarang!">
+                            Get the Right IT Solutions from the <span class="text-blue-600">Best IT Vendor</span>.
+                            Consult with Us Today!
+                        </h2>
+                        <p class="text-slate-500 text-sm mb-4 leading-relaxed" data-i18n
+                            data-en="Discuss your IT challenges, and our team of experienced experts will provide tailored solutions to drive your business growth and success."
+                            data-id="Diskusikan tantangan IT Anda, dan tim ahli berpengalaman kami akan memberikan solusi yang disesuaikan untuk mendorong pertumbuhan bisnis Anda.">
+                            Discuss your IT challenges, and our team of experienced experts will provide tailored
+                            solutions to drive your business growth and success.
+                        </p>
+                        <a href="{{ route('start-project') }}"
+                            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+                            data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Layout -->
+            <div class="hidden md:grid grid-cols-[auto_1fr] gap-16 items-end -ml-12">
+                <div class="relative flex justify-start items-end">
+                    <img src="{{ asset('assets/img/talent.png') }}" alt="IT Consultant Talent"
+                        class="block w-auto h-auto object-contain max-h-[500px] align-bottom">
+                </div>
+                <div class="self-center max-w-2xl">
                     @include('partials.solution')
                 </div>
             </div>
+
         </div>
     </section>
 
