@@ -474,6 +474,7 @@
                                     $homeCat = $homeCatMap[$homeProject->category] ?? ['badge' => 'bg-slate-50 text-slate-600', 'en' => 'Project', 'id' => 'Proyek'];
                                     $homeImgUrl = $homeProject->image ? image_url($homeProject->image) : null;
                                     $homeDesc = $homeProject->hero_description ?: Str::limit(strip_tags($homeProject->description ?? ''), 160);
+                                    $homeDescId = $homeProject->hero_description_id ?: Str::limit(strip_tags($homeProject->description_id ?? ''), 160);
                                 @endphp
                                 <a href="{{ route('works.show', $homeProject) }}"
                                     class="project-card group block bg-white rounded-lg md:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all"
@@ -498,9 +499,12 @@
                                         <h3 class="text-sm md:text-xl font-bold text-slate-900 mb-1 md:mb-4 line-clamp-2">
                                             {{ $homeProject->name }}
                                         </h3>
-                                        <p class="project-card-desc text-slate-600 text-[11px] md:text-sm line-clamp-2 md:line-clamp-3">
-                                            {{ $homeDesc }}
-                                        </p>
+                                        @if($homeDescId)
+                                        <p class="project-card-desc text-slate-600 text-[11px] md:text-sm line-clamp-2 md:line-clamp-3"
+                                            data-i18n data-en="{{ $homeDesc }}" data-id="{{ $homeDescId }}">{{ $homeDesc }}</p>
+                                        @else
+                                        <p class="project-card-desc text-slate-600 text-[11px] md:text-sm line-clamp-2 md:line-clamp-3">{{ $homeDesc }}</p>
+                                        @endif
                                     </div>
                                 </a>
                             @endforeach
@@ -650,7 +654,7 @@
                                                                     style="font-variation-settings: 'FILL' 1;">star</span>
                                                             @endfor
                                                         </div>
-                                                        <p class="text-slate-700 font-medium italic mb-8 text-base">"{{ $testimonial->quote }}"
+                                                        <p class="text-slate-700 font-medium italic mb-8 text-base">"<span @if($testimonial->quote_id) data-i18n data-en="{{ $testimonial->quote }}" data-id="{{ $testimonial->quote_id }}" @endif>{{ $testimonial->quote }}</span>"
                                                         </p>
                                                         <div class="flex items-center gap-4">
                                                             <div
@@ -659,7 +663,7 @@
                                                             </div>
                                                             <div>
                                                                 <p class="font-bold text-slate-900 text-base">{{ $testimonial->name }}</p>
-                                                                <p class="text-sm text-slate-500">{{ $testimonial->role }}</p>
+                                                                <p class="text-sm text-slate-500" @if($testimonial->role_id) data-i18n data-en="{{ $testimonial->role }}" data-id="{{ $testimonial->role_id }}" @endif>{{ $testimonial->role }}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -694,8 +698,7 @@
                                                                 style="font-variation-settings: 'FILL' 1;">star</span>
                                                         @endfor
                                                     </div>
-                                                    <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">
-                                                        "{{ $testimonial->quote }}"</p>
+                                                    <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">"<span @if($testimonial->quote_id) data-i18n data-en="{{ $testimonial->quote }}" data-id="{{ $testimonial->quote_id }}" @endif>{{ $testimonial->quote }}</span>"</p>
                                                     <div class="flex items-center gap-3">
                                                         <div
                                                             class="w-10 h-10 {{ $avatarColors[$loop->index % count($avatarColors)] }} rounded-full flex justify-center items-center text-white flex-shrink-0">
@@ -703,7 +706,7 @@
                                                         </div>
                                                         <div>
                                                             <p class="font-bold text-slate-900 text-sm">{{ $testimonial->name }}</p>
-                                                            <p class="text-xs text-slate-500">{{ $testimonial->role }}</p>
+                                                            <p class="text-xs text-slate-500" @if($testimonial->role_id) data-i18n data-en="{{ $testimonial->role }}" data-id="{{ $testimonial->role_id }}" @endif>{{ $testimonial->role }}</p>
                                                         </div>
                                                     </div>
                                                 </div>

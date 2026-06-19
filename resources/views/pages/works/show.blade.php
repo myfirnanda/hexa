@@ -43,7 +43,13 @@
                 </div>
                 <h1 class="hero-title text-hex-dark mb-6">{{ $project->name }}</h1>
                 @if($project->hero_description)
-                    <p class="text-hex-slate text-lg leading-[1.65] max-w-[750px] mx-auto">{{ $project->hero_description }}</p>
+                    @if($project->hero_description_id)
+                        <p class="text-hex-slate text-lg leading-[1.65] max-w-[750px] mx-auto" data-i18n
+                            data-en="{{ $project->hero_description }}"
+                            data-id="{{ $project->hero_description_id }}">{{ $project->hero_description }}</p>
+                    @else
+                        <p class="text-hex-slate text-lg leading-[1.65] max-w-[750px] mx-auto">{{ $project->hero_description }}</p>
+                    @endif
                 @endif
                 <a href="{{ route('start-project') }}"
                     class="mt-10 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-white text-[1rem] hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
@@ -110,13 +116,25 @@
                     <div class="flex flex-col gap-2 mb-5 md:mb-8">
                         <span class="text-blue-600 font-bold text-sm tracking-widest uppercase" data-i18n data-en="SUMMARY"
                             data-id="RINGKASAN">SUMMARY</span>
-                        <h2 class="text-3xl lg:text-4xl font-bold text-hex-dark">{{ $project->summary_title }}</h2>
+                        @if($project->summary_title_id)
+                            <h2 class="text-3xl lg:text-4xl font-bold text-hex-dark" data-i18n
+                                data-en="{{ $project->summary_title }}"
+                                data-id="{{ $project->summary_title_id }}">{{ $project->summary_title }}</h2>
+                        @else
+                            <h2 class="text-3xl lg:text-4xl font-bold text-hex-dark">{{ $project->summary_title }}</h2>
+                        @endif
                     </div>
                 @endif
                 @if($project->description)
-                    <div class="prose prose-lg max-w-none text-hex-slate leading-relaxed mb-6">
-                        {!! $project->description !!}
-                    </div>
+                    @if($project->description_id)
+                        <div class="prose prose-lg max-w-none text-hex-slate leading-relaxed mb-6" data-i18n="html"
+                            data-en="{{ $project->description }}"
+                            data-id="{{ $project->description_id }}">{!! $project->description !!}</div>
+                    @else
+                        <div class="prose prose-lg max-w-none text-hex-slate leading-relaxed mb-6">
+                            {!! $project->description !!}
+                        </div>
+                    @endif
                 @endif
 
                 @if($project->client)

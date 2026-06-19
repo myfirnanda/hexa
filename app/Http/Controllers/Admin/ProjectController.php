@@ -43,14 +43,17 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'category' => 'required|string|max:100',
-            'client_id' => 'nullable|exists:clients,id',
-            'summary_title' => 'nullable|string|max:255',
-            'hero_description' => 'nullable|string',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
-            'gallery_images.*' => 'nullable|image|max:2048',
+            'name'               => 'required|string|max:255',
+            'category'           => 'required|string|max:100',
+            'client_id'          => 'nullable|exists:clients,id',
+            'summary_title'      => 'nullable|string|max:255',
+            'summary_title_id'   => 'nullable|string|max:255',
+            'hero_description'   => 'nullable|string',
+            'hero_description_id'=> 'nullable|string',
+            'description'        => 'nullable|string',
+            'description_id'     => 'nullable|string',
+            'image'              => 'nullable|image|max:2048',
+            'gallery_images.*'   => 'nullable|image|max:2048',
         ]);
 
         $validated['slug'] = Str::slug($validated['name']);
@@ -95,16 +98,19 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'category' => 'required|string|max:100',
-            'client_id' => 'nullable|exists:clients,id',
-            'summary_title' => 'nullable|string|max:255',
-            'hero_description' => 'nullable|string',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
-            'gallery_images.*' => 'nullable|image|max:2048',
-            'delete_images' => 'nullable|array',
-            'delete_images.*' => 'nullable|integer',
+            'name'               => 'required|string|max:255',
+            'category'           => 'required|string|max:100',
+            'client_id'          => 'nullable|exists:clients,id',
+            'summary_title'      => 'nullable|string|max:255',
+            'summary_title_id'   => 'nullable|string|max:255',
+            'hero_description'   => 'nullable|string',
+            'hero_description_id'=> 'nullable|string',
+            'description'        => 'nullable|string',
+            'description_id'     => 'nullable|string',
+            'image'              => 'nullable|image|max:2048',
+            'gallery_images.*'   => 'nullable|image|max:2048',
+            'delete_images'      => 'nullable|array',
+            'delete_images.*'    => 'nullable|integer',
         ]);
 
         if ($validated['name'] !== $project->name) {

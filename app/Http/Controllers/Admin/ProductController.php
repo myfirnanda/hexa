@@ -40,7 +40,10 @@ class ProductController extends Controller
         $validated = $request->validate([
             'category_name'     => 'required|string|max:255',
             'name'              => 'required|string|max:255',
+            'tagline'           => 'nullable|string|max:500',
+            'tagline_id'        => 'nullable|string|max:500',
             'description'       => 'nullable|string',
+            'description_id'    => 'nullable|string',
             'website_url'       => 'nullable|url|max:500',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
@@ -79,11 +82,14 @@ class ProductController extends Controller
 
             $product = Product::create([
                 'product_category_id' => $category->id,
-                'name'        => $validated['name'],
-                'slug'        => $slug,
-                'description' => $validated['description'] ?? null,
-                'website_url' => $validated['website_url'] ?? null,
-                'image_cover' => $coverPath,
+                'name'           => $validated['name'],
+                'slug'           => $slug,
+                'tagline'        => $validated['tagline'] ?? null,
+                'tagline_id'     => $validated['tagline_id'] ?? null,
+                'description'    => $validated['description'] ?? null,
+                'description_id' => $validated['description_id'] ?? null,
+                'website_url'    => $validated['website_url'] ?? null,
+                'image_cover'    => $coverPath,
             ]);
 
             // Gallery images
@@ -155,7 +161,10 @@ class ProductController extends Controller
         $validated = $request->validate([
             'category_name'     => 'required|string|max:255',
             'name'              => 'required|string|max:255',
+            'tagline'           => 'nullable|string|max:500',
+            'tagline_id'        => 'nullable|string|max:500',
             'description'       => 'nullable|string',
+            'description_id'    => 'nullable|string',
             'website_url'       => 'nullable|url|max:500',
             'image_cover'       => 'nullable|image|max:2048',
             'gallery_images.*'  => 'nullable|image|max:2048',
@@ -181,9 +190,12 @@ class ProductController extends Controller
             // Slug
             $updateData = [
                 'product_category_id' => $category->id,
-                'name'        => $validated['name'],
-                'description' => $validated['description'] ?? null,
-                'website_url' => $validated['website_url'] ?? null,
+                'name'           => $validated['name'],
+                'tagline'        => $validated['tagline'] ?? null,
+                'tagline_id'     => $validated['tagline_id'] ?? null,
+                'description'    => $validated['description'] ?? null,
+                'description_id' => $validated['description_id'] ?? null,
+                'website_url'    => $validated['website_url'] ?? null,
             ];
 
             if ($validated['name'] !== $product->name) {
