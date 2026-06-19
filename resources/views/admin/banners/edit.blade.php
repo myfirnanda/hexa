@@ -51,54 +51,97 @@
 
             {{-- Info box --}}
             <div class="rounded-xl px-4 py-3 text-[12px] leading-relaxed" style="background:rgba(59,130,246,0.07);border:1px solid rgba(59,130,246,0.2);color:#60a5fa;">
-                <span class="font-bold">ℹ️ Teks opsional:</span> Field Judul Hero, Deskripsi, dan Teks Button bersifat opsional.
+                <span class="font-bold">ℹ️ Teks opsional & bilingual:</span> Isi versi EN dan ID agar teks berganti saat pengguna ganti bahasa.
                 <strong>Jika dikosongkan, teks default dari layout halaman akan otomatis digunakan.</strong>
-                Isi hanya jika ingin mengganti teks default.
             </div>
 
-            {{-- Hero Title --}}
+            {{-- Bilingual Tabs --}}
+            <div>
+                <div class="flex gap-2 mb-4 items-center">
+                    <span class="text-[11px] font-bold uppercase tracking-widest admin-text-muted">Konten Teks:</span>
+                    <div class="flex rounded-lg overflow-hidden border admin-border" style="width:fit-content;">
+                        <button type="button" id="tab-en" onclick="switchLangTab('en')"
+                            style="background:var(--admin-primary);color:#fff;padding:6px 18px;font-size:13px;font-weight:700;border:none;border-right:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:all .15s;letter-spacing:.02em;">
+                            EN &nbsp;<span style="font-weight:400;opacity:.85;">English</span>
+                        </button>
+                        <button type="button" id="tab-id" onclick="switchLangTab('id')"
+                            style="background:transparent;color:var(--admin-text-secondary);padding:6px 18px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all .15s;letter-spacing:.02em;">
+                            ID &nbsp;<span style="font-weight:400;opacity:.85;">Indonesia</span>
+                        </button>
+                    </div>
+                </div>
+
+                {{-- English Fields --}}
+                <div id="fields-en" class="space-y-4">
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Judul Hero (EN) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default)</span>
+                        </label>
+                        <input type="text" name="hero_title" value="{{ old('hero_title', $banner->hero_title) }}"
+                            placeholder="e.g. Transforming Ideas into Digital Excellence"
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
+                        <p class="text-[11px] admin-text-muted mt-1.5">
+                            💡 Boleh pakai HTML — <code style="background:rgba(59,130,246,0.1);color:#60a5fa;padding:1px 5px;border-radius:4px;">Judul&lt;br /&gt;&lt;span class="text-hex-blue"&gt;Teks Biru&lt;/span&gt;</code>
+                        </p>
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Deskripsi Hero (EN) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default)</span>
+                        </label>
+                        <textarea name="hero_description" rows="3"
+                            placeholder="Kosongkan untuk pakai default..."
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none resize-none">{{ old('hero_description', $banner->hero_description) }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Teks Button (EN) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai default)</span>
+                        </label>
+                        <input type="text" name="button_text" value="{{ old('button_text', $banner->button_text) }}"
+                            placeholder="e.g. Consult Now"
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
+                    </div>
+                </div>
+
+                {{-- Indonesian Fields --}}
+                <div id="fields-id" class="space-y-4 hidden">
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Judul Hero (ID) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default)</span>
+                        </label>
+                        <input type="text" name="hero_title_id" value="{{ old('hero_title_id', $banner->hero_title_id) }}"
+                            placeholder="mis. Mengubah Ide Menjadi Keunggulan Digital"
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
+                        <p class="text-[11px] admin-text-muted mt-1.5">
+                            💡 Boleh pakai HTML — <code style="background:rgba(59,130,246,0.1);color:#60a5fa;padding:1px 5px;border-radius:4px;">Judul&lt;br /&gt;&lt;span class="text-hex-blue"&gt;Teks Biru&lt;/span&gt;</code>
+                        </p>
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Deskripsi Hero (ID) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default)</span>
+                        </label>
+                        <textarea name="hero_description_id" rows="3"
+                            placeholder="Kosongkan untuk pakai default..."
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none resize-none">{{ old('hero_description_id', $banner->hero_description_id) }}</textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[13px] font-semibold admin-text mb-1.5">
+                            Teks Button (ID) <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai default)</span>
+                        </label>
+                        <input type="text" name="button_text_id" value="{{ old('button_text_id', $banner->button_text_id) }}"
+                            placeholder="mis. Konsultasi Sekarang"
+                            class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
+                    </div>
+                </div>
+            </div>
+
+            {{-- Button URL --}}
             <div>
                 <label class="block text-[13px] font-semibold admin-text mb-1.5">
-                    Judul Hero <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default halaman)</span>
+                    Link Button <span class="text-[12px] font-normal admin-text-muted">(opsional)</span>
                 </label>
-                <input type="text" name="hero_title" value="{{ old('hero_title', $banner->hero_title) }}"
-                    placeholder="Kosongkan untuk pakai default, atau isi dengan HTML..."
+                <input type="url" name="button_url" value="{{ old('button_url', $banner->button_url) }}"
+                    placeholder="https://..."
                     class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
-                <p class="text-[11px] admin-text-muted mt-1.5 leading-relaxed">
-                    💡 <strong>Teks biru + ganti baris:</strong> Gunakan tag HTML —<br>
-                    <code style="background:rgba(59,130,246,0.1);color:#60a5fa;padding:1px 5px;border-radius:4px;font-size:11px;">Transforming Ideas into&lt;br /&gt;&lt;span class="text-hex-blue"&gt;Digital Excellence&lt;/span&gt;</code><br>
-                    <span class="admin-text-muted">Tambahkan <code style="background:rgba(255,255,255,0.07);padding:1px 4px;border-radius:3px;font-size:10px;">&lt;br /&gt;</code> untuk ganti baris agar tampilan sesuai layout.</span>
-                </p>
-            </div>
-
-            {{-- Hero Description --}}
-            <div>
-                <label class="block text-[13px] font-semibold admin-text mb-1.5">
-                    Deskripsi Hero <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai teks default halaman)</span>
-                </label>
-                <textarea name="hero_description" rows="3"
-                    placeholder="Kosongkan untuk pakai default, atau isi dengan teks baru..."
-                    class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none resize-none">{{ old('hero_description', $banner->hero_description) }}</textarea>
-            </div>
-
-            {{-- Button Text & URL --}}
-            <div class="grid grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-[13px] font-semibold admin-text mb-1.5">
-                        Teks Button <span class="text-[12px] font-normal admin-text-muted">(kosongkan = pakai default)</span>
-                    </label>
-                    <input type="text" name="button_text" value="{{ old('button_text', $banner->button_text) }}"
-                        placeholder="Kosongkan untuk pakai teks default..."
-                        class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
-                </div>
-                <div>
-                    <label class="block text-[13px] font-semibold admin-text mb-1.5">
-                        Link Button <span class="text-[12px] font-normal admin-text-muted">(opsional)</span>
-                    </label>
-                    <input type="url" name="button_url" value="{{ old('button_url', $banner->button_url) }}"
-                        placeholder="https://..."
-                        class="admin-input w-full rounded-lg px-3 py-2.5 text-sm outline-none">
-                </div>
             </div>
 
             {{-- Current Image + Replace --}}
@@ -138,6 +181,21 @@
 
 @section('scripts')
 <script>
+var adminPrimary = getComputedStyle(document.documentElement).getPropertyValue('--admin-primary').trim() || '#1d4ed8';
+var adminTextSec = getComputedStyle(document.documentElement).getPropertyValue('--admin-text-secondary').trim() || '#7a9ab8';
+
+function switchLangTab(lang) {
+    var isEn = lang === 'en';
+    document.getElementById('fields-en').classList.toggle('hidden', !isEn);
+    document.getElementById('fields-id').classList.toggle('hidden', isEn);
+    document.getElementById('tab-en').style.background = isEn ? adminPrimary : 'transparent';
+    document.getElementById('tab-en').style.color = isEn ? '#fff' : adminTextSec;
+    document.getElementById('tab-en').style.fontWeight = isEn ? '700' : '600';
+    document.getElementById('tab-id').style.background = !isEn ? adminPrimary : 'transparent';
+    document.getElementById('tab-id').style.color = !isEn ? '#fff' : adminTextSec;
+    document.getElementById('tab-id').style.fontWeight = !isEn ? '700' : '600';
+}
+
 var input = document.getElementById('banner-image-input');
 input.addEventListener('change', function () {
     var file = this.files[0];

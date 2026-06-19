@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Managed Service')
 @push('styles')
     <style>
@@ -57,7 +57,7 @@
                     <!-- Card 1 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">engineering</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">engineering</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="IT Outsourcing" data-id="Outsourcing IT">IT Outsourcing</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management." data-id="Delegasikan operasional IT Anda kepada tim ahli kami untuk mengurangi beban kerja internal sekaligus memastikan manajemen teknologi yang profesional dan efisien.">Delegate your IT operations to our expert team and reduce internal workload while ensuring professional, scalable, and cost-efficient technology management.</p>
@@ -65,7 +65,7 @@
                     <!-- Card 2 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">build</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">build</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Maintenance" data-id="Pemeliharaan">Maintenance</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions." data-id="Pastikan sistem Anda berjalan mulus dengan pemeliharaan rutin, pembaruan, perbaikan bug, dan optimasi performa untuk mencegah downtime.">Keep your systems running smoothly with routine maintenance, updates, bug fixing, and performance optimization to prevent downtime and disruptions.</p>
@@ -73,7 +73,7 @@
                     <!-- Card 3 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">database</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">database</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Data Migration" data-id="Migrasi Data">Data Migration</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security." data-id="Migrasikan data Anda antar sistem, platform, atau lingkungan cloud dengan risiko minimal, memastikan integritas dan keamanan data.">Seamlessly migrate your data across systems, platforms, or cloud environments with minimal risk, ensuring data integrity and security.</p>
@@ -81,7 +81,7 @@
                     <!-- Card 4 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">settings</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">settings</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Configuration" data-id="Konfigurasi">Configuration</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices." data-id="Kami menangani penyiapan sistem, konfigurasi server, dan optimasi lingkungan untuk memastikan infrastruktur Anda selaras dengan praktik terbaik.">We handle system setup, server configuration, and environment optimization to ensure your infrastructure is aligned with best practices.</p>
@@ -89,7 +89,7 @@
                     <!-- Card 5 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">school</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">school</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Training" data-id="Pelatihan">Training</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization." data-id="Berdayakan tim Anda dengan pelatihan praktis untuk menggunakan sistem, alat, dan teknologi yang diimplementasikan secara efektif.">Empower your team with hands-on training to effectively use systems, tools, and technologies implemented within your organization.</p>
@@ -97,7 +97,7 @@
                     <!-- Card 6 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">analytics</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">analytics</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Gap Analysis" data-id="Analisis Kesenjangan">Gap Analysis</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks." data-id="Identifikasi inefisiensi dan area perbaikan dalam sistem IT, alur kerja, dan infrastruktur Anda untuk optimasi performa.">Identify inefficiencies and improvement areas in your current IT systems, workflows, and infrastructure to optimize performance and reduce risks.</p>
@@ -105,7 +105,7 @@
                     <!-- Card 7 -->
                      <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">psychology</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">psychology</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="IT Consultant" data-id="Konsultan IT">IT Consultant</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection." data-id="Dapatkan panduan IT strategis mulai dari perencanaan transformasi digital hingga penskalaan infrastruktur dan pemilihan teknologi.">Get strategic IT guidance tailored to your business goals â€” from digital transformation planning to infrastructure scaling and technology selection.</p>
@@ -126,7 +126,7 @@
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">visibility</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">visibility</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Proactive Monitoring" data-id="Pemantauan Proaktif">Proactive Monitoring</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Continuous monitoring to detect and resolve issues before they impact your operations." data-id="Pemantauan berkelanjutan untuk mendeteksi dan menyelesaikan masalah sebelum berdampak pada operasional Anda.">Continuous monitoring to detect and resolve issues before they impact your operations.</p>
@@ -134,7 +134,7 @@
                     <!-- Advantage 2 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">security</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">security</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Secure & Reliable Systems" data-id="Sistem Aman & Andal">Secure & Reliable Systems</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Advanced security practices to protect your infrastructure and sensitive data." data-id="Praktik keamanan tingkat lanjut untuk melindungi infrastruktur dan data sensitif Anda.">Advanced security practices to protect your infrastructure and sensitive data.</p>
@@ -142,7 +142,7 @@
                     <!-- Advantage 3 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">speed</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">speed</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Optimized Performance" data-id="Performa Teroptimasi">Optimized Performance</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Ensure your systems operate at peak efficiency with regular optimization." data-id="Pastikan sistem Anda beroperasi pada efisiensi puncak dengan optimasi berkala.">Ensure your systems operate at peak efficiency with regular optimization.</p>
@@ -150,7 +150,7 @@
                     <!-- Advantage 4 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">expand</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">expand</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Flexible & Scalable" data-id="Fleksibel & Skalabel">Flexible & Scalable</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Services that grow with your business needs â€” from startup to enterprise." data-id="Layanan yang berkembang seiring kebutuhan bisnis â€” dari startup hingga enterprise.">Services that grow with your business needs â€” from startup to enterprise.</p>

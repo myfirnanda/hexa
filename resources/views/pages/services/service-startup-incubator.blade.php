@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Software Development')
 @push('styles')
 <style>
@@ -42,7 +42,7 @@
                     <!-- Card 1 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">groups</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">groups</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Coaching" data-id="Coaching">Coaching</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="One-on-one sessions with industry veterans to refine your business model and strategy." data-id="Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.">Sesi tatap muka dengan veteran industri untuk menyempurnakan model bisnis dan strategi Anda.</p>
@@ -50,7 +50,7 @@
                     <!-- Card 2 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">payments</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">payments</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Investment" data-id="Investasi">Investasi</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Preparation for funding rounds through financial auditing and pitch desk optimization." data-id="Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.">Persiapan untuk putaran pendanaan melalui audit keuangan dan optimasi pitch deck.</p>
@@ -58,7 +58,7 @@
                     <!-- Card 3 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">account_balance_wallet</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Fundraising" data-id="Penggalangan Dana">Penggalangan Dana</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Connecting startups with venture capitals and angel investors for necessary capital injection." data-id="Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.">Menghubungkan startup dengan modal ventura dan investor malaikat untuk suntikan modal.</p>
@@ -66,7 +66,7 @@
                     <!-- Card 4 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">rocket_launch</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Early Stage Development" data-id="Pengembangan Awal">Pengembangan Awal</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Technical development support to build your MVP (Minimum Viable Product) quickly and correctly." data-id="Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.">Dukungan pengembangan teknis untuk membangun MVP (Minimum Viable Product) dengan cepat dan tepat.</p>
@@ -74,7 +74,7 @@
                     <!-- Card 5 -->
                     <div class="group bg-white rounded-2xl md:rounded-[40px] p-4 md:p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-3 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">handshake</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">handshake</span>
                         </div>
                         <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-1 md:mb-4" data-i18n data-en="Partnerships" data-id="Kemitraan">Kemitraan</h3>
                         <p class="hidden md:block text-hex-slate text-base leading-relaxed" data-i18n data-en="Forging strategic alliances with corporate partners to open new market opportunities." data-id="Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.">Menjalin aliansi strategis dengan mitra korporat untuk membuka peluang pasar baru.</p>
@@ -95,7 +95,7 @@
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">trending_up</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">trending_up</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Growth Acceleration" data-id="Akselerasi Pertumbuhan">Akselerasi Pertumbuhan</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Faster time-to-market with proven strategies and operational efficiency." data-id="Waktu ke pasar yang lebih cepat dengan strategi terbukti dan efisiensi operasional.">Waktu ke pasar yang lebih cepat dengan strategi terbukti dan efisiensi operasional.</p>
@@ -103,7 +103,7 @@
                     <!-- Advantage 2 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">hub</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">hub</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Strong Investor Network" data-id="Jaringan Investor Kuat">Jaringan Investor Kuat</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Direct access to top venture capitals and angel investors in the region." data-id="Akses langsung ke modal ventura dan investor malaikat papan atas di kawasan ini.">Akses langsung ke modal ventura dan investor malaikat papan atas di kawasan ini.</p>
@@ -111,7 +111,7 @@
                     <!-- Advantage 3 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">architecture</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">architecture</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Business Model Optimization" data-id="Optimasi Model Bisnis">Optimasi Model Bisnis</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Refining your unique value proposition to ensure product-market fit." data-id="Menyempurnakan proposisi nilai unik Anda untuk memastikan kesesuaian produk-pasar.">Menyempurnakan proposisi nilai unik Anda untuk memastikan kesesuaian produk-pasar.</p>
@@ -119,7 +119,7 @@
                     <!-- Advantage 4 -->
                     <div class="flex flex-col items-center text-center">
                         <div class="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-blue-400">school</span>
+                            <span translate="no" class="material-symbols-outlined text-blue-400">school</span>
                         </div>
                         <h4 class="text-xl font-bold mb-3" data-i18n data-en="Expert Mentorship" data-id="Mentorship Ahli">Mentorship Ahli</h4>
                         <p class="text-slate-400 text-sm leading-relaxed" data-i18n data-en="Guidance from serial entrepreneurs and domain experts who've done it before." data-id="Panduan dari wirausahawan serial dan ahli domain yang telah melakukannya sebelumnya.">Panduan dari wirausahawan serial dan ahli domain yang telah melakukannya sebelumnya.</p>

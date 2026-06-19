@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>@yield('title', 'Hexavara - Digital Excellence Since 2013')</title>
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0" />
@@ -54,7 +55,7 @@
     <!-- Scroll to top button -->
     <button class="fixed right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-blue-700 z-40"
         style="bottom: 40px;" id="scroll-top-btn">
-        <span class="material-symbols-outlined">keyboard_arrow_up</span>
+        <span translate="no" class="material-symbols-outlined">keyboard_arrow_up</span>
     </button>
 
     <script src="{{ asset('assets/js/main.js') }}"></script>

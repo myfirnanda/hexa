@@ -32,15 +32,18 @@ class PageBannerController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'page'             => 'required|string|in:' . implode(',', array_keys(PageBanner::$pages)),
-            'title'            => 'nullable|string|max:255',
-            'hero_title'       => 'nullable|string|max:500',
-            'hero_description' => 'nullable|string|max:1000',
-            'button_text'      => 'nullable|string|max:100',
-            'button_url'       => 'nullable|string|max:500',
-            'image'            => 'required|image|max:4096',
-            'image_position'   => 'nullable|string|max:30',
-            'is_active'        => 'nullable|boolean',
+            'page'                => 'required|string|in:' . implode(',', array_keys(PageBanner::$pages)),
+            'title'               => 'nullable|string|max:255',
+            'hero_title'          => 'nullable|string|max:500',
+            'hero_title_id'       => 'nullable|string|max:500',
+            'hero_description'    => 'nullable|string|max:1000',
+            'hero_description_id' => 'nullable|string|max:1000',
+            'button_text'         => 'nullable|string|max:100',
+            'button_text_id'      => 'nullable|string|max:100',
+            'button_url'          => 'nullable|string|max:500',
+            'image'               => 'required|image|max:4096',
+            'image_position'      => 'nullable|string|max:30',
+            'is_active'           => 'nullable|boolean',
         ]);
 
         $file     = $request->file('image');
@@ -50,16 +53,19 @@ class PageBannerController extends Controller
         $maxOrder = PageBanner::where('page', $validated['page'])->max('sort_order') ?? -1;
 
         PageBanner::create([
-            'page'             => $validated['page'],
-            'title'            => $validated['title'] ?? null,
-            'hero_title'       => $validated['hero_title'] ?? null,
-            'hero_description' => $validated['hero_description'] ?? null,
-            'button_text'      => $validated['button_text'] ?? null,
-            'button_url'       => $validated['button_url'] ?? null,
-            'image_path'       => 'banners/' . $filename,
-            'image_position'   => $validated['image_position'] ?? 'center',
-            'sort_order'       => $maxOrder + 1,
-            'is_active'        => $request->boolean('is_active', true),
+            'page'                => $validated['page'],
+            'title'               => $validated['title'] ?? null,
+            'hero_title'          => $validated['hero_title'] ?? null,
+            'hero_title_id'       => $validated['hero_title_id'] ?? null,
+            'hero_description'    => $validated['hero_description'] ?? null,
+            'hero_description_id' => $validated['hero_description_id'] ?? null,
+            'button_text'         => $validated['button_text'] ?? null,
+            'button_text_id'      => $validated['button_text_id'] ?? null,
+            'button_url'          => $validated['button_url'] ?? null,
+            'image_path'          => 'banners/' . $filename,
+            'image_position'      => $validated['image_position'] ?? 'center',
+            'sort_order'          => $maxOrder + 1,
+            'is_active'           => $request->boolean('is_active', true),
         ]);
 
         return redirect()->route('manager.banners.index', ['page_filter' => $validated['page']])
@@ -74,26 +80,32 @@ class PageBannerController extends Controller
     public function update(Request $request, PageBanner $banner)
     {
         $validated = $request->validate([
-            'page'             => 'required|string|in:' . implode(',', array_keys(PageBanner::$pages)),
-            'title'            => 'nullable|string|max:255',
-            'hero_title'       => 'nullable|string|max:500',
-            'hero_description' => 'nullable|string|max:1000',
-            'button_text'      => 'nullable|string|max:100',
-            'button_url'       => 'nullable|string|max:500',
-            'image'            => 'nullable|image|max:4096',
-            'image_position'   => 'nullable|string|max:30',
-            'is_active'        => 'nullable|boolean',
+            'page'                => 'required|string|in:' . implode(',', array_keys(PageBanner::$pages)),
+            'title'               => 'nullable|string|max:255',
+            'hero_title'          => 'nullable|string|max:500',
+            'hero_title_id'       => 'nullable|string|max:500',
+            'hero_description'    => 'nullable|string|max:1000',
+            'hero_description_id' => 'nullable|string|max:1000',
+            'button_text'         => 'nullable|string|max:100',
+            'button_text_id'      => 'nullable|string|max:100',
+            'button_url'          => 'nullable|string|max:500',
+            'image'               => 'nullable|image|max:4096',
+            'image_position'      => 'nullable|string|max:30',
+            'is_active'           => 'nullable|boolean',
         ]);
 
         $data = [
-            'page'             => $validated['page'],
-            'title'            => $validated['title'] ?? null,
-            'hero_title'       => $validated['hero_title'] ?? null,
-            'hero_description' => $validated['hero_description'] ?? null,
-            'button_text'      => $validated['button_text'] ?? null,
-            'button_url'       => $validated['button_url'] ?? null,
-            'image_position'   => $validated['image_position'] ?? 'center',
-            'is_active'        => $request->boolean('is_active', false),
+            'page'                => $validated['page'],
+            'title'               => $validated['title'] ?? null,
+            'hero_title'          => $validated['hero_title'] ?? null,
+            'hero_title_id'       => $validated['hero_title_id'] ?? null,
+            'hero_description'    => $validated['hero_description'] ?? null,
+            'hero_description_id' => $validated['hero_description_id'] ?? null,
+            'button_text'         => $validated['button_text'] ?? null,
+            'button_text_id'      => $validated['button_text_id'] ?? null,
+            'button_url'          => $validated['button_url'] ?? null,
+            'image_position'      => $validated['image_position'] ?? 'center',
+            'is_active'           => $request->boolean('is_active', false),
         ];
 
         if ($request->hasFile('image')) {

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - About Us')
 
 @section('content')
@@ -44,7 +44,7 @@
         <!-- Quote Section -->
         <section class="py-24 bg-white relative">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <span class="material-symbols-outlined text-6xl text-blue-600/20 mb-6 block">format_quote</span>
+                <span translate="no" class="material-symbols-outlined text-6xl text-blue-600/20 mb-6 block">format_quote</span>
                 <h2 class="text-[33px] font-bold text-hex-dark leading-tight mb-12 italic" data-i18n
                     data-en="&quot;The best idea is a comprehensive solution that bridges the gap between vision and reality.&quot;"
                     data-id="&quot;Ide terbaik adalah solusi komprehensif yang menjembatani kesenjangan antara visi dan realitas.&quot;">
@@ -72,7 +72,7 @@
                         class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div
                             class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">emoji_events</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">emoji_events</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Competitive Excellence"
                             data-id="Keunggulan Kompetitif">Competitive Excellence</h3>
@@ -89,7 +89,7 @@
                         class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div
                             class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">memory</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">memory</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n
                             data-en="Technology-Driven Innovation" data-id="Inovasi Berbasis Teknologi">
@@ -107,7 +107,7 @@
                         class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300">
                         <div
                             class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">speed</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">speed</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Speed &amp; Performance"
                             data-id="Kecepatan &amp; Performa">Speed & Performance</h3>
@@ -144,7 +144,7 @@
                         class="video-thumbnail-play absolute inset-0 flex items-center justify-center group-hover:bg-black/20 transition-all duration-300">
                         <span
                             class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-lg group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300">
-                            <span class="material-symbols-outlined text-4xl ml-1">play_arrow</span>
+                            <span translate="no" class="material-symbols-outlined text-4xl ml-1">play_arrow</span>
                         </span>
                     </button>
                     <iframe id="about-video-iframe" class="hidden w-full h-full"
@@ -256,13 +256,13 @@
                                         <div class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
                                             <div class="flex gap-1 text-yellow-400 mb-6">
                                                 @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
-                                                    <span class="material-symbols-outlined star-icon text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+                                                    <span translate="no" class="material-symbols-outlined star-icon text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
                                                 @endfor
                                             </div>
                                             <p class="text-slate-700 font-medium italic mb-8 text-base">"{{ $testimonial->quote }}"</p>
                                             <div class="flex items-center gap-4">
                                                 <div class="w-12 h-12 {{ $color }} rounded-full flex justify-center items-center text-white flex-shrink-0">
-                                                    <span class="material-symbols-outlined text-xl">person</span>
+                                                    <span translate="no" class="material-symbols-outlined text-xl">person</span>
                                                 </div>
                                                 <div>
                                                     <p class="font-bold text-slate-900 text-base">{{ $testimonial->name }}</p>
@@ -295,13 +295,13 @@
                                     <div class="bg-white p-6 rounded-2xl relative shadow-md shadow-slate-200/50 border border-slate-100">
                                         <div class="flex gap-0.5 text-yellow-400 mb-4">
                                             @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
-                                                <span class="material-symbols-outlined star-icon text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                                                <span translate="no" class="material-symbols-outlined star-icon text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
                                             @endfor
                                         </div>
                                         <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">"{{ $testimonial->quote }}"</p>
                                         <div class="flex items-center gap-3">
                                             <div class="w-10 h-10 {{ $aboutAvatarColors2[$loop->index % count($aboutAvatarColors2)] }} rounded-full flex justify-center items-center text-white flex-shrink-0">
-                                                <span class="material-symbols-outlined text-base">person</span>
+                                                <span translate="no" class="material-symbols-outlined text-base">person</span>
                                             </div>
                                             <div>
                                                 <p class="font-bold text-slate-900 text-sm">{{ $testimonial->name }}</p>

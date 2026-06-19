@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Start a Project')
 
 @php
@@ -21,7 +21,7 @@
         <section class="ai-assistant-banner mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-3xl p-8 flex flex-col md:flex-row gap-8 items-center justify-between shadow-sm" aria-label="AI discussion helper">
           <div class="flex items-center gap-6">
               <div class="ai-assistant-icon-wrap w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center shrink-0" aria-hidden="true">
-                <span class="material-symbols-outlined text-blue-600 text-4xl">auto_awesome</span>
+                <span translate="no" class="material-symbols-outlined text-blue-600 text-4xl">auto_awesome</span>
               </div>
               <div class="ai-assistant-copy flex-1">
                 <h2 class="text-xl font-bold text-slate-900 m-0 mb-2" data-i18n data-en="Confused explaining your project?" data-id="Bingung menjelaskan proyek Anda?">Confused explaining your project?</h2>
@@ -113,7 +113,7 @@
               <h3 class="text-2xl font-bold text-slate-900 mb-3 m-0" data-i18n data-en="Upload Project Brief" data-id="Unggah Brief Proyek">Upload Project Brief</h3>
               <label class="upload-box flex flex-col items-center justify-center gap-2 border-2 border-dashed border-slate-300 bg-slate-50 rounded-lg min-h-[144px] cursor-pointer hover:bg-slate-100 transition-colors text-center w-full">
                 <input id="project-file" name="file" type="file" class="hidden" accept=".svg,.png,.jpg,.jpeg,.doc,.docx,.pdf,.ppt,.pptx" />
-                <span class="material-symbols-outlined upload-icon text-slate-500 text-2xl" aria-hidden="true">cloud_upload</span>
+                <span translate="no" class="material-symbols-outlined upload-icon text-slate-500 text-2xl" aria-hidden="true">cloud_upload</span>
                 <div class="upload-title text-blue-600 text-sm font-medium" data-i18n data-en="Click to Upload" data-id="Klik untuk Unggah">Click to Upload</div>
                 <div class="upload-caption text-slate-500 text-xs" data-i18n data-en="SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)" data-id="SVG, PNG, JPG, DOCS, PDF atau PPT (maks. 5 MB)">SVG, PNG, JPG, DOCS, PDF or PPT (max. 5 MB)</div>
                 <div id="project-file-name" class="text-sm text-slate-600 font-medium hidden"></div>

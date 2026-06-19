@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - ' . $project->name)
 
 @php
@@ -131,14 +131,14 @@
                                     <img src="{{ image_url($project->client->logo) }}" alt="{{ $project->client->name }}"
                                         class="h-7 w-20 object-contain shrink-0">
                                 @else
-                                    <span class="material-symbols-outlined text-slate-400 text-xl shrink-0">business</span>
+                                    <span translate="no" class="material-symbols-outlined text-slate-400 text-xl shrink-0">business</span>
                                 @endif
                                 <p class="font-bold text-hex-dark group-hover:text-blue-600 transition-colors text-sm truncate">
                                     {{ $project->client->name }}</p>
                             </div>
                             <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold shrink-0">
                                 <span data-i18n data-en="See all projects" data-id="Lihat semua proyek">See all projects</span>
-                                <span
+                                <span translate="no"
                                     class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
                             </div>
                         </a>

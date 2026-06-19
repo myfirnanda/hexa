@@ -6,6 +6,18 @@
  * Works with textContent by default; use data-i18n="html" for innerHTML.
  */
 (function () {
+    // Prevent browser auto-translate from corrupting Material Symbols icon text
+    function protectIcons() {
+        document.querySelectorAll('.material-symbols-outlined').forEach(function (el) {
+            el.setAttribute('translate', 'no');
+            el.classList.add('notranslate');
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', protectIcons);
+    } else {
+        protectIcons();
+    }
     function applyLanguage(lang) {
         localStorage.setItem('hex-lang', lang);
         document.documentElement.lang = lang === 'id' ? 'id' : 'en';

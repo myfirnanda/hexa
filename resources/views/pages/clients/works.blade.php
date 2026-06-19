@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - ' . $client->name . ' Works')
 
 @push('styles')
@@ -21,7 +21,7 @@
             <!-- Breadcrumb -->
             <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
                 <a href="{{ route('clients') }}" class="hover:text-blue-600 transition-colors font-medium" data-i18n data-en="Clients" data-id="Klien">Clients</a>
-                <span class="material-symbols-outlined text-base">chevron_right</span>
+                <span translate="no" class="material-symbols-outlined text-base">chevron_right</span>
                 <span class="text-hex-dark font-semibold">{{ $client->name }}</span>
             </nav>
 
@@ -32,7 +32,7 @@
                     </div>
                 @else
                     <div class="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center border border-slate-100 shrink-0">
-                        <span class="material-symbols-outlined text-slate-400 text-4xl">business</span>
+                        <span translate="no" class="material-symbols-outlined text-slate-400 text-4xl">business</span>
                     </div>
                 @endif
                 <div>
@@ -52,7 +52,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             @if($projects->isEmpty())
                 <div class="text-center py-24">
-                    <span class="material-symbols-outlined text-6xl text-slate-300 block mb-4">work_off</span>
+                    <span translate="no" class="material-symbols-outlined text-6xl text-slate-300 block mb-4">work_off</span>
                     <p class="text-slate-400 text-lg" data-i18n
                         data-en="No works linked to this client yet."
                         data-id="Belum ada proyek yang dikaitkan dengan klien ini.">
@@ -60,7 +60,7 @@
                     </p>
                     <a href="{{ route('clients') }}"
                         class="mt-6 inline-flex items-center gap-2 text-blue-600 font-bold hover:underline">
-                        <span class="material-symbols-outlined">arrow_back</span>
+                        <span translate="no" class="material-symbols-outlined">arrow_back</span>
                         <span data-i18n data-en="Back to Clients" data-id="Kembali ke Klien">Back to Clients</span>
                     </a>
                 </div>
@@ -101,7 +101,7 @@
                                 @endif
                                 <div class="mt-auto flex items-center gap-2 text-hex-blue font-bold text-sm">
                                     <span data-i18n data-en="Read More" data-id="Selengkapnya">Read More</span>
-                                    <span class="material-symbols-outlined text-sm translate-y-px">arrow_forward</span>
+                                    <span translate="no" class="material-symbols-outlined text-sm translate-y-px">arrow_forward</span>
                                 </div>
                             </div>
                         </a>

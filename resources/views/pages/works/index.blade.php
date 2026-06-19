@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Works')
 
 @push('styles')
@@ -237,7 +237,7 @@
                         <h3 class="text-sm md:text-xl font-bold text-hex-dark mb-2 md:mb-4 line-clamp-1">${p.title}</h3>
                         <p class="text-slate-500 text-xs md:text-sm leading-relaxed line-clamp-2 md:line-clamp-3 mb-3 md:mb-6">${p.summary}</p>
                         <div class="mt-auto flex items-center gap-1 md:gap-2 text-hex-blue font-bold text-xs md:text-sm">
-                            ${readMoreText} <span class="material-symbols-outlined text-xs md:text-sm translate-y-px">arrow_forward</span>
+                            ${readMoreText} <span translate="no" class="material-symbols-outlined text-xs md:text-sm translate-y-px">arrow_forward</span>
                         </div>
                     </div>
                     </a>

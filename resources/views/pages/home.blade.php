@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 
 @section('title', 'Hexavara')
 
@@ -19,7 +19,13 @@
                                     bg-white/60 backdrop-blur-md rounded-2xl p-6 text-center border border-white/60
                                     lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:p-0 lg:w-auto lg:text-left lg:border-0">
                     @if($heroBanner && $heroBanner->hero_title)
-                        <h1 class="hero-title text-hex-dark">{!! $heroBanner->hero_title !!}</h1>
+                        @if($heroBanner->hero_title_id)
+                            <h1 class="hero-title text-hex-dark" data-i18n="html"
+                                data-en="{{ $heroBanner->hero_title }}"
+                                data-id="{{ $heroBanner->hero_title_id }}">{!! $heroBanner->hero_title !!}</h1>
+                        @else
+                            <h1 class="hero-title text-hex-dark">{!! $heroBanner->hero_title !!}</h1>
+                        @endif
                     @else
                         <h1 class="hero-title text-hex-dark" data-i18n="html"
                             data-en="Transforming<br />Ideas into <span class=’text-hex-blue’>Digital<br />Excellence</span>"
@@ -27,8 +33,14 @@
                             Transforming<br />Ideas into <span class="text-hex-blue">Digital<br />Excellence</span></h1>
                     @endif
                     @if($heroBanner && $heroBanner->hero_description)
-                        <p class="mt-6 text-hex-slate text-lg leading-[1.65] lg:max-w-[505px]">
-                            {{ $heroBanner->hero_description }}</p>
+                        @if($heroBanner->hero_description_id)
+                            <p class="mt-6 text-hex-slate text-lg leading-[1.65] lg:max-w-[505px]" data-i18n
+                                data-en="{{ $heroBanner->hero_description }}"
+                                data-id="{{ $heroBanner->hero_description_id }}">{{ $heroBanner->hero_description }}</p>
+                        @else
+                            <p class="mt-6 text-hex-slate text-lg leading-[1.65] lg:max-w-[505px]">
+                                {{ $heroBanner->hero_description }}</p>
+                        @endif
                     @else
                         <p class="mt-6 text-hex-slate text-lg leading-[1.65] lg:max-w-[505px]" data-i18n
                             data-en="Enhance your business capabilities to innovate and compete in today’s dynamic market by harnessing the power of data."
@@ -38,11 +50,19 @@
                     @endif
                     <div class="flex justify-center lg:justify-start">
                         @if($heroBanner && $heroBanner->button_text)
-                            <a href="{{ $heroBanner->button_url ?: route('start-project') }}"
-                                class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
-                                style="color:white;">{{ $heroBanner->button_text }}</a>
+                            @if($heroBanner->button_text_id)
+                                <a href="{{ $heroBanner->button_url ?: route(‘start-project’) }}"
+                                    class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
+                                    style="color:white;" data-i18n
+                                    data-en="{{ $heroBanner->button_text }}"
+                                    data-id="{{ $heroBanner->button_text_id }}">{{ $heroBanner->button_text }}</a>
+                            @else
+                                <a href="{{ $heroBanner->button_url ?: route(‘start-project’) }}"
+                                    class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
+                                    style="color:white;">{{ $heroBanner->button_text }}</a>
+                            @endif
                         @else
-                            <a href="{{ route('start-project') }}"
+                            <a href="{{ route(‘start-project’) }}"
                                 class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                                 style="color:white;" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult
                                 Now</a>
@@ -175,7 +195,7 @@
                                                             @else
                                                                 <div
                                                                     class="w-full h-48 border-b border-white/10 flex items-center justify-center bg-white/5">
-                                                                    <span class="material-symbols-outlined text-5xl text-white/20">inventory_2</span>
+                                                                    <span translate="no" class="material-symbols-outlined text-5xl text-white/20">inventory_2</span>
                                                                 </div>
                                                             @endif
                                                             <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
@@ -194,7 +214,7 @@
                                                                 <span
                                                                     class="w-fit inline-flex items-center text-white font-bold {{ $c['hover'] }} transition-colors gap-2 mt-auto group/btn">
                                                                     <span data-i18n data-en="Learn more" data-id="Selengkapnya">Learn more</span>
-                                                                    <span
+                                                                    <span translate="no"
                                                                         class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
                                                                 </span>
                                                             </div>
@@ -218,7 +238,7 @@
                                     class="group inline-flex items-center gap-1 text-white/70 text-sm font-semibold hover:text-white transition-colors">
                                     <span data-i18n data-en="View All Products" data-id="Lihat Semua Produk">View All
                                         Products</span>
-                                    <span
+                                    <span translate="no"
                                         class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-200">arrow_right_alt</span>
                                 </a>
                             </div>
@@ -242,7 +262,7 @@
                                             @else
                                                 <div
                                                     class="w-full h-48 border-b border-white/10 flex items-center justify-center bg-white/5">
-                                                    <span class="material-symbols-outlined text-5xl text-white/20">inventory_2</span>
+                                                    <span translate="no" class="material-symbols-outlined text-5xl text-white/20">inventory_2</span>
                                                 </div>
                                             @endif
                                             <div class="p-8 relative z-10 flex-grow flex flex-col items-start">
@@ -261,7 +281,7 @@
                                                 <span
                                                     class="w-fit inline-flex items-center text-white font-bold {{ $c['hover'] }} transition-colors gap-2 mt-auto group/btn">
                                                     <span data-i18n data-en="Learn more" data-id="Selengkapnya">Learn more</span>
-                                                    <span
+                                                    <span translate="no"
                                                         class="material-symbols-outlined transform group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
                                                 </span>
                                             </div>
@@ -282,7 +302,7 @@
                                         class="group inline-flex items-center gap-1 text-white/70 text-sm font-semibold hover:text-white transition-colors">
                                         <span data-i18n data-en="View All Products" data-id="Lihat Semua Produk">View All
                                             Products</span>
-                                        <span
+                                        <span translate="no"
                                             class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform duration-200">arrow_right_alt</span>
                                     </a>
                                 </div>
@@ -312,7 +332,7 @@
                                     class="text-blue-600 font-bold flex items-center gap-2 hover:text-blue-700 transition-colors group">
                                     <span data-i18n data-en="View All Services" data-id="Lihat Semua Layanan">View All
                                         Services</span>
-                                    <span
+                                    <span translate="no"
                                         class="material-symbols-outlined transform group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                                 </a>
                             </div>
@@ -394,7 +414,7 @@
                             <a href="{{ route('services.index') }}"
                                 class="text-blue-600 font-bold flex items-center gap-2 hover:text-blue-700 transition-colors group">
                                 <span data-i18n data-en="View All Services" data-id="Lihat Semua Layanan">View All Services</span>
-                                <span class="material-symbols-outlined transform group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                                <span translate="no" class="material-symbols-outlined transform group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                             </a>
                         </div>
                     </div>
@@ -465,7 +485,7 @@
                                                 class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                                                 alt="{{ $homeProject->name }}">
                                         @else
-                                            <span class="material-symbols-outlined text-4xl md:text-6xl text-blue-400">rocket_launch</span>
+                                            <span translate="no" class="material-symbols-outlined text-4xl md:text-6xl text-blue-400">rocket_launch</span>
                                         @endif
                                     </div>
                                     <div class="p-3 md:p-8">
@@ -524,7 +544,7 @@
                                 style="background-color: #0a1221;">
                                 <div
                                     class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                                    <span class="material-symbols-outlined text-lg md:text-xl">list_alt</span>
+                                    <span translate="no" class="material-symbols-outlined text-lg md:text-xl">list_alt</span>
                                 </div>
                                 <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-snug" data-i18n
                                     data-en="Roadmap for Timeline" data-id="Peta Jalan & Timeline">Roadmap for Timeline</h3>
@@ -542,7 +562,7 @@
                                 style="background-color: #0a1221;">
                                 <div
                                     class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                                    <span class="material-symbols-outlined text-lg md:text-xl">speed</span>
+                                    <span translate="no" class="material-symbols-outlined text-lg md:text-xl">speed</span>
                                 </div>
                                 <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n
                                     data-en="Weekly Sprint Monitoring" data-id="Pemantauan Sprint Mingguan">Weekly Sprint Monitoring
@@ -561,7 +581,7 @@
                                 style="background-color: #0a1221;">
                                 <div
                                     class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                                    <span class="material-symbols-outlined text-lg md:text-xl">verified_user</span>
+                                    <span translate="no" class="material-symbols-outlined text-lg md:text-xl">verified_user</span>
                                 </div>
                                 <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n
                                     data-en="Maximum Service" data-id="Layanan Maksimal">Maximum Service</h3>
@@ -579,7 +599,7 @@
                                 style="background-color: #0a1221;">
                                 <div
                                     class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                                    <span class="material-symbols-outlined text-lg md:text-xl">trending_up</span>
+                                    <span translate="no" class="material-symbols-outlined text-lg md:text-xl">trending_up</span>
                                 </div>
                                 <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n
                                     data-en="Monitor Team Performance" data-id="Pantau Performa Tim">Monitor Team Performance</h3>
@@ -626,7 +646,7 @@
                                                         class="bg-white p-8 rounded-3xl relative shadow-xl shadow-slate-200/50 border border-slate-100">
                                                         <div class="flex gap-1 text-yellow-400 mb-6">
                                                             @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
-                                                                <span class="material-symbols-outlined star-icon text-lg"
+                                                                <span translate="no" class="material-symbols-outlined star-icon text-lg"
                                                                     style="font-variation-settings: 'FILL' 1;">star</span>
                                                             @endfor
                                                         </div>
@@ -635,7 +655,7 @@
                                                         <div class="flex items-center gap-4">
                                                             <div
                                                                 class="w-12 h-12 {{ $color }} rounded-full flex justify-center items-center text-white flex-shrink-0">
-                                                                <span class="material-symbols-outlined text-xl">person</span>
+                                                                <span translate="no" class="material-symbols-outlined text-xl">person</span>
                                                             </div>
                                                             <div>
                                                                 <p class="font-bold text-slate-900 text-base">{{ $testimonial->name }}</p>
@@ -670,7 +690,7 @@
                                                     class="bg-white p-6 rounded-2xl relative shadow-md shadow-slate-200/50 border border-slate-100">
                                                     <div class="flex gap-0.5 text-yellow-400 mb-4" style="justify-content: flex-start;">
                                                         @for($s = 0; $s < ($testimonial->rating ?: 5); $s++)
-                                                            <span class="material-symbols-outlined star-icon text-xl font-bold"
+                                                            <span translate="no" class="material-symbols-outlined star-icon text-xl font-bold"
                                                                 style="font-variation-settings: 'FILL' 1;">star</span>
                                                         @endfor
                                                     </div>
@@ -679,7 +699,7 @@
                                                     <div class="flex items-center gap-3">
                                                         <div
                                                             class="w-10 h-10 {{ $avatarColors[$loop->index % count($avatarColors)] }} rounded-full flex justify-center items-center text-white flex-shrink-0">
-                                                            <span class="material-symbols-outlined text-base">person</span>
+                                                            <span translate="no" class="material-symbols-outlined text-base">person</span>
                                                         </div>
                                                         <div>
                                                             <p class="font-bold text-slate-900 text-sm">{{ $testimonial->name }}</p>

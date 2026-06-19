@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Services')
 
 @push('styles')
@@ -58,57 +58,57 @@
                     <!-- Card 1 -->
                     <a href="{{ route('services.software-development') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">code_blocks</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">code_blocks</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Software Development" data-id="Pengembangan Perangkat Lunak">Software Development</h3>
                         <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences." data-id="Tingkatkan kehadiran digital Anda dengan layanan pengembangan perangkat lunak kami. Kami mendedikasikan diri untuk membangun solusi kustom yang selaras dengan kebutuhan bisnis Anda, memastikan fungsi yang mulus dan pengalaman pengguna yang optimal.">Elevate your digital presence with our software development services. We specialize in crafting bespoke solutions to your business needs, ensuring seamless functionality and user-centric experiences.</p>
                         <div class="w-full h-px bg-slate-100 mb-6"></div>
                         <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Web Development" data-id="Pengembangan Web">Web Development</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Mobile Apps Development" data-id="Pengembangan Aplikasi Mobile">Mobile Apps Development</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Geographical Information System" data-id="Sistem Informasi Geografis">Geographical Information System</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Internet of Things" data-id="Internet of Things">Internet of Things</span></li>
                         </ul>
                         <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
-                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span translate="no" class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </span>
                     </a>
 
                     <!-- Card 2 -->
                     <a href="{{ route('services.startup-incubator') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">rocket_launch</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Startup & Incubator" data-id="Startup & Inkubator">Startup & Incubator</h3>
                         <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model." data-id="Akselerasi kesuksesan startup Anda melalui layanan konsultasi strategis dan inkubasi kami. Mulai dari pematangan ide hingga eksekusi pasar, kami memberikan panduan ahli untuk mengoptimalkan model bisnis dan skalabilitas Anda.">Navigate the complexities of startup success with our expert consultancy services. From ideation to execution, we offer strategic guidance to optimize your business model.</p>
                         <div class="w-full h-px bg-slate-100 mb-6"></div>
                         <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Coaching & Mentoring" data-id="Pelatihan & Mentoring">Coaching & Mentoring</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Investment Readiness" data-id="Kesiapan Investasi">Investment Readiness</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Fundraising Strategy" data-id="Strategi Fundraising">Fundraising Strategy</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Partnership Support" data-id="Dukungan Kemitraan">Partnership Support</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Coaching & Mentoring" data-id="Pelatihan & Mentoring">Coaching & Mentoring</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Investment Readiness" data-id="Kesiapan Investasi">Investment Readiness</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Fundraising Strategy" data-id="Strategi Fundraising">Fundraising Strategy</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Partnership Support" data-id="Dukungan Kemitraan">Partnership Support</span></li>
                         </ul>
                         <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
-                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span translate="no" class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </span>
                     </a>
 
                     <!-- Card 3 -->
                     <a href="{{ route('services.managedService') }}" class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-3xl">support_agent</span>
+                            <span translate="no" class="material-symbols-outlined text-3xl">support_agent</span>
                         </div>
                         <h3 class="text-2xl font-bold text-hex-dark mb-4" data-i18n data-en="Managed Services" data-id="Layanan Terkelola">Managed Services</h3>
                         <p class="text-hex-slate text-base leading-relaxed mb-8 min-h-[120px]" data-i18n data-en="Optimize your IT infrastructure with our comprehensive managed services. We provide solutions including proactive system monitoring, and strategic IT planning." data-id="Optimalkan infrastruktur IT Anda dengan layanan pengelolaan end-to-end kami. Kami menghadirkan solusi pemantauan sistem proaktif, pemeliharaan berkala, dan perencanaan IT strategis untuk memastikan kelancaran operasional bisnis Anda.">Optimize your IT infrastructure with our comprehensive managed services. We provide solutions including proactive system monitoring, and strategic IT planning.</p>
                         <div class="w-full h-px bg-slate-100 mb-6"></div>
                         <ul class="space-y-4 mb-8 text-hex-slate text-sm flex-grow">
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="IT Outsourcing" data-id="Outsourcing TI">IT Outsourcing</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="System Maintenance" data-id="Pemeliharaan Sistem">System Maintenance</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Cloud Configuration" data-id="Konfigurasi Cloud">Cloud Configuration</span></li>
-                            <li class="flex items-start gap-3"><span class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Gap Analysis" data-id="Gap Analysis">Gap Analysis</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="IT Outsourcing" data-id="Outsourcing TI">IT Outsourcing</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="System Maintenance" data-id="Pemeliharaan Sistem">System Maintenance</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Cloud Configuration" data-id="Konfigurasi Cloud">Cloud Configuration</span></li>
+                            <li class="flex items-start gap-3"><span translate="no" class="material-symbols-outlined text-hex-blue text-lg">check_circle</span> <span data-i18n data-en="Gap Analysis" data-id="Gap Analysis">Gap Analysis</span></li>
                         </ul>
                         <span class="inline-flex items-center font-bold text-hex-blue transition-colors">
-                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            <span data-i18n data-en="Learn More" data-id="Selengkapnya">Learn More</span> <span translate="no" class="material-symbols-outlined ml-1 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </span>
                     </a>
                 </div>
@@ -126,7 +126,7 @@
                     <!-- Card 1 -->
                     <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-2xl">campaign</span>
+                            <span translate="no" class="material-symbols-outlined text-2xl">campaign</span>
                         </div>
                         <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Advertising" data-id="Periklanan">Advertising</h3>
                         <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Data-driven marketing strategies to maximize ROI and reach your audience." data-id="Strategi pemasaran berbasis data untuk memaksimalkan ROI dan menjangkau audiens Anda.">Data-driven marketing strategies to maximize ROI and reach your audience.</p>
@@ -134,7 +134,7 @@
                     <!-- Card 2 -->
                     <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-2xl">design_services</span>
+                            <span translate="no" class="material-symbols-outlined text-2xl">design_services</span>
                         </div>
                         <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="UI/UX Design" data-id="Desain UI/UX">UI/UX Design</h3>
                         <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Intuitive interfaces for better user engagement and conversion rates." data-id="Antarmuka intuitif untuk meningkatkan interaksi pengguna dan tingkat konversi.">Intuitive interfaces for better user engagement and conversion rates.</p>
@@ -142,7 +142,7 @@
                     <!-- Card 3 -->
                     <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-2xl">verified</span>
+                            <span translate="no" class="material-symbols-outlined text-2xl">verified</span>
                         </div>
                         <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Digital Branding" data-id="Branding Digital">Digital Branding</h3>
                         <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Strategic identity building for modern businesses in a competitive digital world." data-id="Pembangunan identitas strategis untuk bisnis modern di dunia digital yang kompetitif.">Strategic identity building for modern businesses in a competitive digital world.</p>
@@ -150,7 +150,7 @@
                     <!-- Card 4 -->
                     <div class="group bg-white rounded-[40px] p-10 border border-slate-100 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center">
                         <div class="w-14 h-14 rounded-2xl bg-hex-surface flex items-center justify-center mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-2xl">account_balance</span>
+                            <span translate="no" class="material-symbols-outlined text-2xl">account_balance</span>
                         </div>
                         <h3 class="text-xl font-bold text-hex-dark mb-4" data-i18n data-en="Accounting Consultant" data-id="Konsultan Akuntansi">Accounting Consultant</h3>
                         <p class="text-hex-slate text-sm leading-relaxed" data-i18n data-en="Professional financial management for tech assets and business stability." data-id="Manajemen keuangan profesional untuk aset teknologi dan stabilitas bisnis.">Professional financial management for tech assets and business stability.</p>
@@ -176,28 +176,28 @@
                 <div class="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-8 max-w-5xl mx-auto">
                     <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
                         <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-lg md:text-xl">list_alt</span>
+                            <span translate="no" class="material-symbols-outlined text-lg md:text-xl">list_alt</span>
                         </div>
                         <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-snug" data-i18n data-en="Roadmap for Timeline" data-id="Peta Jalan & Lini Masa">Roadmap for Timeline</h3>
                         <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement." data-id="Peta jalan kami menyajikan daftar tugas dan lini masa proyek yang mendetail dan dapat Anda pantau secara real-time. Setiap rencana disusun berdasarkan kesepakatan bersama untuk transparansi penuh.">Our roadmap contains a detailed list of tasks and project timelines that you can monitor at any time. Each roadmap is created based on mutual agreement.</p>
                     </div>
                     <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
                         <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-lg md:text-xl">speed</span>
+                            <span translate="no" class="material-symbols-outlined text-lg md:text-xl">speed</span>
                         </div>
                         <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Weekly Sprint Monitoring" data-id="Pemantauan Sprint Mingguan">Weekly Sprint Monitoring</h3>
                         <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success." data-id="Kami menerapkan kontrol sprint yang ketat melalui pemantauan mingguan, memastikan progres pengerjaan selaras dengan target waktu yang ditetapkan demi menjamin efisiensi dan kesuksesan proyek Anda.">This feature helps control sprints, ensuring our programmers work according to the time you've purchased. It also guarantees that your project is success.</p>
                     </div>
                     <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
                         <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-lg md:text-xl">verified_user</span>
+                            <span translate="no" class="material-symbols-outlined text-lg md:text-xl">verified_user</span>
                         </div>
                         <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Maximum Service" data-id="Layanan Maksimal & Responsif">Maximum Service</h3>
                         <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests." data-id="Kami berkomitmen memberikan layanan purnajual terbaik dengan penanganan kendala dan perbaikan dalam waktu maksimal 48 jam. Anda dapat melacak status permintaan Anda dengan mudah secara transparan.">We guarantee maximum service with bug fixes and improvements handled within 48 hours. This feature allows you to easily track your requests.</p>
                     </div>
                     <div class="p-4 md:p-6 rounded-2xl md:rounded-[32px] border border-white/[0.03] transition-all duration-300 h-full" style="background-color: #0a1221;">
                         <div class="w-9 h-9 md:w-10 md:h-10 bg-[#1d2636] rounded-xl md:rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-blue-500">
-                            <span class="material-symbols-outlined text-lg md:text-xl">trending_up</span>
+                            <span translate="no" class="material-symbols-outlined text-lg md:text-xl">trending_up</span>
                         </div>
                         <h3 class="text-base md:text-xl font-bold text-white mb-3 md:mb-4 leading-tight" data-i18n data-en="Monitor Team Performance" data-id="Pantau Performa Tim">Monitor Team Performance</h3>
                         <p class="text-xs md:text-base leading-[1.6] md:leading-relaxed text-justify" style="color: #94a3b8;" data-i18n data-en="Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance." data-id="Setiap talenta kami memiliki target harian dan bulanan yang terukur, selaras dengan kebutuhan proyek Anda. Kami memastikan tim memberikan performa terbaik untuk hasil yang berkualitas tinggi.">Each of our talents has daily and monthly targets aligned with the time you've purchased. They compete to deliver their best performance.</p>

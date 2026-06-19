@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageBanner extends Model
 {
-    protected $fillable = ['page', 'title', 'hero_title', 'hero_description', 'button_text', 'button_url', 'image_path', 'image_position', 'sort_order', 'is_active'];
+    protected $fillable = ['page', 'title', 'hero_title', 'hero_title_id', 'hero_description', 'hero_description_id', 'button_text', 'button_text_id', 'button_url', 'image_path', 'image_position', 'sort_order', 'is_active'];
 
     protected $casts = ['is_active' => 'boolean'];
 
