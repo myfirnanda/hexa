@@ -11,9 +11,9 @@
     <!-- Hero Section -->
     <main>
         <!-- Hero Section -->
-        <section class="relative w-full h-[583px] overflow-hidden bg-gray-900 lg:bg-transparent">
+        <section class="relative w-full h-[583px] overflow-hidden lg:bg-transparent">
             <div id="mobileHeroBg" class="absolute inset-0 z-0 bg-cover bg-center lg:hidden"></div>
-            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex items-center justify-center lg:block">
+            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex items-start pt-10 justify-center lg:block lg:pt-0">
                 <div
                     class="lg:absolute lg:left-[58px] lg:top-1/2 lg:-translate-y-1/2 lg:z-[2] max-w-[763px] lg:max-w-[490px] lg:pt-0 w-full
                                     bg-white/60 backdrop-blur-md rounded-2xl p-6 text-center border border-white/60

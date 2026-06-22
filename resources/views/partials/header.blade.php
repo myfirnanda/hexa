@@ -1,6 +1,6 @@
 ﻿<!-- Header -->
 <header class="relative w-full z-[120] bg-white lg:h-[103px] border-b border-gray-100 lg:border-none">
-    <div class="max-w-[1280px] mx-auto h-full flex items-center justify-between px-4 lg:px-0 relative">
+    <div class="max-w-[1280px] mx-auto lg:h-full flex items-center justify-between px-4 py-3 lg:py-0 relative">
         <a href="{{ route('home') }}" class="lg:absolute lg:left-[37px] lg:top-1/2 lg:-translate-y-1/2 block">
             <img src="{{ asset('assets/img/brand-logo-main.png') }}" alt="Hexavara" class="w-[130px] md:w-[170px] h-auto object-contain">
         </a>

@@ -5,7 +5,7 @@
     <!-- Hero Section -->
     <main>
         <!-- Hero Section -->
-        <section class="relative w-full h-[583px] overflow-hidden bg-gray-900 lg:bg-transparent">
+        <section class="relative w-full h-[583px] overflow-hidden lg:bg-transparent">
             {{-- Mobile background --}}
             <div id="mobileHeroBg" class="absolute inset-0 z-0 bg-cover bg-center lg:hidden"
                 style="background-image: url('{{ $heroBanner ? asset('storage/' . $heroBanner->image_path) : asset('assets/img/hero/hero_graha.png') }}');"></div>
@@ -13,7 +13,7 @@
             <div class="absolute inset-0 z-0 bg-cover bg-top hidden lg:block opacity-80"
                 style="background-image: url('{{ $heroBanner ? asset('storage/' . $heroBanner->image_path) : asset('assets/img/Biru Modern Ucapan Selamat Ulang Tahun Instagram Post (2) 4.png') }}');">
             </div>
-            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex items-center justify-center lg:block">
+            <div class="max-w-[1280px] mx-auto h-full relative z-10 px-4 lg:px-0 flex items-start pt-10 justify-center lg:block lg:pt-0">
                 <div class="lg:absolute lg:left-[58px] lg:top-1/2 lg:-translate-y-1/2 max-w-[763px] lg:pt-0 w-full text-center
                             bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/60
                             lg:bg-transparent lg:backdrop-blur-none lg:rounded-none lg:p-0 lg:w-auto lg:text-left lg:border-0">
@@ -156,6 +156,70 @@
             </div>
         </section>
 
+        <!-- Our Projects Section -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-4" data-i18n data-en="Our Projects" data-id="Proyek Kami">Our Projects</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto" data-i18n
+                        data-en="We deliver our best performance in every project to ensure our customers are satisfied with the product."
+                        data-id="Kami memberikan performa terbaik di setiap proyek untuk memastikan kepuasan pelanggan.">
+                        We deliver our best performance in every project to ensure our customers are satisfied with the product.</p>
+                </div>
+
+                @php
+                    $aboutCatMap = [
+                        'software-development' => ['badge' => 'bg-blue-50 text-blue-600',   'en' => 'Software Development', 'id' => 'Pengembangan Perangkat Lunak'],
+                        'digital-branding'     => ['badge' => 'bg-orange-50 text-orange-600','en' => 'Digital Branding',    'id' => 'Branding Digital'],
+                        'startup-incubator'    => ['badge' => 'bg-purple-50 text-purple-600','en' => 'Startup Incubator',   'id' => 'Inkubator Startup'],
+                        'it-consultant'        => ['badge' => 'bg-green-50 text-green-600',  'en' => 'IT Consultant',       'id' => 'Konsultan TI'],
+                    ];
+                @endphp
+
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
+                    @foreach($projects as $proj)
+                        @php
+                            $projCat    = $aboutCatMap[$proj->category] ?? ['badge' => 'bg-slate-50 text-slate-600', 'en' => 'Project', 'id' => 'Proyek'];
+                            $projImgUrl = $proj->image ? image_url($proj->image) : null;
+                            $projDesc   = $proj->hero_description ?: \Illuminate\Support\Str::limit(strip_tags($proj->description ?? ''), 160);
+                            $projDescId = $proj->hero_description_id ?: \Illuminate\Support\Str::limit(strip_tags($proj->description_id ?? ''), 160);
+                        @endphp
+                        <a href="{{ route('works.show', $proj) }}"
+                            class="group block bg-white rounded-lg md:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+                            <div class="h-32 md:h-56 overflow-hidden relative {{ !$projImgUrl ? 'flex items-center justify-center bg-blue-100' : 'bg-slate-50' }}">
+                                @if($projImgUrl)
+                                    <img src="{{ $projImgUrl }}"
+                                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                                        alt="{{ $proj->name }}">
+                                @else
+                                    <span translate="no" class="material-symbols-outlined text-4xl md:text-6xl text-blue-400">rocket_launch</span>
+                                @endif
+                            </div>
+                            <div class="p-3 md:p-8">
+                                <div class="mb-2 md:mb-4">
+                                    <span class="inline-block px-2 py-0.5 md:px-4 md:py-1.5 rounded-full {{ $projCat['badge'] }} text-[8px] md:text-[10px] font-bold tracking-widest uppercase"
+                                        data-i18n data-en="{{ $projCat['en'] }}" data-id="{{ $projCat['id'] }}">{{ $projCat['en'] }}</span>
+                                </div>
+                                <h3 class="text-sm md:text-xl font-bold text-slate-900 mb-1 md:mb-4 line-clamp-2">{{ $proj->name }}</h3>
+                                @if($projDescId)
+                                    <p class="text-slate-600 text-[11px] md:text-sm line-clamp-2 md:line-clamp-3"
+                                        data-i18n data-en="{{ $projDesc }}" data-id="{{ $projDescId }}">{{ $projDesc }}</p>
+                                @else
+                                    <p class="text-slate-600 text-[11px] md:text-sm line-clamp-2 md:line-clamp-3">{{ $projDesc }}</p>
+                                @endif
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <div class="mt-12 text-center">
+                    <a href="{{ route('works.index') }}"
+                        class="inline-block px-8 py-3 rounded-full border border-slate-300 text-slate-700 font-medium hover:bg-slate-100 transition-colors"
+                        data-i18n data-en="View More" data-id="Lihat Lainnya">View More</a>
+                </div>
+            </div>
+        </section>
+
         <!-- Key Team Section -->
         <section class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -219,10 +283,30 @@
                 </div>
 
                 <!-- View All Link -->
-                <div>
+                <div class="mb-12">
                     <a href="{{ route('clients') }}"
-                        class="view-all text-slate-800 font-bold hover:text-blue-600 underline decoration-2 underline-offset-8 transition-colors">View
-                        All</a>
+                        class="view-all text-slate-800 font-bold hover:text-blue-600 underline decoration-2 underline-offset-8 transition-colors"
+                        data-i18n data-en="View All" data-id="Lihat Semua">View All</a>
+                </div>
+
+                <!-- Stats -->
+                <div id="about-stats-section"
+                    class="grid grid-cols-3 gap-2 md:gap-8 text-center pt-8 md:pt-12 border-t border-slate-100 divide-x divide-slate-100 w-full max-w-3xl">
+                    <div class="flex flex-col items-center py-2 md:py-4">
+                        <div class="text-2xl md:text-5xl font-extrabold text-slate-900 mb-1 md:mb-2 about-stat-num" data-target="77" data-suffix="+">0+</div>
+                        <div class="text-[9px] md:text-sm font-bold text-slate-500 uppercase tracking-widest leading-tight"
+                            data-i18n data-en="Happy Clients" data-id="Klien Puas">Happy Clients</div>
+                    </div>
+                    <div class="flex flex-col items-center py-2 md:py-4">
+                        <div class="text-2xl md:text-5xl font-extrabold text-slate-900 mb-1 md:mb-2 about-stat-num" data-target="116" data-suffix="+">0+</div>
+                        <div class="text-[9px] md:text-sm font-bold text-slate-500 uppercase tracking-widest leading-tight"
+                            data-i18n data-en="Projects Delivered" data-id="Proyek Diselesaikan">Projects Delivered</div>
+                    </div>
+                    <div class="flex flex-col items-center py-2 md:py-4">
+                        <div class="text-2xl md:text-5xl font-extrabold text-slate-900 mb-1 md:mb-2 about-stat-num" data-target="86" data-suffix="%">0%</div>
+                        <div class="text-[9px] md:text-sm font-bold text-slate-500 uppercase tracking-widest leading-tight"
+                            data-i18n data-en="Client Retention" data-id="Retensi Klien">Client Retention</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -259,14 +343,14 @@
                                                     <span translate="no" class="material-symbols-outlined star-icon text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
                                                 @endfor
                                             </div>
-                                            <p class="text-slate-700 font-medium italic mb-8 text-base">"{{ $testimonial->quote }}"</p>
+                                            <p class="text-slate-700 font-medium italic mb-8 text-base">"<span @if($testimonial->quote_id) data-i18n data-en="{{ $testimonial->quote }}" data-id="{{ $testimonial->quote_id }}" @endif>{{ $testimonial->quote }}</span>"</p>
                                             <div class="flex items-center gap-4">
                                                 <div class="w-12 h-12 {{ $color }} rounded-full flex justify-center items-center text-white flex-shrink-0">
                                                     <span translate="no" class="material-symbols-outlined text-xl">person</span>
                                                 </div>
                                                 <div>
                                                     <p class="font-bold text-slate-900 text-base">{{ $testimonial->name }}</p>
-                                                    <p class="text-sm text-slate-500">{{ $testimonial->role }}</p>
+                                                    <p class="text-sm text-slate-500" @if($testimonial->role_id) data-i18n data-en="{{ $testimonial->role }}" data-id="{{ $testimonial->role_id }}" @endif>{{ $testimonial->role }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,14 +382,14 @@
                                                 <span translate="no" class="material-symbols-outlined star-icon text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
                                             @endfor
                                         </div>
-                                        <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">"{{ $testimonial->quote }}"</p>
+                                        <p class="text-slate-700 font-medium italic mb-6 text-sm line-clamp-3">"<span @if($testimonial->quote_id) data-i18n data-en="{{ $testimonial->quote }}" data-id="{{ $testimonial->quote_id }}" @endif>{{ $testimonial->quote }}</span>"</p>
                                         <div class="flex items-center gap-3">
                                             <div class="w-10 h-10 {{ $aboutAvatarColors2[$loop->index % count($aboutAvatarColors2)] }} rounded-full flex justify-center items-center text-white flex-shrink-0">
                                                 <span translate="no" class="material-symbols-outlined text-base">person</span>
                                             </div>
                                             <div>
                                                 <p class="font-bold text-slate-900 text-sm">{{ $testimonial->name }}</p>
-                                                <p class="text-xs text-slate-500">{{ $testimonial->role }}</p>
+                                                <p class="text-xs text-slate-500" @if($testimonial->role_id) data-i18n data-en="{{ $testimonial->role }}" data-id="{{ $testimonial->role_id }}" @endif>{{ $testimonial->role }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -408,6 +492,39 @@
 
 @push('scripts')
     <script>
+        // Stats count-up animation
+        (function () {
+            var hasRun = false;
+            var DURATION = 2000;
+            function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+            function runCountUp() {
+                if (hasRun) return;
+                hasRun = true;
+                document.querySelectorAll('.about-stat-num').forEach(function (el) {
+                    var target = parseInt(el.dataset.target, 10);
+                    var suffix = el.dataset.suffix || '';
+                    var startTime = null;
+                    function step(ts) {
+                        if (!startTime) startTime = ts;
+                        var progress = Math.min((ts - startTime) / DURATION, 1);
+                        el.textContent = Math.floor(easeOutQuart(progress) * target) + suffix;
+                        if (progress < 1) requestAnimationFrame(step);
+                        else el.textContent = target + suffix;
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+            var el = document.getElementById('about-stats-section');
+            if (el && 'IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries, obs) {
+                    if (entries[0].isIntersecting) { runCountUp(); obs.disconnect(); }
+                }, { threshold: 0.3 }).observe(el);
+            } else if (el) {
+                runCountUp();
+            }
+        })();
+
+        // Video player
         document.addEventListener('DOMContentLoaded', function () {
             var playButton = document.getElementById('about-video-play-btn');
             var thumbnail = document.getElementById('about-video-thumbnail');
