@@ -58,9 +58,44 @@
                 @error('name') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
             </div>
             <div>
-                <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi</label>
-                <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y" style="min-height: 120px" id="description" name="description" placeholder="Deskripsi singkat produk...">{{ old('description', $product->description) }}</textarea>
-                @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                {{-- EN/ID Tab Switcher --}}
+                <div class="flex gap-2 mb-4 items-center">
+                    <span class="text-[11px] font-bold uppercase tracking-widest admin-text-muted">Bahasa Konten:</span>
+                    <div class="flex rounded-lg overflow-hidden border admin-border" style="width:fit-content;">
+                        <button type="button" id="tab-en" onclick="switchLangTab('en')"
+                            style="background:var(--admin-primary);color:#fff;padding:6px 18px;font-size:13px;font-weight:700;border:none;border-right:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:all .15s;letter-spacing:.02em;">
+                            EN &nbsp;<span style="font-weight:400;opacity:.85;">English</span>
+                        </button>
+                        <button type="button" id="tab-id" onclick="switchLangTab('id')"
+                            style="background:transparent;color:var(--admin-text-secondary);padding:6px 18px;font-size:13px;font-weight:600;border:none;cursor:pointer;transition:all .15s;letter-spacing:.02em;">
+                            ID &nbsp;<span style="font-weight:400;opacity:.85;">Indonesia</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="fields-en">
+                    <div class="mb-4">
+                        <label for="tagline" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Tagline (English) <span class="text-xs font-normal admin-text-muted">(opsional)</span></label>
+                        <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="tagline" name="tagline" value="{{ old('tagline', $product->tagline) }}" placeholder="Short catchy tagline...">
+                        @error('tagline') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                    </div>
+                    <div>
+                        <label for="description" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi (English)</label>
+                        <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y" style="min-height: 120px" id="description" name="description" placeholder="Product description...">{{ old('description', $product->description) }}</textarea>
+                        @error('description') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                    </div>
+                </div>
+                <div id="fields-id" class="hidden">
+                    <div class="mb-4">
+                        <label for="tagline_id" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Tagline (Indonesia) <span class="text-xs font-normal admin-text-muted">(opsional)</span></label>
+                        <input type="text" class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500" id="tagline_id" name="tagline_id" value="{{ old('tagline_id', $product->tagline_id) }}" placeholder="Tagline singkat...">
+                        @error('tagline_id') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                    </div>
+                    <div>
+                        <label for="description_id" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Deskripsi (Indonesia) <span class="text-xs font-normal admin-text-muted">(opsional)</span></label>
+                        <textarea class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none transition-colors duration-200 focus:border-blue-500 resize-y" style="min-height: 120px" id="description_id" name="description_id" placeholder="Deskripsi singkat produk...">{{ old('description_id', $product->description_id) }}</textarea>
+                        @error('description_id') <div class="text-xs text-red-400 mt-1">{{ $message }}</div> @enderror
+                    </div>
+                </div>
             </div>
             <div>
                 <label for="website_url" class="block text-[13px] font-semibold admin-text-secondary mb-1.5">Link Website <span class="text-xs font-normal admin-text-muted">(opsional)</span></label>
@@ -256,6 +291,21 @@
 @endsection
 
 @section('scripts')
+<script>
+var _tabPrimary = getComputedStyle(document.documentElement).getPropertyValue('--admin-primary').trim() || '#2563eb';
+var _tabTextSec = getComputedStyle(document.documentElement).getPropertyValue('--admin-text-secondary').trim() || '#7a9ab8';
+function switchLangTab(lang) {
+    var isEn = lang === 'en';
+    document.getElementById('fields-en').classList.toggle('hidden', !isEn);
+    document.getElementById('fields-id').classList.toggle('hidden', isEn);
+    document.getElementById('tab-en').style.background = isEn ? _tabPrimary : 'transparent';
+    document.getElementById('tab-en').style.color = isEn ? '#fff' : _tabTextSec;
+    document.getElementById('tab-en').style.fontWeight = isEn ? '700' : '600';
+    document.getElementById('tab-id').style.background = !isEn ? _tabPrimary : 'transparent';
+    document.getElementById('tab-id').style.color = !isEn ? '#fff' : _tabTextSec;
+    document.getElementById('tab-id').style.fontWeight = !isEn ? '700' : '600';
+}
+</script>
 <script>
 $(function () {
     // ══════════════════════════════════════════════════════════════

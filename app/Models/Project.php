@@ -12,8 +12,11 @@ class Project extends Model
         'category',
         'client_id',
         'description',
+        'description_id',
         'hero_description',
+        'hero_description_id',
         'summary_title',
+        'summary_title_id',
         'image',
     ];
 

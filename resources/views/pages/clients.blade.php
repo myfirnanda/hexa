@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Clients')
 
 @push('styles')
@@ -72,7 +72,7 @@
                         <img src="{{ image_url($client->logo) }}" alt="{{ $client->name }}" class="h-16 w-auto object-contain transition-all duration-300" />
                         @else
                         <div class="h-16 w-16 rounded-xl bg-slate-100 flex items-center justify-center">
-                            <span class="material-symbols-outlined text-slate-400 text-2xl">business</span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-2xl">business</span>
                         </div>
                         @endif
                         <div class="w-full border-t border-slate-100 pt-3 mt-auto">
@@ -81,7 +81,7 @@
                         @if($clientWorksCount > 0)
                             <div class="client-works-hover absolute bottom-0 left-0 right-0 bg-blue-600 py-2 flex items-center justify-center gap-1.5">
                                 <span class="text-white text-[11px] font-semibold">{{ $clientWorksCount }} {{ $clientWorksCount > 1 ? 'Projects' : 'Project' }}</span>
-                                <span class="material-symbols-outlined text-white text-sm leading-none">arrow_forward</span>
+                                <span translate="no" class="material-symbols-outlined text-white text-sm leading-none">arrow_forward</span>
                             </div>
                         @endif
                     </article>

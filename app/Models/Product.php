@@ -12,7 +12,9 @@ class Product extends Model
         'slug',
         'name',
         'tagline',
+        'tagline_id',
         'description',
+        'description_id',
         'website_url',
         'sort_order',
     ];

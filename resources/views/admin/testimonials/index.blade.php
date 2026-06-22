@@ -80,7 +80,7 @@
                                 style="background: rgba(37,99,235,0.08); color: #60a5fa; border-color: rgba(37,99,235,0.15);"
                                 onmouseover="this.style.background='rgba(37,99,235,0.18)'"
                                 onmouseout="this.style.background='rgba(37,99,235,0.08)'"
-                                onclick="openEditTestimonial({{ $testimonial->id }}, '{{ e($testimonial->name) }}', '{{ e($testimonial->role) }}', {{ json_encode($testimonial->quote) }}, {{ $testimonial->rating }})"
+                                onclick="openEditTestimonial({{ $testimonial->id }}, '{{ e($testimonial->name) }}', '{{ e($testimonial->role) }}', {{ json_encode($testimonial->quote) }}, {{ $testimonial->rating }}, '{{ e($testimonial->role_id ?? '') }}', {{ json_encode($testimonial->quote_id ?? '') }})"
                                 title="Edit testimonial">
                                 <span class="material-symbols-outlined text-[16px]">edit</span>
                             </button>
@@ -124,7 +124,7 @@
 {{-- Create Testimonial Modal --}}
 <div id="createTestimonialModal" class="fixed inset-0 z-100 flex items-center justify-center p-4" style="display:none" aria-modal="true" role="dialog">
     <div id="createTestimonialBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200 opacity-0"></div>
-    <div id="createTestimonialDialog" class="relative admin-card rounded-2xl border shadow-2xl transition-all duration-200 opacity-0 overflow-hidden w-full max-w-md" style="transform:scale(0.95)">
+    <div id="createTestimonialDialog" class="relative admin-card rounded-2xl border shadow-2xl transition-all duration-200 opacity-0 overflow-hidden w-full max-w-lg" style="transform:scale(0.95)">
         <div class="flex items-center justify-between px-5 py-4 border-b admin-border">
             <div class="flex items-center gap-3">
                 <div class="size-8 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(16,185,129,0.12);">
@@ -144,37 +144,69 @@
             @csrf
             <input type="hidden" name="_source" value="create_testimonial">
             <div class="px-5 py-5 space-y-4">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label for="createTestimonialName" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Nama <span class="text-red-400">*</span></label>
-                        <input type="text" id="createTestimonialName" name="name" required
-                            value="{{ old('_source') === 'create_testimonial' ? old('name') : '' }}"
-                            placeholder="Nama..."
-                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none @if(old('_source')==='create_testimonial' && $errors->has('name')) border-red-400 @endif">
-                        @if(old('_source') === 'create_testimonial')
-                        @error('name')<p class="text-xs text-red-400 mt-1">{{ $message }}</p>@enderror
-                        @endif
-                    </div>
+                {{-- Nama (standalone) --}}
+                <div>
+                    <label for="createTestimonialName" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Nama <span class="text-red-400">*</span></label>
+                    <input type="text" id="createTestimonialName" name="name" required
+                        value="{{ old('_source') === 'create_testimonial' ? old('name') : '' }}"
+                        placeholder="Nama..."
+                        class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none @if(old('_source')==='create_testimonial' && $errors->has('name')) border-red-400 @endif">
+                    @if(old('_source') === 'create_testimonial')
+                    @error('name')<p class="text-xs text-red-400 mt-1">{{ $message }}</p>@enderror
+                    @endif
+                </div>
+
+                {{-- EN/ID Tab Switcher --}}
+                <div class="flex gap-1 p-1 rounded-lg border admin-border" style="background: var(--admin-input-bg);">
+                    <button type="button" id="cTabEN" onclick="switchCreateLang('en')"
+                        class="flex-1 py-1.5 rounded-md text-[11px] font-bold text-white transition-all duration-150"
+                        style="background: var(--admin-primary);">🇬🇧 English</button>
+                    <button type="button" id="cTabID" onclick="switchCreateLang('id')"
+                        class="flex-1 py-1.5 rounded-md text-[11px] font-bold transition-all duration-150"
+                        style="background: transparent; color: var(--admin-text-secondary);">🇮🇩 Indonesia</button>
+                </div>
+
+                {{-- EN Fields --}}
+                <div id="cFieldsEN" class="space-y-3">
                     <div>
                         <label for="createTestimonialRole" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Role <span class="text-red-400">*</span></label>
                         <input type="text" id="createTestimonialRole" name="role" required
                             value="{{ old('_source') === 'create_testimonial' ? old('role') : '' }}"
-                            placeholder="CEO, Manager..."
+                            placeholder="CEO, VP of Engineering..."
                             class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none @if(old('_source')==='create_testimonial' && $errors->has('role')) border-red-400 @endif">
                         @if(old('_source') === 'create_testimonial')
                         @error('role')<p class="text-xs text-red-400 mt-1">{{ $message }}</p>@enderror
                         @endif
                     </div>
+                    <div>
+                        <label for="createTestimonialQuote" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-red-400">*</span></label>
+                        <textarea id="createTestimonialQuote" name="quote" rows="3" required
+                            placeholder="Isi testimoni (Bahasa Inggris)..."
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none @if(old('_source')==='create_testimonial' && $errors->has('quote')) border-red-400 @endif">{{ old('_source') === 'create_testimonial' ? old('quote') : '' }}</textarea>
+                        @if(old('_source') === 'create_testimonial')
+                        @error('quote')<p class="text-xs text-red-400 mt-1">{{ $message }}</p>@enderror
+                        @endif
+                    </div>
                 </div>
-                <div>
-                    <label for="createTestimonialQuote" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-red-400">*</span></label>
-                    <textarea id="createTestimonialQuote" name="quote" rows="4" required
-                        placeholder="Isi testimoni..."
-                        class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none @if(old('_source')==='create_testimonial' && $errors->has('quote')) border-red-400 @endif">{{ old('_source') === 'create_testimonial' ? old('quote') : '' }}</textarea>
-                    @if(old('_source') === 'create_testimonial')
-                    @error('quote')<p class="text-xs text-red-400 mt-1">{{ $message }}</p>@enderror
-                    @endif
+
+                {{-- ID Fields --}}
+                <div id="cFieldsID" class="space-y-3" style="display:none">
+                    <div>
+                        <label class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Role <span class="text-[10px] font-normal normal-case">(Opsional)</span></label>
+                        <input type="text" name="role_id"
+                            value="{{ old('_source') === 'create_testimonial' ? old('role_id') : '' }}"
+                            placeholder="CEO, VP of Engineering... (versi Indonesia)"
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-[10px] font-normal normal-case">(Opsional)</span></label>
+                        <textarea name="quote_id" rows="3"
+                            placeholder="Isi testimoni (Bahasa Indonesia)..."
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none">{{ old('_source') === 'create_testimonial' ? old('quote_id') : '' }}</textarea>
+                    </div>
                 </div>
+
+                {{-- Rating (standalone) --}}
                 <div>
                     <label for="createTestimonialRating" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Rating <span class="text-red-400">*</span></label>
                     <select id="createTestimonialRating" name="rating" required
@@ -205,7 +237,7 @@
 {{-- Edit Testimonial Modal --}}
 <div id="editTestimonialModal" class="fixed inset-0 z-100 flex items-center justify-center p-4" style="display:none" aria-modal="true" role="dialog">
     <div id="editTestimonialBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200 opacity-0"></div>
-    <div id="editTestimonialDialog" class="relative admin-card rounded-2xl border shadow-2xl transition-all duration-200 opacity-0 overflow-hidden w-full max-w-md" style="transform:scale(0.95)">
+    <div id="editTestimonialDialog" class="relative admin-card rounded-2xl border shadow-2xl transition-all duration-200 opacity-0 overflow-hidden w-full max-w-lg" style="transform:scale(0.95)">
         <div class="flex items-center justify-between px-5 py-4 border-b admin-border">
             <div class="flex items-center gap-3">
                 <div class="size-8 rounded-lg flex items-center justify-center shrink-0" style="background: var(--admin-brand-dim);">
@@ -224,23 +256,52 @@
         <form id="editTestimonialForm" method="POST">
             @csrf @method('PUT')
             <div class="px-5 py-5 space-y-4">
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label for="editTestimonialName" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Nama <span class="text-red-400">*</span></label>
-                        <input type="text" id="editTestimonialName" name="name" required placeholder="Nama..."
-                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none">
-                    </div>
+                {{-- Nama (standalone) --}}
+                <div>
+                    <label for="editTestimonialName" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Nama <span class="text-red-400">*</span></label>
+                    <input type="text" id="editTestimonialName" name="name" required placeholder="Nama..."
+                        class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none">
+                </div>
+
+                {{-- EN/ID Tab Switcher --}}
+                <div class="flex gap-1 p-1 rounded-lg border admin-border" style="background: var(--admin-input-bg);">
+                    <button type="button" id="eTabEN" onclick="switchEditLang('en')"
+                        class="flex-1 py-1.5 rounded-md text-[11px] font-bold text-white transition-all duration-150"
+                        style="background: var(--admin-primary);">🇬🇧 English</button>
+                    <button type="button" id="eTabID" onclick="switchEditLang('id')"
+                        class="flex-1 py-1.5 rounded-md text-[11px] font-bold transition-all duration-150"
+                        style="background: transparent; color: var(--admin-text-secondary);">🇮🇩 Indonesia</button>
+                </div>
+
+                {{-- EN Fields --}}
+                <div id="eFieldsEN" class="space-y-3">
                     <div>
                         <label for="editTestimonialRole" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Role <span class="text-red-400">*</span></label>
-                        <input type="text" id="editTestimonialRole" name="role" required placeholder="CEO, Manager..."
+                        <input type="text" id="editTestimonialRole" name="role" required placeholder="CEO, VP of Engineering..."
                             class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none">
                     </div>
+                    <div>
+                        <label for="editTestimonialQuote" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-red-400">*</span></label>
+                        <textarea id="editTestimonialQuote" name="quote" rows="3" required placeholder="Isi testimoni (Bahasa Inggris)..."
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none"></textarea>
+                    </div>
                 </div>
-                <div>
-                    <label for="editTestimonialQuote" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-red-400">*</span></label>
-                    <textarea id="editTestimonialQuote" name="quote" rows="4" required placeholder="Isi testimoni..."
-                        class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none"></textarea>
+
+                {{-- ID Fields --}}
+                <div id="eFieldsID" class="space-y-3" style="display:none">
+                    <div>
+                        <label for="editTestimonialRoleId" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Role <span class="text-[10px] font-normal normal-case">(Opsional)</span></label>
+                        <input type="text" id="editTestimonialRoleId" name="role_id" placeholder="CEO, VP of Engineering... (versi Indonesia)"
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none">
+                    </div>
+                    <div>
+                        <label for="editTestimonialQuoteId" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Quote <span class="text-[10px] font-normal normal-case">(Opsional)</span></label>
+                        <textarea id="editTestimonialQuoteId" name="quote_id" rows="3" placeholder="Isi testimoni (Bahasa Indonesia)..."
+                            class="w-full px-3.5 py-2.5 rounded-lg admin-input font-[inherit] text-sm outline-none resize-none"></textarea>
+                    </div>
                 </div>
+
+                {{-- Rating (standalone) --}}
                 <div>
                     <label for="editTestimonialRating" class="block text-[12px] font-bold admin-text-secondary mb-1.5 uppercase tracking-wide">Rating <span class="text-red-400">*</span></label>
                     <select id="editTestimonialRating" name="rating" required
@@ -288,18 +349,56 @@
     var create = makeModal('createTestimonialModal', 'createTestimonialBackdrop', 'createTestimonialDialog');
     var edit   = makeModal('editTestimonialModal',   'editTestimonialBackdrop',   'editTestimonialDialog');
 
-    window.openCreateTestimonial  = function () { create.open(); setTimeout(function(){ $('#createTestimonialName').trigger('focus'); }, 100); };
+    window.openCreateTestimonial  = function () {
+        switchCreateLang('en');
+        create.open();
+        setTimeout(function(){ $('#createTestimonialName').trigger('focus'); }, 100);
+    };
     window.closeCreateTestimonial = create.close;
 
-    window.openEditTestimonial = function (id, name, role, quote, rating) {
+    window.switchCreateLang = function (lang) {
+        var isEN = lang === 'en';
+        document.getElementById('cFieldsEN').style.display = isEN ? '' : 'none';
+        document.getElementById('cFieldsID').style.display = isEN ? 'none' : '';
+        var tabEN = document.getElementById('cTabEN');
+        var tabID = document.getElementById('cTabID');
+        if (isEN) {
+            tabEN.style.background = 'var(--admin-primary)'; tabEN.style.color = 'white';
+            tabID.style.background = 'transparent'; tabID.style.color = 'var(--admin-text-secondary)';
+        } else {
+            tabID.style.background = 'var(--admin-primary)'; tabID.style.color = 'white';
+            tabEN.style.background = 'transparent'; tabEN.style.color = 'var(--admin-text-secondary)';
+        }
+    };
+
+    window.openEditTestimonial = function (id, name, role, quote, rating, role_id, quote_id) {
         $('#editTestimonialForm').attr('action', '/manager/testimonials/' + id);
         $('#editTestimonialName').val(name);
         $('#editTestimonialRole').val(role);
         $('#editTestimonialQuote').val(quote);
         $('#editTestimonialRating').val(rating);
-        edit.open(); setTimeout(function(){ $('#editTestimonialName').trigger('focus'); }, 100);
+        $('#editTestimonialRoleId').val(role_id || '');
+        $('#editTestimonialQuoteId').val(quote_id || '');
+        switchEditLang('en');
+        edit.open();
+        setTimeout(function(){ $('#editTestimonialName').trigger('focus'); }, 100);
     };
     window.closeEditTestimonial = edit.close;
+
+    window.switchEditLang = function (lang) {
+        var isEN = lang === 'en';
+        document.getElementById('eFieldsEN').style.display = isEN ? '' : 'none';
+        document.getElementById('eFieldsID').style.display = isEN ? 'none' : '';
+        var tabEN = document.getElementById('eTabEN');
+        var tabID = document.getElementById('eTabID');
+        if (isEN) {
+            tabEN.style.background = 'var(--admin-primary)'; tabEN.style.color = 'white';
+            tabID.style.background = 'transparent'; tabID.style.color = 'var(--admin-text-secondary)';
+        } else {
+            tabID.style.background = 'var(--admin-primary)'; tabID.style.color = 'white';
+            tabEN.style.background = 'transparent'; tabEN.style.color = 'var(--admin-text-secondary)';
+        }
+    };
 
     $(function () {
         @if($errors->any() && old('_source') === 'create_testimonial') create.open(); @endif

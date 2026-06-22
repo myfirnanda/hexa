@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Products — Hexavara')
 
 @section('content')
@@ -50,7 +50,7 @@
 
             @if($products->isEmpty())
                 <div class="text-center py-24">
-                    <span class="material-symbols-outlined text-5xl text-slate-300 mb-4 block">inventory_2</span>
+                    <span translate="no" class="material-symbols-outlined text-5xl text-slate-300 mb-4 block">inventory_2</span>
                     <p class="text-slate-500" data-i18n data-en="No products available yet." data-id="Belum ada produk tersedia.">No products available yet.</p>
                 </div>
             @else
@@ -78,7 +78,7 @@
                                     alt="{{ $product->name }}">
                             @else
                                 <div class="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-slate-50 to-blue-50">
-                                    <span class="material-symbols-outlined text-3xl md:text-5xl text-slate-300">inventory_2</span>
+                                    <span translate="no" class="material-symbols-outlined text-3xl md:text-5xl text-slate-300">inventory_2</span>
                                     <span class="text-[9px] md:text-[11px] font-bold uppercase tracking-widest text-slate-400">
                                         {{ $product->tagline ?: $product->name }}
                                     </span>
@@ -101,7 +101,7 @@
                             </p>
                             <div class="mt-3 md:mt-6 flex items-center gap-1 md:gap-2 text-hex-blue font-bold text-xs md:text-sm group-hover:gap-3 transition-all duration-200">
                                 <span data-i18n data-en="Learn more" data-id="Selengkapnya">Learn more</span>
-                                <span class="material-symbols-outlined text-xs md:text-base group-hover:translate-x-1 transition-transform duration-200">arrow_right_alt</span>
+                                <span translate="no" class="material-symbols-outlined text-xs md:text-base group-hover:translate-x-1 transition-transform duration-200">arrow_right_alt</span>
                             </div>
                         </div>
 

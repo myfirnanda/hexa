@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - ' . $product->name)
 
 @php
@@ -49,7 +49,7 @@
                                 style="color: white;" data-i18n="html"
                                 data-en="<span class='material-symbols-outlined' style='font-size:15px;vertical-align:middle;'>open_in_new</span> Visit Website"
                                 data-id="<span class='material-symbols-outlined' style='font-size:15px;vertical-align:middle;'>open_in_new</span> Kunjungi Website">
-                                <span class="material-symbols-outlined text-[15px] lg:text-[18px]">open_in_new</span>
+                                <span translate="no" class="material-symbols-outlined text-[15px] lg:text-[18px]">open_in_new</span>
                                 Visit Website
                             </a>
                         @endif
@@ -126,7 +126,7 @@
                                 @if($feature->icon)
                                     <div
                                         class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-hex-surface flex items-center justify-center mb-4 md:mb-8 group-hover:bg-hex-dark group-hover:text-white transition-colors">
-                                        <span class="material-symbols-outlined text-xl md:text-3xl">{{ $feature->icon }}</span>
+                                        <span translate="no" class="material-symbols-outlined text-xl md:text-3xl">{{ $feature->icon }}</span>
                                     </div>
                                 @endif
                                 <h3 class="text-sm md:text-2xl font-bold text-hex-dark mb-2 md:mb-4">{{ $feature->title }}</h3>
@@ -134,7 +134,7 @@
                                     <ul class="text-hex-slate text-xs md:text-base leading-relaxed space-y-1 md:space-y-2">
                                         @foreach($feature->items as $item)
                                             <li class="flex items-start gap-2 md:gap-3">
-                                                <span
+                                                <span translate="no"
                                                     class="material-symbols-outlined text-hex-blue text-xs md:text-sm mt-0.5 md:mt-1">circle</span>
                                                 {{ $item->text }}
                                             </li>
@@ -165,7 +165,7 @@
                                 @if($benefit->icon)
                                     <div
                                         class="w-14 h-14 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mb-6">
-                                        <span class="material-symbols-outlined text-blue-400 text-2xl">{{ $benefit->icon }}</span>
+                                        <span translate="no" class="material-symbols-outlined text-blue-400 text-2xl">{{ $benefit->icon }}</span>
                                     </div>
                                 @endif
                                 <h4 class="text-lg font-bold leading-snug">{{ $benefit->title }}</h4>

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+﻿@extends('layouts.main')
 @section('title', 'Hexavara - Works')
 
 @push('styles')
@@ -181,12 +181,13 @@
         // Project Data (dynamic from DB)
         const projects = {!! json_encode($projects->map(function($p) {
             return [
-                'id'       => $p->id,
-                'category' => $p->category,
-                'title'    => $p->name,
-                'img'      => image_url($p->image),
-                'summary'  => $p->summary_title ?? '',
-                'url'      => route('works.show', $p),
+                'id'         => $p->id,
+                'category'   => $p->category,
+                'title'      => $p->name,
+                'img'        => image_url($p->image),
+                'summary'    => $p->summary_title ?: ($p->hero_description ?? ''),
+                'summary_id' => $p->summary_title_id ?: ($p->hero_description_id ?? ''),
+                'url'        => route('works.show', $p),
             ];
         })->values()) !!};
 
@@ -235,9 +236,9 @@
                             </span>
                         </div>
                         <h3 class="text-sm md:text-xl font-bold text-hex-dark mb-2 md:mb-4 line-clamp-1">${p.title}</h3>
-                        <p class="text-slate-500 text-xs md:text-sm leading-relaxed line-clamp-2 md:line-clamp-3 mb-3 md:mb-6">${p.summary}</p>
+                        <p class="text-slate-500 text-xs md:text-sm leading-relaxed line-clamp-2 md:line-clamp-3 mb-3 md:mb-6">${(currentLang === 'id' && p.summary_id) ? p.summary_id : p.summary}</p>
                         <div class="mt-auto flex items-center gap-1 md:gap-2 text-hex-blue font-bold text-xs md:text-sm">
-                            ${readMoreText} <span class="material-symbols-outlined text-xs md:text-sm translate-y-px">arrow_forward</span>
+                            ${readMoreText} <span translate="no" class="material-symbols-outlined text-xs md:text-sm translate-y-px">arrow_forward</span>
                         </div>
                     </div>
                     </a>
@@ -305,8 +306,8 @@
         $('#wc-pg-prev').on('click', function () { if(currentPage > 1) { currentPage--; renderCards(); } });
         $('#wc-pg-next').on('click', function () { if(currentPage < Math.ceil(projects.length/ITEMS_PER_PAGE)) { currentPage++; renderCards(); } });
 
-        // Listen for language changes
-        $(window).on('languageChanged', function () {
+        // Listen for language changes (native event from lang.js)
+        window.addEventListener('languageChanged', function () {
             renderCards();
         });
 

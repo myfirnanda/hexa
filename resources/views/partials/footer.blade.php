@@ -36,8 +36,8 @@
                 <h4 class="footer-heading text-slate-900 font-bold mb-3 md:mb-6 uppercase tracking-wider text-xs md:text-sm" data-i18n
                     data-en="Contact Us" data-id="Hubungi Kami">Contact Us</h4>
                 <ul class="space-y-2 md:space-y-4 mb-4 md:mb-8">
-                    <li class="flex items-center gap-2 md:gap-3 text-xs md:text-sm"><span class="material-symbols-outlined text-slate-400">mail</span> <a href="mailto:info@hexavara.com" class="hover:text-blue-600 transition-colors break-all">info@hexavara.com</a></li>
-                    <li class="flex items-center gap-2 md:gap-3 text-xs md:text-sm"><span class="material-symbols-outlined text-slate-400">call</span> <a href="tel:+628113451550" class="hover:text-blue-600 transition-colors">+628113451550</a></li>
+                    <li class="flex items-center gap-2 md:gap-3 text-xs md:text-sm"><span translate="no" class="material-symbols-outlined text-slate-400">mail</span> <a href="mailto:info@hexavara.com" class="hover:text-blue-600 transition-colors break-all">info@hexavara.com</a></li>
+                    <li class="flex items-center gap-2 md:gap-3 text-xs md:text-sm"><span translate="no" class="material-symbols-outlined text-slate-400">call</span> <a href="tel:+628113451550" class="hover:text-blue-600 transition-colors">+628113451550</a></li>
                 </ul>
 
                 <!-- Follow Us -->

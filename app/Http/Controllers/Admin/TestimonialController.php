@@ -39,10 +39,12 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
-            'quote' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
+            'name'     => 'required|string|max:255',
+            'role'     => 'required|string|max:255',
+            'role_id'  => 'nullable|string|max:255',
+            'quote'    => 'required|string',
+            'quote_id' => 'nullable|string',
+            'rating'   => 'required|integer|min:1|max:5',
         ]);
 
         Testimonial::create($validated);
@@ -58,10 +60,12 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
-            'quote' => 'required|string',
-            'rating' => 'required|integer|min:1|max:5',
+            'name'     => 'required|string|max:255',
+            'role'     => 'required|string|max:255',
+            'role_id'  => 'nullable|string|max:255',
+            'quote'    => 'required|string',
+            'quote_id' => 'nullable|string',
+            'rating'   => 'required|integer|min:1|max:5',
         ]);
 
         $testimonial->update($validated);
