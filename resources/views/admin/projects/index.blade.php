@@ -16,6 +16,48 @@
     </a>
 </div>
 
+{{-- About Us Order Panel --}}
+<div class="admin-card border rounded-xl mb-7">
+    <div class="px-6 py-4 border-b admin-border flex items-center gap-3 flex-wrap">
+        <span class="text-[14px] font-bold admin-text">Tampilan About Us</span>
+        <span class="text-[11px] font-bold px-2 py-1 rounded" style="background: rgba(37,99,235,0.10); color: #60a5fa;">
+            <span id="about-count">{{ $aboutProjects->count() }}</span>/6 project
+        </span>
+        <span class="text-[12px] admin-text-muted flex-1">— Drag untuk mengatur urutan 6 project unggulan di halaman About Us</span>
+        {{-- Search on the right --}}
+        <div id="about-add-row" class="relative flex-shrink-0" style="width: 280px;">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[16px] admin-text-muted pointer-events-none select-none">search</span>
+            <input type="text" id="about-search-input" placeholder="Cari project..."
+                class="admin-input rounded-lg pl-9 pr-3 py-2 text-sm w-full outline-none" autocomplete="off">
+            <ul id="about-search-results"
+                class="absolute w-full border admin-border rounded-lg mt-1 shadow-xl hidden"
+                style="background: var(--admin-card-bg); z-index: 9999; max-height: 240px; overflow-y: auto; right: 0;"></ul>
+        </div>
+    </div>
+    <div class="p-4">
+        <p id="about-max-warn" class="text-[11px] text-amber-500 mb-2 hidden">Maksimal 6 project sudah dipilih. Hapus salah satu sebelum menambah.</p>
+        <ul id="about-sort-list" class="space-y-2" style="min-height: 48px;">
+            @forelse($aboutProjects as $index => $ap)
+            <li class="about-sort-item flex items-center gap-3 px-3 py-2.5 rounded-lg border admin-border"
+                style="background: var(--admin-surface-hover);" data-id="{{ $ap->id }}" data-name="{{ $ap->name }}">
+                <span class="material-symbols-outlined text-[18px] admin-text-muted select-none" style="cursor:grab;">drag_indicator</span>
+                <span class="text-[11px] font-bold admin-text-muted w-5 text-center about-pos-num">{{ $index + 1 }}</span>
+                <span class="text-[13px] font-semibold admin-text flex-1 truncate">{{ $ap->name }}</span>
+                <button type="button" onclick="removeFromAbout(this)"
+                    class="flex-shrink-0 size-6 flex items-center justify-center rounded hover:bg-red-500/10 transition-colors"
+                    style="color: #f87171;" title="Hapus dari About Us">
+                    <span class="material-symbols-outlined text-[16px]">close</span>
+                </button>
+            </li>
+            @empty
+            <li id="about-empty-hint" class="text-[12px] admin-text-muted text-center py-4">
+                Belum ada project. Cari dan tambahkan dari kolom pencarian di kanan atas.
+            </li>
+            @endforelse
+        </ul>
+    </div>
+</div>
+
 <div class="admin-card border rounded-xl overflow-hidden">
 
     {{-- Card header with search --}}
@@ -124,7 +166,132 @@
 
 @section('scripts')
 <script>
+// ── About Us sortable panel ──────────────────────────────────────────
+var aboutSortUrl  = '{{ route("manager.projects.about-sort") }}';
+var csrfToken     = $('meta[name="csrf-token"]').attr('content');
+var allProjects   = @json($allProjectsForSelect->map(fn($p) => ['id' => $p->id, 'name' => $p->name]));
+
+function getAboutIds() {
+    var ids = [];
+    $('#about-sort-list .about-sort-item').each(function () { ids.push($(this).data('id')); });
+    return ids;
+}
+
+function saveAboutSort() {
+    $.ajax({
+        url: aboutSortUrl, type: 'POST',
+        headers: { 'X-CSRF-TOKEN': csrfToken },
+        data: { order: getAboutIds() },
+        error: function (xhr) { console.error('About sort error:', xhr.responseText); }
+    });
+}
+
+function refreshAboutPositions() {
+    $('#about-sort-list .about-sort-item').each(function (i) {
+        $(this).find('.about-pos-num').text(i + 1);
+    });
+    var count = $('#about-sort-list .about-sort-item').length;
+    $('#about-count').text(count);
+    if (count >= 6) {
+        $('#about-search-input').prop('disabled', true).attr('placeholder', 'Sudah 6/6 project');
+        $('#about-max-warn').removeClass('hidden');
+    } else {
+        $('#about-search-input').prop('disabled', false).attr('placeholder', 'Cari project...');
+        $('#about-max-warn').addClass('hidden');
+    }
+    if (count === 0) {
+        if ($('#about-empty-hint').length === 0) {
+            $('#about-sort-list').append('<li id="about-empty-hint" class="text-[12px] admin-text-muted text-center py-4">Belum ada project. Cari dan tambahkan dari kolom di bawah.</li>');
+        }
+    } else {
+        $('#about-empty-hint').remove();
+    }
+}
+
+function appendAboutItem(id, name) {
+    var count = $('#about-sort-list .about-sort-item').length;
+    if (count >= 6) return;
+    var num  = count + 1;
+    var html = '<li class="about-sort-item flex items-center gap-3 px-3 py-2.5 rounded-lg border admin-border" style="background:var(--admin-surface-hover);" data-id="' + id + '" data-name="' + name + '">' +
+        '<span class="material-symbols-outlined text-[18px] admin-text-muted select-none" style="cursor:grab;">drag_indicator</span>' +
+        '<span class="text-[11px] font-bold admin-text-muted w-5 text-center about-pos-num">' + num + '</span>' +
+        '<span class="text-[13px] font-semibold admin-text flex-1 truncate">' + name + '</span>' +
+        '<button type="button" onclick="removeFromAbout(this)" class="flex-shrink-0 size-6 flex items-center justify-center rounded hover:bg-red-500/10 transition-colors" style="color:#f87171;" title="Hapus dari About Us">' +
+        '<span class="material-symbols-outlined text-[16px]">close</span></button></li>';
+    $('#about-sort-list').append(html);
+    // Re-init sortable on new items
+    $('#about-sort-list').sortable('refresh');
+}
+
+window.removeFromAbout = function (btn) {
+    var $item = $(btn).closest('.about-sort-item');
+    $item.remove();
+    refreshAboutPositions();
+    saveAboutSort();
+};
+
+// ── Search input logic ───────────────────────────────────────────────
+function renderSearchResults(query) {
+    var $results = $('#about-search-results');
+    var addedIds = getAboutIds().map(Number);
+    var q        = query.trim().toLowerCase();
+    var filtered = allProjects.filter(function (p) {
+        return !addedIds.includes(p.id) && (!q || p.name.toLowerCase().includes(q));
+    });
+    if (!filtered.length || !q) { $results.addClass('hidden').empty(); return; }
+    $results.empty();
+    filtered.slice(0, 8).forEach(function (p) {
+        var $li = $('<li>').addClass('px-3 py-2.5 text-[13px] font-medium admin-text cursor-pointer')
+            .css({'border-bottom': '1px solid var(--admin-border, rgba(255,255,255,0.06))'})
+            .text(p.name)
+            .hover(function () { $(this).css('background', 'var(--admin-surface-hover)'); },
+                   function () { $(this).css('background', ''); })
+            .on('click', function () {
+                appendAboutItem(p.id, p.name);
+                $results.addClass('hidden').empty();
+                $('#about-search-input').val('');
+                refreshAboutPositions();
+                saveAboutSort();
+            });
+        $results.append($li);
+    });
+    $results.removeClass('hidden');
+}
+
 $(function () {
+    // About Us sortable
+    $('#about-sort-list').sortable({
+        axis: 'y',
+        cancel: 'button, a, input, select',
+        cursor: 'grabbing',
+        opacity: 0.75,
+        placeholder: 'sort-placeholder',
+        helper: function (e, ui) {
+            ui.children().each(function () { $(this).width($(this).width()); });
+            return ui;
+        },
+        start: function (e, ui) { ui.placeholder.height(ui.item.outerHeight()); },
+        update: function () { refreshAboutPositions(); saveAboutSort(); }
+    }).disableSelection();
+
+    // Init state on load
+    refreshAboutPositions();
+
+    // Search input events
+    $('#about-search-input').on('input', function () {
+        renderSearchResults($(this).val());
+    }).on('keydown', function (e) {
+        if (e.key === 'Escape') { $('#about-search-results').addClass('hidden').empty(); $(this).val(''); }
+    });
+
+    // Close dropdown when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#about-add-row').length) {
+            $('#about-search-results').addClass('hidden').empty();
+        }
+    });
+
+    // ── Main table sortable ──────────────────────────────────────────
     var $tbody = $('#projects-table-body');
     if (!$tbody.length) return;
 

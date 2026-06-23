@@ -1,6 +1,6 @@
 ﻿<!-- Header -->
 <header class="relative w-full z-[120] bg-white lg:h-[103px] border-b border-gray-100 lg:border-none">
-    <div class="max-w-[1280px] mx-auto h-full flex items-center justify-between px-4 lg:px-0 relative">
+    <div class="max-w-[1280px] mx-auto lg:h-full flex items-center justify-between px-4 py-3 lg:py-0 relative">
         <a href="{{ route('home') }}" class="lg:absolute lg:left-[37px] lg:top-1/2 lg:-translate-y-1/2 block">
             <img src="{{ asset('assets/img/brand-logo-main.png') }}" alt="Hexavara" class="w-[130px] md:w-[170px] h-auto object-contain">
         </a>
@@ -40,34 +40,74 @@
     <!-- Mobile Menu Sidebar -->
     <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 w-full z-[200] bg-white translate-x-full transition-[translate] duration-300 overflow-y-auto lg:hidden">
         <div class="p-6">
-            <div class="flex items-center justify-between mb-12">
-                <img src="{{ asset('assets/img/brand-logo-main.png') }}" alt="Hexavara" class="h-8 w-auto">
-                <button id="mobile-menu-close" class="p-2 text-hex-dark">
-                    <span translate="no" class="material-symbols-outlined text-3xl">close</span>
-                </button>
+            <div class="flex items-center justify-between mb-8">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/img/brand-logo-main.png') }}" alt="Hexavara" class="h-8 w-auto">
+                </a>
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-lg">
+                        <button class="px-2 py-0.5 text-[8px] font-black rounded-md active bg-white shadow-sm" data-lang="en">EN</button>
+                        <button class="px-2 py-0.5 text-[8px] font-black rounded-md text-gray-500" data-lang="id">ID</button>
+                    </div>
+                    <button id="mobile-menu-close" class="p-2 text-hex-dark">
+                        <span translate="no" class="material-symbols-outlined text-3xl">close</span>
+                    </button>
+                </div>
             </div>
-            <div class="flex flex-col gap-6 mb-12">
-                <a href="{{ route('works.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Works" data-id="Portofolio">Works</a>
-                <a href="{{ route('about') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
-                <a href="{{ route('services.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Services" data-id="Layanan">Services</a>
-                <a href="{{ route('products.index') }}" class="text-2xl font-bold text-hex-dark" data-i18n data-en="Products" data-id="Produk">Products</a>
-                <div class="border-t border-gray-100 pt-6">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Our Solutions</p>
-                    <div class="grid grid-cols-1 gap-4">
-                        <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-lg font-medium text-hex-dark">
-                            <span translate="no" class="material-symbols-outlined text-hex-blue">dashboard_customize</span>
-                            <span data-i18n data-en="Custom Software" data-id="Perangkat Lunak Khusus">Custom Software</span>
-                        </a>
-                        <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-lg font-medium text-hex-dark">
-                            <span translate="no" class="material-symbols-outlined text-hex-blue">rocket_launch</span>
-                            <span data-i18n data-en="Startup Services" data-id="Layanan Startup">Startup Services</span>
-                        </a>
-                        @if($firstProduct)
-                            <a href="{{ route('products.show', $firstProduct) }}" class="flex items-center gap-3 text-lg font-medium text-hex-dark">
-                                <span translate="no" class="material-symbols-outlined text-hex-blue">account_balance_wallet</span>
-                                <span data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</span>
-                            </a>
-                        @endif
+            <div class="flex flex-col gap-0 mb-12">
+                <a href="{{ route('works.index') }}" class="text-2xl font-bold text-hex-dark py-3 border-b border-gray-100" data-i18n data-en="Works" data-id="Portofolio">Works</a>
+                <a href="{{ route('about') }}" class="text-2xl font-bold text-hex-dark py-3 border-b border-gray-100" data-i18n data-en="About Us" data-id="Tentang Kami">About Us</a>
+                <a href="{{ route('services.index') }}" class="text-2xl font-bold text-hex-dark py-3 border-b border-gray-100" data-i18n data-en="Services" data-id="Layanan">Services</a>
+                <a href="{{ route('products.index') }}" class="text-2xl font-bold text-hex-dark py-3 border-b border-gray-100" data-i18n data-en="Products" data-id="Produk">Products</a>
+
+                {{-- Solutions Accordion --}}
+                <div class="border-b border-gray-100">
+                    <button id="mobile-solutions-toggle" class="w-full flex items-center justify-between py-3 text-2xl font-bold text-hex-dark" aria-expanded="false">
+                        <span data-i18n data-en="Solutions" data-id="Solusi">Solutions</span>
+                        <span translate="no" class="material-symbols-outlined text-xl text-slate-400 transition-transform duration-300" id="mobile-solutions-chevron">expand_more</span>
+                    </button>
+                    <div id="mobile-solutions-panel" class="overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out">
+                        <div class="pb-5">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3" data-i18n data-en="By Service" data-id="Berdasarkan Layanan">By Service</p>
+                            <div class="grid grid-cols-1 gap-3 mb-5">
+                                <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-base font-medium text-hex-dark">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-[20px]">dashboard_customize</span>
+                                    <span data-i18n data-en="Custom Software" data-id="Perangkat Lunak Khusus">Custom Software</span>
+                                </a>
+                                <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-base font-medium text-hex-dark">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-[20px]">rocket_launch</span>
+                                    <span data-i18n data-en="Startup Services" data-id="Layanan Startup">Startup Services</span>
+                                </a>
+                                <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-base font-medium text-hex-dark">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-[20px]">settings_suggest</span>
+                                    <span data-i18n data-en="Managed IT" data-id="IT Terkelola">Managed IT</span>
+                                </a>
+                                <a href="{{ route('services.index') }}" class="flex items-center gap-3 text-base font-medium text-hex-dark">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-[20px]">psychology</span>
+                                    <span data-i18n data-en="IT Consulting" data-id="Konsultasi TI">IT Consulting</span>
+                                </a>
+                            </div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3" data-i18n data-en="Ready to Use" data-id="Siap Digunakan">Ready to Use</p>
+                            <div class="grid grid-cols-2 gap-2 mb-4">
+                                <button type="button" onclick="showMaintenanceModal('Cost System')" class="p-3 bg-blue-50 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-blue-100 transition-colors text-left w-full">
+                                    <span translate="no" class="material-symbols-outlined text-blue-600 text-[18px]">account_balance_wallet</span>
+                                    <div><p class="text-[11px] font-bold" data-i18n data-en="Cost System" data-id="Sistem Biaya">Cost System</p><p class="text-[9px] text-blue-600 uppercase font-bold">Platform</p></div>
+                                </button>
+                                <button type="button" onclick="showMaintenanceModal('VaraPay')" class="p-3 bg-indigo-50 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-indigo-100 transition-colors text-left w-full">
+                                    <span translate="no" class="material-symbols-outlined text-indigo-600 text-[18px]">payments</span>
+                                    <div><p class="text-[11px] font-bold">VaraPay</p><p class="text-[9px] text-indigo-600 uppercase font-bold">Fintech</p></div>
+                                </button>
+                                <button type="button" onclick="showMaintenanceModal('NexaGrid')" class="p-3 bg-teal-50 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-teal-100 transition-colors text-left w-full">
+                                    <span translate="no" class="material-symbols-outlined text-teal-600 text-[18px]">grid_view</span>
+                                    <div><p class="text-[11px] font-bold">NexaGrid</p><p class="text-[9px] text-teal-600 uppercase font-bold" data-i18n data-en="AI Suite" data-id="Suite AI">AI Suite</p></div>
+                                </button>
+                                <button type="button" onclick="showMaintenanceModal('VaraCloud')" class="p-3 bg-sky-50 rounded-xl flex items-center gap-2 cursor-pointer hover:bg-sky-100 transition-colors text-left w-full">
+                                    <span translate="no" class="material-symbols-outlined text-sky-600 text-[18px]">cloud</span>
+                                    <div><p class="text-[11px] font-bold">VaraCloud</p><p class="text-[9px] text-sky-600 uppercase font-bold">Infra</p></div>
+                                </button>
+                            </div>
+                            <a href="{{ route('start-project') }}" class="text-sm font-bold text-hex-blue flex items-center gap-1" data-i18n data-en="Talk to us →" data-id="Hubungi kami →">Talk to us →</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,6 +198,26 @@ function closeMaintenanceModal() {
 }
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMaintenanceModal();
+});
+
+// Mobile Solutions Accordion
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('mobile-solutions-toggle');
+    var panel  = document.getElementById('mobile-solutions-panel');
+    var chevron = document.getElementById('mobile-solutions-chevron');
+    if (!toggle || !panel) return;
+    toggle.addEventListener('click', function () {
+        var isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+            panel.style.maxHeight = '0';
+            toggle.setAttribute('aria-expanded', 'false');
+            chevron.style.transform = 'rotate(0deg)';
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            toggle.setAttribute('aria-expanded', 'true');
+            chevron.style.transform = 'rotate(180deg)';
+        }
+    });
 });
 </script>
 </header>

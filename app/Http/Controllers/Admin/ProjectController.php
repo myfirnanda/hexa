@@ -22,7 +22,11 @@ class ProjectController extends Controller
             ->orderBy('id')
             ->paginate(15)
             ->withQueryString();
-        return view('admin.projects.index', compact('projects', 'search'));
+
+        $aboutProjects        = Project::whereNotNull('about_sort_order')->orderBy('about_sort_order')->get(['id', 'name']);
+        $allProjectsForSelect = Project::orderBy('name')->get(['id', 'name']);
+
+        return view('admin.projects.index', compact('projects', 'search', 'aboutProjects', 'allProjectsForSelect'));
     }
 
     public function updateSort(Request $request)
@@ -30,6 +34,16 @@ class ProjectController extends Controller
         $order = $request->input('order', []);
         foreach ($order as $index => $id) {
             Project::where('id', (int) $id)->update(['sort_order' => $index]);
+        }
+        return response()->json(['ok' => true]);
+    }
+
+    public function updateAboutSort(Request $request)
+    {
+        $order = $request->input('order', []);
+        Project::whereNotNull('about_sort_order')->update(['about_sort_order' => null]);
+        foreach (array_slice($order, 0, 6) as $index => $id) {
+            Project::where('id', (int) $id)->update(['about_sort_order' => $index + 1]);
         }
         return response()->json(['ok' => true]);
     }

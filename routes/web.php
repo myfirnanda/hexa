@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/manager/projects/{project}', [AdminProjectController::class, 'update'])->name('manager.projects.update');
     Route::delete('/manager/projects/{project}', [AdminProjectController::class, 'destroy'])->name('manager.projects.destroy');
     Route::post('/manager/projects/sort', [AdminProjectController::class, 'updateSort'])->name('manager.projects.sort');
+    Route::post('/manager/projects/about-sort', [AdminProjectController::class, 'updateAboutSort'])->name('manager.projects.about-sort');
 
     // Clients
     Route::get('/manager/clients', [AdminClientController::class, 'index'])->name('manager.clients.index');
