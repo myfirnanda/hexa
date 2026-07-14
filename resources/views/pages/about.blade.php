@@ -274,44 +274,40 @@
                 <!-- Top Divider -->
                 <div class="w-20 h-1 bg-hex-blue mx-auto rounded-full mb-12"></div>
 
-                <!-- Partner Logos Marquee -->
+                <!-- Partner Logos Marquee (2 rows, split evenly, opposing directions) -->
                 @php
-                    $logoClients  = $clients->filter(fn($c) => $c->logo)->values();
-                    $logoReversed = $logoClients->reverse()->values();
+                    $logoClients = $clients->filter(fn($c) => $c->logo)->unique('logo')->values();
+                    $mid         = (int) ceil($logoClients->count() / 2);
+                    $mqHalf1     = $logoClients->slice(0, $mid)->values();
+                    $mqHalf2     = $logoClients->slice($mid)->values();
+                    // 2x duplication: -50% keyframe loops 1 copy seamlessly
+                    $mqHalf1_2x  = $mqHalf1->merge($mqHalf1);
+                    $mqHalf2_2x  = $mqHalf2->merge($mqHalf2);
                 @endphp
 
                 <style>
-                    @keyframes marquee-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
-                    @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
-                    .marquee-track { display: flex; align-items: center; width: max-content; gap: 3.5rem; }
-                    .marquee-track:hover { animation-play-state: paused; }
+                    @keyframes about-mq-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+                    @keyframes about-mq-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+                    .about-mq-track { display: flex; align-items: center; width: max-content; gap: 3.5rem; }
+                    .about-mq-track:hover { animation-play-state: paused; }
                 </style>
 
-                <div class="w-full mb-16 space-y-6 overflow-hidden">
-                    {{-- Row 1: semua logo → kanan --}}
+                <div class="w-full mb-16 space-y-5 overflow-hidden">
+                    {{-- Baris 1: logo 1–½ → gerak kiri --}}
                     <div class="overflow-hidden">
-                        <div class="marquee-track" style="animation: marquee-right 40s linear infinite;">
-                            @foreach($logoClients->merge($logoClients) as $c)
+                        <div class="about-mq-track" style="animation: about-mq-left 40s linear infinite;">
+                            @foreach($mqHalf1_2x as $c)
                                 <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
-                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
+                                     class="h-10 md:h-12 w-auto object-contain opacity-70 flex-shrink-0">
                             @endforeach
                         </div>
                     </div>
-                    {{-- Row 2: semua logo terbalik → kiri --}}
+                    {{-- Baris 2: logo ½+1–akhir → gerak kanan --}}
                     <div class="overflow-hidden">
-                        <div class="marquee-track" style="animation: marquee-left 32s linear infinite;">
-                            @foreach($logoReversed->merge($logoReversed) as $c)
+                        <div class="about-mq-track" style="animation: about-mq-right 40s linear infinite;">
+                            @foreach($mqHalf2_2x as $c)
                                 <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
-                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
-                            @endforeach
-                        </div>
-                    </div>
-                    {{-- Row 3: semua logo → kanan (lebih lambat) --}}
-                    <div class="overflow-hidden">
-                        <div class="marquee-track" style="animation: marquee-right 50s linear infinite;">
-                            @foreach($logoClients->merge($logoClients) as $c)
-                                <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
-                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
+                                     class="h-10 md:h-12 w-auto object-contain opacity-70 flex-shrink-0">
                             @endforeach
                         </div>
                     </div>
