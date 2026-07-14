@@ -206,6 +206,156 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="py-20 lg:py-28 bg-slate-50">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Heading -->
+                <div class="mb-10 text-center">
+                    <h2 class="text-[32px] lg:text-[42px] font-bold text-hex-dark tracking-tight"
+                        data-i18n data-en="Frequently Asked Questions" data-id="Pertanyaan yang Sering Diajukan">
+                        Pertanyaan yang Sering Diajukan
+                    </h2>
+                </div>
+
+                <!-- Accordion -->
+                <div id="faq-list" class="space-y-3">
+
+                    <!-- Item 1 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">01</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I take the Managed-Services package, can I only take resources with the outsourcing concept?"
+                                data-id="Jika saya mengambil paket Managed-Services apakah saya bisa hanya mengambil resource dengan konsep outsourcing?">
+                                Jika saya mengambil paket Managed-Services apakah saya bisa hanya mengambil resource dengan konsep outsourcing?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="In project management, human resource management is the most crucial part. Based on our experience, many resources are not optimal when not under our management. Therefore, to ensure quality in outsourcing, <strong>we only provide support in mentoring, implementation, and training personnel.</strong>"
+                                data-id="Dalam proses berjalannya proyek pengelolaan sumber daya manusia adalah bagian paling krusial. Berdasarkan pengalaman kami banyak sumber daya yang tidak optimal karena tidak dibawah manajemen kami, oleh karena itu untuk menjamin keterjagaan kualitas maka pada outsourcing <strong>kami hanya menyediakan di bagian pendampingan, implementer, dan tenaga pelatihan.</strong>">
+                                Dalam proses berjalannya proyek pengelolaan sumber daya manusia adalah bagian paling krusial. Berdasarkan pengalaman kami banyak sumber daya yang tidak optimal karena tidak dibawah manajemen kami, oleh karena itu untuk menjamin keterjagaan kualitas maka pada outsourcing <strong>kami hanya menyediakan di bagian pendampingan, implementer, dan tenaga pelatihan.</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">02</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I need Software Development, do I need to take the IT-Consultant package?"
+                                data-id="Jika saya membutuhkan Software Development, apakah saya harus mengambil paket IT-Consultant?">
+                                Jika saya membutuhkan Software Development, apakah saya harus mengambil paket IT-Consultant?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="<strong>Not necessarily</strong>, but if the <strong>project is large-scale and ongoing</strong>, it would be much better to conduct IT-Consulting first. This ensures proper problem identification, current state mapping, and targeted solutions — making planning more mature. The output is not only <em>cost efficiency</em> but also better <strong>work effectiveness</strong> and <strong>risk mitigation</strong>."
+                                data-id="<strong>Tidak Harus</strong>, namun jika <strong>proyek skala besar dan berkelanjutan</strong> maka secara ideal akan sangat lebih baik jika IT-Consultant dilakukan terlebih dahulu. Agar identifikasi masalah, mapping kondisi saat ini, dan solusi yang diberikan tepat sasaran. Sehingga perencanaan lebih matang. Outputnya bukan hanya <em>cost efficiency</em> melainkan juga untuk <strong>efektivitas kerja</strong> dan <strong>mitigasi risiko</strong> yang lebih baik.">
+                                <strong>Tidak Harus</strong>, namun jika <strong>proyek skala besar dan berkelanjutan</strong> maka secara ideal akan sangat lebih baik jika IT-Consultant dilakukan terlebih dahulu. Agar identifikasi masalah, mapping kondisi saat ini, dan solusi yang diberikan tepat sasaran. Sehingga perencanaan lebih matang. Outputnya bukan hanya <em>cost efficiency</em> melainkan juga untuk <strong>efektivitas kerja</strong> dan <strong>mitigasi risiko</strong> yang lebih baik.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">03</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I take the R&D Consultant package, will I automatically get IT-Consultant and Data Analytic Consultant?"
+                                data-id="Jika saya mengambil R&D Consultant apakah saya secara otomatis mendapatkan IT-Consultant dan Data Analytic Consultant?">
+                                Jika saya mengambil R&D Consultant apakah saya secara otomatis mendapatkan IT-Consultant dan Data Analytic Consultant?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="The three services differ in domain and output but are related. <strong>Not automatically</strong>, but there will be a <strong>more attractive offer</strong> if you take all three. The work schedule is also more <strong>effective</strong> because the process does not involve many parties."
+                                data-id="Ketiga layanan tersebut adalah layanan yang berbeda secara domain dan output namun berhubungan. <strong>Tidak secara otomatis</strong>, namun akan ada <strong>penawaran yang lebih menarik</strong> jika mengambil ketiganya. Selain itu jadwal pengerjaan juga lebih <strong>efektif</strong> karena pada prosesnya tidak melibatkan banyak pihak.">
+                                Ketiga layanan tersebut adalah layanan yang berbeda secara domain dan output namun berhubungan. <strong>Tidak secara otomatis</strong>, namun akan ada <strong>penawaran yang lebih menarik</strong> jika mengambil ketiganya. Selain itu jadwal pengerjaan juga lebih <strong>efektif</strong> karena pada prosesnya tidak melibatkan banyak pihak.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">04</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I take the Data Analytic Consultant package, will I receive the full analysis results?"
+                                data-id="Jika saya mengambil paket Data Analytic Consultant, apakah saya diberi sampai dengan hasil kajian analisisnya?">
+                                Jika saya mengambil paket Data Analytic Consultant, apakah saya diberi sampai dengan hasil kajian analisisnya?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="<strong>Of course</strong>, we will provide the analysis results <strong>in full</strong>, using methods tailored to the problems and conditions at hand. Additionally, all intellectual property will become fully owned by the client."
+                                data-id="<strong>Tentu saja</strong>, kami akan memberikan kajian analisisnya <strong>secara penuh</strong>. Dengan metode yang kami sesuaikan dengan permasalahan dan kondisi yang ada. Tambahan, seluruh kekayaan intelektual akan sepenuhnya menjadi hak milik client.">
+                                <strong>Tentu saja</strong>, kami akan memberikan kajian analisisnya <strong>secara penuh</strong>. Dengan metode yang kami sesuaikan dengan permasalahan dan kondisi yang ada. Tambahan, seluruh kekayaan intelektual akan sepenuhnya menjadi hak milik client.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">05</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I take the Venture Builder package, can I be guaranteed to get an investor?"
+                                data-id="Jika saya mengambil paket Venture Builder, apakah saya bisa dipastikan mendapatkan investor?">
+                                Jika saya mengambil paket Venture Builder, apakah saya bisa dipastikan mendapatkan investor?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="In terms of the work contract, that is <strong>outside our domain</strong>, but with all the access and networking we have, we will <strong>connect</strong> you as a priority to potential investors."
+                                data-id="Secara kontrak kerja itu <strong>diluar domain kami</strong>, namun dengan seluruh akses dan networking yang kami punya akan kami <strong>connect</strong>-kan secara prioritas kepada client.">
+                                Secara kontrak kerja itu <strong>diluar domain kami</strong>, namun dengan seluruh akses dan networking yang kami punya akan kami <strong>connect</strong>-kan secara prioritas kepada client.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="faq-item bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button type="button" class="faq-btn w-full flex items-center gap-4 text-left px-5 py-4 group">
+                            <span class="text-xs font-black text-hex-blue bg-[#00B4BF]/10 rounded-lg px-2.5 py-1.5 flex-shrink-0 w-10 text-center leading-none">06</span>
+                            <span class="flex-1 text-[14px] lg:text-[15px] font-semibold text-hex-dark group-hover:text-hex-blue transition-colors leading-snug"
+                                data-i18n
+                                data-en="If I want to take a Product package and need further customization, do I have to take the Software Development package again?"
+                                data-id="Jika saya ingin mengambil paket Produk dan ingin kustomisasi lebih lanjut apakah saya harus mengambil paket Software Development lagi?">
+                                Jika saya ingin mengambil paket Produk dan ingin kustomisasi lebih lanjut apakah saya harus mengambil paket Software Development lagi?
+                            </span>
+                            <span translate="no" class="material-symbols-outlined text-slate-400 text-xl flex-shrink-0 faq-chevron" style="transition: transform 0.3s ease;">expand_more</span>
+                        </button>
+                        <div class="faq-panel overflow-hidden" style="max-height:0;opacity:0;transition:max-height .35s ease,opacity .3s ease;">
+                            <p class="px-5 pb-5 pl-[4.5rem] text-hex-slate text-[13px] lg:text-[14px] leading-relaxed"
+                                data-i18n="html"
+                                data-en="For some cases, the product packages we offer will come with a <em>free-credit</em> which can be used for <strong>customization development</strong>."
+                                data-id="Untuk beberapa case, paket produk yang kami tawarkan akan kami berikan <em>free-credit</em> yang mana bisa digunakan untuk <strong>pengembangan kustomisasi</strong>.">
+                                Untuk beberapa case, paket produk yang kami tawarkan akan kami berikan <em>free-credit</em> yang mana bisa digunakan untuk <strong>pengembangan kustomisasi</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-20 lg:px-32">
@@ -305,6 +455,38 @@
                 $el.text($el.data('target') + ($el.data('suffix') || ''));
             });
         }
+    })();
+</script>
+<script>
+    (function () {
+        document.querySelectorAll('.faq-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var item = btn.closest('.faq-item');
+                var panel = item.querySelector('.faq-panel');
+                var chevron = btn.querySelector('.faq-chevron');
+                var isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+
+                // Close all panels
+                document.querySelectorAll('.faq-panel').forEach(function (p) {
+                    p.style.maxHeight = '0px';
+                    p.style.opacity = '0';
+                });
+                document.querySelectorAll('.faq-chevron').forEach(function (c) {
+                    c.style.transform = 'rotate(0deg)';
+                });
+                document.querySelectorAll('.faq-item').forEach(function (el) {
+                    el.style.boxShadow = '';
+                });
+
+                // Open clicked panel if it was closed
+                if (!isOpen) {
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                    panel.style.opacity = '1';
+                    if (chevron) chevron.style.transform = 'rotate(180deg)';
+                    item.style.boxShadow = '0 0 0 2px #00B4BF33';
+                }
+            });
+        });
     })();
 </script>
 @endpush

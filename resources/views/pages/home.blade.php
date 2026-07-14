@@ -89,29 +89,62 @@
                 </h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-12"></div>
 
-                <!-- Partner Logos Grid - Responsive Layout -->
+                <!-- Partner Logos Marquee -->
                 @php
                     $homeLogos = [
-                        ['src' => '/assets/img/clients/telkom.png', 'alt' => 'Telkom Indonesia'],
-                        ['src' => '/assets/img/clients/sinarmas.png', 'alt' => 'Sinarmas'],
-                        ['src' => '/assets/img/clients/unilever.png', 'alt' => 'Unilever'],
-                        ['src' => '/assets/img/clients/PJB.png', 'alt' => 'PJB'],
-                        ['src' => '/assets/img/clients/kominfo.png', 'alt' => 'Kominfo'],
-                        ['src' => '/assets/img/clients/wika.png', 'alt' => 'WIKA'],
-                        ['src' => '/assets/img/clients/its.png', 'alt' => 'ITS'],
-                        ['src' => '/assets/img/clients/unair.png', 'alt' => 'Universitas Airlangga'],
-                        ['src' => '/assets/img/clients/univ_indonesia.png', 'alt' => 'Universitas Indonesia'],
-                        ['src' => '/assets/img/clients/banjarbaru.png', 'alt' => 'Kota Banjarbaru'],
-                        ['src' => '/assets/img/clients/ubaya.png', 'alt' => 'Ubaya'],
+                        ['src' => '/assets/img/clients/telkom.png',        'alt' => 'Telkom Indonesia'],
+                        ['src' => '/assets/img/clients/sinarmas.png',      'alt' => 'Sinarmas'],
+                        ['src' => '/assets/img/clients/unilever.png',      'alt' => 'Unilever'],
+                        ['src' => '/assets/img/clients/PJB.png',           'alt' => 'PJB'],
+                        ['src' => '/assets/img/clients/kominfo.png',       'alt' => 'Kominfo'],
+                        ['src' => '/assets/img/clients/wika.png',          'alt' => 'WIKA'],
+                        ['src' => '/assets/img/clients/its.png',           'alt' => 'ITS'],
+                        ['src' => '/assets/img/clients/unair.png',         'alt' => 'Universitas Airlangga'],
+                        ['src' => '/assets/img/clients/univ_indonesia.png','alt' => 'Universitas Indonesia'],
+                        ['src' => '/assets/img/clients/banjarbaru.png',    'alt' => 'Kota Banjarbaru'],
+                        ['src' => '/assets/img/clients/ubaya.png',         'alt' => 'Ubaya'],
                         ['src' => '/assets/img/clients/bank_bengkulu.png', 'alt' => 'Bank Bengkulu'],
                     ];
+                    $homeLogosRev = array_reverse($homeLogos);
+                    $homeLogos2x  = array_merge($homeLogos, $homeLogos);
+                    $homeRev2x    = array_merge($homeLogosRev, $homeLogosRev);
                 @endphp
-                <div class="grid grid-cols-4 gap-3 md:grid-cols-6 md:gap-8 mb-16 mx-auto max-w-[1200px] opacity-80">
-                    @foreach($homeLogos as $logo)
-                        <div class="w-full h-12 md:h-24 flex items-center justify-center px-1 md:px-3">
-                            <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}" class="max-h-full max-w-full object-contain">
+
+                <style>
+                    @keyframes marquee-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+                    @keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+                    .marquee-track { display: flex; align-items: center; width: max-content; gap: 3.5rem; }
+                    .marquee-track:hover { animation-play-state: paused; }
+                </style>
+
+                <div class="w-full mb-16 space-y-6 overflow-hidden">
+                    {{-- Row 1: semua logo → kanan --}}
+                    <div class="overflow-hidden">
+                        <div class="marquee-track" style="animation: marquee-right 40s linear infinite;">
+                            @foreach($homeLogos2x as $logo)
+                                <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}"
+                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
+                    {{-- Row 2: semua logo terbalik → kiri --}}
+                    <div class="overflow-hidden">
+                        <div class="marquee-track" style="animation: marquee-left 32s linear infinite;">
+                            @foreach($homeRev2x as $logo)
+                                <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}"
+                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- Row 3: semua logo → kanan (lebih lambat) --}}
+                    <div class="overflow-hidden">
+                        <div class="marquee-track" style="animation: marquee-right 50s linear infinite;">
+                            @foreach($homeLogos2x as $logo)
+                                <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}"
+                                     class="h-8 md:h-10 w-auto object-contain opacity-75 flex-shrink-0">
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
                 <!-- View All Link -->
