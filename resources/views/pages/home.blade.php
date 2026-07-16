@@ -112,7 +112,7 @@
                         <div class="home-mq-track" style="animation: home-mq-left 40s linear infinite;">
                             @foreach($homeMqHalf1_2x as $c)
                                 <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
-                                     class="h-10 md:h-12 w-auto object-contain opacity-70 flex-shrink-0">
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
                             @endforeach
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         <div class="home-mq-track" style="animation: home-mq-right 40s linear infinite;">
                             @foreach($homeMqHalf2_2x as $c)
                                 <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
-                                     class="h-10 md:h-12 w-auto object-contain opacity-70 flex-shrink-0">
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
                             @endforeach
                         </div>
                     </div>
