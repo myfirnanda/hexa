@@ -89,29 +89,42 @@
                 </h2>
                 <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-12"></div>
 
-                <!-- Partner Logos Grid - Responsive Layout -->
+                <!-- Partner Logos Marquee — ambil dari DB sama seperti About page -->
                 @php
-                    $homeLogos = [
-                        ['src' => '/assets/img/clients/telkom.png', 'alt' => 'Telkom Indonesia'],
-                        ['src' => '/assets/img/clients/sinarmas.png', 'alt' => 'Sinarmas'],
-                        ['src' => '/assets/img/clients/unilever.png', 'alt' => 'Unilever'],
-                        ['src' => '/assets/img/clients/PJB.png', 'alt' => 'PJB'],
-                        ['src' => '/assets/img/clients/kominfo.png', 'alt' => 'Kominfo'],
-                        ['src' => '/assets/img/clients/wika.png', 'alt' => 'WIKA'],
-                        ['src' => '/assets/img/clients/its.png', 'alt' => 'ITS'],
-                        ['src' => '/assets/img/clients/unair.png', 'alt' => 'Universitas Airlangga'],
-                        ['src' => '/assets/img/clients/univ_indonesia.png', 'alt' => 'Universitas Indonesia'],
-                        ['src' => '/assets/img/clients/banjarbaru.png', 'alt' => 'Kota Banjarbaru'],
-                        ['src' => '/assets/img/clients/ubaya.png', 'alt' => 'Ubaya'],
-                        ['src' => '/assets/img/clients/bank_bengkulu.png', 'alt' => 'Bank Bengkulu'],
-                    ];
+                    $homeLogoClients = $clients->filter(fn($c) => $c->logo)->unique('logo')->values();
+                    $homeMid         = (int) ceil($homeLogoClients->count() / 2);
+                    $homeMqHalf1     = $homeLogoClients->slice(0, $homeMid)->values();
+                    $homeMqHalf2     = $homeLogoClients->slice($homeMid)->values();
+                    $homeMqHalf1_2x  = $homeMqHalf1->merge($homeMqHalf1);
+                    $homeMqHalf2_2x  = $homeMqHalf2->merge($homeMqHalf2);
                 @endphp
-                <div class="grid grid-cols-4 gap-3 md:grid-cols-6 md:gap-8 mb-16 mx-auto max-w-[1200px] opacity-80">
-                    @foreach($homeLogos as $logo)
-                        <div class="w-full h-12 md:h-24 flex items-center justify-center px-1 md:px-3">
-                            <img src="{{ $logo['src'] }}" alt="{{ $logo['alt'] }}" class="max-h-full max-w-full object-contain">
+
+                <style>
+                    @keyframes home-mq-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+                    @keyframes home-mq-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+                    .home-mq-track { display: flex; align-items: center; width: max-content; gap: 3.5rem; }
+                    .home-mq-track:hover { animation-play-state: paused; }
+                </style>
+
+                <div class="w-full mb-16 space-y-5 overflow-hidden">
+                    {{-- Baris 1: logo 1–½ → gerak kiri --}}
+                    <div class="overflow-hidden">
+                        <div class="home-mq-track" style="animation: home-mq-left 40s linear infinite;">
+                            @foreach($homeMqHalf1_2x as $c)
+                                <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
+                    {{-- Baris 2: logo ½+1–akhir → gerak kanan --}}
+                    <div class="overflow-hidden">
+                        <div class="home-mq-track" style="animation: home-mq-right 40s linear infinite;">
+                            @foreach($homeMqHalf2_2x as $c)
+                                <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
                 <!-- View All Link -->

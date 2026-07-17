@@ -54,9 +54,11 @@
 
     <!-- Scroll to top button -->
     <button class="fixed right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:bg-blue-700 z-40"
-        style="bottom: 40px;" id="scroll-top-btn">
+        style="bottom: 100px;" id="scroll-top-btn">
         <span translate="no" class="material-symbols-outlined">keyboard_arrow_up</span>
     </button>
+
+    @include('partials.wa-widget')
 
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/lang.js') }}"></script>

@@ -268,18 +268,49 @@
         <!-- Clients Section -->
         <section class="py-24 bg-white border-t border-slate-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-                <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-12" data-i18n
+                <h2 class="text-3xl lg:text-[42px] font-bold text-hex-dark mb-12 text-center" data-i18n
                     data-en="Some of Our Happy Clients" data-id="Beberapa Klien Kami yang Puas">Some of Our Happy
                     Clients</h2>
                 <!-- Top Divider -->
                 <div class="w-20 h-1 bg-hex-blue mx-auto rounded-full mb-12"></div>
 
-                <!-- Partner Logos Grid -->
-                <div
-                    class="grid grid-cols-7 gap-8 md:gap-12 mb-16 mx-auto max-w-[1200px] items-center justify-items-center opacity-80">
-                    @foreach($clients->filter(fn($c) => $c->logo)->take(14) as $client)
-                        <img src="{{ image_url($client->logo) }}" alt="{{ $client->name }}" class="h-10 md:h-12 w-auto object-contain">
-                    @endforeach
+                <!-- Partner Logos Marquee (2 rows, split evenly, opposing directions) -->
+                @php
+                    $logoClients = $clients->filter(fn($c) => $c->logo)->unique('logo')->values();
+                    $mid         = (int) ceil($logoClients->count() / 2);
+                    $mqHalf1     = $logoClients->slice(0, $mid)->values();
+                    $mqHalf2     = $logoClients->slice($mid)->values();
+                    // 2x duplication: -50% keyframe loops 1 copy seamlessly
+                    $mqHalf1_2x  = $mqHalf1->merge($mqHalf1);
+                    $mqHalf2_2x  = $mqHalf2->merge($mqHalf2);
+                @endphp
+
+                <style>
+                    @keyframes about-mq-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+                    @keyframes about-mq-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+                    .about-mq-track { display: flex; align-items: center; width: max-content; gap: 3.5rem; }
+                    .about-mq-track:hover { animation-play-state: paused; }
+                </style>
+
+                <div class="w-full mb-16 space-y-5 overflow-hidden">
+                    {{-- Baris 1: logo 1–½ → gerak kiri --}}
+                    <div class="overflow-hidden">
+                        <div class="about-mq-track" style="animation: about-mq-left 40s linear infinite;">
+                            @foreach($mqHalf1_2x as $c)
+                                <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- Baris 2: logo ½+1–akhir → gerak kanan --}}
+                    <div class="overflow-hidden">
+                        <div class="about-mq-track" style="animation: about-mq-right 40s linear infinite;">
+                            @foreach($mqHalf2_2x as $c)
+                                <img src="{{ image_url($c->logo) }}" alt="{{ $c->name }}"
+                                     class="h-12 md:h-16 w-auto object-contain opacity-80 flex-shrink-0">
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
 
                 <!-- View All Link -->
@@ -444,6 +475,95 @@
             </script>
         </section>
         @endif
+
+        <!-- Location Section -->
+        <section class="py-20 bg-white" id="lokasi">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-[32px] lg:text-[42px] font-bold text-hex-dark tracking-tight"
+                        data-i18n data-en="Find Our Office" data-id="Temukan Kantor Kami">Temukan Kantor Kami</h2>
+                    <p class="text-slate-500 mt-3 max-w-xl mx-auto"
+                        data-i18n
+                        data-en="We're ready to meet you in person. Drop by our office or reach out digitally — we'd love to hear from you."
+                        data-id="Kami siap bertemu Anda. Kunjungi kantor kami atau hubungi kami secara digital — kami senang mendengar dari Anda.">
+                        Kami siap bertemu Anda. Kunjungi kantor kami atau hubungi kami secara digital — kami senang mendengar dari Anda.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+
+                    <!-- Left: Info Card -->
+                    <div class="bg-slate-50 rounded-3xl p-8 lg:p-10 flex flex-col justify-between gap-8">
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-11 h-11 rounded-xl bg-[#00B4BF]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-xl">location_on</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-hex-dark text-sm mb-1"
+                                        data-i18n data-en="Office Address" data-id="Alamat Kantor">Alamat Kantor</p>
+                                    <p class="text-hex-slate text-sm leading-relaxed">
+                                        Graha Bukopin Lantai 7 &amp; 12,<br>
+                                        Jl. Panglima Sudirman No. 10-18,<br>
+                                        Embong Kaliasin, Genteng,<br>
+                                        Kota Surabaya, Jawa Timur 60271
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-11 h-11 rounded-xl bg-[#00B4BF]/10 flex items-center justify-center flex-shrink-0">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-xl">mail</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-hex-dark text-sm mb-0.5">Email</p>
+                                    <a href="mailto:info@hexavara.com" class="text-hex-blue text-sm hover:underline">info@hexavara.com</a>
+                                </div>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-11 h-11 rounded-xl bg-[#00B4BF]/10 flex items-center justify-center flex-shrink-0">
+                                    <span translate="no" class="material-symbols-outlined text-hex-blue text-xl">call</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-hex-dark text-sm mb-0.5"
+                                        data-i18n data-en="Phone" data-id="Telepon">Telepon</p>
+                                    <a href="tel:+628113451550" class="text-hex-blue text-sm hover:underline">+62 811 3451 550</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <a href="https://maps.google.com/?q=Graha+Bukopin+Surabaya+Jl+Panglima+Sudirman+No+10-18"
+                            target="_blank" rel="noopener"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-hex-dark text-white font-bold text-sm hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                            data-i18n data-en="Open in Google Maps" data-id="Buka di Google Maps">
+                            <span translate="no" class="material-symbols-outlined text-base">open_in_new</span>
+                            Buka di Google Maps
+                        </a>
+                    </div>
+
+                    <!-- Right: Google Maps Embed -->
+                    <!-- Untuk ganti lokasi: buka maps.google.com → cari lokasi → klik Share → Embed a map → salin src dari iframe dan ganti di bawah -->
+                    <div class="rounded-3xl overflow-hidden shadow-md" style="min-height: 400px;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Graha+Bukopin+Surabaya+Jl+Panglima+Sudirman+No+10-18&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="min-height: 400px; border: 0; display: block;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Hexavara Office Location">
+                        </iframe>
+                    </div>
+
+                </div>
+            </div>
+        </section>
 
         <!-- CTA Section -->
         <section class="py-8 md:pt-0 md:pb-0 bg-white overflow-hidden">
