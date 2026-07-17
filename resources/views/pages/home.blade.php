@@ -28,8 +28,8 @@
                         @endif
                     @else
                         <h1 class="hero-title text-hex-dark" data-i18n="html"
-                            data-en="Transforming<br />Ideas into <span class=’text-hex-blue’>Digital<br />Excellence</span>"
-                            data-id="Mengubah Ide<br />Menjadi <span class=’text-hex-blue’>Keunggulan<br />Digital</span>">
+                            data-en="Transforming<br />Ideas into <span class='text-hex-blue'>Digital<br />Excellence</span>"
+                            data-id="Mengubah Ide<br />Menjadi <span class='text-hex-blue'>Keunggulan<br />Digital</span>">
                             Transforming<br />Ideas into <span class="text-hex-blue">Digital<br />Excellence</span></h1>
                     @endif
                     @if($heroBanner && $heroBanner->hero_description)
@@ -51,18 +51,18 @@
                     <div class="flex justify-center lg:justify-start">
                         @if($heroBanner && $heroBanner->button_text)
                             @if($heroBanner->button_text_id)
-                                <a href="{{ $heroBanner->button_url ?: route(‘start-project’) }}"
+                                <a href="{{ $heroBanner->button_url ?: route('start-project') }}"
                                     class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                                     style="color:white;" data-i18n
                                     data-en="{{ $heroBanner->button_text }}"
                                     data-id="{{ $heroBanner->button_text_id }}">{{ $heroBanner->button_text }}</a>
                             @else
-                                <a href="{{ $heroBanner->button_url ?: route(‘start-project’) }}"
+                                <a href="{{ $heroBanner->button_url ?: route('start-project') }}"
                                     class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                                     style="color:white;">{{ $heroBanner->button_text }}</a>
                             @endif
                         @else
-                            <a href="{{ route(‘start-project’) }}"
+                            <a href="{{ route('start-project') }}"
                                 class="mt-8 inline-block px-8 py-3 bg-hex-dark rounded-xl font-bold text-base hover:shadow-2xl hover:-translate-y-1 transition-all shadow-xl"
                                 style="color:white;" data-i18n data-en="Consult Now" data-id="Konsultasi Sekarang">Consult
                                 Now</a>
